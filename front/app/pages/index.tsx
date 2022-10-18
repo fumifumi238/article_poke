@@ -10,7 +10,10 @@ type Props = {
   posts: Post[];
 };
 
+//
+
 const Home: FC<Props> = (props) => {
+
   return (
     <div>
       <h2>POSTの一覧</h2>
