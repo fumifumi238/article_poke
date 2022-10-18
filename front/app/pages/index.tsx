@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 
 type Post = {
@@ -10,9 +10,26 @@ type Props = {
   posts: Post[];
 };
 
-//
+type User = {
+  id: number;
+  name: string;
+  twitter: string;
+};
+
 
 const Home: FC<Props> = (props) => {
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    // validationを付けたい　https://zenn.dev/uzimaru0000/articles/json-type-validation
+    const getUser = async () => {
+      const res = await fetch("http://localhost:3000/users/index");
+      const data = (await res.json()) as User[];
+      setUsers(data);
+    };
+
+    getUser();
+  }, []);
 
   return (
     <div>
@@ -24,6 +41,13 @@ const Home: FC<Props> = (props) => {
               {post.id}: {post.title}
             </li>
           </div>
+        ))}
+      </ul>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            name: {user.name} id: @{user.twitter}
+          </li>
         ))}
       </ul>
     </div>
