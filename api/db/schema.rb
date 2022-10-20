@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2022_10_18_145956) do
     t.string "twitter"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["twitter"], name: "index_users_on_twitter", unique: true
   end
 
 end

@@ -16,7 +16,6 @@ type User = {
   twitter: string;
 };
 
-
 const Home: FC<Props> = (props) => {
   const [users, setUsers] = useState<User[]>([]);
 
