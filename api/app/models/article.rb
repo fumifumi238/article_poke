@@ -6,4 +6,5 @@ class Article < ApplicationRecord
   validates :series,presence: true, numericality: {greater_than: 0,less_than: 100}
   validates :rate, allow_nil: true,numericality: {greater_than: 100,less_than: 10000}
   validates :rank, allow_nil: true,numericality: {greater_than: 0,less_than: 100000}
+  validates :title,presence: true,length:{maximum: 50}
 end

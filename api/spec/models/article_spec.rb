@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   it 'is valid without rank and rate' do
     @user = User.create(name: "sample",twitter:"sample_twitter")
-    article = Article.new(url:"https://sample.com",user: @user,season:1,series:1)
+    article = Article.new(title:"sample",url:"https://sample.com",user: @user,season:1,series:1)
     expect(article).to be_valid
   end
 
@@ -166,6 +166,35 @@ describe 'rank test' do
     end
   end
 
+
+end
+
+describe 'title test' do
+  let(:user) { FactoryBot.build(:user) }
+  let(:article){FactoryBot.build(:article,user:user,title:title)}
+
+  context 'when title is nil' do
+   let(:title){nil}
+    it 'is invalid without title' do
+      article.valid?
+      expect(article.errors[:title]).to include("can't be blank")
+    end
+  end
+
+  context 'when title is longer than 100' do
+    let(:title) { 'a' * 51 }
+      it 'is too long' do
+        article.valid?
+        expect(article.errors[:title]).to include("is too long (maximum is 50 characters)")
+      end
+  end
+
+  context 'when title is nil' do
+    let(:title){"a"*50}
+    it 'is valid title is within 50' do
+      expect(article).to be_valid
+    end
+  end
 
 end
 
