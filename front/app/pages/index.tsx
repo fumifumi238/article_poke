@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
+import { postData } from "../lib/api/client";
 
 type Post = {
   id: number;
@@ -18,6 +19,8 @@ type User = {
 
 const Home: FC<Props> = (props) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [name, setName] = useState<string>("");
+  const [twitter, setTwitter] = useState<string>("");
 
   useEffect(() => {
     // validationを付けたい　https://zenn.dev/uzimaru0000/articles/json-type-validation
@@ -29,6 +32,20 @@ const Home: FC<Props> = (props) => {
 
     getUser();
   }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const res = await postData("/users/create", {
+      name: name,
+      twitter: twitter,
+    });
+    const data = await res;
+    if (data.status !== 200) {
+      console.log(data.message);
+    } else {
+      console.log("成功しました。");
+    }
+  };
 
   return (
     <div>
@@ -49,6 +66,24 @@ const Home: FC<Props> = (props) => {
           </li>
         ))}
       </ul>
+
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={twitter}
+          onChange={(e) => {
+            setTwitter(e.target.value);
+          }}
+        />
+        <button type="submit">登録</button>
+      </form>
     </div>
   );
 };
