@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'articles/index'
   get 'articles/edit'
   get 'articles/show'
-  get 'articles/create'
+  post 'articles/create'
   get 'users/index'
   post 'users/create'
   resources :posts
