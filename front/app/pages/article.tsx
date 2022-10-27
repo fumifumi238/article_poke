@@ -24,9 +24,9 @@ const Article: NextPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("http://localhost:3000/articles/index");
+      const res = await fetch("http://localhost:3000/articles/index?series=1");
       const data = await res.json();
-      setArticle(data);
+      setArticle(data.articles);
     };
     getData();
   }, []);
