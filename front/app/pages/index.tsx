@@ -1,15 +1,8 @@
+import { NextPage } from "next";
 import React, { FC, useEffect, useState } from "react";
-import { GetStaticProps } from "next";
+// import { GetStaticProps } from "next";
 import { postData } from "../lib/api/client";
 
-type Post = {
-  id: number;
-  title: string;
-};
-
-type Props = {
-  posts: Post[];
-};
 
 type User = {
   id: number;
@@ -17,7 +10,7 @@ type User = {
   twitter: string;
 };
 
-const Home: FC<Props> = (props) => {
+const Home: NextPage = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [name, setName] = useState<string>("");
   const [twitter, setTwitter] = useState<string>("");
@@ -49,16 +42,6 @@ const Home: FC<Props> = (props) => {
 
   return (
     <div>
-      <h2>POSTの一覧</h2>
-      <ul>
-        {props.posts.map((post) => (
-          <div key={post.id}>
-            <li>
-              {post.id}: {post.title}
-            </li>
-          </div>
-        ))}
-      </ul>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
@@ -88,15 +71,15 @@ const Home: FC<Props> = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch("http://api:3000/posts", { method: "GET" });
-  const json = await response.json();
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const response = await fetch("http://api:3000/posts", { method: "GET" });
+//   const json = await response.json();
 
-  return {
-    props: {
-      posts: json,
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts: json,
+//     },
+//   };
+// };
 
 export default Home;

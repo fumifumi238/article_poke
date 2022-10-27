@@ -1,5 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user
+  has_many :articles,dependent: :destroy
+  has_many :moves,dependent: :destroy
   VALID_URL_REGEX = /\Ahttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+\z/
   validates :url,presence: true,format: { with: VALID_URL_REGEX },length: { maximum: 100 },uniqueness: { case_sensitive: false }
   validates :season,presence: true, numericality: {greater_than: 0,less_than: 100}

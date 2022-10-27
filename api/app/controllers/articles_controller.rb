@@ -1,7 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.joins(:user).select("articles.*, users.*")
-    render json: @articles
+    @articles = Article.eager_load(:user).select("articles.*, users.*").where(series: params[:series])
+    @moves = Move.where(article: @articles.ids)
+    @parties = Party.where(article: @articles.ids)
+
+    render json: {moves: @moves,articles: @articles,parties: @parties}
   end
 
   def edit
