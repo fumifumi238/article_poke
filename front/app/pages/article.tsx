@@ -1,6 +1,12 @@
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { postData } from "../lib/api/client";
+import ControlledAccordions from "../components/elements/Accordion/Accordion";
+import Image from "next/image";
+import Fab from "@mui/material/Fab";
+import Drawer from "@mui/material/Drawer";
+import React from "react";
 
 const Article: NextPage = () => {
   type Article = {
@@ -13,136 +19,162 @@ const Article: NextPage = () => {
     season: number;
     series: number;
   };
-  const [url, setUrl] = useState<string>("");
-  const [articles, setArticle] = useState<Article[]>([]);
-  const [name, setName] = useState<string>("my_name");
-  const [twitter, setTwitter] = useState<string>("sample_app");
-  const [series, setSeries] = useState<string>("1");
-  const [season, setSeason] = useState<string>("1");
-  const [rank, setRank] = useState<string>("");
-  const [rate, setRate] = useState<string>("");
+
+  type Detail = {
+    name: string;
+    count: number;
+  };
+
+  type PokeRank = {
+    [pokemon: string]: {
+      id: number;
+      count: number;
+      moves: Detail[];
+      terastals: Detail[];
+      abilities: Detail[];
+      natures: Detail[];
+      items: Detail[];
+    };
+  };
+
+  const [rankOpen, setRankOpen] = useState<boolean>(false);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [offset, setOffset] = useState<number>(30);
+  const [utilizationRates, setUtilizationRates] = useState<PokeRank>({});
 
   useEffect(() => {
     const getData = async () => {
       const res = await fetch("http://localhost:3000/articles/index?series=1");
       const data = await res.json();
-      setArticle(data.articles);
+      setArticles(data.articles);
+      hashedPokemons(data.pokemon_ranks, data.items, data.moves);
     };
     getData();
+    console.log(utilizationRates);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await postData("/articles/create", {
-      name: name,
-      twitter: twitter,
-      url: url,
-      rate: rate,
-      rank: rank,
-      season: season,
-      series: series,
-    });
-    const data = await res;
-    if (data.status !== 200) {
-      console.log(data.message);
-    } else {
-      console.log("成功しました。");
+  const hashedPokemons = (
+    pokemons: { pokemon: string; count: number }[],
+    items: { item: string; pokemon: string; count: number }[],
+    moves: { name: string; pokemon: string; count: number }[]
+  ) => {
+    const hash: PokeRank = {};
+    for (let i = 0; i < pokemons.length; i++) {
+      hash[pokemons[i]["pokemon"]] = {
+        id: i + 1,
+        count: pokemons[i]["count"],
+        items: [],
+        moves: [],
+        terastals: [],
+        abilities: [],
+        natures: [],
+      };
     }
+
+    for (let i = 0; i < items.length; i++) {
+      hash[items[i].pokemon]["items"].push({
+        name: items[i].item,
+        count: items[i].count,
+      });
+    }
+    for (let i = 0; i < moves.length; i++) {
+      hash[moves[i].pokemon]["moves"].push({
+        name: moves[i].name,
+        count: moves[i].count,
+      });
+    }
+    // for (let i = 0; i < items.length; i++) {
+    //   hash[items[i].pokemon]["items"].push({
+    //     name: items[i].item,
+    //     count: items[i].count,
+    //   });
+    // }
+    // const setData = (details: SetData[], type: string) => {
+    //   for (let i = 0; i < details.length; i++) {
+    //     hash[details[i].pokemon][type].push({
+    //       name: items[i].item,
+    //       count: items[i].count,
+    //     });
+    //   }
+    // };
+
+    // setData(items, "items");
+    setUtilizationRates(hash);
+    console.log(utilizationRates);
   };
+
+  const loadArticle = async () => {
+    const res = await fetch(
+      `http://localhost:3000/articles/index?series=1&offset=${offset}`
+    );
+    const data = await res.json();
+    setArticles((prevData) => [...prevData, ...data.articles]);
+    setOffset((prevOffset) => prevOffset + 30);
+  };
+
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setRankOpen(open);
+    };
+
   return (
     <div>
-      <ul>
+      <Drawer open={rankOpen} onClose={toggleDrawer(false)} anchor="right">
+        <List>
+          {Object.keys(utilizationRates).map((poke) => (
+            <React.Fragment key={utilizationRates[poke].id}>
+              {utilizationRates[poke].id <= 30 && (
+                <ListItem disablePadding={true}>
+                  <ControlledAccordions
+                    rank={utilizationRates[poke].id}
+                    pokemon={poke}
+                    items={utilizationRates[poke].items}
+                    moves={utilizationRates[poke].moves}
+                  />
+                </ListItem>
+              )}
+            </React.Fragment>
+          ))}
+        </List>
+      </Drawer>
+      <Fab
+        aria-label="add"
+        sx={{
+          position: "fixed",
+          bottom: 16,
+          right: 16,
+          width: 60,
+          height: 60,
+        }}
+        onClick={toggleDrawer(true)}
+      >
+        <Image src="/image/ranking.png" width={60} height={60} />
+      </Fab>
+      <div>
+        {/* <ul>
         {articles.map((article) => (
           <div key={article.id}>
             <li>
               <p>id:{article.id}</p>
               <p>name:{article.name}</p>
-              <p>twitter:{article.twitter}</p>
+              <p>twitter:@{article.twitter}</p>
               <p>url:{article.url}</p>
               <p>rate:{article.rate}</p>
               <p>rank:{article.rank}</p>
             </li>
           </div>
         ))}
-      </ul>
-
-      <form onSubmit={(e) => handleSubmit(e)}>
-        name:
-        <input
-          type="text"
-          value={name}
-          name="name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <br />
-        twitter: @
-        <input
-          type="text"
-          value={twitter}
-          name="twitter"
-          onChange={(e) => {
-            setTwitter(e.target.value);
-          }}
-        />
-        <br />
-        url:
-        <input
-          type="text"
-          value={url}
-          name="twitter"
-          onChange={(e) => {
-            setUrl(e.target.value);
-          }}
-        />
-        <br />
-        series:
-        <input
-          type="text"
-          name="series"
-          inputMode="numeric"
-          value={series}
-          onChange={(e) => {
-            setSeries(e.target.value);
-          }}
-        />
-        <br />
-        rank:
-        <input
-          type="text"
-          value={rank}
-          inputMode="numeric"
-          name="rank"
-          onChange={(e) => {
-            setRank(e.target.value);
-          }}
-        />
-        <br />
-        rate:
-        <input
-          type="text"
-          name="rate"
-          inputMode="numeric"
-          value={rate}
-          onChange={(e) => {
-            setRate(e.target.value);
-          }}
-        />
-        <br />
-        season:
-        <input
-          type="text"
-          name="season"
-          inputMode="numeric"
-          value={season}
-          onChange={(e) => {
-            setSeason(e.target.value);
-          }}
-        />
-        <br />
-        <button type="submit">登録</button>
-      </form>
+      </ul> */}
+        <button onClick={loadArticle}>loading</button>
+      </div>
     </div>
   );
 };
