@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.eager_load(:user).select("articles.*, users.*").where(series: params[:series])
-    @moves = Move.where(article: @articles.ids)
+    @limit_articles = @articles.limit(30).offset(params[:offset])
+    @moves = Move.where(article: @articles.ids).select('pokemon,name,count(name) as count').group(:pokemon,:name)
     @parties = Party.where(article: @articles.ids)
+    @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
 
-    render json: {moves: @moves,articles: @articles,parties: @parties}
+    @terastals =  @parties.select('pokemon,terastal,count(terastal) as count').group(:pokemon,:terastal).order('pokemon,Count(terastal) DESC')
+    @items = @parties.select('pokemon,item,count(item) as count').group(:pokemon,:item).order('pokemon,Count(item) DESC')
+    @abilities = @parties.select('pokemon,ability,count(ability) as count').group(:pokemon,:ability).order('pokemon,Count(ability) DESC')
+    @natures = @parties.select('pokemon,nature,count(nature) as count').group(:pokemon,:nature).order('pokemon,Count(nature) DESC')
+
+    render json: {articles:@limit_articles,pokemon_ranks:@pokemon_ranks ,items:@items,abilities: @abilities,terastals:@terastals,natures:@natures,moves:@moves}
   end
 
   def edit

@@ -1,8 +1,9 @@
+import Button from "@mui/material/Button";
 import { NextPage } from "next";
 import React, { FC, useEffect, useState } from "react";
 // import { GetStaticProps } from "next";
 import { postData } from "../lib/api/client";
-
+import getPokeDexNumber from "../utils/getPokeDexNumber";
 
 type User = {
   id: number;
@@ -17,13 +18,15 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     // validationを付けたい　https://zenn.dev/uzimaru0000/articles/json-type-validation
-    const getUser = async () => {
-      const res = await fetch("http://localhost:3000/users/index");
-      const data = (await res.json()) as User[];
-      setUsers(data);
-    };
+    // const getUser = async () => {
+    //   const res = await fetch("http://localhost:3000/users/index");
+    //   const data = (await res.json()) as User[];
+    //   setUsers(data);
+    // };
 
-    getUser();
+    // getUser();
+    let a = getPokeDexNumber("サンダー(ガラル)");
+    console.log(a);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,13 +45,14 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <ul>
+      <Button variant="outlined">ボタン</Button>
+      {/* <ul>
         {users.map((user) => (
           <li key={user.id}>
             name: {user.name} id: @{user.twitter}
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
