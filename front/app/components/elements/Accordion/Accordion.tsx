@@ -27,8 +27,8 @@ const ControlledAccordions = ({ rank, pokemon, items, moves }: Pokemon) => {
   return (
     <Box sx={{ marginLeft: "auto", maxWidth: { xs: 350, sm: 480 } }}>
       <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
+        expanded={expanded === pokemon}
+        onChange={handleChange(pokemon)}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

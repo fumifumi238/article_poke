@@ -6,6 +6,10 @@ import Tabs from "@mui/material/Tabs";
 import TabPanel from "@mui/lab/TabPanel";
 import RankByTypes from "../List/RankByTypes";
 
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { useState } from "react";
+
 type Props = {
   name: string;
   count: number;
@@ -16,10 +20,36 @@ type Pokemon = {
   moves: Props[];
 };
 const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("moves");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  };
+
+  const getPercentage = (count: number, sum: number) => {
+    return (Math.floor((count / sum) * 10) / 10).toFixed(1) + "%";
+  };
+
+  type Types = {
+    value: string;
+    types: { name: string; count: number }[];
+  };
+  const TabPanelList = ({ value, types }: Types) => {
+    return (
+      <TabPanel value={value} sx={{ padding: 0 }}>
+        <List sx={{ height: 200, overflow: "auto" }}>
+          {types.map((type, index) => (
+            <React.Fragment key={type.name}>
+              <RankByTypes
+                name={type.name}
+                percentage={getPercentage(type.count, types.length)}
+                index={index}
+              />
+            </React.Fragment>
+          ))}
+        </List>
+      </TabPanel>
+    );
   };
 
   return (
@@ -47,11 +77,9 @@ const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
             <Tab label="テラスタル" value="terastals" />
           </Tabs>
         </Box>
-        <TabPanel value="moves" sx={{ padding: 0 }}>
-          <RankByTypes props={moves} />
-        </TabPanel>
+        <TabPanelList value="moves" types={moves} />
         <TabPanel value="items" sx={{ padding: 0 }}>
-          <RankByTypes props={items} />
+          {/* <RankByTypes props={items} /> */}
         </TabPanel>
         <TabPanel value="abilities">Item Three</TabPanel>
         <TabPanel value="natures">Item Three</TabPanel>
