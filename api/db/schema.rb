@@ -29,13 +29,10 @@ ActiveRecord::Schema.define(version: 2022_10_27_081803) do
   create_table "moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "pokemon", null: false
     t.string "name", null: false
-    t.integer "season"
-    t.integer "rank"
-    t.integer "series"
-    t.bigint "article_id", null: false
+    t.bigint "party_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["article_id"], name: "index_moves_on_article_id"
+    t.index ["party_id"], name: "index_moves_on_party_id"
   end
 
   create_table "parties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -58,6 +55,6 @@ ActiveRecord::Schema.define(version: 2022_10_27_081803) do
   end
 
   add_foreign_key "articles", "users"
-  add_foreign_key "moves", "articles"
+  add_foreign_key "moves", "parties"
   add_foreign_key "parties", "articles"
 end

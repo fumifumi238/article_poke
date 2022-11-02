@@ -2,14 +2,16 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.eager_load(:user).select("articles.*, users.*").where(series: params[:series])
     @limit_articles = @articles.limit(30).offset(params[:offset])
-    @moves = Move.where(article: @articles.ids).select('pokemon,name,count(name) as count').group(:pokemon,:name)
     @parties = Party.where(article: @articles.ids)
-    @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
+    # @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC').limit(30)
+    @pokemon_ranks = @parties.group(:pokemon).order('Count(pokemon) DESC').limit(30).pluck(:pokemon)
+    @terastals =  @parties.select('pokemon,terastal,count(terastal) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:terastal).order('pokemon,Count(terastal) DESC')
 
-    @terastals =  @parties.select('pokemon,terastal,count(terastal) as count').group(:pokemon,:terastal).order('pokemon,Count(terastal) DESC')
-    @items = @parties.select('pokemon,item,count(item) as count').group(:pokemon,:item).order('pokemon,Count(item) DESC')
-    @abilities = @parties.select('pokemon,ability,count(ability) as count').group(:pokemon,:ability).order('pokemon,Count(ability) DESC')
-    @natures = @parties.select('pokemon,nature,count(nature) as count').group(:pokemon,:nature).order('pokemon,Count(nature) DESC')
+
+    @moves = Move.select('pokemon,name,count(name) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:name).order('pokemon,Count(name) DESC')
+    @items = @parties.select('pokemon,item,count(item) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:item).order('pokemon,Count(item) DESC')
+    @abilities = @parties.select('pokemon,ability,count(ability) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:ability).order('pokemon,Count(ability) DESC')
+    @natures = @parties.select('pokemon,nature,count(nature) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:nature).order('pokemon,Count(nature) DESC')
 
     render json: {articles:@limit_articles,pokemon_ranks:@pokemon_ranks ,items:@items,abilities: @abilities,terastals:@terastals,natures:@natures,moves:@moves}
   end
@@ -41,4 +43,5 @@ private
   def article_params
     params.permit(:url,:rate,:rank,:season,:series)
   end
+
 end
