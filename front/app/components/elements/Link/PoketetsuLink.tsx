@@ -18,7 +18,7 @@ const PoketetsuLink: React.FC<{ pokemon: string }> = ({ pokemon }) => {
         color="primary"
         aria-label="link to poketetsu"
         component="label"
-      >
+        sx={{ padding: 0 }}>
         <Image src="/image/poketetsu/poketetsu.png" width={25} height={25} />
       </IconButton>
     </Link>

@@ -8,33 +8,70 @@ import RankByTypes from "../List/RankByTypes";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DetailsContext } from "../../../pages/article";
+import type { Details, Types } from "../../../pages/article";
+import Typography from "@mui/material/Typography";
 
-type Props = {
-  name: string;
-  count: number;
-};
 type Pokemon = {
   pokemon: string;
-  items: Props[];
-  moves: Props[];
 };
-const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
-  const [value, setValue] = React.useState("moves");
+
+const PokeDetailTab = ({ pokemon }: Pokemon) => {
+  const [value, setValue] = useState<string>("moves");
+  const { details, setDetails } = useContext(DetailsContext);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    console.log(value);
   };
+
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(
+        `http://localhost:3000/articles/detail?pokemon=${pokemon}`
+      );
+      const data = await res.json();
+      const newData: Details = {
+        [pokemon]: {
+          items: data.items,
+          moves: data.moves,
+          terastals: data.terastals,
+          ablities: data.abilities,
+          natures: data.natures,
+        },
+      };
+      setDetails((prev) => ({
+        ...prev,
+        ...newData,
+      }));
+      setTimeout(() => setLoading(false), 300);
+      console.log("更新");
+    };
+
+    if (details[pokemon] === undefined) {
+      getData();
+    } else {
+      setTimeout(() => setLoading(false), 300);
+    }
+    console.log("PokeDetailTab");
+  }, []);
 
   const getPercentage = (count: number, sum: number) => {
-    return (Math.floor((count / sum) * 10) / 10).toFixed(1) + "%";
+    return (Math.floor((count / sum) * 1000) / 10).toFixed(1) + "%";
   };
 
-  type Types = {
+  type Props = {
     value: string;
-    types: { name: string; count: number }[];
+    types: Types[];
   };
-  const TabPanelList = ({ value, types }: Types) => {
+  const TabPanelList = ({ value, types }: Props) => {
+    let sum = 0;
+    for (let i = 0; i < types.length; i++) {
+      sum += types[i].count;
+    }
+
     return (
       <TabPanel value={value} sx={{ padding: 0 }}>
         <List sx={{ height: 200, overflow: "auto" }}>
@@ -42,7 +79,7 @@ const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
             <React.Fragment key={type.name}>
               <RankByTypes
                 name={type.name}
-                percentage={getPercentage(type.count, types.length)}
+                percentage={getPercentage(type.count, sum)}
                 index={index}
               />
             </React.Fragment>
@@ -60,16 +97,14 @@ const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
             borderBottom: 1,
             borderColor: "divider",
             maxWidth: { xs: 375, sm: 480 },
-          }}
-        >
+          }}>
           <Tabs
             onChange={handleChange}
             aria-label="lab API tabs example"
             value={value}
             variant="scrollable"
             scrollButtons
-            allowScrollButtonsMobile
-          >
+            allowScrollButtonsMobile>
             <Tab label="わざ" value="moves" />
             <Tab label="もちもの" value="items" />
             <Tab label="とくせい" value="abilities" />
@@ -77,13 +112,38 @@ const PokeDetailTab = ({ pokemon, items, moves }: Pokemon) => {
             <Tab label="テラスタル" value="terastals" />
           </Tabs>
         </Box>
-        <TabPanelList value="moves" types={moves} />
-        <TabPanel value="items" sx={{ padding: 0 }}>
-          {/* <RankByTypes props={items} /> */}
-        </TabPanel>
-        <TabPanel value="abilities">Item Three</TabPanel>
-        <TabPanel value="natures">Item Three</TabPanel>
-        <TabPanel value="terastals">Item Three</TabPanel>
+        {!loading ? (
+          <>
+            <TabPanelList value="moves" types={details[pokemon].moves} />
+            <TabPanelList value="items" types={details[pokemon].items} />
+            <TabPanelList value="abilities" types={details[pokemon].ablities} />
+            <TabPanelList value="natures" types={details[pokemon].natures} />
+            <TabPanelList
+              value="terastals"
+              types={details[pokemon].terastals}
+            />
+          </>
+        ) : (
+          <TabPanel value={value} sx={{ padding: 0 }}>
+            <List sx={{ height: 200, overflow: "auto" }}>
+              {[1, 2, 3, 4].map((i) => (
+                <ListItem
+                  sx={{ borderBottom: 1, borderColor: "divider" }}
+                  key={i}>
+                  <Typography variant="h6" sx={{ width: "20%" }}>
+                    {i}.
+                  </Typography>
+                  <Typography
+                    sx={{ width: "70%" }}
+                    onClick={() => setLoading(false)}>
+                    -------------
+                  </Typography>
+                  <Typography sx={{ width: "10%" }}>0.0%</Typography>
+                </ListItem>
+              ))}
+            </List>
+          </TabPanel>
+        )}
       </TabContext>
     </Box>
   );

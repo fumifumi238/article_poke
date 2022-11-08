@@ -15,7 +15,7 @@ const RankByTypes = ({ name, percentage, index }: Props) => {
         {index + 1}.
       </Typography>
       <Typography sx={{ width: "70%" }}>{name}</Typography>
-      <Typography sx={{ width: "10%" }}>{percentage}%</Typography>
+      <Typography sx={{ width: "10%" }}>{percentage}</Typography>
     </ListItem>
   );
 };

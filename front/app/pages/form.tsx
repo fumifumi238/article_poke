@@ -1,6 +1,15 @@
 import { NextPage } from "next";
 import { useState } from "react";
+import AutoCompleteInput from "../components/elements/Input/AutoCompleteInput";
 import { postData } from "../lib/api/client";
+
+import { movesData } from "../utils/data/move";
+import { itemsData } from "../utils/data/items";
+import { typesData } from "../utils/data/types";
+
+import pokeData from "../json/poke_data.json";
+import SelectBox from "../components/elements/Input/SelectBox";
+import Box from "@mui/material/Box";
 
 const Form: NextPage = () => {
   const [url, setUrl] = useState<string>("");
@@ -31,6 +40,18 @@ const Form: NextPage = () => {
   };
   return (
     <>
+      <AutoCompleteInput label={"ポケモン"} options={Object.keys(pokeData)} />
+      <AutoCompleteInput label={"テラスタイプ"} options={typesData} />
+      <AutoCompleteInput label={"とくせい"} options={[]} disabled />
+      <AutoCompleteInput label={"もちもの"} options={itemsData} />
+      <Box sx={{ display: "flex" }}>
+        <AutoCompleteInput label={"わざ"} options={movesData} />
+        <AutoCompleteInput label={"わざ"} options={movesData} />
+      </Box>
+      <Box sx={{ display: "flex" }}>
+        <AutoCompleteInput label={"わざ"} options={movesData} />
+        <AutoCompleteInput label={"わざ"} options={movesData} />
+      </Box>
       <form onSubmit={(e) => handleSubmit(e)}>
         name:
         <input

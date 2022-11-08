@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_10_27_081803) do
 
-  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url", null: false
     t.integer "rate"
     t.integer "rank"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_081803) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "pokemon", null: false
     t.string "name", null: false
     t.bigint "party_id", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_081803) do
     t.index ["party_id"], name: "index_moves_on_party_id"
   end
 
-  create_table "parties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "parties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "pokemon", null: false
     t.string "item", default: "なし"
     t.string "ability", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_081803) do
     t.index ["article_id"], name: "index_parties_on_article_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "twitter"
     t.datetime "created_at", precision: 6, null: false
