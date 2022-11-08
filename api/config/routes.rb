@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'articles/index'
+  get 'articles/rank'
+  get 'articles/detail'
   get 'articles/edit'
   get 'articles/show'
   post 'articles/create'

@@ -1,19 +1,29 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.eager_load(:user).select("articles.*, users.*").where(series: params[:series])
-    @limit_articles = @articles.limit(30).offset(params[:offset])
-    @parties = Party.where(article: @articles.ids)
-    # @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC').limit(30)
-    @pokemon_ranks = @parties.group(:pokemon).order('Count(pokemon) DESC').limit(30).pluck(:pokemon)
-    @terastals =  @parties.select('pokemon,terastal,count(terastal) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:terastal).order('pokemon,Count(terastal) DESC')
+    @articles = Article.joins(:user).select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as user_name,users.twitter").where(series: params[:series])
 
+    render json: @articles
+  end
 
-    @moves = Move.select('pokemon,name,count(name) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:name).order('pokemon,Count(name) DESC')
-    @items = @parties.select('pokemon,item,count(item) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:item).order('pokemon,Count(item) DESC')
-    @abilities = @parties.select('pokemon,ability,count(ability) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:ability).order('pokemon,Count(ability) DESC')
-    @natures = @parties.select('pokemon,nature,count(nature) as count').where(pokemon: @pokemon_ranks).group(:pokemon,:nature).order('pokemon,Count(nature) DESC')
+  def rank
+     @articles = Article.joins(:user).select("articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as user_name,users.twitter").where(series: 1)
+     @parties = Party.where(article: @articles.ids)
+     @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
 
-    render json: {articles:@limit_articles,pokemon_ranks:@pokemon_ranks ,items:@items,abilities: @abilities,terastals:@terastals,natures:@natures,moves:@moves}
+     render json: @pokemon_ranks
+  end
+
+  def detail
+    @articles = Article.where("articles.rank >= ? and articles.rank <= ? and articles.season = ?",1,10000,1).pluck("articles.id")
+    @parties = Party.where(article: @articles,pokemon: params[:pokemon])
+
+    @natures = @parties.select('nature as name,count(nature) as count').group(:nature).order('Count(nature) DESC')
+    @items = @parties.select('item as name,count(item) as count').group(:item).order('Count(item) DESC')
+    @terastals =  @parties.select('terastal as name,count(terastal) as count').group(:terastal).order('Count(terastal) DESC')
+    @abilities = @parties.select('ability as name,count(ability) as count').group(:ability).order('Count(ability) DESC')
+    @moves = Move.select('name,count(name) as count').where(party: @parties.ids).group(:name).order('Count(name) DESC')
+
+    render json: {natures:@natures,items:@items,terastals:@terastals,abilities:@abilities,moves:@moves}
   end
 
   def edit

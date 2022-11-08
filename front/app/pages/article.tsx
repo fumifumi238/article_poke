@@ -1,105 +1,91 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import { NextPage } from "next";
-import { Suspense, useEffect, useState } from "react";
-// import ControlledAccordions from "../components/elements/Accordion/Accordion";
+import { createContext, useEffect, useState } from "react";
+import ControlledAccordions from "../components/elements/Accordion/Accordion";
 import Image from "next/image";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const Article: NextPage = () => {
-  type Article = {
-    id: number;
-    name: string;
-    twitter: string;
-    url: string;
-    rate: number;
-    rank: number;
-    season: number;
-    series: number;
-  };
+type Pokemon = {
+  pokemon: string;
+  count: number;
+};
 
-  type Detail = {
-    name: string;
-    count: number;
+type Article = {
+  id: number;
+  user_name: string;
+  twitter: string;
+  title: string;
+  url: string;
+  rate: number;
+  rank: number;
+  season: number;
+  // series: number;
+};
+export type Types = {
+  name: string;
+  count: number;
+};
+export type Details = {
+  [pokemon: string]: {
+    items: Types[];
+    moves: Types[];
+    terastals: Types[];
+    ablities: Types[];
+    natures: Types[];
   };
+};
 
-  type PokeRank = {
-    [pokemon: string]: {
-      id: number;
-      count: number;
-      moves: Detail[];
-      terastals: Detail[];
-      abilities: Detail[];
-      natures: Detail[];
-      items: Detail[];
-    };
-  };
+type PokemonRanksContext = {
+  pokemonRanks: Pokemon[];
+  setPokemonRanks: React.Dispatch<React.SetStateAction<Pokemon[]>>;
+};
 
+type ClicksearchContext = {
+  clickSearch: boolean;
+  setClickSearch: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+type DetailsContext = {
+  details: Details;
+  setDetails: React.Dispatch<React.SetStateAction<Details>>;
+};
+
+export const ClickSearchContext = createContext({} as ClicksearchContext);
+export const PokemonRanksContext = createContext({} as PokemonRanksContext);
+export const DetailsContext = createContext({} as DetailsContext);
+
+export const Article: NextPage = () => {
   const [rankOpen, setRankOpen] = useState<boolean>(false);
   const [articles, setArticles] = useState<Article[]>([]);
+  const [filterArticles, setFilterArticles] = useState<Article[]>([]);
   const [offset, setOffset] = useState<number>(30);
-  const [utilizationRates, setUtilizationRates] = useState<PokeRank>({});
-  const [count, setCount] = useState<number>(10);
+  const [ranks, setRanks] = useState<[number, number]>([1, 10000]);
+  const [seasons, setSeasons] = useState<number[]>([1, 2]);
+  const [clickSearch, setClickSearch] = useState<boolean>(true);
 
-  const ControlledAccordions = React.lazy(
-    () => import("../components/elements/Accordion/Accordion")
-  );
+  const [details, setDetails] = useState<Details>({});
+  const [pokemonRanks, setPokemonRanks] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
       const res = await fetch("http://localhost:3000/articles/index?series=1");
       const data = await res.json();
-      setArticles(data.articles);
-      await hashedPokemons(data.pokemon_ranks, data.items, data.moves);
+      setArticles(data);
+      setFilterArticles(data.slice(0, 30));
+      setLoading(true);
     };
     getData();
+    console.log("article");
   }, []);
 
-  const hashedPokemons = async (
-    pokemons: { pokemon: string; count: number }[],
-    items: { item: string; pokemon: string; count: number }[],
-    moves: { name: string; pokemon: string; count: number }[]
-  ) => {
-    const hash: PokeRank = {};
-    const a = async () => {
-      for (let i = 0; i < pokemons.length; i++) {
-        hash[pokemons[i]["pokemon"]] = {
-          id: i + 1,
-          count: pokemons[i]["count"],
-          items: [],
-          moves: [],
-          terastals: [],
-          abilities: [],
-          natures: [],
-        };
-      }
-    };
-
-
-    for (let i = 0; i < items.length; i++) {
-      hash[items[i].pokemon]["items"].push({
-        name: items[i].item,
-        count: items[i].count,
-      });
-    }
-    for (let i = 0; i < moves.length; i++) {
-      hash[moves[i].pokemon]["moves"].push({
-        name: moves[i].name,
-        count: moves[i].count,
-      });
-    }
-    setUtilizationRates(hash);
-  };
-
   const loadArticle = async () => {
-    const res = await fetch(
-      `http://localhost:3000/articles/index?series=1&offset=${offset}`
-    );
-    const data = await res.json();
-    setArticles((prevData) => [...prevData, ...data.articles]);
+    setFilterArticles((prevData) => [
+      ...prevData,
+      ...articles.slice(offset, offset + 30),
+    ]);
     setOffset((prevOffset) => prevOffset + 30);
   };
 
@@ -119,28 +105,43 @@ const Article: NextPage = () => {
   return (
     <div>
       <Drawer open={rankOpen} onClose={toggleDrawer(false)} anchor="right">
-        <Suspense fallback="loading...">
-          <List>
-            {Object.keys(utilizationRates).map((poke) => (
-              <React.Fragment key={utilizationRates[poke].id}>
-                {utilizationRates[poke].id <= count && (
-                  <ListItem disablePadding={true}>
-                    <ControlledAccordions
-                      rank={utilizationRates[poke].id}
-                      pokemon={poke}
-                      items={utilizationRates[poke].items}
-                      moves={utilizationRates[poke].moves}
-                    />
-                  </ListItem>
-                )}
-              </React.Fragment>
-            ))}
-          </List>
-          <button onClick={() => setCount((prev) => prev + 10)}>
-            読み込み
-          </button>
-        </Suspense>
+        <ClickSearchContext.Provider value={{ clickSearch, setClickSearch }}>
+          <PokemonRanksContext.Provider
+            value={{ pokemonRanks, setPokemonRanks }}>
+            <DetailsContext.Provider value={{ details, setDetails }}>
+              <ControlledAccordions seasons={seasons} ranks={ranks} />
+            </DetailsContext.Provider>
+          </PokemonRanksContext.Provider>
+        </ClickSearchContext.Provider>
       </Drawer>
+
+      <button
+        onClick={() => {
+          setClickSearch(true);
+          setDetails({});
+        }}>
+        Search botton
+      </button>
+
+      {loading ? (
+        filterArticles.map((filterArticle) => (
+          <div key={filterArticle.id}>
+            <p>
+              user:{filterArticle.user_name} @{filterArticle.twitter}
+            </p>
+            <p>
+              rate:{filterArticle.rate} rank:{filterArticle.rank} article:
+              {filterArticle.season}
+            </p>
+            <a href={filterArticle.url}>title:{filterArticle.title}</a>
+          </div>
+        ))
+      ) : (
+        <CircularProgress />
+      )}
+      <div>
+        <button onClick={loadArticle}>loading</button>
+      </div>
       <Fab
         aria-label="add"
         sx={{
@@ -150,13 +151,9 @@ const Article: NextPage = () => {
           width: 60,
           height: 60,
         }}
-        onClick={toggleDrawer(true)}
-      >
+        onClick={toggleDrawer(true)}>
         <Image src="/image/ranking.png" width={60} height={60} />
       </Fab>
-      <div>
-        <button onClick={loadArticle}>loading</button>
-      </div>
     </div>
   );
 };
