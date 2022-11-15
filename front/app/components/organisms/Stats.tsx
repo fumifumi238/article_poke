@@ -73,6 +73,7 @@ const Stats = ({ value, style, baseStats = 0 }: Stats) => {
         sx={{
           width: "40%",
           height: 22,
+          overflow: "hidden",
           background: `${
             value === "ぼうぎょ" || value === "とくぼう" ? "#788898" : "#8898a8"
           }`,
