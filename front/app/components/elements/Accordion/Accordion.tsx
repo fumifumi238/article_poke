@@ -1,4 +1,3 @@
-import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -9,7 +8,7 @@ import Box from "@mui/material/Box";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import PokeDetailTab from "../Tab/PokeDetailTab";
 import Image from "next/image";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import pokeData from "../../../json/poke_data.json";
@@ -33,7 +32,7 @@ type Pokemon = {
 // });
 
 const ControlledAccordions = ({ ranks, seasons }: Search) => {
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>(false);
   // const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const { pokemonRanks, setPokemonRanks } = useContext(PokemonRanksContext);
   const { clickSearch, setClickSearch } = useContext(ClickSearchContext);
@@ -46,7 +45,7 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
       setExpanded(isExpanded ? panel : false);
     };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (clickSearch) {
       const fetchData = async () => {
         const res = await fetch("http://localhost:3000/articles/rank");
