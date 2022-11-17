@@ -1,34 +1,26 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
+import { useEffect, useState } from "react";
+import { textToNumber } from "../../utils/textToNumber";
 
 type Stats = {
   baseStats: number;
+  effortValues: number[];
+  setEffortValues: (effortValues: number[]) => void;
 };
-const HPStats = ({ baseStats }: Stats) => {
-  const [effortValue, setEffortValue] = useState<number>(0);
-  const [individualValue, setIndividualValue] = useState<number>(31);
+const HPStats = ({ baseStats, effortValues, setEffortValues }: Stats) => {
+  const [effortValue, setEffortValue] = useState<number | string>(0);
+  const [individualValue, setIndividualValue] = useState<number | string>(31);
 
-  const textToNumber = (
-    value: string,
-    setValue: (num: number) => void,
-    max: number
-  ) => {
-    if (value.length === 0) {
-      setValue(0);
-      return;
-    }
-    if (Number.isNaN(value)) {
-      return;
-    }
+  useEffect(() => {
+    setEffortValue(effortValues[0]);
+  }, [effortValues]);
 
-    const valueToNumber = parseInt(value);
-    if (valueToNumber >= 0 && valueToNumber <= max) {
-      setValue(valueToNumber);
-    }
+  const changeEffortValues = () => {
+    const copyOfEffortValues = [...effortValues];
+    copyOfEffortValues[0] = Number(effortValue);
+    copyOfEffortValues[6] += Number(effortValue);
+    setEffortValues(copyOfEffortValues);
   };
 
   const calcStats = () => {
@@ -37,7 +29,9 @@ const HPStats = ({ baseStats }: Stats) => {
     }
     const stats =
       Math.floor(
-        ((baseStats * 2 + individualValue + effortValue / 4) * 50) / 100
+        ((baseStats * 2 + Number(individualValue) + Number(effortValue) / 4) *
+          50) /
+          100
       ) + 60;
 
     return stats;
@@ -102,8 +96,16 @@ const HPStats = ({ baseStats }: Stats) => {
               type="tel"
               variant="standard"
               inputMode="numeric"
+              onBlur={changeEffortValues}
               onChange={(e) =>
-                textToNumber(e.target.value, setEffortValue, 252)
+                textToNumber(
+                  e.target.value,
+                  0,
+                  setEffortValue,
+                  0,
+                  252,
+                  effortValues[6] - effortValues[0]
+                )
               }
               inputProps={{
                 style: {
@@ -137,7 +139,7 @@ const HPStats = ({ baseStats }: Stats) => {
             variant="standard"
             inputMode="tel"
             onChange={(e) =>
-              textToNumber(e.target.value, setIndividualValue, 31)
+              textToNumber(e.target.value, 0, setIndividualValue, 0, 31)
             }
             inputProps={{
               style: {

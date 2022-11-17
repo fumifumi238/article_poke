@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { postData } from "../lib/api/client";
 import seriesData from "../json/series.json";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,6 +14,7 @@ import Dialog from "@mui/material/Dialog";
 import RegisterPokemon from "../components/templates/RegisterPokemon";
 import Image from "next/image";
 import { changeIcon } from "../utils/changeIcon";
+import { textToNumber } from "../utils/textToNumber";
 
 type PokeDetails = {
   pokemon: string;
@@ -21,6 +22,7 @@ type PokeDetails = {
   ability: string;
   moves: string[];
   baseStats: number[];
+  effortValues: number[];
   nature: string;
   terastal: string;
 };
@@ -34,23 +36,35 @@ export const PokeDetailsContext = createContext({} as PokeDetailsContext);
 
 const Form: NextPage = () => {
   const [url, setUrl] = useState<string>("");
+  const [existUrlList, setExistUrlList] = useState<string[]>([]);
   const [name, setName] = useState<string>("");
   const [twitter, setTwitter] = useState<string>("");
   const [series, setSeries] = useState<string>(
     Object.keys(seriesData)[Object.keys(seriesData).length - 1]
   );
   const [season, setSeason] = useState<string>(seriesData[series][0]);
-  const [rank, setRank] = useState<number>();
-  const [rate, setRate] = useState<number>();
+  const [rank, setRank] = useState<number | string>("");
+  const [rate, setRate] = useState<number | string>("");
   const [title, setTitle] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [currentPoke, setCurrentPoke] = useState<number>(0);
+  const [errors, setErrors] = useState<string[]>();
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch("http://localhost:3000/articles/get_urls");
+      const data = await res.json();
+      setExistUrlList(data);
+    };
+    getData();
+  }, []);
 
   const initPokemon: PokeDetails = {
     pokemon: "",
     item: "",
-    moves: new Array(4),
+    moves: ["", "", "", ""],
     baseStats: [0, 0, 0, 0, 0, 0, 0],
+    effortValues: [0, 0, 0, 0, 0, 0, 0],
     ability: "",
     nature: "",
     terastal: "",
@@ -81,6 +95,17 @@ const Form: NextPage = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const checkUrlError = (value: string) => {
+    for (let existUrl of existUrlList) {
+      if (value === existUrl) {
+        console.log("そのURLはすでに存在します。");
+        return;
+      }
+    }
+
+    console.log("存在しないurlです。");
   };
 
   const onChangeSeries = (value: string) => {
@@ -175,6 +200,7 @@ const Form: NextPage = () => {
               fullWidth
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+              onBlur={(e) => checkUrlError(e.target.value)}
             />
           </Box>
           <Box
@@ -252,9 +278,12 @@ const Form: NextPage = () => {
                 label="Rate"
                 size="small"
                 type="tel"
+                inputMode="numeric"
                 sx={{ width: 80 }}
                 value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
+                onChange={(e) =>
+                  textToNumber(e.target.value, "", setRate, 1, 3000)
+                }
               />
             </Box>
             <Box
@@ -271,7 +300,10 @@ const Form: NextPage = () => {
                 type="tel"
                 sx={{ width: 60 }}
                 value={rank}
-                onChange={(e) => setRank(Number(e.target.value))}
+                inputMode="numeric"
+                onChange={(e) =>
+                  textToNumber(e.target.value, "", setRank, 1, 100000)
+                }
               />
               <Typography sx={{ fontSize: "16px", margin: 1 }}>位</Typography>
             </Box>
@@ -299,6 +331,7 @@ const Form: NextPage = () => {
           </Button>
         </Box>
       </Box>
+
       <Dialog open={open} onClose={handleClose} fullScreen>
         <PokeDetailsContext.Provider value={{ pokeDetails, setPokeDetails }}>
           <RegisterPokemon
