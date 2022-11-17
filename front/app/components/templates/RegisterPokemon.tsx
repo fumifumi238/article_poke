@@ -3,7 +3,7 @@ import AutoCompleteInput from "../elements/Input/AutoCompleteInput";
 import { movesData } from "../../utils/data/move";
 import Image from "next/image";
 import pokeData from "../../json/poke_data.json";
-import Autocomplete from "@mui/material/Autocomplete";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { typesData } from "../../utils/data/types";
 import { itemsData } from "../../utils/data/items";
@@ -16,6 +16,8 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import HPStats from "../organisms/HPStats";
 import { PokeDetailsContext } from "../../pages/form";
 import { changeIcon } from "../../utils/changeIcon";
+import Menu from "@mui/material/Menu";
+import FormControl from "@mui/material/FormControl";
 
 type RegisterPokemon = {
   onClose: () => void;
@@ -31,11 +33,15 @@ const RegisterPokemon = ({
   const [terastal, setTerastal] = useState<string | null>("");
   const [item, setItem] = useState<string>("");
   const [nature, setNature] = useState<string>("");
-  const [moves, setMoves] = useState<string[]>([]);
+  const [move, setMove] = useState<string>("");
+  const [moves, setMoves] = useState<string[]>(["", "", "", ""]);
   const [pokemon, setPokemon] = useState<string | null>(null);
   const [ability, setAbility] = useState<string>("");
-  const [pokeImage, setPokeImage] = useState<string>("");
+  const [checkAbility, setcheckAbility] = useState<number[]>([0, 0, 0, 0, 0]);
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+  const [effortValues, setEffortValues] = useState<number[]>([
+    0, 0, 0, 0, 0, 0, 0,
+  ]);
   const { pokeDetails, setPokeDetails } = useContext(PokeDetailsContext);
   const [iconUrls, setIconUrls] = useState<string[]>(new Array(6));
   const [optionAbilities, setOptionAbilities] = useState<string[]>(
@@ -44,13 +50,29 @@ const RegisterPokemon = ({
       : []
   );
 
+  const checkErrors = () => {
+    const newMoves = moves.filter((move) => move !== "");
+    const deleteDuplicate = new Set(newMoves);
+    if (deleteDuplicate.size !== newMoves.length) {
+      console.log("重複した技は登録できません。");
+      return;
+    }
+  };
+
+  const filterOptions = createFilterOptions({
+    limit: 5,
+    trim: true,
+  });
+
   const saveData = () => {
+    checkErrors();
     const copyPokeDetails = [...pokeDetails];
     copyPokeDetails[currentPoke] = {
       pokemon: pokemon,
       ability: ability,
       item: item,
       baseStats: baseStats,
+      effortValues: effortValues,
       nature: nature,
       moves: moves,
       terastal: terastal,
@@ -58,32 +80,40 @@ const RegisterPokemon = ({
     setPokeDetails(copyPokeDetails);
   };
 
+  const changeMoves = (value: string, num: number) => {
+    const copyOfMoves = [...moves];
+    copyOfMoves[num] = value;
+    console.log(value);
+    setMoves(copyOfMoves);
+  };
   useEffect(() => {
     setPokemon(pokeDetails[currentPoke].pokemon);
     setAbility(pokeDetails[currentPoke].ability);
     setBaseStats(pokeDetails[currentPoke].baseStats);
+    setEffortValues(pokeDetails[currentPoke].effortValues);
     setMoves(pokeDetails[currentPoke].moves);
     setItem(pokeDetails[currentPoke].item);
     setTerastal(pokeDetails[currentPoke].terastal);
     setNature(pokeDetails[currentPoke].nature);
+
     if (pokeDetails[currentPoke].pokemon !== "") {
       setOptionAbilities(pokeData[pokeDetails[currentPoke].pokemon].abilities);
     }
 
-    const urls: string[] = [];
+    const pokemonIconuUrls: string[] = [];
     for (let i = 0; i <= 5; i++) {
-      urls.push(changeIcon(pokeDetails[i].pokemon));
+      pokemonIconuUrls.push(changeIcon(pokeDetails[i].pokemon));
     }
-    setIconUrls(urls);
-    console.log(ability);
+    setIconUrls(pokemonIconuUrls);
   }, [currentPoke]);
 
   const addOptionAbility = () => {
     if (pokeData[pokemon] !== undefined) {
       setOptionAbilities(pokeData[pokemon].abilities);
       setAbility(pokeData[pokemon].abilities[0]);
-      setPokeImage(pokeData[pokemon].no);
       setBaseStats(pokeData[pokemon].baseStats);
+      setEffortValues([0, 0, 0, 0, 0, 0, 0]);
+      setMoves(["", "", "", ""]);
 
       const copyIconUrls = [...iconUrls];
       copyIconUrls[currentPoke] = changeIcon(pokemon);
@@ -152,7 +182,11 @@ const RegisterPokemon = ({
                       bgcolor: "white",
                       borderRadius: "10px",
                     }}>
-                    <HPStats baseStats={baseStats[0]} />
+                    <HPStats
+                      baseStats={baseStats[0]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
+                    />
                     <Box
                       sx={{
                         height: 15,
@@ -190,13 +224,35 @@ const RegisterPokemon = ({
                           }}></Box>
                       </Box>
                     </Box>
-                    <Stats value="こうげき" baseStats={baseStats[1]} />
-                    <Stats value="ぼうぎょ" baseStats={baseStats[2]} />
-                    <Stats value="とくこう" baseStats={baseStats[3]} />
-                    <Stats value="とくぼう" baseStats={baseStats[4]} />
+                    <Stats
+                      value="こうげき"
+                      baseStats={baseStats[1]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
+                    />
+                    <Stats
+                      value="ぼうぎょ"
+                      baseStats={baseStats[2]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
+                    />
+                    <Stats
+                      value="とくこう"
+                      baseStats={baseStats[3]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
+                    />
+                    <Stats
+                      value="とくぼう"
+                      baseStats={baseStats[4]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
+                    />
                     <Stats
                       value="すばやさ"
                       baseStats={baseStats[5]}
+                      effortValues={effortValues}
+                      setEffortValues={setEffortValues}
                       style={{ borderBottomLeftRadius: "5px" }}
                     />
                   </Box>
@@ -314,6 +370,7 @@ const RegisterPokemon = ({
                     sx={{
                       width: "100%",
                     }}
+                    filterOptions={filterOptions}
                     options={Object.keys(pokeData)}
                     disableClearable={true}
                     value={pokemon}
@@ -389,7 +446,7 @@ const RegisterPokemon = ({
                   variant="standard"
                   onChange={(e) => setTerastal(e.target.value)}>
                   {typesData.map((type) => (
-                    <MenuItem value={type} key={type} sx={{ maxHeight: 20 }}>
+                    <MenuItem value={type} key={type}>
                       {type}
                     </MenuItem>
                   ))}
@@ -494,7 +551,28 @@ const RegisterPokemon = ({
                 }}>
                 {[1, 2, 3, 4].map((i) => (
                   <Box sx={{ height: "24%" }} key={i}>
-                    <AutoCompleteInput label={`わざ${i}`} options={movesData} />
+                    <Autocomplete
+                      disablePortal
+                      clearOnBlur
+                      freeSolo
+                      id="combo-box-demo"
+                      filterOptions={filterOptions}
+                      sx={{ padding: 0 }}
+                      options={movesData}
+                      autoHighlight={true}
+                      disableClearable={true}
+                      value={moves[i - 1]}
+                      onChange={(event: any, newValue: string | null) => {
+                        changeMoves(newValue, i - 1);
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label={`わざ${i}`}
+                          variant="filled"
+                        />
+                      )}
+                    />
                   </Box>
                 ))}
               </Box>

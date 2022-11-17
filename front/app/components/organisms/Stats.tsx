@@ -1,20 +1,48 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
+import { textToNumber } from "../../utils/textToNumber";
 
 type Stats = {
   value: "こうげき" | "ぼうぎょ" | "とくこう" | "とくぼう" | "すばやさ";
   style?: { [key: string]: string };
   baseStats?: number;
+  effortValues: number[];
+  setEffortValues: (effortValues: number[]) => void;
 };
-const Stats = ({ value, style, baseStats = 0 }: Stats) => {
+const Stats = ({
+  value,
+  style,
+  baseStats,
+  effortValues,
+  setEffortValues,
+}: Stats) => {
   type ButtonType = "normal" | "up" | "down";
+  const indexOfValue: { [key: string]: number } = {
+    こうげき: 1,
+    ぼうぎょ: 2,
+    とくこう: 3,
+    とくぼう: 4,
+    すばやさ: 5,
+  };
   const [buttonType, setButtonType] = useState<ButtonType>("normal");
-  const [effortValue, setEffortValue] = useState<number>(0);
-  const [individualValue, setIndividualValue] = useState<number>(31);
+  const [effortValue, setEffortValue] = useState<number | string>(0);
+  const [individualValue, setIndividualValue] = useState<number | string>(31);
+
+  useEffect(() => {
+    setEffortValue(effortValues[indexOfValue[value]]);
+  }, [effortValues]);
+
+  const changeEffortValues = () => {
+    const copyOfEffortValues = [...effortValues];
+    copyOfEffortValues[indexOfValue[value]] = Number(effortValue);
+    copyOfEffortValues[6] += Number(effortValue);
+    setEffortValues(copyOfEffortValues);
+  };
+
   const returnColor = () => {
     switch (buttonType) {
       case "up":
@@ -23,25 +51,6 @@ const Stats = ({ value, style, baseStats = 0 }: Stats) => {
         return "#407898";
       default:
         return "#dcdcdc";
-    }
-  };
-
-  const textToNumber = (
-    value: string,
-    setValue: (num: number) => void,
-    max: number
-  ) => {
-    if (value.length === 0) {
-      setValue(0);
-      return;
-    }
-    if (Number.isNaN(value)) {
-      return;
-    }
-
-    const valueToNumber = parseInt(value);
-    if (valueToNumber >= 0 && valueToNumber <= max) {
-      setValue(valueToNumber);
     }
   };
 
@@ -58,7 +67,9 @@ const Stats = ({ value, style, baseStats = 0 }: Stats) => {
     };
     const stats = Math.floor(
       (Math.floor(
-        ((baseStats * 2 + individualValue + effortValue / 4) * 50) / 100
+        ((baseStats * 2 + Number(individualValue) + Number(effortValue) / 4) *
+          50) /
+          100
       ) +
         5) *
         correction()
@@ -124,8 +135,16 @@ const Stats = ({ value, style, baseStats = 0 }: Stats) => {
               type="tel"
               variant="standard"
               inputMode="numeric"
+              onBlur={changeEffortValues}
               onChange={(e) =>
-                textToNumber(e.target.value, setEffortValue, 252)
+                textToNumber(
+                  e.target.value,
+                  0,
+                  setEffortValue,
+                  0,
+                  252,
+                  effortValues[6] - effortValues[indexOfValue[value]]
+                )
               }
               inputProps={{
                 style: {
@@ -159,7 +178,7 @@ const Stats = ({ value, style, baseStats = 0 }: Stats) => {
             variant="standard"
             inputMode="tel"
             onChange={(e) =>
-              textToNumber(e.target.value, setIndividualValue, 31)
+              textToNumber(e.target.value, 0, setIndividualValue, 0, 31)
             }
             inputProps={{
               style: {

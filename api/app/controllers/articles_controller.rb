@@ -13,6 +13,16 @@ class ArticlesController < ApplicationController
      render json: @pokemon_ranks
   end
 
+
+  def get_urls
+    @urls = Article.pluck(:url)
+
+    render json: @urls
+
+  end
+
+
+
   def detail
     @articles = Article.where("articles.rank >= ? and articles.rank <= ? and articles.season = ?",1,10000,1).pluck("articles.id")
     @parties = Party.where(article: @articles,pokemon: params[:pokemon])

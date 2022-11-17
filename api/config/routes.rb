@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'articles/detail'
   get 'articles/edit'
   get 'articles/show'
+  get 'articles/get_urls'
   post 'articles/create'
   get 'users/index'
   post 'users/create'
