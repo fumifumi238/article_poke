@@ -5,7 +5,7 @@ import addform from "../../../utils/addForm";
 import getPokeDexNumber from "../../../utils/getPokeDexNumber";
 
 const PoketetsuLink: React.FC<{ pokemon: string }> = ({ pokemon }) => {
-  const baseUrl = "https://yakkun.com/swsh/zukan/n";
+  const baseUrl = "https://yakkun.com/sv/zukan/n";
   const pokeDexNumber = getPokeDexNumber(pokemon);
 
   const form = pokemon.match(/\(/) ? "" : addform(pokemon);

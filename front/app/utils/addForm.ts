@@ -8,6 +8,12 @@ const addform = (pokemon: string) => {
     case /ガラル/.test(pokemon):
       form = "g";
       break;
+    case /ヒスイ/.test(pokemon):
+      form = "h";
+      break;
+    case /パルデア/.test(pokemon):
+      form = "p";
+      break;
     case /アタック/.test(pokemon):
       form = "a";
       break;
@@ -100,6 +106,9 @@ const addform = (pokemon: string) => {
       break;
     case /こくば/.test(pokemon):
       form = "b";
+      break;
+    case /しろ/.test(pokemon):
+      form = "w";
       break;
     default:
       break;
