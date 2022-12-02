@@ -1,9 +1,12 @@
 import Button from "@mui/material/Button";
-import { NextPage } from "next";
-import React, { FC, useEffect, useState } from "react";
-// import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { postData } from "../lib/api/client";
 import getPokeDexNumber from "../utils/getPokeDexNumber";
+import Image from "next/image";
+import items from "../json/items.json";
+import pokeData from "../json/poke_data.json";
+import { changeIcon } from "../utils/changeIcon";
 
 type User = {
   id: number;
@@ -15,6 +18,8 @@ const Home: NextPage = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [name, setName] = useState<string>("");
   const [twitter, setTwitter] = useState<string>("");
+  const inputRef = useRef(null);
+  const anotherRef = useRef(null);
 
   useEffect(() => {
     // validationを付けたい　https://zenn.dev/uzimaru0000/articles/json-type-validation
@@ -25,8 +30,9 @@ const Home: NextPage = () => {
     // };
 
     // getUser();
+
+    console.log(pokeData);
     let a = getPokeDexNumber("サンダー(ガラル)");
-    console.log(a);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,34 +49,27 @@ const Home: NextPage = () => {
     }
   };
 
+  const itemToLowerCase = (item: string) => {
+    const lowerItem = item.toLowerCase().replace(/\s+/g, "");
+    return lowerItem;
+  };
+
+  const resetInput = (value: string) => {
+    if (value === "n") {
+      console.log(value);
+      inputRef.current.value = "";
+      anotherRef.current.focus();
+    }
+  };
+
   return (
     <div>
-      <Button variant="outlined">ボタン</Button>
-      {/* <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            name: {user.name} id: @{user.twitter}
-          </li>
-        ))}
-      </ul> */}
-
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={twitter}
-          onChange={(e) => {
-            setTwitter(e.target.value);
-          }}
-        />
-        <button type="submit">登録</button>
-      </form>
+      <input
+        type="text"
+        ref={inputRef}
+        onBlur={(e) => resetInput(e.target.value)}
+      />
+      <input type="text" ref={anotherRef} />
     </div>
   );
 };
@@ -78,6 +77,8 @@ const Home: NextPage = () => {
 // export const getStaticProps: GetStaticProps = async (context) => {
 //   const response = await fetch("http://api:3000/posts", { method: "GET" });
 //   const json = await response.json();
+
+//   console.log()
 
 //   return {
 //     props: {

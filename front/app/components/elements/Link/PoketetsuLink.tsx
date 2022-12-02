@@ -1,16 +1,13 @@
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Image from "next/image";
-import addform from "../../../utils/addForm";
 import getPokeDexNumber from "../../../utils/getPokeDexNumber";
 
 const PoketetsuLink: React.FC<{ pokemon: string }> = ({ pokemon }) => {
   const baseUrl = "https://yakkun.com/sv/zukan/n";
   const pokeDexNumber = getPokeDexNumber(pokemon);
 
-  const form = pokemon.match(/\(/) ? "" : addform(pokemon);
-
-  const url = baseUrl + pokeDexNumber + form;
+  const url = baseUrl + pokeDexNumber;
 
   return (
     <Link href={url} target="_blank" rel="noopener noreferrer">

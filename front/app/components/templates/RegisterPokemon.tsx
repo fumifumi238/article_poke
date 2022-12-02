@@ -7,17 +7,26 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { typesData } from "../../utils/data/types";
 import { itemsData } from "../../utils/data/items";
-import { useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  MutableRefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Stats from "../organisms/Stats";
 import Button from "@mui/material/Button";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import HPStats from "../organisms/HPStats";
-import { PokeDetailsContext } from "../../pages/form";
+import { initPokemon, PokeDetailsContext } from "../../pages/form";
 import { changeIcon } from "../../utils/changeIcon";
 import Menu from "@mui/material/Menu";
 import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import PokemonNameForm from "../organisms/PokemonNameForm";
 
 type RegisterPokemon = {
   onClose: () => void;
@@ -25,19 +34,24 @@ type RegisterPokemon = {
   setCurrentPoke: (num: number) => void;
 };
 
+type PokemonRefContext = {
+  pokemonRef: MutableRefObject<HTMLInputElement>;
+};
+
+export const PokemonRefContext = createContext({} as PokemonRefContext);
+
 const RegisterPokemon = ({
   onClose,
   currentPoke,
   setCurrentPoke,
 }: RegisterPokemon) => {
-  const [terastal, setTerastal] = useState<string | null>("");
-  const [item, setItem] = useState<string>("");
   const [nature, setNature] = useState<string>("");
   const [move, setMove] = useState<string>("");
   const [moves, setMoves] = useState<string[]>(["", "", "", ""]);
-  const [pokemon, setPokemon] = useState<string | null>(null);
+  const pokemonRef = useRef<HTMLInputElement>(null);
+  const itemRef = useRef(null);
+  const terastalRef = useRef(null);
   const [ability, setAbility] = useState<string>("");
-  const [checkAbility, setcheckAbility] = useState<number[]>([0, 0, 0, 0, 0]);
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [effortValues, setEffortValues] = useState<number[]>([
     0, 0, 0, 0, 0, 0, 0,
@@ -49,6 +63,16 @@ const RegisterPokemon = ({
       ? pokeData[pokeDetails[currentPoke].pokemon].abilities
       : []
   );
+
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: 200,
+        width: 80,
+        padding: 0,
+      },
+    },
+  };
 
   const checkErrors = () => {
     const newMoves = moves.filter((move) => move !== "");
@@ -68,14 +92,14 @@ const RegisterPokemon = ({
     checkErrors();
     const copyPokeDetails = [...pokeDetails];
     copyPokeDetails[currentPoke] = {
-      pokemon: pokemon,
+      pokemon: pokemonRef.current.value,
       ability: ability,
-      item: item,
+      item: itemRef.current.value,
       baseStats: baseStats,
       effortValues: effortValues,
       nature: nature,
       moves: moves,
-      terastal: terastal,
+      terastal: terastalRef.current.value,
     };
     setPokeDetails(copyPokeDetails);
   };
@@ -87,13 +111,13 @@ const RegisterPokemon = ({
     setMoves(copyOfMoves);
   };
   useEffect(() => {
-    setPokemon(pokeDetails[currentPoke].pokemon);
+    pokemonRef.current.value = pokeDetails[currentPoke].pokemon;
+    itemRef.current.value = pokeDetails[currentPoke].item;
+    terastalRef.current.value = pokeDetails[currentPoke].terastal;
     setAbility(pokeDetails[currentPoke].ability);
     setBaseStats(pokeDetails[currentPoke].baseStats);
     setEffortValues(pokeDetails[currentPoke].effortValues);
     setMoves(pokeDetails[currentPoke].moves);
-    setItem(pokeDetails[currentPoke].item);
-    setTerastal(pokeDetails[currentPoke].terastal);
     setNature(pokeDetails[currentPoke].nature);
 
     if (pokeDetails[currentPoke].pokemon !== "") {
@@ -107,18 +131,25 @@ const RegisterPokemon = ({
     setIconUrls(pokemonIconuUrls);
   }, [currentPoke]);
 
-  const addOptionAbility = () => {
+  const addOptionAbility = (pokemon: string) => {
     if (pokeData[pokemon] !== undefined) {
+      pokemonRef.current.value = pokemon;
+      console.log(pokemon);
       setOptionAbilities(pokeData[pokemon].abilities);
       setAbility(pokeData[pokemon].abilities[0]);
       setBaseStats(pokeData[pokemon].baseStats);
-      setEffortValues([0, 0, 0, 0, 0, 0, 0]);
-      setMoves(["", "", "", ""]);
-
-      const copyIconUrls = [...iconUrls];
-      copyIconUrls[currentPoke] = changeIcon(pokemon);
-      setIconUrls(copyIconUrls);
+      terastalRef.current.focus();
+    } else {
+      pokemonRef.current.value = null;
+      setOptionAbilities([]);
+      setAbility("");
+      setBaseStats([0, 0, 0, 0, 0, 0, 0]);
     }
+    setEffortValues([0, 0, 0, 0, 0, 0, 0]);
+    setMoves(["", "", "", ""]);
+    const copyIconUrls = [...iconUrls];
+    copyIconUrls[currentPoke] = changeIcon(pokemon);
+    setIconUrls(copyIconUrls);
   };
 
   const clickArrowLeftIcon = () => {
@@ -339,17 +370,18 @@ const RegisterPokemon = ({
                 height: 40,
                 borderTopLeftRadius: "5px",
                 borderBottomLeftRadius: "5px",
+                width: "100%",
               }}>
               <Box
                 sx={{
                   height: 20,
                   bgcolor: "#8898a8",
                   display: "flex",
+                  width: "97%",
                 }}>
                 <Box
                   sx={{
                     width: "20%",
-                    position: "absolute",
                   }}>
                   <Image
                     src="/image/ball/pokemonball.png"
@@ -359,43 +391,19 @@ const RegisterPokemon = ({
                 <Box
                   sx={{
                     width: "80%",
-                    position: "relative",
-                    left: 25,
-                    top: -3,
+                    position: "absolute",
                   }}>
-                  <Autocomplete
-                    disablePortal
-                    freeSolo
-                    id="combo-box-demo"
-                    sx={{
+                  <Box
+                    style={{
+                      position: "relative",
+                      left: 21,
+                      top: -3,
                       width: "100%",
-                    }}
-                    filterOptions={filterOptions}
-                    options={Object.keys(pokeData)}
-                    disableClearable={true}
-                    value={pokemon}
-                    onChange={(event: any, newValue: string | null) => {
-                      setPokemon(newValue);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        InputProps={{
-                          ...params.InputProps,
-                          style: {
-                            color: "white",
-                            padding: 0,
-                            fontSize: "13px",
-                            height: 22,
-                          },
-                        }}
-                        fullWidth
-                        onBlur={addOptionAbility}
-                        placeholder="ポケモン"
-                        variant="standard"
-                      />
-                    )}
-                  />
+                    }}>
+                    <PokemonRefContext.Provider value={{ pokemonRef }}>
+                      <PokemonNameForm addOptionAbility={addOptionAbility} />
+                    </PokemonRefContext.Provider>
+                  </Box>
                 </Box>
               </Box>
               <Box>
@@ -409,8 +417,10 @@ const RegisterPokemon = ({
                 borderRadius: "10px",
                 marginTop: "2px",
                 marginLeft: "2px",
-                width: "95%",
+                width: "100%",
                 display: "flex",
+                overflow: "wrap",
+                position: "relative",
               }}>
               <Box
                 sx={{
@@ -430,27 +440,49 @@ const RegisterPokemon = ({
                   テラスタル
                 </p>
               </Box>
-              <Box>
-                <TextField
-                  id="demo-simple-select-standard"
-                  value={terastal}
-                  select
-                  InputProps={{
-                    style: {
-                      padding: 0,
-                      fontSize: "10px",
-                      height: 16,
-                      width: 80,
-                    },
+              <Box
+                sx={{
+                  width: "55%",
+                  position: "absolute",
+                }}>
+                <input
+                  ref={terastalRef}
+                  style={{
+                    padding: 0,
+                    fontSize: "10px",
+                    height: 16,
+                    width: "90%",
+                    background: "#e0e8e8",
+                    border: "none",
+                    position: "relative",
+                    top: -6,
+                    left: "85%",
                   }}
-                  variant="standard"
-                  onChange={(e) => setTerastal(e.target.value)}>
+                />
+                <ul
+                  style={{
+                    paddingLeft: 0,
+                    maxHeight: 240,
+                    overflow: "auto",
+                    borderRadius: 5,
+                    background: "white",
+                    width: "95%",
+                    position: "relative",
+                    zIndex: 1,
+                    top: -25,
+                    left: "85%",
+                  }}>
                   {typesData.map((type) => (
-                    <MenuItem value={type} key={type}>
+                    <li
+                      key={type}
+                      style={{
+                        listStyle: "none",
+                        padding: 3,
+                      }}>
                       {type}
-                    </MenuItem>
+                    </li>
                   ))}
-                </TextField>
+                </ul>
               </Box>
             </Box>
             <Box
@@ -460,13 +492,22 @@ const RegisterPokemon = ({
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              <Box>
-                <Image
-                  src={`/image/${iconUrls[currentPoke]}`}
-                  alt={pokemon}
-                  width={80}
-                  height={80}></Image>
-              </Box>
+              <div style={{ position: "absolute", zIndex: 0 }}>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "80px",
+                    height: "80px",
+                    zIndex: 0,
+                  }}>
+                  <Image
+                    src={`/image/${iconUrls[currentPoke]}`}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="no image"
+                  />
+                </div>
+              </div>
             </Box>
             <Box
               sx={{
@@ -504,10 +545,7 @@ const RegisterPokemon = ({
                   options={itemsData}
                   autoHighlight={true}
                   disableClearable={true}
-                  value={item}
-                  onChange={(event: any, newValue: string | null) => {
-                    setItem(newValue);
-                  }}
+                  ref={itemRef}
                   renderInput={(params) => (
                     <TextField
                       {...params}
