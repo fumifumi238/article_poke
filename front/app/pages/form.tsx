@@ -34,6 +34,17 @@ type PokeDetailsContext = {
 
 export const PokeDetailsContext = createContext({} as PokeDetailsContext);
 
+export const initPokemon: PokeDetails = {
+  pokemon: "",
+  item: "",
+  moves: ["", "", "", ""],
+  baseStats: [0, 0, 0, 0, 0, 0, 0],
+  effortValues: [0, 0, 0, 0, 0, 0, 0],
+  ability: "",
+  nature: "",
+  terastal: "",
+};
+
 const Form: NextPage = () => {
   const [url, setUrl] = useState<string>("");
   const [existUrlList, setExistUrlList] = useState<string[]>([]);
@@ -59,16 +70,6 @@ const Form: NextPage = () => {
     getData();
   }, []);
 
-  const initPokemon: PokeDetails = {
-    pokemon: "",
-    item: "",
-    moves: ["", "", "", ""],
-    baseStats: [0, 0, 0, 0, 0, 0, 0],
-    effortValues: [0, 0, 0, 0, 0, 0, 0],
-    ability: "",
-    nature: "",
-    terastal: "",
-  };
   const [pokeDetails, setPokeDetails] = useState<PokeDetails[]>(
     new Array(6).fill(initPokemon)
   );
