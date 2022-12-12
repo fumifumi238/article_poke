@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import pokeData from "../../json/poke_data.json";
 import { PokemonRefContext } from "../templates/RegisterPokemon";
+import { hiraToKana } from "../../utils/hiraToKana";
 
 type PokemonNameForm = {
   addOptionAbility: (value: string) => void;
@@ -22,12 +23,6 @@ const PokemonNameForm = ({ addOptionAbility }: PokemonNameForm) => {
       setSelectIndex(-1);
     }
   }, [filterPokemonList]);
-
-  const hiraToKana = (text: unknown) => {
-    return String(text).replace(/[\u3042-\u3093]/g, (m) =>
-      String.fromCharCode(m.charCodeAt(0) + 96)
-    );
-  };
 
   const changeNameForm = (value: string) => {
     addOptionAbility(value);
@@ -84,9 +79,14 @@ const PokemonNameForm = ({ addOptionAbility }: PokemonNameForm) => {
   };
   return (
     <div
-      style={{ width: "100%", maxWidth: 100, marginRight: 0 }}
-      onBlur={() => setTimeout(() => setVisiblePokemonList(false), 100)}
-      onSubmit={(e) => e.preventDefault()}>
+      style={{
+        height: 18,
+        position: "relative",
+        top: -3,
+      }}
+      onBlur={() =>
+        setTimeout(() => changeNameForm(pokemonRef.current?.value.trim()), 300)
+      }>
       <input
         type="text"
         ref={pokemonRef}
@@ -94,20 +94,17 @@ const PokemonNameForm = ({ addOptionAbility }: PokemonNameForm) => {
         id="pokemon-name-form"
         autoComplete="off"
         onFocus={() => setVisiblePokemonList(true)}
-        onBlur={(e) => {
-          setTimeout(() => changeNameForm(e.target.value.trim()), 300);
-        }}
         onKeyDown={(e) => keyDown(e)}
         onChange={(e) => addpokemonLists(e.target.value.trim())}
         style={{
           background: "#8898a8",
           border: "none",
           color: "white",
-          marginLeft: 5,
-          paddingRight: 0,
+          padding: 0,
           fontSize: "13px",
-          width: "100%",
+          position: "relative",
           height: 18,
+          width: "100%",
         }}
       />
       <ul
