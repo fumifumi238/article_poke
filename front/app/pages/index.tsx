@@ -1,12 +1,7 @@
-import Button from "@mui/material/Button";
-import { GetStaticProps, NextPage } from "next";
-import React, { FC, useEffect, useRef, useState } from "react";
-import { postData } from "../lib/api/client";
-import getPokeDexNumber from "../utils/getPokeDexNumber";
-import Image from "next/image";
-import items from "../json/items.json";
+import { NextPage } from "next";
+import React, { useEffect, useRef, useState } from "react";
 import pokeData from "../json/poke_data.json";
-import { changeIcon } from "../utils/changeIcon";
+import { postData } from "../lib/api/client";
 
 type User = {
   id: number;
@@ -31,8 +26,11 @@ const Home: NextPage = () => {
 
     // getUser();
 
-    console.log(pokeData);
-    let a = getPokeDexNumber("サンダー(ガラル)");
+    Object.keys(pokeData).forEach((data) => {
+      if (!pokeData[data]?.types) {
+        console.log(data);
+      }
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,11 +45,6 @@ const Home: NextPage = () => {
     } else {
       console.log("成功しました。");
     }
-  };
-
-  const itemToLowerCase = (item: string) => {
-    const lowerItem = item.toLowerCase().replace(/\s+/g, "");
-    return lowerItem;
   };
 
   const resetInput = (value: string) => {

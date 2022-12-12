@@ -12,6 +12,8 @@ type Stats = {
   baseStats?: number;
   effortValues: number[];
   setEffortValues: (effortValues: number[]) => void;
+  natureStatus: number;
+  changeNatureToNumber: (index: number, num: number) => void;
 };
 const Stats = ({
   value,
@@ -19,6 +21,8 @@ const Stats = ({
   baseStats,
   effortValues,
   setEffortValues,
+  natureStatus,
+  changeNatureToNumber,
 }: Stats) => {
   type ButtonType = "normal" | "up" | "down";
   const indexOfValue: { [key: string]: number } = {
@@ -28,7 +32,21 @@ const Stats = ({
     とくぼう: 4,
     すばやさ: 5,
   };
-  const [buttonType, setButtonType] = useState<ButtonType>("normal");
+
+  const buttonToNumber = {
+    normal: 0,
+    up: 1,
+    down: 2,
+  };
+
+  const numberToButton = {
+    0: "normal",
+    1: "up",
+    2: "down",
+  };
+  const [buttonType, setButtonType] = useState<ButtonType>(
+    numberToButton[natureStatus]
+  );
   const [effortValue, setEffortValue] = useState<number | string>(0);
   const [individualValue, setIndividualValue] = useState<number | string>(31);
 
@@ -36,10 +54,25 @@ const Stats = ({
     setEffortValue(effortValues[indexOfValue[value]]);
   }, [effortValues]);
 
+  useEffect(() => {
+    setButtonType(numberToButton[natureStatus]);
+  }, [natureStatus]);
+
+  useEffect(() => {
+    changeNatureToNumber(indexOfValue[value] - 1, buttonToNumber[buttonType]);
+  }, [buttonType]);
+
   const changeEffortValues = () => {
     const copyOfEffortValues = [...effortValues];
     copyOfEffortValues[indexOfValue[value]] = Number(effortValue);
-    copyOfEffortValues[6] += Number(effortValue);
+
+    // TODO: ロジック改善するとちょっと早い n(6) => n(1)
+
+    let sum = 0;
+    for (let i = 0; i <= 5; i++) {
+      sum += copyOfEffortValues[i];
+    }
+    copyOfEffortValues[6] = sum;
     setEffortValues(copyOfEffortValues);
   };
 

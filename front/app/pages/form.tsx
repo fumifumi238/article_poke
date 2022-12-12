@@ -15,17 +15,8 @@ import RegisterPokemon from "../components/templates/RegisterPokemon";
 import Image from "next/image";
 import { changeIcon } from "../utils/changeIcon";
 import { textToNumber } from "../utils/textToNumber";
-
-type PokeDetails = {
-  pokemon: string;
-  item: string;
-  ability: string;
-  moves: string[];
-  baseStats: number[];
-  effortValues: number[];
-  nature: string;
-  terastal: string;
-};
+import { checkPokemons } from "../utils/validation";
+import { PokeDetails } from "../types/PokeDetails";
 
 type PokeDetailsContext = {
   pokeDetails: PokeDetails[];
@@ -46,6 +37,8 @@ export const initPokemon: PokeDetails = {
 };
 
 const Form: NextPage = () => {
+  const [format, setFormat] = useState<string>("Single");
+  const [rentalCode, setRentalCode] = useState<string>("");
   const [url, setUrl] = useState<string>("");
   const [existUrlList, setExistUrlList] = useState<string[]>([]);
   const [name, setName] = useState<string>("");
@@ -59,7 +52,12 @@ const Form: NextPage = () => {
   const [title, setTitle] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [currentPoke, setCurrentPoke] = useState<number>(0);
-  const [errors, setErrors] = useState<string[]>();
+  const [pokemonErrors, setPokemonErrors] = useState<string[]>([]);
+  const [urlError, setUrlError] = useState<string>("");
+  const [disabledButton, setDisabledButton] = useState<boolean>(true);
+  const [pokeDetails, setPokeDetails] = useState<PokeDetails[]>(
+    new Array(6).fill(initPokemon)
+  );
 
   useEffect(() => {
     const getData = async () => {
@@ -70,9 +68,23 @@ const Form: NextPage = () => {
     getData();
   }, []);
 
-  const [pokeDetails, setPokeDetails] = useState<PokeDetails[]>(
-    new Array(6).fill(initPokemon)
-  );
+  useEffect(() => {
+    if (!open) {
+      validationForm();
+    }
+  }, [open]);
+
+  const onClickCloseButton = (copyOfPokeDetails: PokeDetails[]) => {
+    setOpen(false);
+    const checkPokemonError = checkPokemons(copyOfPokeDetails);
+    if (checkPokemonError.length !== 0) {
+      setPokemonErrors(checkPokemonError);
+      setDisabledButton(true);
+      return;
+    }
+
+    setPokemonErrors([]);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -94,19 +106,44 @@ const Form: NextPage = () => {
     }
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const checkUrlError = (value: string) => {
     for (let existUrl of existUrlList) {
       if (value === existUrl) {
-        console.log("そのURLはすでに存在します。");
+        setUrlError("そのURLはすでに存在しています。");
         return;
       }
     }
 
-    console.log("存在しないurlです。");
+    setUrlError("");
+  };
+
+  const validateRentalCode = () => {
+    if (rentalCode.length !== 6 || !rentalCode.match(/^[a-zA-Z0-9]+$/)) {
+      setRentalCode("");
+      return;
+    }
+
+    setRentalCode(rentalCode.toUpperCase());
+  };
+
+  const validationForm = () => {
+    if (name === "" || title === "" || url === "" || urlError !== "") {
+      setDisabledButton(true);
+      return;
+    }
+
+    const pokemons = pokeDetails.filter(
+      (pokeDetail) => pokeDetail.pokemon !== "" && pokeDetail.moves[0] !== ""
+    );
+
+    if (pokemons.length < 6) {
+      setDisabledButton(true);
+      return;
+    }
+
+    if (pokemonErrors.length === 0) {
+      setDisabledButton(false);
+    }
   };
 
   const onChangeSeries = (value: string) => {
@@ -121,7 +158,7 @@ const Form: NextPage = () => {
           maxWidth: 500,
           width: "95%",
           border: 1,
-          height: 340,
+          height: 400,
           margin: "0 auto",
           marginTop: "20px",
         }}>
@@ -134,21 +171,74 @@ const Form: NextPage = () => {
             marginBottom: 0,
           }}>
           <Box
-            sx={{ display: "flex", justifyContent: "center", paddingTop: 1 }}>
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: 1,
+            }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                width: "50%",
+                margin: 1,
+              }}>
+              <Typography>Format:</Typography>
+
+              <TextField
+                select
+                label="Format"
+                fullWidth
+                size="small"
+                autoComplete="off"
+                value={format}
+                onChange={(e) => setFormat(e.target.value)}>
+                <MenuItem value="Single">Single</MenuItem>
+                <MenuItem value="Double">Double</MenuItem>
+              </TextField>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                width: "50%",
+                margin: 1,
+              }}>
+              <Typography>Rental:</Typography>
+
+              <TextField
+                placeholder="A1B6CC"
+                fullWidth
+                label="Rental"
+                size="small"
+                autoComplete="off"
+                value={rentalCode}
+                onBlur={validateRentalCode}
+                onChange={(e) => setRentalCode(e.target.value)}
+              />
+            </Box>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", margin: 0 }}>
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 width: "40%",
-                margin: 1,
+                margin: 0,
+                marginX: 1,
               }}>
-              <Typography> TN:</Typography>
+              <Typography>TN*:</Typography>
 
               <TextField
                 placeholder="スカーレット"
-                label="TN"
+                label="TN*"
                 fullWidth
                 size="small"
+                autoComplete="off"
+                value={name}
+                onBlur={validationForm}
+                onChange={(e) => setName(e.target.value)}
               />
             </Box>
 
@@ -157,7 +247,8 @@ const Form: NextPage = () => {
                 display: "flex",
                 alignItems: "center",
                 width: "60%",
-                margin: 1,
+                margin: 0,
+                marginX: 1,
               }}>
               <Typography> Twitter:@</Typography>
 
@@ -166,6 +257,7 @@ const Form: NextPage = () => {
                 fullWidth
                 label="Twitter"
                 size="small"
+                autoComplete="off"
                 value={twitter}
                 onChange={(e) => setTwitter(e.target.value)}
               />
@@ -177,13 +269,15 @@ const Form: NextPage = () => {
               alignItems: "center",
               margin: 1,
             }}>
-            <Typography sx={{ fontSize: "16px" }}>Title:</Typography>
+            <Typography sx={{ fontSize: "16px" }}>Title*:</Typography>
             <TextField
-              placeholder="タイトル"
-              label="Title"
+              placeholder="【SV S1】対面ガッサミミドラパ 【最終レート2000 最終1位】"
+              label="Title*"
               size="small"
               fullWidth
+              autoComplete="off"
               value={title}
+              onBlur={validationForm}
               onChange={(e) => setTitle(e.target.value)}
             />
           </Box>
@@ -193,15 +287,20 @@ const Form: NextPage = () => {
               alignItems: "center",
               margin: 1,
             }}>
-            <Typography sx={{ fontSize: "16px" }}>URL:</Typography>
+            <Typography sx={{ fontSize: "16px" }}>URL*:</Typography>
             <TextField
               placeholder="https://hatenablog.com/"
-              label="URL"
+              label="URL*"
               size="small"
+              autoComplete="off"
               fullWidth
               value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              onBlur={(e) => checkUrlError(e.target.value)}
+              error={urlError !== ""}
+              helperText={urlError}
+              onChange={(e) => {
+                setUrl(e.target.value), checkUrlError(e.target.value);
+              }}
+              onBlur={validationForm}
             />
           </Box>
           <Box
@@ -218,7 +317,7 @@ const Form: NextPage = () => {
                 margin: 1,
                 paddingRight: 2,
               }}>
-              <Typography sx={{ fontSize: "16px" }}>Series:</Typography>
+              <Typography sx={{ fontSize: "16px" }}>Series*:</Typography>
               <FormControl size="small">
                 <InputLabel variant="standard" htmlFor="Series">
                   Series
@@ -243,7 +342,7 @@ const Form: NextPage = () => {
                 alignItems: "center",
                 margin: 1,
               }}>
-              <Typography sx={{ fontSize: "16px" }}>Season:</Typography>
+              <Typography sx={{ fontSize: "16px" }}>Season*:</Typography>
               <FormControl size="small">
                 <InputLabel variant="standard" htmlFor="Season">
                   Season
@@ -279,6 +378,7 @@ const Form: NextPage = () => {
                 label="Rate"
                 size="small"
                 type="tel"
+                autoComplete="off"
                 inputMode="numeric"
                 sx={{ width: 80 }}
                 value={rate}
@@ -301,6 +401,7 @@ const Form: NextPage = () => {
                 type="tel"
                 sx={{ width: 60 }}
                 value={rank}
+                autoComplete="off"
                 inputMode="numeric"
                 onChange={(e) =>
                   textToNumber(e.target.value, "", setRank, 1, 100000)
@@ -310,7 +411,7 @@ const Form: NextPage = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", margin: 1 }}>
           <Box
             sx={{
               width: "60%",
@@ -322,8 +423,8 @@ const Form: NextPage = () => {
               <Image
                 key={index}
                 src={`/image/${changeIcon(pokeDetail.pokemon)}`}
-                height={25}
-                width={25}
+                height={40}
+                width={40}
               />
             ))}
           </Box>
@@ -332,11 +433,31 @@ const Form: NextPage = () => {
           </Button>
         </Box>
       </Box>
+      <Typography sx={{ textAlign: "center", color: "red" }}>
+        *は必須項目です。
+      </Typography>
+      {pokemonErrors.map((pokemonError) => (
+        <Typography
+          sx={{ textAlign: "center", color: "red" }}
+          key={pokemonError}>
+          {pokemonError}
+        </Typography>
+      ))}
+      <Box sx={{ textAlign: "center", margin: 1 }}>
+        <Button
+          variant="contained"
+          size="large"
+          disabled={disabledButton}
+          onClick={validationForm}
+          sx={{ width: "100%", maxWidth: 500 }}>
+          この内容で登録する
+        </Button>
+      </Box>
 
-      <Dialog open={open} onClose={handleClose} fullScreen>
+      <Dialog open={open} onClose={() => setOpen(false)} fullScreen>
         <PokeDetailsContext.Provider value={{ pokeDetails, setPokeDetails }}>
           <RegisterPokemon
-            onClose={handleClose}
+            onClose={onClickCloseButton}
             currentPoke={currentPoke}
             setCurrentPoke={setCurrentPoke}
           />

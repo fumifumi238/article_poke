@@ -1,15 +1,12 @@
 import Box from "@mui/material/Box";
-import AutoCompleteInput from "../elements/Input/AutoCompleteInput";
-import { movesData } from "../../utils/data/move";
 import Image from "next/image";
 import pokeData from "../../json/poke_data.json";
-import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { typesData } from "../../utils/data/types";
-import { itemsData } from "../../utils/data/items";
 import {
   createContext,
+  createRef,
   MutableRefObject,
+  RefObject,
   useContext,
   useEffect,
   useRef,
@@ -21,36 +18,61 @@ import Button from "@mui/material/Button";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import HPStats from "../organisms/HPStats";
-import { initPokemon, PokeDetailsContext } from "../../pages/form";
+import { PokeDetailsContext } from "../../pages/form";
 import { changeIcon } from "../../utils/changeIcon";
-import Menu from "@mui/material/Menu";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import PokemonNameForm from "../organisms/PokemonNameForm";
 
-type RegisterPokemon = {
-  onClose: () => void;
-  currentPoke: number;
-  setCurrentPoke: (num: number) => void;
-};
+import PokemonNameForm from "../organisms/PokemonNameForm";
+import ItemForm from "../organisms/ItemForm";
+import TerastalForm from "../organisms/TerastalForm";
+import MoveForm from "../organisms/MoveForm";
+import { getNature, getNatureToNumber } from "../../utils/nature";
+import { checkPokemons } from "../../utils/validation";
+import { PokeDetails } from "../../types/PokeDetails";
 
 type PokemonRefContext = {
   pokemonRef: MutableRefObject<HTMLInputElement>;
 };
 
+type TerastalRefContext = {
+  terastalRef: MutableRefObject<HTMLInputElement>;
+};
+
+type ItemRefContext = {
+  itemRef: MutableRefObject<HTMLInputElement>;
+};
+
+type MoveRefsContext = {
+  moveRefs: MutableRefObject<RefObject<HTMLInputElement>[]>;
+};
+
 export const PokemonRefContext = createContext({} as PokemonRefContext);
+export const TerastalRefContext = createContext({} as TerastalRefContext);
+export const ItemRefContext = createContext({} as ItemRefContext);
+export const MoveRefsContext = createContext({} as MoveRefsContext);
+
+type RegisterPokemon = {
+  onClose: (pokeDetails: PokeDetails[]) => void;
+  currentPoke: number;
+  setCurrentPoke: (num: number) => void;
+};
 
 const RegisterPokemon = ({
   onClose,
   currentPoke,
   setCurrentPoke,
 }: RegisterPokemon) => {
-  const [nature, setNature] = useState<string>("");
-  const [move, setMove] = useState<string>("");
-  const [moves, setMoves] = useState<string[]>(["", "", "", ""]);
   const pokemonRef = useRef<HTMLInputElement>(null);
-  const itemRef = useRef(null);
-  const terastalRef = useRef(null);
+  const itemRef = useRef<HTMLInputElement>(null);
+  const terastalRef = useRef<HTMLInputElement>(null);
+  const moveRefs = useRef<RefObject<HTMLInputElement>[]>([]);
+  for (let i = 0; i < 4; i++) {
+    moveRefs.current[i] = createRef<HTMLInputElement>();
+  }
+
+  const [natureToNumber, setNatureToNumber] = useState<number[]>([
+    0, 0, 0, 0, 0,
+  ]);
+
   const [ability, setAbility] = useState<string>("");
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [effortValues, setEffortValues] = useState<number[]>([
@@ -64,61 +86,44 @@ const RegisterPokemon = ({
       : []
   );
 
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: 200,
-        width: 80,
-        padding: 0,
-      },
-    },
+  const changeNatureToNumber = (index: number, num: number) => {
+    const copyOfNatureToNumber = [...natureToNumber];
+    copyOfNatureToNumber[index] = num;
+    setNatureToNumber(copyOfNatureToNumber);
   };
 
-  const checkErrors = () => {
-    const newMoves = moves.filter((move) => move !== "");
-    const deleteDuplicate = new Set(newMoves);
-    if (deleteDuplicate.size !== newMoves.length) {
-      console.log("重複した技は登録できません。");
-      return;
-    }
-  };
-
-  const filterOptions = createFilterOptions({
-    limit: 5,
-    trim: true,
-  });
-
-  const saveData = () => {
-    checkErrors();
+  const saveData = (close: boolean = false) => {
     const copyPokeDetails = [...pokeDetails];
+    const moves = moveRefs.current.map((moveRef) => moveRef.current?.value);
     copyPokeDetails[currentPoke] = {
       pokemon: pokemonRef.current.value,
       ability: ability,
       item: itemRef.current.value,
       baseStats: baseStats,
       effortValues: effortValues,
-      nature: nature,
+      nature: getNature(natureToNumber),
       moves: moves,
       terastal: terastalRef.current.value,
     };
     setPokeDetails(copyPokeDetails);
+    if (close) {
+      onClose(copyPokeDetails);
+    }
   };
 
-  const changeMoves = (value: string, num: number) => {
-    const copyOfMoves = [...moves];
-    copyOfMoves[num] = value;
-    console.log(value);
-    setMoves(copyOfMoves);
-  };
   useEffect(() => {
     pokemonRef.current.value = pokeDetails[currentPoke].pokemon;
     itemRef.current.value = pokeDetails[currentPoke].item;
     terastalRef.current.value = pokeDetails[currentPoke].terastal;
+
+    pokeDetails[currentPoke].moves.forEach((move, index) => {
+      moveRefs.current[index].current.value = move;
+    });
+
     setAbility(pokeDetails[currentPoke].ability);
     setBaseStats(pokeDetails[currentPoke].baseStats);
     setEffortValues(pokeDetails[currentPoke].effortValues);
-    setMoves(pokeDetails[currentPoke].moves);
-    setNature(pokeDetails[currentPoke].nature);
+    setNatureToNumber(getNatureToNumber(pokeDetails[currentPoke].nature));
 
     if (pokeDetails[currentPoke].pokemon !== "") {
       setOptionAbilities(pokeData[pokeDetails[currentPoke].pokemon].abilities);
@@ -131,22 +136,35 @@ const RegisterPokemon = ({
     setIconUrls(pokemonIconuUrls);
   }, [currentPoke]);
 
+  const focusItem = () => {
+    itemRef.current.focus();
+  };
+
+  const clickClose = () => {
+    saveData(true);
+  };
+
   const addOptionAbility = (pokemon: string) => {
     if (pokeData[pokemon] !== undefined) {
       pokemonRef.current.value = pokemon;
-      console.log(pokemon);
       setOptionAbilities(pokeData[pokemon].abilities);
       setAbility(pokeData[pokemon].abilities[0]);
       setBaseStats(pokeData[pokemon].baseStats);
       terastalRef.current.focus();
     } else {
-      pokemonRef.current.value = null;
+      pokemonRef.current.value = "";
+
       setOptionAbilities([]);
       setAbility("");
       setBaseStats([0, 0, 0, 0, 0, 0, 0]);
     }
     setEffortValues([0, 0, 0, 0, 0, 0, 0]);
-    setMoves(["", "", "", ""]);
+    setNatureToNumber([0, 0, 0, 0, 0]);
+    moveRefs.current.forEach((moveRef) => {
+      moveRef.current.value = "";
+    });
+    terastalRef.current.value = "";
+    itemRef.current.value = "";
     const copyIconUrls = [...iconUrls];
     copyIconUrls[currentPoke] = changeIcon(pokemon);
     setIconUrls(copyIconUrls);
@@ -260,30 +278,40 @@ const RegisterPokemon = ({
                       baseStats={baseStats[1]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      natureStatus={natureToNumber[0]}
+                      changeNatureToNumber={changeNatureToNumber}
                     />
                     <Stats
                       value="ぼうぎょ"
                       baseStats={baseStats[2]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      natureStatus={natureToNumber[1]}
+                      changeNatureToNumber={changeNatureToNumber}
                     />
                     <Stats
                       value="とくこう"
                       baseStats={baseStats[3]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      natureStatus={natureToNumber[2]}
+                      changeNatureToNumber={changeNatureToNumber}
                     />
                     <Stats
                       value="とくぼう"
                       baseStats={baseStats[4]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      natureStatus={natureToNumber[3]}
+                      changeNatureToNumber={changeNatureToNumber}
                     />
                     <Stats
                       value="すばやさ"
                       baseStats={baseStats[5]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      natureStatus={natureToNumber[4]}
+                      changeNatureToNumber={changeNatureToNumber}
                       style={{ borderBottomLeftRadius: "5px" }}
                     />
                   </Box>
@@ -388,16 +416,10 @@ const RegisterPokemon = ({
                     height={23}
                     width={23}></Image>
                 </Box>
-                <Box
-                  sx={{
-                    width: "80%",
-                    position: "absolute",
-                  }}>
+                <Box sx={{ position: "relative", width: "80%" }}>
                   <Box
-                    style={{
-                      position: "relative",
-                      left: 21,
-                      top: -3,
+                    sx={{
+                      position: "absolute",
                       width: "100%",
                     }}>
                     <PokemonRefContext.Provider value={{ pokemonRef }}>
@@ -445,44 +467,9 @@ const RegisterPokemon = ({
                   width: "55%",
                   position: "absolute",
                 }}>
-                <input
-                  ref={terastalRef}
-                  style={{
-                    padding: 0,
-                    fontSize: "10px",
-                    height: 16,
-                    width: "90%",
-                    background: "#e0e8e8",
-                    border: "none",
-                    position: "relative",
-                    top: -6,
-                    left: "85%",
-                  }}
-                />
-                <ul
-                  style={{
-                    paddingLeft: 0,
-                    maxHeight: 240,
-                    overflow: "auto",
-                    borderRadius: 5,
-                    background: "white",
-                    width: "95%",
-                    position: "relative",
-                    zIndex: 1,
-                    top: -25,
-                    left: "85%",
-                  }}>
-                  {typesData.map((type) => (
-                    <li
-                      key={type}
-                      style={{
-                        listStyle: "none",
-                        padding: 3,
-                      }}>
-                      {type}
-                    </li>
-                  ))}
-                </ul>
+                <TerastalRefContext.Provider value={{ terastalRef }}>
+                  <TerastalForm focusItem={focusItem} />
+                </TerastalRefContext.Provider>
               </Box>
             </Box>
             <Box
@@ -533,34 +520,14 @@ const RegisterPokemon = ({
                   もちもの
                 </p>
               </Box>
-              <Box sx={{ height: 21, backgroundColor: "#e0e8e8" }}>
-                <Autocomplete
-                  disablePortal
-                  freeSolo
-                  clearOnBlur
-                  id="itemform"
-                  sx={{
-                    width: "100%",
-                  }}
-                  options={itemsData}
-                  autoHighlight={true}
-                  disableClearable={true}
-                  ref={itemRef}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      InputProps={{
-                        ...params.InputProps,
-                        style: {
-                          padding: 0,
-                          fontSize: "13px",
-                        },
-                      }}
-                      fullWidth
-                      variant="standard"
-                    />
-                  )}
-                />
+              <Box
+                sx={{
+                  height: 21,
+                  backgroundColor: "#e0e8e8",
+                }}>
+                <ItemRefContext.Provider value={{ itemRef }}>
+                  <ItemForm />
+                </ItemRefContext.Provider>
               </Box>
             </Box>
           </Box>
@@ -586,40 +553,19 @@ const RegisterPokemon = ({
                   bgcolor: "white",
                   borderRadius: "10px",
                   border: 3,
+                  display: "flex",
+                  flexWrap: "wrap",
                 }}>
-                {[1, 2, 3, 4].map((i) => (
-                  <Box sx={{ height: "24%" }} key={i}>
-                    <Autocomplete
-                      disablePortal
-                      clearOnBlur
-                      freeSolo
-                      id="combo-box-demo"
-                      filterOptions={filterOptions}
-                      sx={{ padding: 0 }}
-                      options={movesData}
-                      autoHighlight={true}
-                      disableClearable={true}
-                      value={moves[i - 1]}
-                      onChange={(event: any, newValue: string | null) => {
-                        changeMoves(newValue, i - 1);
-                      }}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label={`わざ${i}`}
-                          variant="filled"
-                        />
-                      )}
-                    />
-                  </Box>
-                ))}
+                <MoveRefsContext.Provider value={{ moveRefs }}>
+                  {[0, 1, 2, 3].map((i) => (
+                    <MoveForm index={i} key={i} />
+                  ))}
+                </MoveRefsContext.Provider>
               </Box>
             </Box>
             <Box>
               <Button
-                onClick={() => {
-                  saveData(), onClose();
-                }}
+                onClick={clickClose}
                 sx={{ padding: 0, marginLeft: 1 }}
                 size="small"
                 variant="contained">

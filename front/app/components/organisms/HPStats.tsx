@@ -19,7 +19,13 @@ const HPStats = ({ baseStats, effortValues, setEffortValues }: Stats) => {
   const changeEffortValues = () => {
     const copyOfEffortValues = [...effortValues];
     copyOfEffortValues[0] = Number(effortValue);
-    copyOfEffortValues[6] += Number(effortValue);
+
+    let sum = 0;
+    for (let i = 0; i <= 5; i++) {
+      sum += copyOfEffortValues[i];
+    }
+    copyOfEffortValues[6] = sum;
+
     setEffortValues(copyOfEffortValues);
   };
 
