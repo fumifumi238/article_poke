@@ -8,11 +8,17 @@
 
 require 'faker'
 
-300.times do |n|
-  user = User.create!(name: "app_#{n}", twitter: "twitter_#{n}")
-  article = Article.create!(url:"https://abcdefg#{n}.com",user: user,rate:2000,season:1,series:1,rank:1,title:"最強#{n}")
+tera = ["ノーマル","いわ","むし","ゴースト","みず","はがね","あく","くさ","ほのお","あく","ドラゴン","でんき","じめん","エスパー","こおり","かくとう","フェアリー"]
+ab = ["もうか","しんりょく","げきりゅう"]
+
+item = ["こだわりスカーフ","こだわりメガネ","こだわりハチマキ","きあいのタスキ","いのちのたま","オボンのみ","おんみつマント","たべのこし","ゴツゴツメット","オボンのみ"]
+nature = ["いじっぱり","おくびょう","ようき","ひかえめ","ずぶとい","おだやか","やんちゃ","まじめ"]
+
+(1..100).each do |n|
+  user = User.create!(name: "スカーレット_#{n}", twitter: "twitter_#{n}")
+  article = Article.create!(url:"https://abcdefg#{n}.com",user: user,rate:2000-n,season:1,series:1,rank:n,title:"【S11 最終2002 296位】純度92まきびしゲコミミマンダ【シングル6→3】#{n}")
   6.times do |i|
-    party = Party.create!(pokemon: Faker::Games::Pokemon.name,item: "アイテム#{i}",ability:"とくせい#{n}",terastal:"ノーマル#{i}",nature:"おだやか#{i}",article: article)
+    party = Party.create!(pokemon: Faker::Games::Pokemon.name,item: item.sample ,ability: ab.sample,terastal: tera.sample,nature: nature.sample,article: article)
     4.times do |j|
       move = Move.create!(pokemon: party.pokemon,name: Faker::Games::Pokemon.move,party: party)
     end

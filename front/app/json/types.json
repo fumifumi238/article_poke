@@ -1,0 +1,20 @@
+{
+  "ゴースト": "ghost",
+  "ノーマル": "normal",
+  "ほのお": "fire",
+  "みず": "water",
+  "いわ": "rock",
+  "じめん": "ground",
+  "くさ": "grass",
+  "フェアリー": "fairy",
+  "どく": "poison",
+  "ドラゴン": "dragon",
+  "はがね": "steel",
+  "むし": "bug",
+  "かくとう": "fighting",
+  "でんき": "electric",
+  "ひこう": "flying",
+  "エスパー": "psychic",
+  "こおり": "ice",
+  "あく": "dark"
+}

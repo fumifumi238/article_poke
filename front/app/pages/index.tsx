@@ -1,7 +1,8 @@
 import { NextPage } from "next";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import pokeData from "../json/poke_data.json";
-import { postData } from "../lib/api/client";
+import sample from "../json/sampleArticle.json";
+import { postData } from "../lib/api/fetchApi";
 
 type User = {
   id: number;
@@ -23,22 +24,23 @@ const Home: NextPage = () => {
     //   const data = (await res.json()) as User[];
     //   setUsers(data);
     // };
-
     // getUser();
-
     Object.keys(pokeData).forEach((data) => {
-      if (!pokeData[data]?.types) {
+      let sum = 0;
+      for (let i = 0; i < 6; i++) {
+        sum += pokeData[data].baseStats[i];
+      }
+
+      if (sum !== pokeData[data].baseStats[6]) {
         console.log(data);
       }
     });
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await postData("/users/create", {
-      name: name,
-      twitter: twitter,
-    });
+  const handleSubmit = async () => {
+    const params = sample[0];
+    console.log(params);
+    const res = await postData("/articles/create", params);
     const data = await res;
     if (data.status !== 200) {
       console.log(data.message);
@@ -63,6 +65,7 @@ const Home: NextPage = () => {
         onBlur={(e) => resetInput(e.target.value)}
       />
       <input type="text" ref={anotherRef} />
+      <button onClick={handleSubmit}>送信</button>
     </div>
   );
 };
