@@ -1,7 +1,10 @@
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import pokeData from "../../json/poke_data.json";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
+import Image from "next/image";
 import {
   createContext,
   createRef,
@@ -12,22 +15,18 @@ import {
   useRef,
   useState,
 } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import Stats from "../organisms/Stats";
-import Button from "@mui/material/Button";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import HPStats from "../organisms/HPStats";
+import pokeData from "../../json/poke_data.json";
 import { PokeDetailsContext } from "../../pages/form";
 import { changeIcon } from "../../utils/changeIcon";
+import HPStats from "../organisms/HPStats";
+import Stats from "../organisms/Stats";
 
-import PokemonNameForm from "../organisms/PokemonNameForm";
-import ItemForm from "../organisms/ItemForm";
-import TerastalForm from "../organisms/TerastalForm";
-import MoveForm from "../organisms/MoveForm";
-import { getNature, getNatureToNumber } from "../../utils/nature";
-import { checkPokemons } from "../../utils/validation";
 import { PokeDetails } from "../../types/PokeDetails";
+import { getNature, getNatureToNumber } from "../../utils/nature";
+import ItemForm from "../organisms/ItemForm";
+import MoveForm from "../organisms/MoveForm";
+import PokemonNameForm from "../organisms/PokemonNameForm";
+import TerastalForm from "../organisms/TerastalForm";
 
 type PokemonRefContext = {
   pokemonRef: MutableRefObject<HTMLInputElement>;
@@ -49,6 +48,12 @@ export const PokemonRefContext = createContext({} as PokemonRefContext);
 export const TerastalRefContext = createContext({} as TerastalRefContext);
 export const ItemRefContext = createContext({} as ItemRefContext);
 export const MoveRefsContext = createContext({} as MoveRefsContext);
+export type StatsValue =
+  | "こうげき"
+  | "ぼうぎょ"
+  | "とくこう"
+  | "とくぼう"
+  | "すばやさ";
 
 type RegisterPokemon = {
   onClose: (pokeDetails: PokeDetails[]) => void;
@@ -69,6 +74,14 @@ const RegisterPokemon = ({
     moveRefs.current[i] = createRef<HTMLInputElement>();
   }
 
+  const stats: StatsValue[] = [
+    "こうげき",
+    "ぼうぎょ",
+    "とくこう",
+    "とくぼう",
+    "すばやさ",
+  ];
+
   const [natureToNumber, setNatureToNumber] = useState<number[]>([
     0, 0, 0, 0, 0,
   ]);
@@ -77,6 +90,9 @@ const RegisterPokemon = ({
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [effortValues, setEffortValues] = useState<number[]>([
     0, 0, 0, 0, 0, 0, 0,
+  ]);
+  const [individualValues, setIndividualValues] = useState<number[]>([
+    31, 31, 31, 31, 31, 31,
   ]);
   const { pokeDetails, setPokeDetails } = useContext(PokeDetailsContext);
   const [iconUrls, setIconUrls] = useState<string[]>(new Array(6));
@@ -101,6 +117,7 @@ const RegisterPokemon = ({
       item: itemRef.current.value,
       baseStats: baseStats,
       effortValues: effortValues,
+      individualValues: individualValues,
       nature: getNature(natureToNumber),
       moves: moves,
       terastal: terastalRef.current.value,
@@ -123,6 +140,7 @@ const RegisterPokemon = ({
     setAbility(pokeDetails[currentPoke].ability);
     setBaseStats(pokeDetails[currentPoke].baseStats);
     setEffortValues(pokeDetails[currentPoke].effortValues);
+    setIndividualValues(pokeDetails[currentPoke].individualValues);
     setNatureToNumber(getNatureToNumber(pokeDetails[currentPoke].nature));
 
     if (pokeDetails[currentPoke].pokemon !== "") {
@@ -159,6 +177,7 @@ const RegisterPokemon = ({
       setBaseStats([0, 0, 0, 0, 0, 0, 0]);
     }
     setEffortValues([0, 0, 0, 0, 0, 0, 0]);
+    setIndividualValues([31, 31, 31, 31, 31, 31]);
     setNatureToNumber([0, 0, 0, 0, 0]);
     moveRefs.current.forEach((moveRef) => {
       moveRef.current.value = "";
@@ -235,6 +254,8 @@ const RegisterPokemon = ({
                       baseStats={baseStats[0]}
                       effortValues={effortValues}
                       setEffortValues={setEffortValues}
+                      individualValues={individualValues}
+                      setIndividualValues={setIndividualValues}
                     />
                     <Box
                       sx={{
@@ -273,47 +294,19 @@ const RegisterPokemon = ({
                           }}></Box>
                       </Box>
                     </Box>
-                    <Stats
-                      value="こうげき"
-                      baseStats={baseStats[1]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      natureStatus={natureToNumber[0]}
-                      changeNatureToNumber={changeNatureToNumber}
-                    />
-                    <Stats
-                      value="ぼうぎょ"
-                      baseStats={baseStats[2]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      natureStatus={natureToNumber[1]}
-                      changeNatureToNumber={changeNatureToNumber}
-                    />
-                    <Stats
-                      value="とくこう"
-                      baseStats={baseStats[3]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      natureStatus={natureToNumber[2]}
-                      changeNatureToNumber={changeNatureToNumber}
-                    />
-                    <Stats
-                      value="とくぼう"
-                      baseStats={baseStats[4]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      natureStatus={natureToNumber[3]}
-                      changeNatureToNumber={changeNatureToNumber}
-                    />
-                    <Stats
-                      value="すばやさ"
-                      baseStats={baseStats[5]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      natureStatus={natureToNumber[4]}
-                      changeNatureToNumber={changeNatureToNumber}
-                      style={{ borderBottomLeftRadius: "5px" }}
-                    />
+                    {stats.map((value, index) => (
+                      <Stats
+                        value={value}
+                        key={value}
+                        baseStats={baseStats[index + 1]}
+                        effortValues={effortValues}
+                        setEffortValues={setEffortValues}
+                        individualValues={individualValues}
+                        setIndividualValues={setIndividualValues}
+                        natureStatus={natureToNumber[index]}
+                        changeNatureToNumber={changeNatureToNumber}
+                      />
+                    ))}
                   </Box>
                   <Box
                     sx={{

@@ -1,22 +1,21 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
-import { createContext, useEffect, useState } from "react";
-import { postData } from "../lib/api/client";
-import seriesData from "../json/series.json";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import Dialog from "@mui/material/Dialog";
-import RegisterPokemon from "../components/templates/RegisterPokemon";
 import Image from "next/image";
+import { createContext, useEffect, useState } from "react";
+import RegisterPokemon from "../components/templates/RegisterPokemon";
+import seriesData from "../json/series.json";
+import { PokeDetails } from "../types/PokeDetails";
 import { changeIcon } from "../utils/changeIcon";
 import { textToNumber } from "../utils/textToNumber";
 import { checkPokemons } from "../utils/validation";
-import { PokeDetails } from "../types/PokeDetails";
 
 type PokeDetailsContext = {
   pokeDetails: PokeDetails[];
@@ -31,14 +30,15 @@ export const initPokemon: PokeDetails = {
   moves: ["", "", "", ""],
   baseStats: [0, 0, 0, 0, 0, 0, 0],
   effortValues: [0, 0, 0, 0, 0, 0, 0],
+  individualValues: [31, 31, 31, 31, 31, 31],
   ability: "",
   nature: "",
   terastal: "",
 };
 
 const Form: NextPage = () => {
-  const [format, setFormat] = useState<string>("Single");
-  const [rentalCode, setRentalCode] = useState<string>("");
+  const [format, setFormat] = useState<string>("single");
+  const [rental, setRental] = useState<string>("");
   const [url, setUrl] = useState<string>("");
   const [existUrlList, setExistUrlList] = useState<string[]>([]);
   const [name, setName] = useState<string>("");
@@ -61,7 +61,7 @@ const Form: NextPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("http://localhost:3000/articles/get_urls");
+      const res = await fetch("http://localhost:3000/articles/get_exist_url");
       const data = await res.json();
       setExistUrlList(data);
     };
@@ -86,24 +86,30 @@ const Form: NextPage = () => {
     setPokemonErrors([]);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await postData("/articles/create", {
+  const handleSubmit = async () => {
+    const params = {
       name: name,
       twitter: twitter,
       title: title,
       url: url,
       rate: rate,
       rank: rank,
+      rental: rental,
       season: season,
       series: series,
-    });
-    const data = await res;
-    if (data.status !== 200) {
-      console.log(data.message);
-    } else {
-      console.log("成功しました。");
-    }
+      format: format,
+      parties: pokeDetails,
+    };
+
+    console.log(params);
+
+    // const res = await postData("/articles/create", params);
+    // const data = await res;
+    // if (data.status !== 200) {
+    //   console.log(data.message);
+    // } else {
+    //   console.log("成功しました。");
+    // }
   };
 
   const checkUrlError = (value: string) => {
@@ -118,12 +124,12 @@ const Form: NextPage = () => {
   };
 
   const validateRentalCode = () => {
-    if (rentalCode.length !== 6 || !rentalCode.match(/^[a-zA-Z0-9]+$/)) {
-      setRentalCode("");
+    if (rental.length !== 6 || !rental.match(/^[a-zA-Z0-9]+$/)) {
+      setRental("");
       return;
     }
 
-    setRentalCode(rentalCode.toUpperCase());
+    setRental(rental.toUpperCase());
   };
 
   const validationForm = () => {
@@ -144,11 +150,21 @@ const Form: NextPage = () => {
     if (pokemonErrors.length === 0) {
       setDisabledButton(false);
     }
+
+    handleSubmit();
   };
 
   const onChangeSeries = (value: string) => {
     setSeries(value);
     setSeason(seriesData[value][0]);
+  };
+
+  const onChangeRental = (value: string) => {
+    if (value.length > 6) {
+      return;
+    }
+
+    setRental(value);
   };
   return (
     <>
@@ -193,8 +209,12 @@ const Form: NextPage = () => {
                 autoComplete="off"
                 value={format}
                 onChange={(e) => setFormat(e.target.value)}>
-                <MenuItem value="Single">Single</MenuItem>
-                <MenuItem value="Double">Double</MenuItem>
+                <MenuItem value="single" id="single">
+                  Single
+                </MenuItem>
+                <MenuItem value="double" id="double">
+                  Double
+                </MenuItem>
               </TextField>
             </Box>
 
@@ -213,9 +233,9 @@ const Form: NextPage = () => {
                 label="Rental"
                 size="small"
                 autoComplete="off"
-                value={rentalCode}
+                value={rental}
                 onBlur={validateRentalCode}
-                onChange={(e) => setRentalCode(e.target.value)}
+                onChange={(e) => onChangeRental(e.target.value)}
               />
             </Box>
           </Box>

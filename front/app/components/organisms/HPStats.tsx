@@ -7,14 +7,32 @@ type Stats = {
   baseStats: number;
   effortValues: number[];
   setEffortValues: (effortValues: number[]) => void;
+  individualValues: number[];
+  setIndividualValues: (effortValues: number[]) => void;
 };
-const HPStats = ({ baseStats, effortValues, setEffortValues }: Stats) => {
+const HPStats = ({
+  baseStats,
+  effortValues,
+  setEffortValues,
+  individualValues,
+  setIndividualValues,
+}: Stats) => {
   const [effortValue, setEffortValue] = useState<number | string>(0);
   const [individualValue, setIndividualValue] = useState<number | string>(31);
 
   useEffect(() => {
     setEffortValue(effortValues[0]);
   }, [effortValues]);
+
+  useEffect(() => {
+    setIndividualValue(individualValues[0]);
+  }, [individualValues]);
+
+  const changeIndividualValues = () => {
+    const copyOfIndividualValues = [...individualValues];
+    copyOfIndividualValues[0] = Number(individualValue);
+    setIndividualValues(copyOfIndividualValues);
+  };
 
   const changeEffortValues = () => {
     const copyOfEffortValues = [...effortValues];
@@ -141,6 +159,7 @@ const HPStats = ({ baseStats, effortValues, setEffortValues }: Stats) => {
           }}>
           <TextField
             value={individualValue}
+            onBlur={changeIndividualValues}
             type="tel"
             variant="standard"
             inputMode="tel"

@@ -1,20 +1,29 @@
-import * as React from "react";
+import TabContext from "@mui/lab/TabContext";
+import TabPanel from "@mui/lab/TabPanel";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
 import Tabs from "@mui/material/Tabs";
-import TabPanel from "@mui/lab/TabPanel";
+import * as React from "react";
 import RankByTypes from "../List/RankByTypes";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { useState, useContext } from "react";
-import { DetailsContext } from "../../../pages/article";
-import type { Details, Types } from "../../../pages/article";
 import Typography from "@mui/material/Typography";
+import { useContext, useEffect, useState } from "react";
+import { getData } from "../../../lib/api/fetchApi";
+import type { Details, Types } from "../../../pages/article";
+import { DetailsContext } from "../../../pages/article";
 
 type Pokemon = {
   pokemon: string;
+};
+
+type Tabs = {
+  items: Types[];
+  moves: Types[];
+  terastals: Types[];
+  abilities: Types[];
+  natures: Types[];
 };
 
 const PokeDetailTab = ({ pokemon }: Pokemon) => {
@@ -27,12 +36,16 @@ const PokeDetailTab = ({ pokemon }: Pokemon) => {
     console.log(value);
   };
 
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(
-        `http://localhost:3000/articles/detail?pokemon=${pokemon}`
-      );
-      const data = await res.json();
+  useEffect(() => {
+    const getUtilizationRate = async () => {
+      const params = {
+        pokemon: pokemon,
+      };
+      const data = (await getData(
+        "/articles/utilization_rate",
+        params
+      )) as unknown as Tabs;
+
       const newData: Details = {
         [pokemon]: {
           items: data.items,
@@ -51,11 +64,10 @@ const PokeDetailTab = ({ pokemon }: Pokemon) => {
     };
 
     if (details[pokemon] === undefined) {
-      getData();
+      getUtilizationRate();
     } else {
       setTimeout(() => setLoading(false), 300);
     }
-    console.log("PokeDetailTab");
   }, []);
 
   const getPercentage = (count: number, sum: number) => {

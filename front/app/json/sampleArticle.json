@@ -1,0 +1,87 @@
+[
+  {
+    "name": "スカーレット",
+    "twitter": "twitter_id",
+    "title": "テラノーマルサーフゴー軸",
+    "url": "https://hatenablog.com/2",
+    "rate": 2000,
+    "rank": 1,
+    "rental": "AJJGGJ",
+    "season": "2",
+    "series": "1",
+    "format": "single",
+    "parties": [
+      {
+        "pokemon": "サニーゴ",
+        "ability": "さいせいりょく",
+        "item": "サイコシード",
+        "baseStats": [65, 55, 95, 65, 95, 35, 410],
+        "effortValues": [0, 0, 0, 0, 0, 0, 0],
+        "individualValues": [0, 31, 31, 31, 31, 31],
+        "nature": "まじめ",
+        "moves": ["じこさいせい", "", "", ""],
+        "terastal": "くさ"
+      },
+      {
+        "pokemon": "サーフゴー",
+        "ability": "おうごんのからだ",
+        "item": "",
+        "baseStats": [87, 60, 95, 133, 91, 84.55],
+        "effortValues": [0, 0, 0, 0, 0, 0, 0],
+        "individualValues": [31, 0, 31, 31, 31, 0],
+        "nature": "れいせい",
+        "moves": [
+          "みがわり",
+          "ゴールドラッシュ",
+          "じこさいせい",
+          "シャドーボール"
+        ],
+        "terastal": "ほのお"
+      },
+      {
+        "pokemon": "サーナイト",
+        "ability": "テレパシー",
+        "item": "こだわりスカーフ",
+        "baseStats": [68, 65, 65, 125, 115, 80, 518],
+        "effortValues": [0, 0, 0, 252, 0, 252, 504],
+        "individualValues": [31, 31, 31, 31, 31, 31],
+        "nature": "おくびょう",
+        "moves": ["ムーンフォース", "", "", ""],
+        "terastal": "ほのお"
+      },
+      {
+        "pokemon": "サワムラー",
+        "ability": "じゅうなん",
+        "item": "",
+        "baseStats": [50, 120, 53, 35, 110, 87, 455],
+        "effortValues": [0, 0, 0, 0, 0, 0, 0],
+        "individualValues": [31, 31, 31, 31, 31, 31],
+        "nature": "まじめ",
+        "moves": ["ひかりのかべ", "", "", ""],
+        "terastal": "ひこう"
+      },
+      {
+        "pokemon": "ヒトカゲ",
+        "ability": "もうか",
+        "item": "さらさらいわ",
+        "baseStats": [39, 52, 43, 60, 50, 65, 309],
+        "effortValues": [0, 0, 0, 0, 0, 0, 0],
+        "individualValues": [31, 31, 31, 31, 31, 31],
+        "nature": "まじめ",
+        "moves": ["サイコウェーブ", "", "", ""],
+        "terastal": "でんき"
+      },
+      {
+        "pokemon": "イトマル",
+        "ability": "ふみん",
+        "item": "ものまねハーブ",
+        "baseStats": [40, 60, 40, 40, 40, 30, 250],
+        "effortValues": [0, 0, 0, 0, 0, 0, 0],
+        "individualValues": [31, 31, 31, 31, 31, 31],
+        "nature": "まじめ",
+        "moves": ["さいきのいのり", "コアパニッシャー", "", ""],
+        "terastal": "ゴースト"
+      }
+    ]
+  }
+]

@@ -1,21 +1,21 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import PoketetsuLink from "../Link/PoketetsuLink";
 import Box from "@mui/material/Box";
-import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
-import PokeDetailTab from "../Tab/PokeDetailTab";
-import Image from "next/image";
-import { useCallback, useContext, useEffect, useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import { useContext, useEffect, useState } from "react";
 import pokeData from "../../../json/poke_data.json";
+import { getData } from "../../../lib/api/fetchApi";
 import {
   ClickSearchContext,
   PokemonRanksContext,
 } from "../../../pages/article";
+import PoketetsuLink from "../Link/PoketetsuLink";
+import PokeDetailTab from "../Tab/PokeDetailTab";
 
 type Search = {
   ranks: [number, number];
@@ -26,10 +26,6 @@ type Pokemon = {
   pokemon: string;
   count: number;
 };
-
-// const ControlledAccordions = React.memo(({ ranks, seasons }: Search) => {
-//   return <ControlledAccordions1 ranks={ranks} seasons={seasons} />;
-// });
 
 const ControlledAccordions = ({ ranks, seasons }: Search) => {
   const [expanded, setExpanded] = useState<string | false>(false);
@@ -48,20 +44,24 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
   useEffect(() => {
     if (clickSearch) {
       const fetchData = async () => {
-        const res = await fetch("http://localhost:3000/articles/rank");
-        const data = await res.json();
+        const params = {
+          seasons: seasons,
+        };
+
+        const data = await getData("/articles/rank", params);
         const dataWithId = data.map((d, index) => {
           d["id"] = index + 1;
           return d;
         });
         setFilterPokemons(dataWithId.slice(0, 10));
         setPokemonRanks(dataWithId);
-        console.log(dataWithId);
+        console.log("再描画");
       };
       fetchData();
       setLoading(false);
       setClickSearch(false);
     } else {
+      console.log("再描画なし");
       setFilterPokemons(pokemonRanks.slice(0, 10));
     }
   }, []);
@@ -75,8 +75,8 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
   };
 
   return (
-    <>
-      <List sx={{ width: 320, padding: 0 }}>
+    <Box sx={{ width: 300, padding: 0 }}>
+      <List>
         {filterPokemons.map((filterPokemon: Pokemon, index) => (
           <ListItem disablePadding={true} key={filterPokemon.pokemon}>
             <Box sx={{ width: "100%" }}>
@@ -109,7 +109,7 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
                         .padStart(3, "0")}.png`}
                     />
                   </Box>
-                  <Typography variant="h6" sx={{ width: "50%" }}>
+                  <Typography variant="h6" sx={{ width: "50%", zIndex: 0 }}>
                     {filterPokemon.pokemon}
                   </Typography>
                   <PoketetsuLink pokemon={filterPokemon.pokemon} />
@@ -124,7 +124,7 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
         ))}
       </List>
       <button onClick={loadArticle}>// 読み込み //</button>
-    </>
+    </Box>
   );
 };
 

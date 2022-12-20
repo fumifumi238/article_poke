@@ -5,6 +5,7 @@ export type PokeDetails = {
   moves: string[];
   baseStats: number[];
   effortValues: number[];
+  individualValues: number[];
   nature: string;
   terastal: string;
 };

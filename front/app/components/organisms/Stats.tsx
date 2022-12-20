@@ -1,17 +1,20 @@
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
 import { textToNumber } from "../../utils/textToNumber";
+import { StatsValue } from "../templates/RegisterPokemon";
 
 type Stats = {
-  value: "こうげき" | "ぼうぎょ" | "とくこう" | "とくぼう" | "すばやさ";
+  value: StatsValue;
   style?: { [key: string]: string };
   baseStats?: number;
   effortValues: number[];
   setEffortValues: (effortValues: number[]) => void;
+  individualValues: number[];
+  setIndividualValues: (effortValues: number[]) => void;
   natureStatus: number;
   changeNatureToNumber: (index: number, num: number) => void;
 };
@@ -21,6 +24,8 @@ const Stats = ({
   baseStats,
   effortValues,
   setEffortValues,
+  individualValues,
+  setIndividualValues,
   natureStatus,
   changeNatureToNumber,
 }: Stats) => {
@@ -55,6 +60,10 @@ const Stats = ({
   }, [effortValues]);
 
   useEffect(() => {
+    setIndividualValue(individualValues[indexOfValue[value]]);
+  }, [individualValues]);
+
+  useEffect(() => {
     setButtonType(numberToButton[natureStatus]);
   }, [natureStatus]);
 
@@ -66,14 +75,18 @@ const Stats = ({
     const copyOfEffortValues = [...effortValues];
     copyOfEffortValues[indexOfValue[value]] = Number(effortValue);
 
-    // TODO: ロジック改善するとちょっと早い n(6) => n(1)
-
     let sum = 0;
     for (let i = 0; i <= 5; i++) {
       sum += copyOfEffortValues[i];
     }
     copyOfEffortValues[6] = sum;
     setEffortValues(copyOfEffortValues);
+  };
+
+  const changeIndividualValues = () => {
+    const copyOfIndividualValues = [...individualValues];
+    copyOfIndividualValues[indexOfValue[value]] = Number(individualValue);
+    setIndividualValues(copyOfIndividualValues);
   };
 
   const returnColor = () => {
@@ -210,6 +223,7 @@ const Stats = ({
             type="tel"
             variant="standard"
             inputMode="tel"
+            onBlur={changeIndividualValues}
             onChange={(e) =>
               textToNumber(e.target.value, 0, setIndividualValue, 0, 31)
             }
