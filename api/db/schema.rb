@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_19_112200) do
+ActiveRecord::Schema.define(version: 2022_12_20_141446) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url", null: false
@@ -23,10 +23,37 @@ ActiveRecord::Schema.define(version: 2022_12_19_112200) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "permit", default: false
     t.string "title", null: false
-    t.string "rental"
+    t.string "rental", default: ""
     t.string "version", default: "sv"
     t.string "format", default: "single"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "effort_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "h", default: 0, null: false
+    t.integer "a", default: 0, null: false
+    t.integer "b", default: 0, null: false
+    t.integer "c", default: 0, null: false
+    t.integer "d", default: 0, null: false
+    t.integer "s", default: 0, null: false
+    t.integer "sum", default: 0, null: false
+    t.bigint "party_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_id"], name: "index_effort_values_on_party_id"
+  end
+
+  create_table "individual_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "h", default: 31, null: false
+    t.integer "a", default: 31, null: false
+    t.integer "b", default: 31, null: false
+    t.integer "c", default: 31, null: false
+    t.integer "d", default: 31, null: false
+    t.integer "s", default: 31, null: false
+    t.bigint "party_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_id"], name: "index_individual_values_on_party_id"
   end
 
   create_table "moves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -58,6 +85,8 @@ ActiveRecord::Schema.define(version: 2022_12_19_112200) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "effort_values", "parties"
+  add_foreign_key "individual_values", "parties"
   add_foreign_key "moves", "parties"
   add_foreign_key "parties", "articles"
 end

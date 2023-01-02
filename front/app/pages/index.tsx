@@ -1,71 +1,103 @@
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
-import pokeData from "../json/poke_data.json";
-import sample from "../json/sampleArticle.json";
-import { postData } from "../lib/api/fetchApi";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
-type User = {
-  id: number;
-  name: string;
-  twitter: string;
-};
+type Format = "single" | "double";
 
 const Home: NextPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [name, setName] = useState<string>("");
-  const [twitter, setTwitter] = useState<string>("");
-  const inputRef = useRef(null);
-  const anotherRef = useRef(null);
+  const router = useRouter();
 
-  useEffect(() => {
-    // validationを付けたい　https://zenn.dev/uzimaru0000/articles/json-type-validation
-    // const getUser = async () => {
-    //   const res = await fetch("http://localhost:3000/users/index");
-    //   const data = (await res.json()) as User[];
-    //   setUsers(data);
-    // };
-    // getUser();
-    Object.keys(pokeData).forEach((data) => {
-      let sum = 0;
-      for (let i = 0; i < 6; i++) {
-        sum += pokeData[data].baseStats[i];
-      }
-
-      if (sum !== pokeData[data].baseStats[6]) {
-        console.log(data);
-      }
-    });
-  }, []);
-
-  const handleSubmit = async () => {
-    const params = sample[0];
-    console.log(params);
-    const res = await postData("/articles/create", params);
-    const data = await res;
-    if (data.status !== 200) {
-      console.log(data.message);
-    } else {
-      console.log("成功しました。");
-    }
-  };
-
-  const resetInput = (value: string) => {
-    if (value === "n") {
-      console.log(value);
-      inputRef.current.value = "";
-      anotherRef.current.focus();
-    }
+  const redirectToArticle = (format: Format = "single") => {
+    router.push(`/article?format=${format}`);
   };
 
   return (
     <div>
-      <input
-        type="text"
-        ref={inputRef}
-        onBlur={(e) => resetInput(e.target.value)}
-      />
-      <input type="text" ref={anotherRef} />
-      <button onClick={handleSubmit}>送信</button>
+      <Box
+        sx={{
+          border: 1,
+          width: "100%",
+          maxWidth: 600,
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: "2px",
+          marginTop: 2,
+        }}>
+        <Box sx={{ width: "95%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}>
+            <Typography
+              sx={{
+                fontFamily: "serif",
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}>
+              シリーズ1について
+            </Typography>
+            <Box sx={{ display: "flex", margin: "0 0 0 auto" }}>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ margin: "4px" }}
+                onClick={() => redirectToArticle()}>
+                シングル
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ margin: "4px" }}
+                onClick={() => redirectToArticle("double")}>
+                ダブル
+              </Button>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              aspectRatio: "16/9",
+              margin: "0 auto",
+            }}>
+            <Image
+              src="/image/rankedBattles/series1.jpg"
+              layout="fill"
+              objectFit="contain"
+              style={{ textAlign: "center" }}
+              onClick={() => redirectToArticle()}
+            />
+          </Box>
+          <Box sx={{ width: "100%", bgcolor: "#00CED1", mt: 1 }}>
+            <Box sx={{ width: "99%", bgcolor: "#EEEEEE", marginLeft: "1%" }}>
+              <Typography>シリーズ1を使用する期間</Typography>
+            </Box>
+          </Box>
+          <Box>
+            <Typography>2022年12月2日(金)~2023年2月1日(水)8:59</Typography>
+          </Box>
+          <Box sx={{ width: "100%", bgcolor: "#00CED1" }}>
+            <Box sx={{ width: "99%", bgcolor: "#EEEEEE", marginLeft: "1%" }}>
+              <Typography>シリーズ1のレギュレーション</Typography>
+            </Box>
+          </Box>
+          <Box sx={{ border: "2px solid #EEEEEE", mt: 1 }}>
+            <Typography sx={{ paddingLeft: 1 }}>使用できるポケモン</Typography>
+          </Box>
+          <Box>
+            <Typography>
+              パルデア図鑑に登場するポケモンが参加できます。
+            </Typography>
+            <Typography>
+              ※ パラドクスポケモン、及び伝説のポケモンは使用禁止
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 };

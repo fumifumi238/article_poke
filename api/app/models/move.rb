@@ -1,5 +1,5 @@
 class Move < ApplicationRecord
-  belongs_to :party,dependent: :destroy
+  belongs_to :party
   validates :pokemon,presence: true
   validates :name,presence: true
 end

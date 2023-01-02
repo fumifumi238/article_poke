@@ -16,6 +16,7 @@ import { DetailsContext } from "../../../pages/article";
 
 type Pokemon = {
   pokemon: string;
+  articleIds: number[];
 };
 
 type Tabs = {
@@ -26,7 +27,7 @@ type Tabs = {
   natures: Types[];
 };
 
-const PokeDetailTab = ({ pokemon }: Pokemon) => {
+const PokeDetailTab = ({ pokemon, articleIds }: Pokemon) => {
   const [value, setValue] = useState<string>("moves");
   const { details, setDetails } = useContext(DetailsContext);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,6 +41,7 @@ const PokeDetailTab = ({ pokemon }: Pokemon) => {
     const getUtilizationRate = async () => {
       const params = {
         pokemon: pokemon,
+        ids: articleIds,
       };
       const data = (await getData(
         "/articles/utilization_rate",

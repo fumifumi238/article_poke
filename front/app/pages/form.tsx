@@ -1,21 +1,32 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
+import AlertSuccess from "../components/atoms/AlertSuccess";
+import FormatForm from "../components/molecules/Form/FormatForm";
+import NameForm from "../components/molecules/Form/NameForm";
+import RankForm from "../components/molecules/Form/RankForm";
+import RateForm from "../components/molecules/Form/RateForm";
+import RentalForm from "../components/molecules/Form/RentalForm";
+import SeasonForm from "../components/molecules/Form/SeasonForm";
+import SeriesForm from "../components/molecules/Form/SeriesForm";
+import TitleForm from "../components/molecules/Form/TitleForm";
+import TwitterForm from "../components/molecules/Form/TwitterForm";
+import UrlForm from "../components/molecules/Form/UrlForm";
+import PartyInfo from "../components/organisms/PartyInfo";
 import RegisterPokemon from "../components/templates/RegisterPokemon";
+import pokeData from "../json/poke_data.json";
 import seriesData from "../json/series.json";
+import { postData } from "../lib/api/fetchApi";
 import { PokeDetails } from "../types/PokeDetails";
 import { changeIcon } from "../utils/changeIcon";
-import { textToNumber } from "../utils/textToNumber";
 import { checkPokemons } from "../utils/validation";
+
+// TODO: 保存時のエラーとエラーメッセージ
 
 type PokeDetailsContext = {
   pokeDetails: PokeDetails[];
@@ -37,45 +48,46 @@ export const initPokemon: PokeDetails = {
 };
 
 const Form: NextPage = () => {
+  const router = useRouter();
   const [format, setFormat] = useState<string>("single");
   const [rental, setRental] = useState<string>("");
   const [url, setUrl] = useState<string>("");
-  const [existUrlList, setExistUrlList] = useState<string[]>([]);
+  const [urlError, setUrlError] = useState<boolean>(false);
+
   const [name, setName] = useState<string>("");
   const [twitter, setTwitter] = useState<string>("");
   const [series, setSeries] = useState<string>(
     Object.keys(seriesData)[Object.keys(seriesData).length - 1]
   );
-  const [season, setSeason] = useState<string>(seriesData[series][0]);
+
+  const [season, setSeason] = useState<string>(
+    seriesData[series][seriesData[series].length - 1]
+  );
   const [rank, setRank] = useState<number | string>("");
   const [rate, setRate] = useState<number | string>("");
   const [title, setTitle] = useState<string>("");
-  const [open, setOpen] = useState<boolean>(false);
+
+  const [openRegister, setOpenRegister] = useState<boolean>(false);
   const [currentPoke, setCurrentPoke] = useState<number>(0);
   const [pokemonErrors, setPokemonErrors] = useState<string[]>([]);
-  const [urlError, setUrlError] = useState<string>("");
+
   const [disabledButton, setDisabledButton] = useState<boolean>(true);
   const [pokeDetails, setPokeDetails] = useState<PokeDetails[]>(
     new Array(6).fill(initPokemon)
   );
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("http://localhost:3000/articles/get_exist_url");
-      const data = await res.json();
-      setExistUrlList(data);
-    };
-    getData();
-  }, []);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const [openConfirm, setOpenConfirm] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!open) {
+    if (!openRegister) {
       validationForm();
     }
-  }, [open]);
+  }, [openRegister]);
 
   const onClickCloseButton = (copyOfPokeDetails: PokeDetails[]) => {
-    setOpen(false);
+    setOpenRegister(false);
     const checkPokemonError = checkPokemons(copyOfPokeDetails);
     if (checkPokemonError.length !== 0) {
       setPokemonErrors(checkPokemonError);
@@ -84,6 +96,17 @@ const Form: NextPage = () => {
     }
 
     setPokemonErrors([]);
+  };
+
+  const openConfirmButton = () => {
+    const copyOfPokeDetails = [...pokeDetails];
+    for (let pokeDetail of copyOfPokeDetails) {
+      if (pokeDetail.terastal === "") {
+        pokeDetail.terastal = pokeData[pokeDetail.pokemon].types[0];
+      }
+    }
+    setPokeDetails(copyOfPokeDetails);
+    setOpenConfirm(true);
   };
 
   const handleSubmit = async () => {
@@ -101,39 +124,21 @@ const Form: NextPage = () => {
       parties: pokeDetails,
     };
 
-    console.log(params);
-
-    // const res = await postData("/articles/create", params);
-    // const data = await res;
-    // if (data.status !== 200) {
-    //   console.log(data.message);
-    // } else {
-    //   console.log("成功しました。");
-    // }
-  };
-
-  const checkUrlError = (value: string) => {
-    for (let existUrl of existUrlList) {
-      if (value === existUrl) {
-        setUrlError("そのURLはすでに存在しています。");
-        return;
-      }
+    const res = await postData("/articles/create", params);
+    const data = await res;
+    if (data.status !== 200) {
+      console.log(data.message);
+    } else {
+      console.log("成功しました。");
+      setModalOpen(true),
+        setTimeout(() => {
+          router.push("/article");
+        }, 500);
     }
-
-    setUrlError("");
-  };
-
-  const validateRentalCode = () => {
-    if (rental.length !== 6 || !rental.match(/^[a-zA-Z0-9]+$/)) {
-      setRental("");
-      return;
-    }
-
-    setRental(rental.toUpperCase());
   };
 
   const validationForm = () => {
-    if (name === "" || title === "" || url === "" || urlError !== "") {
+    if (name === "" || title === "" || url === "" || urlError) {
       setDisabledButton(true);
       return;
     }
@@ -150,33 +155,27 @@ const Form: NextPage = () => {
     if (pokemonErrors.length === 0) {
       setDisabledButton(false);
     }
-
-    handleSubmit();
   };
 
-  const onChangeSeries = (value: string) => {
-    setSeries(value);
-    setSeason(seriesData[value][0]);
-  };
-
-  const onChangeRental = (value: string) => {
-    if (value.length > 6) {
-      return;
+  const submitArticle = () => {
+    validationForm();
+    if (!disabledButton) {
+      handleSubmit();
     }
-
-    setRental(value);
   };
+
   return (
     <>
+      <AlertSuccess modalOpen={modalOpen} />
+
       <Box
         sx={{
           minWidth: 240,
           maxWidth: 500,
           width: "95%",
           border: 1,
-          height: 400,
           margin: "0 auto",
-          marginTop: "20px",
+          marginTop: 1,
         }}>
         <Box
           sx={{
@@ -189,140 +188,36 @@ const Form: NextPage = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "center",
               paddingTop: 1,
+              flexWrap: "wrap",
             }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                width: "50%",
-                margin: 1,
-              }}>
-              <Typography>Format:</Typography>
-
-              <TextField
-                select
-                label="Format"
-                fullWidth
-                size="small"
-                autoComplete="off"
-                value={format}
-                onChange={(e) => setFormat(e.target.value)}>
-                <MenuItem value="single" id="single">
-                  Single
-                </MenuItem>
-                <MenuItem value="double" id="double">
-                  Double
-                </MenuItem>
-              </TextField>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                width: "50%",
-                margin: 1,
-              }}>
-              <Typography>Rental:</Typography>
-
-              <TextField
-                placeholder="A1B6CC"
-                fullWidth
-                label="Rental"
-                size="small"
-                autoComplete="off"
-                value={rental}
-                onBlur={validateRentalCode}
-                onChange={(e) => onChangeRental(e.target.value)}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", margin: 0 }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                width: "40%",
-                margin: 0,
-                marginX: 1,
-              }}>
-              <Typography>TN*:</Typography>
-
-              <TextField
-                placeholder="スカーレット"
-                label="TN*"
-                fullWidth
-                size="small"
-                autoComplete="off"
-                value={name}
-                onBlur={validationForm}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                width: "60%",
-                margin: 0,
-                marginX: 1,
-              }}>
-              <Typography> Twitter:@</Typography>
-
-              <TextField
-                placeholder="twitter_id"
-                fullWidth
-                label="Twitter"
-                size="small"
-                autoComplete="off"
-                value={twitter}
-                onChange={(e) => setTwitter(e.target.value)}
-              />
-            </Box>
+            <FormatForm format={format} setFormat={setFormat} />
+            <RentalForm rental={rental} setRental={setRental} />
           </Box>
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              margin: 1,
+              margin: 0,
+              flexWrap: "wrap",
             }}>
-            <Typography sx={{ fontSize: "16px" }}>Title*:</Typography>
-            <TextField
-              placeholder="【SV S1】対面ガッサミミドラパ 【最終レート2000 最終1位】"
-              label="Title*"
-              size="small"
-              fullWidth
-              autoComplete="off"
-              value={title}
-              onBlur={validationForm}
-              onChange={(e) => setTitle(e.target.value)}
+            <NameForm
+              tn={name}
+              setName={setName}
+              validationForm={validationForm}
             />
+            <TwitterForm twitter={twitter} setTwitter={setTwitter} />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              margin: 1,
-            }}>
-            <Typography sx={{ fontSize: "16px" }}>URL*:</Typography>
-            <TextField
-              placeholder="https://hatenablog.com/"
-              label="URL*"
-              size="small"
-              autoComplete="off"
-              fullWidth
-              value={url}
-              error={urlError !== ""}
-              helperText={urlError}
-              onChange={(e) => {
-                setUrl(e.target.value), checkUrlError(e.target.value);
-              }}
-              onBlur={validationForm}
-            />
-          </Box>
+          <TitleForm
+            title={title}
+            setTitle={setTitle}
+            validationForm={validationForm}
+          />
+          <UrlForm
+            url={url}
+            setUrl={setUrl}
+            validationForm={validationForm}
+            setError={setUrlError}
+          />
           <Box
             sx={{
               display: "flex",
@@ -330,105 +225,22 @@ const Form: NextPage = () => {
               height: 40,
               margin: 1,
             }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                margin: 1,
-                paddingRight: 2,
-              }}>
-              <Typography sx={{ fontSize: "16px" }}>Series*:</Typography>
-              <FormControl size="small">
-                <InputLabel variant="standard" htmlFor="Series">
-                  Series
-                </InputLabel>
-                <Select
-                  defaultValue={
-                    Object.keys(seriesData)[Object.keys(seriesData).length - 1]
-                  }
-                  value={series}
-                  onChange={(e) => onChangeSeries(e.target.value)}>
-                  {Object.keys(seriesData).map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                margin: 1,
-              }}>
-              <Typography sx={{ fontSize: "16px" }}>Season*:</Typography>
-              <FormControl size="small">
-                <InputLabel variant="standard" htmlFor="Season">
-                  Season
-                </InputLabel>
-                <Select
-                  defaultValue={seriesData[series][0]}
-                  value={season}
-                  onChange={(e) => setSeason(e.target.value)}>
-                  {seriesData[series].map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Box>
+            <SeriesForm
+              series={series}
+              setSeries={setSeries}
+              setSeason={setSeason}
+            />
+            <SeasonForm series={series} season={season} setSeason={setSeason} />
           </Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               height: 40,
+              marginBottom: 1,
             }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                margin: 1,
-              }}>
-              <Typography sx={{ fontSize: "16px" }}>Rate:</Typography>
-              <TextField
-                placeholder="2000"
-                label="Rate"
-                size="small"
-                type="tel"
-                autoComplete="off"
-                inputMode="numeric"
-                sx={{ width: 80 }}
-                value={rate}
-                onChange={(e) =>
-                  textToNumber(e.target.value, "", setRate, 1, 3000)
-                }
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                margin: 1,
-              }}>
-              <Typography sx={{ fontSize: "16px" }}>Rank:</Typography>
-              <TextField
-                placeholder="1"
-                label="Rank"
-                size="small"
-                type="tel"
-                sx={{ width: 60 }}
-                value={rank}
-                autoComplete="off"
-                inputMode="numeric"
-                onChange={(e) =>
-                  textToNumber(e.target.value, "", setRank, 1, 100000)
-                }
-              />
-              <Typography sx={{ fontSize: "16px", margin: 1 }}>位</Typography>
-            </Box>
+            <RateForm rate={rate} setRate={setRate} />
+            <RankForm rank={rank} setRank={setRank} />
           </Box>
         </Box>
         <Box sx={{ display: "flex", margin: 1 }}>
@@ -448,7 +260,7 @@ const Form: NextPage = () => {
               />
             ))}
           </Box>
-          <Button onClick={() => setOpen(true)} sx={{ width: "40%" }}>
+          <Button onClick={() => setOpenRegister(true)} sx={{ width: "40%" }}>
             ポケモン登録
           </Button>
         </Box>
@@ -468,13 +280,61 @@ const Form: NextPage = () => {
           variant="contained"
           size="large"
           disabled={disabledButton}
-          onClick={validationForm}
+          onClick={openConfirmButton}
           sx={{ width: "100%", maxWidth: 500 }}>
           この内容で登録する
         </Button>
       </Box>
 
-      <Dialog open={open} onClose={() => setOpen(false)} fullScreen>
+      <Dialog
+        open={openConfirm}
+        onClose={() => setOpenConfirm(false)}
+        fullScreen
+        maxWidth="sm">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              textAlign: "center",
+              width: "100%",
+              maxWidth: 600,
+              flexWrap: "wrap",
+              height: "90vh",
+              maxHeight: 600,
+              overflow: "scroll",
+            }}>
+            {pokeDetails.map((party, index) => (
+              <Box sx={{ width: "50%" }} key={index}>
+                <PartyInfo party={party} />
+              </Box>
+            ))}
+          </Box>
+          <Box>
+            <Typography sx={{ color: "green" }}>
+              この内容でよろしいですか？
+            </Typography>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Button sx={{ margin: 1 }} onClick={submitArticle}>
+                はい
+              </Button>
+              <Button sx={{ margin: 1 }} onClick={() => setOpenConfirm(false)}>
+                いいえ
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Dialog>
+
+      <Dialog
+        open={openRegister}
+        onClose={() => setOpenRegister(false)}
+        fullScreen>
         <PokeDetailsContext.Provider value={{ pokeDetails, setPokeDetails }}>
           <RegisterPokemon
             onClose={onClickCloseButton}

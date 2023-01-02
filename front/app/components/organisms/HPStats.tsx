@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
+import { calcHPStats } from "../../utils/calcStats";
 import { textToNumber } from "../../utils/textToNumber";
 
 type Stats = {
@@ -47,20 +48,6 @@ const HPStats = ({
     setEffortValues(copyOfEffortValues);
   };
 
-  const calcStats = () => {
-    if (baseStats === 1) {
-      return 1;
-    }
-    const stats =
-      Math.floor(
-        ((baseStats * 2 + Number(individualValue) + Number(effortValue) / 4) *
-          50) /
-          100
-      ) + 60;
-
-    return stats;
-  };
-
   return (
     <Box sx={{ height: 25, borderBottom: 1, display: "flex" }}>
       <Box
@@ -98,7 +85,7 @@ const HPStats = ({
             fontSize: 12,
             listStyle: "none",
           }}>
-          {calcStats()}
+          {calcHPStats(baseStats, Number(effortValue), Number(individualValue))}
         </li>
         <li
           style={{

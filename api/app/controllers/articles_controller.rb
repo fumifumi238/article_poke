@@ -1,24 +1,46 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.joins(:user).select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(season: params[:seasons],format: params[:format],version: params[:version]).order(:rank,season: :desc).limit(30).offset(params[:offset])
+    @all_articles = Article.joins(:user)
+    .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
+    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: [params[:ranks][0]...params[:ranks][1],nil]).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
+
+    @articles = @all_articles.limit(20)
+
+    @ids = @all_articles.ids
 
     @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
 
-    render json: get_articles_with_party(@articles,@parties);
+    article_with_party = get_articles_with_party(@articles,@parties)
+
+    render json:[article_with_party,@ids]
+  end
+
+  def load
+    @articles = Article.joins(:user)
+    .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
+    .where(id: params[:ids])
+
+    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
+
+    render json: get_articles_with_party(@articles,@parties)
+
   end
 
   def rank
-     @articles = Article.joins(:user).select("articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as user_name,users.twitter").where(season: params[:seasons])
-     @parties = Party.where(article: @articles.ids)
+    #  @articles = Article.joins(:user).select("articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as user_name,users.twitter").where(season: params[:seasons])
+     @parties = Party.where(article: params[:ids])
      @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
+     counts = 0
+     @pokemon_ranks.each_with_index do |pokemon,index|
+       pokemon[:id] = index+1
+      counts += pokemon.count
+     end
 
-     render json: @pokemon_ranks
+     render json: [@pokemon_ranks,counts]
   end
 
   def search_pokemon
-    puts params[:ids]
-    @articles = Article.joins(:user).select("articles.id as id,articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as tn,users.twitter").where(id: params[:ids]).limit(30)
+    @articles = Article.joins(:user).select("articles.id as id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(id: params[:ids]).limit(20)
     @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
 
     render json: get_articles_with_party(@articles,@parties);
@@ -37,7 +59,7 @@ class ArticlesController < ApplicationController
 
   # 使用率
   def utilization_rate
-    @articles = Article.where("articles.rank >= ? and articles.rank <= ? and articles.season = ?",1,10000,1).pluck("articles.id")
+    @articles = Article.where(id: params[:ids]).pluck("articles.id")
     @parties = Party.where(article: @articles,pokemon: params[:pokemon])
 
     @natures = @parties.select('nature as name,count(nature) as count').group(:nature).order('Count(nature) DESC')
@@ -89,7 +111,6 @@ private
   def save_pokemon_details(parties,article)
     parties.each do |party|
       party_params = party.permit(:pokemon,:ability,:item,:nature,:terastal)
-      puts party_params
       new_party = Party.new(party_params)
       new_party.article = article
       new_party.save
@@ -101,6 +122,13 @@ private
           move.save
         end
       end
+      i= party[:individualValues]
+      e = party[:effortValues]
+
+      new_individual_values = IndividualValue.create!(h: i[0],a:i[1],b:i[2],c:i[3],d:i[4],s:i[5],party: new_party)
+      new_effort_values = EffortValue.create!(h: e[0],a:e[1],b:e[2],c:e[3],d:e[4],s:e[5],sum: e[6],party: new_party)
+
+
     end
   end
 

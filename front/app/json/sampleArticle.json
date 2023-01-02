@@ -1,9 +1,9 @@
 [
   {
     "name": "スカーレット",
-    "twitter": "twitter_id",
+    "twitter": "twitter_b",
     "title": "テラノーマルサーフゴー軸",
-    "url": "https://hatenablog.com/2",
+    "url": "https://hatenablog.com/11",
     "rate": 2000,
     "rank": 1,
     "rental": "AJJGGJ",
@@ -12,8 +12,8 @@
     "format": "single",
     "parties": [
       {
-        "pokemon": "サニーゴ",
-        "ability": "さいせいりょく",
+        "pokemon": "ドドゲザン",
+        "ability": "そうだいしょう",
         "item": "サイコシード",
         "baseStats": [65, 55, 95, 65, 95, 35, 410],
         "effortValues": [0, 0, 0, 0, 0, 0, 0],

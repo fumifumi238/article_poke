@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  private
+
   def get_articles_with_party(articles,parties)
     arr = []
     articles.each do |article|

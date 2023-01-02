@@ -1,10 +1,11 @@
-import Head from "next/head";
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import theme from "../src/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import Layout from "../components/templates/LayOut";
 import createEmotionCache from "../src/createEmotionCache";
+import theme from "../src/theme";
 
 const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {
@@ -20,7 +21,9 @@ function MyApp(props: MyAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </CacheProvider>
   );

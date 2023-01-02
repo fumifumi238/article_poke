@@ -3,23 +3,31 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
-import pokeData from "../../../json/poke_data.json";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { getData } from "../../../lib/api/fetchApi";
 import {
-  ClickSearchContext,
+  ChangeSettingContext,
   PokemonRanksContext,
 } from "../../../pages/article";
+import { changeIcon } from "../../../utils/changeIcon";
 import PoketetsuLink from "../Link/PoketetsuLink";
 import PokeDetailTab from "../Tab/PokeDetailTab";
 
 type Search = {
-  ranks: [number, number];
-  seasons: number[];
+  articleIds: number[];
+  counts: number;
+  setCounts: Dispatch<SetStateAction<number>>;
 };
 
 type Pokemon = {
@@ -27,13 +35,12 @@ type Pokemon = {
   count: number;
 };
 
-const ControlledAccordions = ({ ranks, seasons }: Search) => {
+const ControlledAccordions = ({ articleIds, counts, setCounts }: Search) => {
   const [expanded, setExpanded] = useState<string | false>(false);
   // const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const { pokemonRanks, setPokemonRanks } = useContext(PokemonRanksContext);
-  const { clickSearch, setClickSearch } = useContext(ClickSearchContext);
+  const { changeSetting, setChangeSetting } = useContext(ChangeSettingContext);
   const [filterPokemons, setFilterPokemons] = useState<Pokemon[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [count, setCount] = useState<number>(10);
 
   const handleChange =
@@ -41,27 +48,29 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
       setExpanded(isExpanded ? panel : false);
     };
 
+  const changeTopHeight = (pokemon: string) => {
+    if (pokemon === expanded) {
+      return 50;
+    }
+
+    return 35;
+  };
+
   useEffect(() => {
-    if (clickSearch) {
+    if (changeSetting) {
       const fetchData = async () => {
         const params = {
-          seasons: seasons,
+          ids: articleIds,
         };
 
         const data = await getData("/articles/rank", params);
-        const dataWithId = data.map((d, index) => {
-          d["id"] = index + 1;
-          return d;
-        });
-        setFilterPokemons(dataWithId.slice(0, 10));
-        setPokemonRanks(dataWithId);
-        console.log("再描画");
+        setFilterPokemons(data[0].slice(0, 10));
+        setPokemonRanks(data[0]);
+        setCounts(data[1]);
       };
       fetchData();
-      setLoading(false);
-      setClickSearch(false);
+      setChangeSetting(false);
     } else {
-      console.log("再描画なし");
       setFilterPokemons(pokemonRanks.slice(0, 10));
     }
   }, []);
@@ -72,6 +81,10 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
       ...pokemonRanks.slice(count, count + 10),
     ]),
       setCount((prevCount) => prevCount + 10);
+  };
+
+  const getPercentage = (count: number, sum: number) => {
+    return (Math.floor((count / sum) * 1000) / 10).toFixed(1) + "%";
   };
 
   return (
@@ -88,7 +101,11 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={filterPokemon.pokemon}
                   id={filterPokemon.pokemon}
-                  sx={{ display: "flex", justifyContent: "center" }}>
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    position: "relative",
+                  }}>
                   <Typography variant="h6" sx={{ width: "10%" }}>
                     {index + 1}
                   </Typography>
@@ -102,28 +119,45 @@ const ControlledAccordions = ({ ranks, seasons }: Search) => {
                     <Image
                       height={25}
                       width={25}
-                      src={`/image/icon/Pokémon-Icon_${pokeData[
-                        filterPokemon.pokemon
-                      ].no
-                        .toString()
-                        .padStart(3, "0")}.png`}
+                      src={`/image/${changeIcon(filterPokemon.pokemon)}`}
                     />
                   </Box>
-                  <Typography variant="h6" sx={{ width: "50%", zIndex: 0 }}>
-                    {filterPokemon.pokemon}
-                  </Typography>
+                  <Box sx={{ width: "50%" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                      {filterPokemon.pokemon}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        position: "absolute",
+                        top: changeTopHeight(filterPokemon.pokemon),
+                        left: 75,
+                        color: "grey",
+                      }}>
+                      {getPercentage(filterPokemon.count, counts)}(
+                      {filterPokemon.count}/{counts})
+                    </Typography>
+                  </Box>
                   <PoketetsuLink pokemon={filterPokemon.pokemon} />
                 </AccordionSummary>
 
                 <AccordionDetails>
-                  <PokeDetailTab pokemon={filterPokemon.pokemon} />
+                  <PokeDetailTab
+                    pokemon={filterPokemon.pokemon}
+                    articleIds={articleIds}
+                  />
                 </AccordionDetails>
               </Accordion>
             </Box>
           </ListItem>
         ))}
       </List>
-      <button onClick={loadArticle}>// 読み込み //</button>
+      <Box sx={{ textAlign: "center" }}>
+        {pokemonRanks.length !== filterPokemons.length && (
+          <Button onClick={loadArticle}>もっと見る</Button>
+        )}
+      </Box>
     </Box>
   );
 };

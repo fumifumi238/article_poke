@@ -137,11 +137,11 @@ describe 'rank test' do
     end
   end
 
-  context 'when rank is 10000' do
+  context 'when rank is 100000' do
     let(:rank){100000}
     it 'is invalid rank is greater than 100000' do
       article.valid?
-      expect(article.errors[:rank]).to include('must be less than 100000')
+      expect(article.errors[:rank]).to include('must be smaller than 100000')
     end
   end
 
