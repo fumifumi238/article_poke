@@ -4,6 +4,7 @@ import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
+import { calcStats } from "../../utils/calcStats";
 import { textToNumber } from "../../utils/textToNumber";
 import { StatsValue } from "../templates/RegisterPokemon";
 
@@ -100,30 +101,6 @@ const Stats = ({
     }
   };
 
-  const calcStats = () => {
-    let correction = () => {
-      switch (buttonType) {
-        case "up":
-          return 1.1;
-        case "down":
-          return 0.9;
-        default:
-          return 1.0;
-      }
-    };
-    const stats = Math.floor(
-      (Math.floor(
-        ((baseStats * 2 + Number(individualValue) + Number(effortValue) / 4) *
-          50) /
-          100
-      ) +
-        5) *
-        correction()
-    );
-
-    return stats;
-  };
-
   return (
     <Box sx={{ height: 22, borderBottom: 1, display: "flex" }}>
       <Box
@@ -159,7 +136,12 @@ const Stats = ({
             fontSize: 12,
             listStyle: "none",
           }}>
-          {calcStats()}
+          {calcStats(
+            baseStats,
+            Number(effortValue),
+            Number(individualValue),
+            buttonType
+          )}
         </li>
         <li
           style={{

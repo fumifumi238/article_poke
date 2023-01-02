@@ -29,7 +29,7 @@ const UserResult = () => {
     }
   }, [twitter]);
 
-  const clickSearchIcon = () => {
+  const changeSettingIcon = () => {
     router.push(`/users/${value}`);
   };
   return (
@@ -43,7 +43,7 @@ const UserResult = () => {
         }}>
         <Paper
           component="form"
-          onSubmit={clickSearchIcon}
+          onSubmit={changeSettingIcon}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -51,15 +51,20 @@ const UserResult = () => {
             maxWidth: "95%",
             margin: 2,
           }}>
+          <Typography sx={{ ml: 2, fontWeight: "bold" }}>@</Typography>
           <InputBase
-            sx={{ ml: 2, flex: 1 }}
+            sx={{ ml: 1, flex: 1 }}
             placeholder="Search Twitter Id"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             inputProps={{ "aria-label": "search twitter id" }}
           />
-          <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-            <SearchIcon onClick={clickSearchIcon} />
+          <IconButton
+            type="button"
+            sx={{ p: "10px" }}
+            aria-label="search"
+            onClick={changeSettingIcon}>
+            <SearchIcon />
           </IconButton>
         </Paper>
         <Typography sx={{ fontWeight: "bold" }}>

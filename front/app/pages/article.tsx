@@ -1,19 +1,16 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
 import CircularProgress from "@mui/material/CircularProgress";
 import Drawer from "@mui/material/Drawer";
 import Fab from "@mui/material/Fab";
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import SearchPokemon from "../components/atoms/SearchPokemon";
 import ControlledAccordions from "../components/elements/Accordion/Accordion";
+import DisplaySetting from "../components/organisms/DisplaySetting";
 import DisplayArticle from "../components/templates/DisplayArticle";
 import seriesData from "../json/series.json";
 import { getData } from "../lib/api/fetchApi";
@@ -61,9 +58,9 @@ type PokemonRanksContext = {
   setPokemonRanks: React.Dispatch<React.SetStateAction<Pokemon[]>>;
 };
 
-type ClicksearchContext = {
-  clickSearch: boolean;
-  setClickSearch: React.Dispatch<React.SetStateAction<boolean>>;
+type ChangeSettingContext = {
+  changeSetting: boolean;
+  setChangeSetting: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type DetailsContext = {
@@ -71,103 +68,152 @@ type DetailsContext = {
   setDetails: React.Dispatch<React.SetStateAction<Details>>;
 };
 
-export const ClickSearchContext = createContext({} as ClicksearchContext);
+export const ChangeSettingContext = createContext({} as ChangeSettingContext);
 export const PokemonRanksContext = createContext({} as PokemonRanksContext);
 export const DetailsContext = createContext({} as DetailsContext);
 
 export const Article: NextPage = () => {
-  type Version = "sv";
-  type Format = "single" | "double";
-  type ResultList = {
-    [key: string]: number[];
-  };
   const limitPerPage = 30;
 
   const [rankOpen, setRankOpen] = useState<boolean>(false);
   const [articles, setArticles] = useState<Article[]>([]);
-  // const [filterArticles, setFilterArticles] = useState<Article[]>([]);
-  const [offset, setOffset] = useState<number>(0);
-  const [ranks, setRanks] = useState<[number, number]>([1, 10000]);
+  const [filterArticles, setFilterArticles] = useState<Article[]>([]);
+  const [offset, setOffset] = useState<number>(20);
+  const [ranks, setRanks] = useState<[number, number]>([1, 99999]);
   const seriesDataKeys = Object.keys(seriesData);
   const [series, setSeries] = useState<string>(
     seriesDataKeys[seriesDataKeys.length - 1]
   );
-  const [seasons, setSeasons] = useState<number[]>(seriesData[series]);
-  const [selectSeasons, setSelectSeasons] = useState<number[]>();
-  const [clickSearch, setClickSearch] = useState<boolean>(false);
+  const [seasons, setSeasons] = useState<string[]>(seriesData[series]);
 
-  // TODO: colimnの追加
-  const [version, setVersion] = useState<Version>("sv");
-  const [format, setFormat] = useState<Format>("single");
+  const [changeSetting, setChangeSetting] = useState<boolean>(false);
+
+  const [version, setVersion] = useState<string>("sv");
+  const [format, setFormat] = useState<string>("single");
 
   const [details, setDetails] = useState<Details>({});
   const [pokemonRanks, setPokemonRanks] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [visibleLoading, setVisibleLoading] = useState<boolean>(true);
+  const [openSetting, setOpenSetting] = useState<boolean>(false);
 
-  const [resultlist, setResultList] = useState<ResultList[]>([]);
-  const [searchPokemonList, setSearchPokemonList] = useState<string[]>([]);
-  const pokemonRef = useRef<HTMLInputElement>(null);
+  const [articleIds, setArticleIds] = useState<number[]>([]);
+
+  const [counts, setCounts] = useState<number>(0);
 
   const router = useRouter();
   const query = router.query;
 
   const changeVisibleLoading = (data: string) => {
-    if (data.length < limitPerPage) {
+    if (data.length + articles.length === articleIds.length) {
       setVisibleLoading(false);
     } else {
       setVisibleLoading(true);
     }
   };
 
+  const getArticle = async (
+    currentSeasons: string[] = seasons,
+    currentVersion: string = version,
+    currentFormat: string = format,
+    currentRanks: number[] = ranks
+  ) => {
+    setLoading(true);
+    const params = {
+      seasons: currentSeasons,
+      version: currentVersion,
+      format: currentFormat,
+      ranks: currentRanks,
+    };
+    const data = await getData(`/articles/index`, params);
+    changeVisibleLoading(data[0]);
+
+    setArticles(data[0] as unknown as Article[]);
+
+    setArticleIds(data[1] as unknown as number[]);
+    setLoading(false);
+  };
+
   useEffect(() => {
     if (router.isReady) {
-      if (query.format === "double") {
-        setFormat("double");
-      }
+      const processQuery = (
+        query: string | string[],
+        defaultValue: string,
+        options: string[],
+        setState: (value: React.SetStateAction<string>) => void
+      ) => {
+        const findOption = options.find((option) => option === query);
+        if (findOption === undefined) {
+          return defaultValue;
+        }
 
-      if (query.version === "sv") {
-        setVersion("sv");
+        setState(String(query));
+
+        return query;
+      };
+
+      const defaultVesion = "sv";
+      const versionOptions = ["sv"];
+      let currentVersion = processQuery(
+        query.version,
+        defaultVesion,
+        versionOptions,
+        setVersion
+      );
+
+      const defaultFormat = "single";
+      const formatOptions = ["double", "single"];
+      let currentFormat = processQuery(
+        query.format,
+        defaultFormat,
+        formatOptions,
+        setFormat
+      );
+
+      const ranksQuery = query.ranks;
+      let currentRanks = ranks;
+
+      if (
+        Array.isArray(ranksQuery) &&
+        Number(ranksQuery[0]) >= 1 &&
+        Number(ranksQuery[1]) <= 99999 &&
+        Number(ranksQuery[0]) < Number(ranksQuery[1])
+      ) {
+        currentRanks = [Number(ranksQuery[0]), Number(ranksQuery[1])];
+        setRanks(currentRanks);
       }
 
       const seriesToString = String(query.series);
+      let currentSeasons = seasons;
       if (seriesData[seriesToString] !== undefined) {
-        setSeries(seriesToString);
+        if (query.seasons === undefined) {
+          setSeries(seriesToString);
+          currentSeasons = seriesData[seriesToString];
+        } else if (typeof query.seasons === "string") {
+          currentSeasons = [query.seasons];
+        } else {
+          currentSeasons = query.seasons;
+        }
+
+        setSeasons(currentSeasons);
       }
+
+      getArticle(
+        currentSeasons,
+        String(currentVersion),
+        String(currentFormat),
+        currentRanks
+      );
+      setChangeSetting(true);
     }
   }, [query, router]);
-
-  useEffect(() => {
-    const getArticle = async () => {
-      setLoading(true);
-      const params = {
-        seasons: seasons,
-        offset: offset,
-        version: version,
-        format: format,
-      };
-      const data = await getData(`/articles/index`, params);
-      changeVisibleLoading(data);
-
-      setArticles(data as unknown as Article[]);
-      setLoading(false);
-
-      const pokemonPerArticle = await getData("/parties/pokemon_per_article");
-      setResultList(pokemonPerArticle as unknown as ResultList[]);
-    };
-    getArticle();
-    setClickSearch(true);
-  }, []);
 
   const loadArticle = async () => {
     setLoading(true);
     const params = {
-      seasons: seasons,
-      offset: offset + limitPerPage,
-      version: version,
-      format: format,
+      ids: articleIds.slice(offset, offset + limitPerPage),
     };
-    const data = await getData(`/articles/index`, params);
+    const data = await getData(`/articles/load`, params);
     changeVisibleLoading(data);
     setOffset((prevOffset) => prevOffset + limitPerPage);
     setArticles((prevArticles) => [
@@ -190,17 +236,6 @@ export const Article: NextPage = () => {
       setRankOpen(open);
     };
 
-  const searchPokemon = async () => {
-    if (resultlist[pokemonRef.current?.value] !== undefined) {
-      const params = {
-        ids: resultlist[pokemonRef.current.value],
-      };
-      const data = await getData("/articles/search_pokemon", params);
-      changeVisibleLoading(data);
-      setArticles(data as unknown as Article[]);
-    }
-  };
-
   const LoadingButton = () => {
     if (!visibleLoading) {
       return <></>;
@@ -213,51 +248,70 @@ export const Article: NextPage = () => {
     return <Button onClick={loadArticle}>もっと見る</Button>;
   };
 
+  const searchPokemonByIds = async (ids: (string | number)[]) => {
+    console.log("更新しました");
+    setLoading(true);
+    const data = await getData("/articles/search_pokemon", {
+      ids: ids,
+    });
+
+    changeVisibleLoading(data);
+
+    setArticles(data as unknown as Article[]);
+    setLoading(false);
+  };
+
+  const SearchingArticle = () => {
+    if (loading && articles.length === 0) {
+      return <Typography>loading...</Typography>;
+    }
+
+    if (articles.length !== 0) {
+      return <DisplayArticle articles={articles} />;
+    }
+
+    return <Typography>not found</Typography>;
+  };
+
   return (
     <>
       <div>
-        <Typography sx={{ textAlign: "center" }}>Poke Ranker</Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", margin: 1 }}>
+          <Button onClick={() => setOpenSetting(!openSetting)}>
+            {" "}
+            表示設定
+          </Button>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center", margin: 1 }}>
+          {openSetting && (
+            <DisplaySetting
+              series={series}
+              ranks={ranks}
+              seasons={seasons}
+              format={format}
+              version={version}
+            />
+          )}
+        </Box>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            margin: "0 auto",
+            width: "95%",
+            maxWidth: 400,
           }}>
-          <Box
-            sx={{
-              border: 1,
-              width: "95%",
-              maxWidth: 300,
-              borderRadius: "10px",
-            }}>
-            <input type="text" ref={pokemonRef} />
-            <button onClick={() => searchPokemon()}>ポケモン検索</button>
-            <FormControl>
-              <FormLabel>Series{series}</FormLabel>
-              <FormGroup row={true}>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Season1"
-                />
-                <FormControlLabel control={<Checkbox />} label="Season2" />
-              </FormGroup>
-            </FormControl>
-            <Button
-              onClick={() => {
-                setClickSearch(true);
-                setDetails({});
-              }}>
-              検索
-            </Button>
-          </Box>
+          <SearchPokemon
+            searchPokemonByIds={searchPokemonByIds}
+            articleIds={articleIds}
+          />
         </Box>
+
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             paddingBottom: "30px",
           }}>
-          <DisplayArticle articles={articles} />
+          <SearchingArticle />
         </Box>
         <Box sx={{ textAlign: "center", marginBottom: 5 }}>
           <LoadingButton />
@@ -276,14 +330,19 @@ export const Article: NextPage = () => {
         </Fab>
       </div>
       <Drawer open={rankOpen} onClose={toggleDrawer(false)} anchor="right">
-        <ClickSearchContext.Provider value={{ clickSearch, setClickSearch }}>
+        <ChangeSettingContext.Provider
+          value={{ changeSetting, setChangeSetting }}>
           <PokemonRanksContext.Provider
             value={{ pokemonRanks, setPokemonRanks }}>
             <DetailsContext.Provider value={{ details, setDetails }}>
-              <ControlledAccordions seasons={seasons} ranks={ranks} />
+              <ControlledAccordions
+                articleIds={articleIds}
+                counts={counts}
+                setCounts={setCounts}
+              />
             </DetailsContext.Provider>
           </PokemonRanksContext.Provider>
-        </ClickSearchContext.Provider>
+        </ChangeSettingContext.Provider>
       </Drawer>
     </>
   );

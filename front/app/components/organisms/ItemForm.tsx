@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import itemsData from "../../json/items.json";
-import { ItemRefContext } from "../templates/RegisterPokemon";
 import { hiraToKana } from "../../utils/hiraToKana";
+import { ItemRefContext } from "../templates/RegisterPokemon";
 
 const ItemForm = () => {
   const [filterItemList, setFilterItemList] = useState<string[]>([]);
@@ -77,7 +77,7 @@ const ItemForm = () => {
       <div
         style={{ marginRight: 0, position: "absolute" }}
         onBlur={() =>
-          setTimeout(() => changeItemForm(itemRef.current.value.trim()), 300)
+          setTimeout(() => changeItemForm(itemRef.current?.value.trim()), 300)
         }>
         <input
           type="text"
