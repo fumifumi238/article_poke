@@ -1,23 +1,38 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import defferentFormsPokemons from "../../json/differentFormPokemons.json";
 import pokeData from "../../json/poke_data.json";
 import { getData } from "../../lib/api/fetchApi";
+import Article, { alreadySearch } from "../../pages/article";
+import { isEqualArray } from "../../utils/isEqualArray";
 
 type SearchPokemon = {
-  searchPokemonByIds: (ids: (number | string)[]) => void;
   articleIds: number[];
+  alreadySearch: alreadySearch;
+  setAlreadySearch: Dispatch<SetStateAction<alreadySearch>>;
+  setArticle: Dispatch<SetStateAction<Article[]>>;
+  setCurrentId: Dispatch<SetStateAction<number>>;
+  setOffset: Dispatch<SetStateAction<number>>;
+  searchPokemonByIds: (
+    index: number,
+    ids: (string | number)[],
+    searchPokemonList: string[]
+  ) => void;
 };
 
-const SearchPokemon = ({ searchPokemonByIds, articleIds }: SearchPokemon) => {
+const SearchPokemon = ({
+  articleIds,
+  alreadySearch,
+  setArticle,
+  setCurrentId,
+  setOffset,
+  searchPokemonByIds,
+}: SearchPokemon) => {
   type ResultList = {
     [key: string]: number[];
   };
+
   const [resultlist, setResultList] = useState<ResultList>({});
-  const [searchIds, setSearchIds] = useState<(number | string)[]>([]);
   const [searchPokemonList, setSearchPokemonList] = useState<string[]>([]);
-  const [alreadySearch, setAlreadySearch] = useState<{
-    [key: number]: string[];
-  }>({ 0: [""] });
 
   const pokemonRef = useRef<HTMLInputElement>(null);
 
@@ -40,11 +55,12 @@ const SearchPokemon = ({ searchPokemonByIds, articleIds }: SearchPokemon) => {
 
   useEffect(() => {
     if (searchPokemonList.length === 0) {
+      setArticle(alreadySearch[0].articles);
+      setCurrentId(0);
+      setOffset(20);
       return;
     }
     let hash: { [key: string]: number } = {};
-
-    console.log(searchPokemonList);
 
     for (let i = 0; i < searchPokemonList.length; i++) {
       let lists = searchPokemon(searchPokemonList[i]);
@@ -65,12 +81,20 @@ const SearchPokemon = ({ searchPokemonByIds, articleIds }: SearchPokemon) => {
       (key) => hash[key] === searchPokemonList.length
     );
 
-    setSearchIds(values);
-  }, [searchPokemonList]);
+    const equalArray =
+      alreadySearch[searchPokemonList.length]?.searchPokemonList !== undefined
+        ? isEqualArray(
+            searchPokemonList,
+            alreadySearch[searchPokemonList.length].searchPokemonList
+          )
+        : false;
 
-  useEffect(() => {
-    searchPokemonByIds(searchIds);
-  }, [searchIds]);
+    if (!equalArray) {
+      searchPokemonByIds(searchPokemonList.length, values, searchPokemonList);
+    } else {
+      setArticle(alreadySearch[searchPokemonList.length].articles);
+    }
+  }, [searchPokemonList]);
 
   const searchPokemon = (pokemon: string) => {
     const articles: number[] = [];
@@ -99,6 +123,7 @@ const SearchPokemon = ({ searchPokemonByIds, articleIds }: SearchPokemon) => {
     const pokemons = pokemonRef.current?.value;
 
     if (pokemons === "") {
+      return;
     }
 
     const splitPokemons = pokemons.replace(/\s+/g, " ").split(" ");
