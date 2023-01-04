@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'faker'
 
 tera = ["ノーマル","いわ","むし","ゴースト","みず","はがね","あく","くさ","ほのお","あく","ドラゴン","でんき","じめん","エスパー","こおり","かくとう","フェアリー"]
 ab = ["もうか","しんりょく","げきりゅう"]

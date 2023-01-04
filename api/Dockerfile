@@ -4,6 +4,7 @@ ENV LANG=C.UTF-8 \
   TZ=Asia/Tokyo
 
 WORKDIR /app
+COPY . /app
 RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
