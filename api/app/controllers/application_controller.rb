@@ -1,5 +1,27 @@
 class ApplicationController < ActionController::API
 
+    def get_party_with_stats(parties)
+    arr = []
+    parties.each do |party|
+      moves = Move.where(party: party).pluck(:name)
+      effort_values = EffortValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s,:sum)
+      individual_values = IndividualValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s)
+      data = {
+        id: party.id,
+        pokemon: party.pokemon,
+        item: party.item,
+        nature: party.nature,
+        ability: party.ability,
+        terastal: party.terastal,
+        moves: moves,
+        effortValues: effort_values[0],
+        individualValues: individual_values[0],
+      }
+      arr.push(data)
+    end
+    arr
+  end
+
   def get_articles_with_party(articles,parties)
     arr = []
     articles.each do |article|

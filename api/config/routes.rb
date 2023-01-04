@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get 'articles/show'
   get 'articles/get_exist_url'
   get "articles/search_pokemon"
+  get "articles/not_permit_articles"
+
+  get "articles/rental/:rental", to: 'articles#get_article_by_rental'
+
+  post "articles/permit_article/:id",to: "articles#permit_article"
+  post "articles/destroy/:id",to: "articles#destroy"
   post 'articles/create'
 
   get 'users/index'

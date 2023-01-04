@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @all_articles = Article.joins(:user)
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: [params[:ranks][0]...params[:ranks][1],nil]).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
+    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: [params[:ranks][0]...params[:ranks][1],nil],permit: true).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
 
     @articles = @all_articles.limit(20)
 
@@ -53,6 +53,71 @@ class ArticlesController < ApplicationController
 
     render json: @urls
 
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    render status: 200;
+  end
+
+  def permit_article
+    article = Article.find(params[:id])
+    article.update(permit: true)
+
+    render status: 200
+  end
+
+  def not_permit_articles
+    @articles = Article.joins(:user).select("articles.id,articles.url,articles.format,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(permit: false);
+
+    arr = []
+    @articles.each do |article|
+      @parties = Party.where(article_id: article.id)
+       data = get_party_with_stats(@parties)
+      hash = { id: article.id,
+              format: article.format,
+              url: article.url,
+              rate: article.rate,
+              rank: article.rank,
+              season: article.season,
+              title: article.title,
+              rental: article.rental,
+              tn: article.tn,
+              twitter: article.twitter,
+              party: data}
+      arr.push(hash)
+    end
+
+    render json: arr
+
+  end
+
+  def get_article_by_rental
+    @article = Article.joins(:user).select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").find_by(rental: params[:rental])
+    if @article == nil
+
+      render json: []
+      return;
+    end
+
+    @party = Party.where(article: @article).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
+
+    hash = {
+              id: @article.id,
+              url: @article.url,
+              rate: @article.rate,
+              rank: @article.rank,
+              season: @article.season,
+              title: @article.title,
+              rental: @article.rental,
+              tn: @article.tn,
+              twitter: @article.twitter,
+              party: @party[@article]
+    }
+
+     render json: [hash];
   end
 
 

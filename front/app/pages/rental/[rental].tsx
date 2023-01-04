@@ -10,34 +10,38 @@ import DisplayArticle from "../../components/templates/DisplayArticle";
 import { getData } from "../../lib/api/fetchApi";
 import type Article from "../article";
 
-const UserResult = () => {
+const RentalSearch = () => {
   const router = useRouter();
-  const { twitter } = router.query;
+  const { rental } = router.query;
 
   const [articles, setArticles] = useState<Article[]>([]);
   const [value, setValue] = useState<string>("");
-    const [noData, setNoData] = useState<boolean>(false);
+  const [noData, setNoData] = useState<boolean>(false);
 
-    useEffect(() => {
-      if (router.isReady) {
-        const getArticle = async () => {
-          const data = await getData(`/users/${twitter}`);
-          if (data.length === 0) {
-            setNoData(true);
-          } else {
-            setNoData(false);
-          }
-          setArticles(data as unknown as Article[]);
-        };
-        getArticle();
-        if (twitter !== undefined) {
-          setValue(String(twitter));
+  useEffect(() => {
+    if (router.isReady) {
+      const getArticle = async () => {
+        const data = await getData(
+          `/articles/rental/${String(rental).toUpperCase()}`
+        );
+        if (data.length === 0) {
+          setNoData(true);
+        } else {
+          setNoData(false);
         }
+        setArticles(data as unknown as Article[]);
+      };
+      getArticle();
+      if (rental !== undefined) {
+        setValue(String(rental).toUpperCase());
       }
-    }, [router, twitter]);
+    }
+  }, [router, rental]);
 
-  const changeSettingIcon = () => {
-    router.push(`/users/${value}`);
+  const changeSettingIcon = (value: string) => {
+    if (value.length === 6) {
+      router.push(`/rental/${value}`);
+    }
   };
   return (
     <>
@@ -50,7 +54,9 @@ const UserResult = () => {
         }}>
         <Paper
           component="form"
-          onSubmit={changeSettingIcon}
+          onSubmit={(e) => {
+            value.length !== 6 ? e.preventDefault() : changeSettingIcon(value);
+          }}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -58,25 +64,21 @@ const UserResult = () => {
             maxWidth: "95%",
             margin: 2,
           }}>
-          <Typography sx={{ ml: 2, fontWeight: "bold" }}>@</Typography>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
-            placeholder="Search Twitter Id"
+            placeholder="Search Rental Code"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
-            inputProps={{ "aria-label": "search twitter id" }}
+            onChange={(e) => setValue(e.target.value.toUpperCase())}
+            inputProps={{ "aria-label": "search rental code" }}
           />
           <IconButton
             type="button"
             sx={{ p: "10px" }}
             aria-label="search"
-            onClick={changeSettingIcon}>
+            onClick={() => changeSettingIcon(value)}>
             <SearchIcon />
           </IconButton>
         </Paper>
-        <Typography sx={{ fontWeight: "bold" }}>
-          <span style={{ color: "green" }}>@{twitter}</span> さんの成績
-        </Typography>
       </Box>
       <Box
         sx={{
@@ -94,4 +96,4 @@ const UserResult = () => {
   );
 };
 
-export default UserResult;
+export default RentalSearch;
