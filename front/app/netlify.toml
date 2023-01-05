@@ -5,8 +5,3 @@
   package = "@netlify/plugin-nextjs"
 [[plugins]]
   package = "netlify-plugin-cache-nextjs"
-
-  [[redirects]]
-  from = "/*"
-  to = "/404/index.html"
-  status = 404
