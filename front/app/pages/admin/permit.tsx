@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 
 const Permit = () => {
   const router = useRouter();
-  const { password } = router.query;
+  const query = router.query;
   useEffect(() => {
-    if (router.isReady && password === process.env.NEXT_PUBLIC_PASSWORD) {
+    if (
+      router.isReady &&
+      String(query?.password) === process.env.NEXT_PUBLIC_PASSWORD
+    ) {
       const getData = async () => {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
@@ -16,7 +19,7 @@ const Permit = () => {
 
       getData();
     }
-  }, [router, password]);
+  }, [router, query]);
 
   const onClickPermit = async (id: number) => {
     const res = await fetch(

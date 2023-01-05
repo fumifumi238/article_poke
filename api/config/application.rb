@@ -38,7 +38,7 @@ module App
 
 config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "http://localhost:8000","poke-ranker.netlify.app"
+    origins "http://localhost:8000","https://poke-ranker.netlify.app"
     resource "*",
     headers: :any,
     methods: [:get, :post, :patch, :delete, :options, :head]
