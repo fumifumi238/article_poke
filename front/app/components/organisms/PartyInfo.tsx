@@ -92,7 +92,7 @@ const PartyInfo = ({ party }: Party) => {
               }}>
               <Typography
                 sx={{
-                  fontSize: "0.8vw",
+                  fontSize: "2vh",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   color: "white",
@@ -128,7 +128,7 @@ const PartyInfo = ({ party }: Party) => {
             <Box>
               <Typography
                 sx={{
-                  fontSize: "0.8vw",
+                  fontSize: "2vh",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                 }}>
@@ -150,7 +150,7 @@ const PartyInfo = ({ party }: Party) => {
               }}>
               <Typography
                 sx={{
-                  fontSize: "0.5vw",
+                  fontSize: "1.5vh",
                   marginLeft: 1,
                   whiteSpace: "nowrap",
                   overflow: "hidden",
@@ -166,6 +166,7 @@ const PartyInfo = ({ party }: Party) => {
           <Box
             sx={{
               display: "flex",
+              height: "18%",
             }}>
             <Box
               sx={{
@@ -183,7 +184,7 @@ const PartyInfo = ({ party }: Party) => {
             <Box sx={{ width: "80%", borderTop: 1 }}>
               <Typography
                 sx={{
-                  fontSize: "0.5vw",
+                  fontSize: "1.5vh",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                 }}>
