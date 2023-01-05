@@ -59,4 +59,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.hosts << "api"
+  config.hosts << 'localhost'
+  config.hosts << '127.0.0.1'
+  config.hosts << "poke-ranker-api.herokuapp.com"
+  config.hosts << ENV['BACKEND_HOST']
 end

@@ -38,7 +38,7 @@ module App
 
 config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "http://localhost:8000"
+    origins "http://localhost:8000","https://tubular-crumble-c5b72d.netlify.app"
     resource "*",
     headers: :any,
     methods: [:get, :post, :patch, :delete, :options, :head]

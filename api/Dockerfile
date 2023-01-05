@@ -4,11 +4,11 @@ ENV LANG=C.UTF-8 \
   TZ=Asia/Tokyo
 
 WORKDIR /app
-COPY . /app
-RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client
+RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client && apt-get install -y netcat && apt-get install -y vim
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+COPY . /app
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
