@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
           />
           {(this.props as any).emotionStyleTags}
         </Head>
-        <body>
+        <body style={{ textSizeAdjust: "none" }}>
           <Main />
           <NextScript />
         </body>
