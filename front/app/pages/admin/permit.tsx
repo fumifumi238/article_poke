@@ -1,18 +1,23 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const Permit = ({}) => {
+const Permit = () => {
+  const router = useRouter();
+  const { password } = router.query;
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
-      );
-      const data = await res.json();
-      console.log(data);
-      setArticles(data);
-    };
+    if (router.isReady && password === process.env.NEXT_PUBLIC_PASSWORD) {
+      const getData = async () => {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
+        );
+        const data = await res.json();
+        console.log(data);
+        setArticles(data);
+      };
 
-    getData();
-  }, []);
+      getData();
+    }
+  }, [router, password]);
 
   const onClickPermit = async (id: number) => {
     const res = await fetch(
@@ -91,23 +96,4 @@ const Permit = ({}) => {
   );
 };
 
-export async function getServerSideProps({ query }) {
-  console.log(query.password);
-
-  const password = query.password;
-
-  if (password !== process.env.PASSWORD) {
-    return {
-      redirect: {
-        permanent: false, // 永続的なリダイレクトかどうか
-        destination: "/", // リダイレクト先
-        // destination: 'https://example.com/' // 別サイトでも指定可能
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-}
 export default Permit;
