@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { getData } from "../../lib/api/fetchApi";
 import PartyInfo from "../organisms/PartyInfo";
 
 type Party = {
   id: number;
+  setModalOpen: Dispatch<SetStateAction<number>>;
 };
 
 type Pokemon = {
@@ -18,7 +19,7 @@ type Pokemon = {
   effortValues: number[];
   individualValues: number[];
 };
-const Party = ({ id }: Party) => {
+const Party = ({ id, setModalOpen }: Party) => {
   const [parties, setParties] = useState<Pokemon[]>([]);
   useEffect(() => {
     const getParty = async () => {
@@ -43,6 +44,7 @@ const Party = ({ id }: Party) => {
           boxShadow: 24,
         }}>
         <Box
+          onClick={() => setModalOpen(0)}
           sx={{
             display: "flex",
             textAlign: "center",

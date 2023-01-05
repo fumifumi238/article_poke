@@ -51,7 +51,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
     <>
       <Modal open={0 !== modalOpen} onClose={() => setModalOpen(0)}>
         <Box>
-          <Party id={modalOpen} />
+          <Party id={modalOpen} setModalOpen={setModalOpen}/>
         </Box>
       </Modal>
       <Box sx={{ margin: 1 }}>
