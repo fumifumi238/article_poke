@@ -17,6 +17,7 @@ import { DetailsContext } from "../../../pages/article";
 type Pokemon = {
   pokemon: string;
   articleIds: number[];
+  count: number;
 };
 
 type Tabs = {
@@ -27,7 +28,7 @@ type Tabs = {
   natures: Types[];
 };
 
-const PokeDetailTab = ({ pokemon, articleIds }: Pokemon) => {
+const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
   const [value, setValue] = useState<string>("moves");
   const { details, setDetails } = useContext(DetailsContext);
   const [loading, setLoading] = useState<boolean>(true);
@@ -80,11 +81,6 @@ const PokeDetailTab = ({ pokemon, articleIds }: Pokemon) => {
     types: Types[];
   };
   const TabPanelList = ({ value, types }: Props) => {
-    let sum = 0;
-    for (let i = 0; i < types.length; i++) {
-      sum += types[i].count;
-    }
-
     return (
       <TabPanel value={value} sx={{ padding: 0 }}>
         <List sx={{ height: 200, overflow: "auto" }}>
@@ -92,7 +88,7 @@ const PokeDetailTab = ({ pokemon, articleIds }: Pokemon) => {
             <React.Fragment key={type.name}>
               <RankByTypes
                 name={type.name}
-                percentage={getPercentage(type.count, sum)}
+                percentage={getPercentage(type.count, count)}
                 index={index}
               />
             </React.Fragment>

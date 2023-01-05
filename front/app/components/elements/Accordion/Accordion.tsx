@@ -146,6 +146,7 @@ const ControlledAccordions = ({ articleIds, counts, setCounts }: Search) => {
                   <PokeDetailTab
                     pokemon={filterPokemon.pokemon}
                     articleIds={articleIds}
+                    count={filterPokemon.count}
                   />
                 </AccordionDetails>
               </Accordion>
