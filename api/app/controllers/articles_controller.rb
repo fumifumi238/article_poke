@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @all_articles = Article.joins(:user)
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: [params[:ranks][0]...params[:ranks][1],nil],permit: true).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
+    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: params[:ranks][0]...params[:ranks][1],permit: true).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
 
     @articles = @all_articles.limit(20)
 
@@ -129,12 +129,6 @@ class ArticlesController < ApplicationController
     @moves = Move.select('name,count(name) as count').where(party: @parties.ids).group(:name).order('Count(name) DESC')
 
     render json: {natures:@natures,items:@items,terastals:@terastals,abilities:@abilities,moves:@moves}
-  end
-
-  def edit
-  end
-
-  def show
   end
 
   def create

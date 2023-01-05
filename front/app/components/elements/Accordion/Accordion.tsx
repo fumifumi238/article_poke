@@ -8,13 +8,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 import { getData } from "../../../lib/api/fetchApi";
 import {
   ChangeSettingContext,
@@ -33,6 +27,8 @@ type Pokemon = {
   pokemon: string;
   count: number;
 };
+
+// TODO: 順位がない時のランキング、検索時には順番通りに
 
 const ControlledAccordions = ({ articleIds, counts }: Search) => {
   const [expanded, setExpanded] = useState<string | false>(false);

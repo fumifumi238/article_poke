@@ -51,7 +51,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
     <>
       <Modal open={0 !== modalOpen} onClose={() => setModalOpen(0)}>
         <Box>
-          <Party id={modalOpen} setModalOpen={setModalOpen}/>
+          <Party id={modalOpen} setModalOpen={setModalOpen} />
         </Box>
       </Modal>
       <Box sx={{ margin: 1 }}>
@@ -74,7 +74,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
               }}>
               <Box sx={{ marginRight: 1 }}>
                 <Typography>
-                  {article.rank !== null ? article.rank : "XX"}位
+                  {article.rank !== 99999 ? article.rank : "XX"}位
                 </Typography>
               </Box>
               <Box sx={{ marginRight: 1 }}>

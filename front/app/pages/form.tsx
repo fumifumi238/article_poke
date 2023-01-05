@@ -116,7 +116,7 @@ const Form: NextPage = () => {
       title: title,
       url: url,
       rate: rate,
-      rank: rank,
+      rank: rank !== "" ? rank : 99999,
       rental: rental,
       season: season,
       series: series,
