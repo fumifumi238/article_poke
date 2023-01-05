@@ -17,7 +17,7 @@ const UrlForm = ({ url, setUrl, validationForm, setError }: Url) => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "process.env.NEXT_PUBLIC_HOST/articles/get_exist_url"
+        `${process.env.NEXT_PUBLIC_HOST}/articles/get_exist_url`
       );
       const data = await res.json();
       setExistUrlList(data);

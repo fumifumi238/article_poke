@@ -10,7 +10,7 @@ const arrayToParams = (paramsName: string, lists: (string | number)[]) => {
 };
 
 export const postData = async <T>(url: string, data?: T) => {
-  const defaultUrl = "process.env.NEXT_PUBLIC_HOST";
+  const defaultUrl = process.env.NEXT_PUBLIC_HOST;
   const params = {
     method: "POST",
     headers: {
@@ -28,7 +28,7 @@ export const postData = async <T>(url: string, data?: T) => {
 };
 
 export const getData = async <T>(url: string, query?: { [key: string]: T }) => {
-  let defaultUrl = "process.env.NEXT_PUBLIC_HOST" + url;
+  let defaultUrl = process.env.NEXT_PUBLIC_HOST + url;
   if (query) {
     defaultUrl += "?";
     for (let [key, value] of Object.entries(query)) {
