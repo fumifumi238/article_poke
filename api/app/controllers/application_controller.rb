@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
 
     def get_party_with_stats(parties)
     arr = []
-    parties.find_each do |party|
+    parties.each do |party|
       moves = Move.where(party: party).pluck(:name)
       effort_values = EffortValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s,:sum)
       individual_values = IndividualValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s)
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::API
 
   def get_articles_with_party(articles,parties)
     arr = []
-    articles.find_each do |article|
+    articles.each do |article|
       party = parties[article]
       value = {id: article.id,
               url: article.url,

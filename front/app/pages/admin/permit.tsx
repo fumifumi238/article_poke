@@ -4,7 +4,7 @@ const Permit = ({}) => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "process.env.NEXT_PUBLIC_HOST/articles/not_permit_articles"
+        `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
       );
       const data = await res.json();
       console.log(data);
@@ -16,7 +16,7 @@ const Permit = ({}) => {
 
   const onClickPermit = async (id: number) => {
     const res = await fetch(
-      `process.env.NEXT_PUBLIC_HOST/articles/permit_article/${id}`,
+      `${process.env.NEXT_PUBLIC_HOST}/articles/permit_article/${id}`,
       {
         method: "POST",
       }
@@ -30,7 +30,7 @@ const Permit = ({}) => {
 
   const onClickDestroy = async (id: number) => {
     const res = await fetch(
-      `process.env.NEXT_PUBLIC_HOST/articles/destroy/${id}`,
+      `${process.env.NEXT_PUBLIC_HOST}/articles/destroy/${id}`,
       {
         method: "POST",
       }

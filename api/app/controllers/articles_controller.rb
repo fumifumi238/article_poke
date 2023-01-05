@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
      @parties = Party.where(article: params[:ids])
      @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
      counts = 0
-     @pokemon_ranks.find_find_each.with_index do |pokemon,index|
+     @pokemon_ranks.each_with_index do |pokemon,index|
        pokemon[:id] = index+1
       counts += pokemon.count
      end
@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
     @articles = Article.joins(:user).select("articles.id,articles.url,articles.format,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(permit: false);
 
     arr = []
-    @articles.find_each do |article|
+    @articles.each do |article|
       @parties = Party.where(article_id: article.id)
        data = get_party_with_stats(@parties)
       hash = { id: article.id,
@@ -174,13 +174,13 @@ private
   end
 
   def save_pokemon_details(parties,article)
-    parties.find_each do |party|
+    parties.each do |party|
       party_params = party.permit(:pokemon,:ability,:item,:nature,:terastal)
       new_party = Party.new(party_params)
       new_party.article = article
       new_party.save
 
-      party[:moves].find_each do |move|
+      party[:moves].each do |move|
         if move != "" || move != nil
           move = Move.new(pokemon: new_party.pokemon,name: move)
           move.party = new_party
