@@ -61,5 +61,6 @@ Rails.application.configure do
   config.hosts << "api"
   config.hosts << 'localhost'
   config.hosts << '127.0.0.1'
+  config.hosts << "https://poke-ranker-api.herokuapp.com"
   config.hosts << ENV['BACKEND_HOST']
 end
