@@ -25,7 +25,6 @@ const Party = ({ id }: Party) => {
       const params = { id: id };
       const data = await getData("/parties/get_party_by_article_id", params);
       setParties(data);
-      console.log(data);
     };
 
     getParty();

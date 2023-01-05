@@ -34,7 +34,6 @@ const PokeDetailTab = ({ pokemon, articleIds }: Pokemon) => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    console.log(value);
   };
 
   useEffect(() => {

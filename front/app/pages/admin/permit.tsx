@@ -11,7 +11,6 @@ const Permit = () => {
           `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
         );
         const data = await res.json();
-        console.log(data);
         setArticles(data);
       };
 
