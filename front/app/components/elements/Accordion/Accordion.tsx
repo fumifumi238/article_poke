@@ -27,7 +27,6 @@ import PokeDetailTab from "../Tab/PokeDetailTab";
 type Search = {
   articleIds: number[];
   counts: number;
-  setCounts: Dispatch<SetStateAction<number>>;
 };
 
 type Pokemon = {
@@ -35,7 +34,7 @@ type Pokemon = {
   count: number;
 };
 
-const ControlledAccordions = ({ articleIds, counts, setCounts }: Search) => {
+const ControlledAccordions = ({ articleIds, counts }: Search) => {
   const [expanded, setExpanded] = useState<string | false>(false);
   // const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const { pokemonRanks, setPokemonRanks } = useContext(PokemonRanksContext);
@@ -64,9 +63,8 @@ const ControlledAccordions = ({ articleIds, counts, setCounts }: Search) => {
         };
 
         const data = await getData("/articles/rank", params);
-        setFilterPokemons(data[0].slice(0, 10));
-        setPokemonRanks(data[0]);
-        setCounts(data[1]);
+        setFilterPokemons(data.slice(0, 10));
+        setPokemonRanks(data);
       };
       fetchData();
       setChangeSetting(false);

@@ -30,13 +30,8 @@ class ArticlesController < ApplicationController
     #  @articles = Article.joins(:user).select("articles.url,articles.rate,articles.rank,articles.title,articles.season,users.name as user_name,users.twitter").where(season: params[:seasons])
      @parties = Party.where(article: params[:ids])
      @pokemon_ranks = @parties.select('pokemon,count(pokemon) as count').group(:pokemon).order('Count(pokemon) DESC')
-     counts = 0
-     @pokemon_ranks.each_with_index do |pokemon,index|
-       pokemon[:id] = index+1
-      counts += pokemon.count
-     end
 
-     render json: [@pokemon_ranks,counts]
+     render json: @pokemon_ranks
   end
 
   def search_pokemon

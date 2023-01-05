@@ -110,7 +110,6 @@ type DetailsContext = {
    const [visibleLoading, setVisibleLoading] = useState<boolean>(true);
    const [openSetting, setOpenSetting] = useState<boolean>(false);
 
-   const [counts, setCounts] = useState<number>(0);
    const [noData, setNoData] = useState<boolean>(false);
 
    const router = useRouter();
@@ -382,8 +381,7 @@ type DetailsContext = {
              <DetailsContext.Provider value={{ details, setDetails }}>
                <ControlledAccordions
                  articleIds={articleIds}
-                 counts={counts}
-                 setCounts={setCounts}
+                 counts={articleIds.length}
                />
              </DetailsContext.Provider>
            </PokemonRanksContext.Provider>
