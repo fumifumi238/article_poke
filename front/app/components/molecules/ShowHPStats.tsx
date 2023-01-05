@@ -13,7 +13,7 @@ const ShowHPStats = ({
   individualValue,
 }: ShowHPStats) => {
   return (
-    <Box sx={{ display: "flex", background: "#788898" }}>
+    <Box sx={{ display: "flex", background: "#788898",height: "16%" }}>
       <Box sx={{ margin: "0 auto", width: "15%", borderRight: 1 }}>
         <Typography
           sx={{

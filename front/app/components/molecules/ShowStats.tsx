@@ -35,6 +35,7 @@ const ShowStats = ({
         display: "flex",
         borderTop: 1,
         background: `${value === "B" || value === "D" ? "#788898" : "#8898a8"}`,
+        height: "16%",
       }}>
       <Box sx={{ margin: "0 auto", width: "15%", borderRight: 1 }}>
         <Typography
