@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @all_articles = Article.joins(:user)
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: params[:ranks][0]...params[:ranks][1],permit: true).order('articles.season DESC,articles.rank IS NULL ASC,articles.rank')
+    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: params[:ranks][0]..params[:ranks][1],permit: true).order('articles.season DESC,articles.rank ASC')
 
     @articles = @all_articles.limit(20)
 
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def load
     @articles = Article.joins(:user)
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(id: params[:ids])
+    .where(id: params[:ids]).order('articles.season DESC,articles.rank ASC')
 
     @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
 
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   end
 
   def search_pokemon
-    @articles = Article.joins(:user).select("articles.id as id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(id: params[:ids]).limit(20)
+    @articles = Article.joins(:user).select("articles.id as id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(id: params[:ids]).order('articles.season DESC,articles.rank ASC').limit(20)
     @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).group_by{|party| party.article}
 
     render json: get_articles_with_party(@articles,@parties);

@@ -11,7 +11,7 @@ type Twitter = {
 const TwitterForm = ({ twitter, setTwitter }: Twitter) => {
   const onChangeTwitter = (value: string) => {
     const maxTwitterLength = 15;
-    if (value.length < maxTwitterLength) {
+    if (value.length <= maxTwitterLength) {
       setTwitter(value);
     }
   };
