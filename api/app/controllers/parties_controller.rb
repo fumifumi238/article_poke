@@ -20,7 +20,7 @@ class PartiesController < ApplicationController
   end
 
   def get_party_by_article_id
-    @parties = Party.where(article_id: params[:id]).order(:pokemon :asc)
+    @parties = Party.where(article_id: params[:id]).order("pokemon ASC")
     data = get_party_with_stats(@parties)
 
     render json: data;

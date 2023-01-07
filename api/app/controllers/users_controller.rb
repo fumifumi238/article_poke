@@ -10,7 +10,7 @@ class UsersController < ApplicationController
      @articles = Article.joins(:user).select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
     .where(user_id: @user).order(season: :desc)
 
-    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).order(:pokemon :asc).group_by{|party| party.article}
+    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article}
 
     render json: get_articles_with_party(@articles,@parties);
   end

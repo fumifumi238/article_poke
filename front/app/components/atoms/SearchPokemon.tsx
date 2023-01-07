@@ -99,9 +99,13 @@ const SearchPokemon = ({
   const searchPokemon = (pokemon: string) => {
     const articles: number[] = [];
 
-    if (resultlist[pokemon] === undefined) {
+    if (
+      resultlist[pokemon] === undefined &&
+      defferentFormsPokemons[pokemon] === undefined
+    ) {
       return [];
     }
+
     if (defferentFormsPokemons[pokemon] !== undefined) {
       for (let poke of defferentFormsPokemons[pokemon]) {
         const ids: number[] = resultlist[poke];
