@@ -164,9 +164,16 @@ const Form: NextPage = () => {
     }
   };
 
+  const Message = (
+    <strong>
+      記事が投稿されました。 <br />
+      承認までしばらくお待ちください。
+    </strong>
+  );
+
   return (
     <>
-      <AlertSuccess modalOpen={modalOpen} />
+      <AlertSuccess modalOpen={modalOpen} message={Message} />
 
       <Box
         sx={{

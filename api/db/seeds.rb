@@ -9,6 +9,7 @@
 
 tera = ["ノーマル","いわ","むし","ゴースト","みず","はがね","あく","くさ","ほのお","あく","ドラゴン","でんき","じめん","エスパー","こおり","かくとう","フェアリー"]
 ab = ["もうか","しんりょく","げきりゅう"]
+moves = ["かみなり","じしん","りゅうせいぐん","ねむる","まもる"]
 
 item = ["こだわりスカーフ","こだわりメガネ","こだわりハチマキ","きあいのタスキ","いのちのたま","オボンのみ","おんみつマント","たべのこし","ゴツゴツメット","オボンのみ"]
 nature = ["いじっぱり","おくびょう","ようき","ひかえめ","ずぶとい","おだやか","やんちゃ","まじめ"]
@@ -16,11 +17,11 @@ pokemons = ["サーフゴー","ドドゲザン","ニンフィア","ドラパル�
 
 (1..100).each do |n|
   user = User.create!(name: "スカーレット_#{n}", twitter: "twitter_#{n}")
-  article = Article.create!(url:"https://abcdefg#{n}.com",user: user,rate:2000-n,season:1,series:1,rank:n,title:"【S11 最終2002 296位】純度92まきびしゲコミミマンダ【シングル6→3】#{n}")
+  article = Article.create!(url:"https://abcdefg#{n}.com",user: user,rate:2000-n,season:1,series:1,rank:n,title:"【S11 最終2002 296位】純度92まきびしゲコミミマンダ【シングル6→3】#{n}",permit: true)
   6.times do |i|
     party = Party.create!(pokemon: pokemons.sample,item: item.sample ,ability: ab.sample,terastal: tera.sample,nature: nature.sample,article: article)
     4.times do |j|
-      move = Move.create!(pokemon: party.pokemon,name: Faker::Games::Pokemon.move,party: party)
+      move = Move.create!(pokemon: party.pokemon,name: moves[j],party: party)
     end
     effort_value = EffortValue.create!(h:0,a:0,b:0,c:0,d:0,s:0,sum:0,party: party)
     individual_value = IndividualValue.create!(h:31,a:31,b:31,c:31,d:31,s:31,party: party)

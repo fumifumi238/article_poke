@@ -10,9 +10,10 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import seriesData from "../../json/series.json";
 import { textToNumber } from "../../utils/textToNumber";
+import AlertSuccess from "../atoms/AlertSuccess";
 
 type DisplaySetting = {
   series: string;
@@ -20,6 +21,8 @@ type DisplaySetting = {
   seasons: string[];
   format: string;
   version: string;
+  success: boolean;
+  setSuccess: Dispatch<SetStateAction<boolean>>;
 };
 
 const DisplaySetting = ({
@@ -28,6 +31,8 @@ const DisplaySetting = ({
   seasons,
   format,
   version,
+  success,
+  setSuccess,
 }: DisplaySetting) => {
   const router = useRouter();
   const [seriesSetting, setSeriesSetting] = useState<string>(series);
@@ -104,6 +109,7 @@ const DisplaySetting = ({
   }, [seasonsSetting, ranksSetting, formatSetting, versionSetting]);
 
   const onClickSetting = () => {
+    setSuccess(true);
     let baseUrl = "/article?";
 
     const addBaseUrl = (params: string, value: string | number) => {
@@ -163,6 +169,8 @@ const DisplaySetting = ({
     textToNumber(value, "", setMax, 1, 99999);
   };
 
+  const Message = <strong>反映中です。しばらくお待ちください。</strong>;
+
   return (
     <Box
       sx={{
@@ -170,6 +178,8 @@ const DisplaySetting = ({
         justifyContent: "center",
         alignItems: "center",
       }}>
+      {success && <AlertSuccess modalOpen={success} message={Message} />}
+
       <Box
         sx={{
           border: 1,

@@ -112,130 +112,135 @@ type DetailsContext = {
 
    const [noData, setNoData] = useState<boolean>(false);
 
-   const router = useRouter();
-   const query = router.query;
+    const [success, setSuccess] = useState<boolean>(false);
 
-   const changeVisibleLoading = () => {
-     if (articles.length === alreadySearch[currentId]?.searchIds?.length) {
-       setVisibleLoading(false);
-     } else {
-       setVisibleLoading(true);
-     }
-   };
+    const router = useRouter();
+    const query = router.query;
 
-   useEffect(() => {
-     changeVisibleLoading();
-   }, [articles]);
+    const changeVisibleLoading = () => {
+      if (articles.length === alreadySearch[currentId]?.searchIds?.length) {
+        setVisibleLoading(false);
+      } else {
+        setVisibleLoading(true);
+      }
+    };
 
-   const getArticle = async (
-     currentSeasons: string[] = seasons,
-     currentVersion: string = version,
-     currentFormat: string = format,
-     currentRanks: number[] = ranks
-   ) => {
-     setLoading(true);
-     const params = {
-       seasons: currentSeasons,
-       version: currentVersion,
-       format: currentFormat,
-       ranks: currentRanks,
-     };
-     const data = await getData(`/articles/index`, params);
+    useEffect(() => {
+      changeVisibleLoading();
+    }, [articles]);
 
-     setArticles(data[0] as unknown as Article[]);
-     setArticleIds(data[1] as unknown as number[]);
+    const getArticle = async (
+      currentSeasons: string[] = seasons,
+      currentVersion: string = version,
+      currentFormat: string = format,
+      currentRanks: number[] = ranks
+    ) => {
+      setLoading(true);
+      const params = {
+        seasons: currentSeasons,
+        version: currentVersion,
+        format: currentFormat,
+        ranks: currentRanks,
+      };
+      const data = await getData(`/articles/index`, params);
 
-     setAlreadySearch({
-       0: { articles: data[0], searchIds: data[1], searchPokemonList: [] },
-     });
+      setArticles(data[0] as unknown as Article[]);
+      setArticleIds(data[1] as unknown as number[]);
 
-     setLoading(false);
+      setAlreadySearch({
+        0: { articles: data[0], searchIds: data[1], searchPokemonList: [] },
+      });
 
-     if (data.length === 0) {
-       setNoData(true);
-     } else {
-       setNoData(false);
-     }
-   };
+      setLoading(false);
 
-   useEffect(() => {
-     if (router.isReady) {
-       const processQuery = (
-         query: string | string[],
-         defaultValue: string,
-         options: string[],
-         setState: (value: React.SetStateAction<string>) => void
-       ) => {
-         const findOption = options.find((option) => option === query);
-         if (findOption === undefined) {
-           return defaultValue;
-         }
+      if (data.length === 0) {
+        setNoData(true);
+      } else {
+        setNoData(false);
+      }
+    };
 
-         setState(String(query));
+    useEffect(() => {
+      if (router.isReady) {
+        const processQuery = (
+          query: string | string[],
+          defaultValue: string,
+          options: string[],
+          setState: (value: React.SetStateAction<string>) => void
+        ) => {
+          const findOption = options.find((option) => option === query);
+          if (findOption === undefined) {
+            return defaultValue;
+          }
 
-         return query;
-       };
+          setState(String(query));
 
-       const defaultVesion = "sv";
-       const versionOptions = ["sv"];
-       let currentVersion = processQuery(
-         query.version,
-         defaultVesion,
-         versionOptions,
-         setVersion
-       );
+          return query;
+        };
 
-       const defaultFormat = "single";
-       const formatOptions = ["double", "single"];
-       let currentFormat = processQuery(
-         query.format,
-         defaultFormat,
-         formatOptions,
-         setFormat
-       );
+        const defaultVesion = "sv";
+        const versionOptions = ["sv"];
+        let currentVersion = processQuery(
+          query.version,
+          defaultVesion,
+          versionOptions,
+          setVersion
+        );
 
-       const ranksQuery = query.ranks;
-       let currentRanks = ranks;
+        const defaultFormat = "single";
+        const formatOptions = ["double", "single"];
+        let currentFormat = processQuery(
+          query.format,
+          defaultFormat,
+          formatOptions,
+          setFormat
+        );
 
-       if (
-         Array.isArray(ranksQuery) &&
-         Number(ranksQuery[0]) >= 1 &&
-         Number(ranksQuery[1]) <= 99999 &&
-         Number(ranksQuery[0]) < Number(ranksQuery[1])
-       ) {
-         currentRanks = [Number(ranksQuery[0]), Number(ranksQuery[1])];
-         setRanks(currentRanks);
-       }
+        const ranksQuery = query.ranks;
+        let currentRanks = ranks;
 
-       const seriesToString = String(query.series);
-       let currentSeasons = seasons;
-       if (seriesData[seriesToString] !== undefined) {
-         if (query.seasons === undefined) {
-           setSeries(seriesToString);
-           currentSeasons = seriesData[seriesToString];
-         } else if (typeof query.seasons === "string") {
-           currentSeasons = [query.seasons];
-         } else {
-           currentSeasons = query.seasons;
-         }
+        if (
+          Array.isArray(ranksQuery) &&
+          Number(ranksQuery[0]) >= 1 &&
+          Number(ranksQuery[1]) <= 99999 &&
+          Number(ranksQuery[0]) < Number(ranksQuery[1])
+        ) {
+          currentRanks = [Number(ranksQuery[0]), Number(ranksQuery[1])];
+          setRanks(currentRanks);
+        }
 
-         setSeasons(currentSeasons);
-       }
+        const seriesToString = String(query.series);
+        let currentSeasons = seasons;
+        if (seriesData[seriesToString] !== undefined) {
+          if (query.seasons === undefined) {
+            setSeries(seriesToString);
+            currentSeasons = seriesData[seriesToString];
+          } else if (typeof query.seasons === "string") {
+            currentSeasons = [query.seasons];
+          } else {
+            currentSeasons = query.seasons;
+          }
 
-       getArticle(
-         currentSeasons,
-         String(currentVersion),
-         String(currentFormat),
-         currentRanks
-       );
-       setChangeSetting(true);
-     }
-   }, [query, router]);
+          setSeasons(currentSeasons);
+        }
+
+        getArticle(
+          currentSeasons,
+          String(currentVersion),
+          String(currentFormat),
+          currentRanks
+        );
+        setOffset(20);
+        setSuccess(false);
+        setChangeSetting(true);
+      }
+    }, [query, router]);
 
    const loadArticle = async () => {
      setLoading(true);
+
      const params = {
-       ids: alreadySearch[currentId].searchIds.slice(
+       ids: alreadySearch[currentId]?.searchIds?.slice(
          offset,
          offset + limitPerPage
        ),
@@ -329,6 +334,8 @@ type DetailsContext = {
                seasons={seasons}
                format={format}
                version={version}
+               success={success}
+               setSuccess={setSuccess}
              />
            )}
          </Box>

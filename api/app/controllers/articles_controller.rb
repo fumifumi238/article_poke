@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
     arr = []
     @articles.each do |article|
       @parties = Party.where(article_id: article.id)
-       data = get_party_with_stats(@parties)
+      data = get_party_with_stats(@parties)
       hash = { id: article.id,
               format: article.format,
               url: article.url,

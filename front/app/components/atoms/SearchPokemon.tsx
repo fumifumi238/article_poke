@@ -37,6 +37,7 @@ const SearchPokemon = ({
   const pokemonRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    pokemonRef.current.value = "";
     const getArticleData = async () => {
       // どの記事にどのポケモンがいるかを返す。検索用
       const params = {
@@ -57,7 +58,6 @@ const SearchPokemon = ({
     if (searchPokemonList.length === 0) {
       setArticle(alreadySearch[0].articles);
       setCurrentId(0);
-      setOffset(20);
       return;
     }
     let hash: { [key: string]: number } = {};
@@ -94,6 +94,8 @@ const SearchPokemon = ({
     } else {
       setArticle(alreadySearch[searchPokemonList.length].articles);
     }
+
+    setOffset(20);
   }, [searchPokemonList]);
 
   const searchPokemon = (pokemon: string) => {
