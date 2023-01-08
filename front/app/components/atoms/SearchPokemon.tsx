@@ -75,51 +75,53 @@ const SearchPokemon = ({
           }, [articleIds]);
 
           useEffect(() => {
-            if (searchPokemonList.length === 0) {
-              setArticle(alreadySearch[0].articles);
-              setCurrentId(0);
-              return;
-            }
-            let hash: { [key: string]: number } = {};
-
-            for (let i = 0; i < searchPokemonList.length; i++) {
-              let lists = searchPokemon(searchPokemonList[i]);
-
-              for (let list of lists) {
-                if (hash[list] === undefined) {
-                  hash[list] = 1;
-                } else {
-                  hash[list] += 1;
+                setOffset(20);
+                if (searchPokemonList.length === 0) {
+                  setArticle(alreadySearch[0].articles);
+                  setCurrentId(0);
+                  return;
                 }
-              }
-            }
+                let hash: { [key: string]: number } = {};
 
-            let values = Object.keys(hash).filter(
-              (key) => hash[key] === searchPokemonList.length
-            );
+                for (let i = 0; i < searchPokemonList.length; i++) {
+                  let lists = searchPokemon(searchPokemonList[i]);
 
-            values = valuesOrderByRank(articleIds, values);
+                  for (let list of lists) {
+                    if (hash[list] === undefined) {
+                      hash[list] = 1;
+                    } else {
+                      hash[list] += 1;
+                    }
+                  }
+                }
 
-            const equalArray =
-              alreadySearch[searchPokemonList.length]?.searchPokemonList !==
-              undefined
-                ? isEqualArray(
-                    searchPokemonList,
-                    alreadySearch[searchPokemonList.length].searchPokemonList
-                  )
-                : false;
+                let values = Object.keys(hash).filter(
+                  (key) => hash[key] === searchPokemonList.length
+                );
 
-            if (!equalArray) {
-              searchPokemonByIds(
-                searchPokemonList.length,
-                values,
-                searchPokemonList
-              );
-            } else {
-              setArticle(alreadySearch[searchPokemonList.length].articles);
-            }
+                values = valuesOrderByRank(articleIds, values);
 
-            setOffset(20);
+                const equalArray =
+                  alreadySearch[searchPokemonList.length]?.searchPokemonList !==
+                  undefined
+                    ? isEqualArray(
+                        searchPokemonList,
+                        alreadySearch[searchPokemonList.length]
+                          .searchPokemonList
+                      )
+                    : false;
+
+                if (!equalArray) {
+                  searchPokemonByIds(
+                    searchPokemonList.length,
+                    values,
+                    searchPokemonList
+                  );
+                } else {
+                  setArticle(alreadySearch[searchPokemonList.length].articles);
+                }
+
+
           }, [searchPokemonList]);
 
   const searchPokemon = (pokemon: string) => {
