@@ -47,7 +47,6 @@ const TerastalForm = ({ focusItem }: TerastalForm) => {
     if (e.key === "ArrowDown") {
       if (filterTerastalList.length - 1 > selectIndex) {
         setSelectIndex((selectIndex) => selectIndex + 1);
-        console.log(selectIndex);
       }
     }
     if (e.key === "ArrowUp") {

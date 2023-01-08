@@ -46,7 +46,6 @@ const SearchPokemon = ({
               valuesRank[value] = 1;
             }
 
-            console.log(valuesRank);
 
             for (let rank of ranks) {
               if (valuesRank[rank] !== undefined) {
@@ -85,9 +84,6 @@ const SearchPokemon = ({
 
             for (let i = 0; i < searchPokemonList.length; i++) {
               let lists = searchPokemon(searchPokemonList[i]);
-              if (lists.length === 0) {
-                console.log("no result");
-              }
 
               for (let list of lists) {
                 if (hash[list] === undefined) {

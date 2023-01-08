@@ -62,7 +62,6 @@ const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
         ...newData,
       }));
       setTimeout(() => setLoading(false), 300);
-      console.log("更新");
     };
 
     if (details[pokemon] === undefined) {

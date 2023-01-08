@@ -102,17 +102,5 @@ const Home: NextPage = () => {
   );
 };
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const response = await fetch("http://api:3000/posts", { method: "GET" });
-//   const json = await response.json();
-
-//   console.log()
-
-//   return {
-//     props: {
-//       posts: json,
-//     },
-//   };
-// };
 
 export default Home;
