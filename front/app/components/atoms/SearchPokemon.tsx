@@ -35,68 +35,96 @@ const SearchPokemon = ({
   const [searchPokemonList, setSearchPokemonList] = useState<string[]>([]);
 
   const pokemonRef = useRef<HTMLInputElement>(null);
+          const valuesOrderByRank = (
+            ranks: number[],
+            values: (number | string)[]
+          ) => {
+            const arr = [];
 
-  useEffect(() => {
-    pokemonRef.current.value = "";
-    const getArticleData = async () => {
-      // どの記事にどのポケモンがいるかを返す。検索用
-      const params = {
-        ids: articleIds,
-      };
-      const pokemonPerArticle = await getData(
-        "/parties/pokemon_per_article",
-        params
-      );
+            const valuesRank = {};
+            for (let value of values) {
+              valuesRank[value] = 1;
+            }
 
-      setResultList(pokemonPerArticle as unknown as ResultList);
-    };
+            console.log(valuesRank);
 
-    getArticleData();
-  }, [articleIds]);
+            for (let rank of ranks) {
+              if (valuesRank[rank] !== undefined) {
+                arr.push(rank);
+              }
+            }
 
-  useEffect(() => {
-    if (searchPokemonList.length === 0) {
-      setArticle(alreadySearch[0].articles);
-      setCurrentId(0);
-      return;
-    }
-    let hash: { [key: string]: number } = {};
+            return arr;
+          };
 
-    for (let i = 0; i < searchPokemonList.length; i++) {
-      let lists = searchPokemon(searchPokemonList[i]);
-      if (lists.length === 0) {
-        console.log("no result");
-      }
+          useEffect(() => {
+            pokemonRef.current.value = "";
+            const getArticleData = async () => {
+              // どの記事にどのポケモンがいるかを返す。検索用
+              const params = {
+                ids: articleIds,
+              };
+              const pokemonPerArticle = await getData(
+                "/parties/pokemon_per_article",
+                params
+              );
 
-      for (let list of lists) {
-        if (hash[list] === undefined) {
-          hash[list] = 1;
-        } else {
-          hash[list] += 1;
-        }
-      }
-    }
+              setResultList(pokemonPerArticle as unknown as ResultList);
+            };
 
-    const values = Object.keys(hash).filter(
-      (key) => hash[key] === searchPokemonList.length
-    );
+            getArticleData();
+          }, [articleIds]);
 
-    const equalArray =
-      alreadySearch[searchPokemonList.length]?.searchPokemonList !== undefined
-        ? isEqualArray(
-            searchPokemonList,
-            alreadySearch[searchPokemonList.length].searchPokemonList
-          )
-        : false;
+          useEffect(() => {
+            if (searchPokemonList.length === 0) {
+              setArticle(alreadySearch[0].articles);
+              setCurrentId(0);
+              return;
+            }
+            let hash: { [key: string]: number } = {};
 
-    if (!equalArray) {
-      searchPokemonByIds(searchPokemonList.length, values, searchPokemonList);
-    } else {
-      setArticle(alreadySearch[searchPokemonList.length].articles);
-    }
+            for (let i = 0; i < searchPokemonList.length; i++) {
+              let lists = searchPokemon(searchPokemonList[i]);
+              if (lists.length === 0) {
+                console.log("no result");
+              }
 
-    setOffset(20);
-  }, [searchPokemonList]);
+              for (let list of lists) {
+                if (hash[list] === undefined) {
+                  hash[list] = 1;
+                } else {
+                  hash[list] += 1;
+                }
+              }
+            }
+
+            let values = Object.keys(hash).filter(
+              (key) => hash[key] === searchPokemonList.length
+            );
+
+            values = valuesOrderByRank(articleIds, values);
+
+            const equalArray =
+              alreadySearch[searchPokemonList.length]?.searchPokemonList !==
+              undefined
+                ? isEqualArray(
+                    searchPokemonList,
+                    alreadySearch[searchPokemonList.length].searchPokemonList
+                  )
+                : false;
+
+            if (!equalArray) {
+              searchPokemonByIds(
+                searchPokemonList.length,
+                values,
+                searchPokemonList
+              );
+            } else {
+              setArticle(alreadySearch[searchPokemonList.length].articles);
+            }
+
+            setOffset(20);
+          }, [searchPokemonList]);
 
   const searchPokemon = (pokemon: string) => {
     const articles: number[] = [];
