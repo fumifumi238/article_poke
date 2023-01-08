@@ -17,7 +17,7 @@ function MyApp(props: MyAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width,maximum-scale=1.0" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
