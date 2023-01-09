@@ -47,7 +47,7 @@ function MyApp(props: MyAppProps) {
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
 
-        <DefaultSeo
+        {/* <DefaultSeo
           defaultTitle="Poke Ranker ポケモンSV 上位構築記事まとめ"
           description="ポケモンSVの構築記事 努力値　ランキングを素早く見る"
           openGraph={{
@@ -62,7 +62,7 @@ function MyApp(props: MyAppProps) {
             site: "@poke_ranker",
             cardType: "summary_large_image",
           }}
-        />
+        /> */}
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
