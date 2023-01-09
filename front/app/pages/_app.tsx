@@ -56,11 +56,11 @@ function MyApp(props: MyAppProps) {
         <Layout>
           <DefaultSeo
             defaultTitle="Poke Ranker ポケモンSV 上位構築記事まとめ"
-            description="ポケモンSVの構築記事 努力値　ランキングを素早く見る"
+            description="ポケモン SV 構築記事 努力値　ランキング　まとめ"
             openGraph={{
               type: "website",
               title: "Poke Ranker ポケモン構築記事まとめ",
-              description: "ポケモンの構築記事　努力値　ランキングを素早く見る",
+              description: "ポケモン SV 構築記事 努力値　ランキング　まとめ",
               site_name: "Poke Ranker",
               url: "https://poke-ranker.netlify.app/",
             }}

@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
@@ -173,6 +174,10 @@ const Form: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title="Poke Ranker | ポケモンSV構築記事投稿フォーム"
+        description="構築記事を投稿したい方はこちら"
+      />
       <AlertSuccess modalOpen={modalOpen} message={Message} />
 
       <Box
