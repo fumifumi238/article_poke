@@ -1,3 +1,4 @@
+import TextField from "@mui/material/TextField";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import defferentFormsPokemons from "../../json/differentFormPokemons.json";
 import pokeData from "../../json/poke_data.json";
@@ -35,94 +36,82 @@ const SearchPokemon = ({
   const [searchPokemonList, setSearchPokemonList] = useState<string[]>([]);
 
   const pokemonRef = useRef<HTMLInputElement>(null);
-          const valuesOrderByRank = (
-            ranks: number[],
-            values: (number | string)[]
-          ) => {
-            const arr = [];
+  const valuesOrderByRank = (ranks: number[], values: (number | string)[]) => {
+    const arr = [];
 
-            const valuesRank = {};
-            for (let value of values) {
-              valuesRank[value] = 1;
-            }
+    const valuesRank = {};
+    for (let value of values) {
+      valuesRank[value] = 1;
+    }
 
+    for (let rank of ranks) {
+      if (valuesRank[rank] !== undefined) {
+        arr.push(rank);
+      }
+    }
 
-            for (let rank of ranks) {
-              if (valuesRank[rank] !== undefined) {
-                arr.push(rank);
-              }
-            }
+    return arr;
+  };
 
-            return arr;
-          };
+  useEffect(() => {
+    pokemonRef.current.value = "";
+    const getArticleData = async () => {
+      // どの記事にどのポケモンがいるかを返す。検索用
+      const params = {
+        ids: articleIds,
+      };
+      const pokemonPerArticle = await getData(
+        "/parties/pokemon_per_article",
+        params
+      );
 
-          useEffect(() => {
-            pokemonRef.current.value = "";
-            const getArticleData = async () => {
-              // どの記事にどのポケモンがいるかを返す。検索用
-              const params = {
-                ids: articleIds,
-              };
-              const pokemonPerArticle = await getData(
-                "/parties/pokemon_per_article",
-                params
-              );
+      setResultList(pokemonPerArticle as unknown as ResultList);
+    };
 
-              setResultList(pokemonPerArticle as unknown as ResultList);
-            };
+    getArticleData();
+  }, [articleIds]);
 
-            getArticleData();
-          }, [articleIds]);
+  useEffect(() => {
+    setOffset(20);
+    if (searchPokemonList.length === 0) {
+      setArticle(alreadySearch[0].articles);
+      setCurrentId(0);
+      return;
+    }
+    let hash: { [key: string]: number } = {};
 
-          useEffect(() => {
-                setOffset(20);
-                if (searchPokemonList.length === 0) {
-                  setArticle(alreadySearch[0].articles);
-                  setCurrentId(0);
-                  return;
-                }
-                let hash: { [key: string]: number } = {};
+    for (let i = 0; i < searchPokemonList.length; i++) {
+      let lists = searchPokemon(searchPokemonList[i]);
 
-                for (let i = 0; i < searchPokemonList.length; i++) {
-                  let lists = searchPokemon(searchPokemonList[i]);
+      for (let list of lists) {
+        if (hash[list] === undefined) {
+          hash[list] = 1;
+        } else {
+          hash[list] += 1;
+        }
+      }
+    }
 
-                  for (let list of lists) {
-                    if (hash[list] === undefined) {
-                      hash[list] = 1;
-                    } else {
-                      hash[list] += 1;
-                    }
-                  }
-                }
+    let values = Object.keys(hash).filter(
+      (key) => hash[key] === searchPokemonList.length
+    );
 
-                let values = Object.keys(hash).filter(
-                  (key) => hash[key] === searchPokemonList.length
-                );
+    values = valuesOrderByRank(articleIds, values);
 
-                values = valuesOrderByRank(articleIds, values);
+    const equalArray =
+      alreadySearch[searchPokemonList.length]?.searchPokemonList !== undefined
+        ? isEqualArray(
+            searchPokemonList,
+            alreadySearch[searchPokemonList.length].searchPokemonList
+          )
+        : false;
 
-                const equalArray =
-                  alreadySearch[searchPokemonList.length]?.searchPokemonList !==
-                  undefined
-                    ? isEqualArray(
-                        searchPokemonList,
-                        alreadySearch[searchPokemonList.length]
-                          .searchPokemonList
-                      )
-                    : false;
-
-                if (!equalArray) {
-                  searchPokemonByIds(
-                    searchPokemonList.length,
-                    values,
-                    searchPokemonList
-                  );
-                } else {
-                  setArticle(alreadySearch[searchPokemonList.length].articles);
-                }
-
-
-          }, [searchPokemonList]);
+    if (!equalArray) {
+      searchPokemonByIds(searchPokemonList.length, values, searchPokemonList);
+    } else {
+      setArticle(alreadySearch[searchPokemonList.length].articles);
+    }
+  }, [searchPokemonList]);
 
   const searchPokemon = (pokemon: string) => {
     const articles: number[] = [];
@@ -183,7 +172,7 @@ const SearchPokemon = ({
       type="text"
       ref={pokemonRef}
       onChange={addSearchPokemonList}
-      placeholder="サーフゴー ドドゲザン　ドラパルト"
+      placeholder="サーフゴー　ドラパルト etc...(半角で区切って検索)"
       style={{ width: "100%", height: 40 }}
     />
   );

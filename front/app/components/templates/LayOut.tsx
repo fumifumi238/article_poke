@@ -20,7 +20,7 @@ export default function Layout({ children }) {
         </Drawer>
         <Box
           sx={{
-            height: "6vh",
+            height: "8vh",
             background: "grey",
             width: "100%",
             display: "flex",
