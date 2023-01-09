@@ -326,6 +326,17 @@ export const Article: NextPage = () => {
           title="Poke Ranker | ポケモンSV シリーズ1 シーズン1 構築記事まとめ"
           description="ポケモンの構築記事が読みたい方はこちら。"
         />
+        <Typography
+          variant="h1"
+          sx={{
+            fontSize: "16px",
+            textAlign: "center",
+            margin: 1,
+            color: "grey",
+          }}>
+          【ポケモン SV {format === "single" ? "シングル" : "ダブル"} シーズン
+          {seasons[seasons.length - 1]}】 構築記事まとめ
+        </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", margin: 1 }}>
           <Button onClick={() => setOpenSetting(!openSetting)}>表示設定</Button>
         </Box>
