@@ -113,6 +113,7 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
                     <Image
                       height={25}
                       width={25}
+                      alt={filterPokemon.pokemon}
                       src={`/image/${changeIcon(filterPokemon.pokemon)}`}
                     />
                   </Box>

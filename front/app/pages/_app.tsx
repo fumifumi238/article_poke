@@ -22,6 +22,10 @@ function MyApp(props: MyAppProps) {
           name="viewport"
           content="initial-scale=1.0, width=device-width,maximum-scale=1.0"
         />
+        <meta
+          name="google-site-verification"
+          content="Lh6KNMNwOn_JDzrveQV_z4CbZZVKnDh0X5-ViL3hLcM"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

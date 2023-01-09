@@ -105,6 +105,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                 onClick={() => setModalOpen(article.id)}>
                 <Image
                   src={`/image/ball/pokemonball.png`}
+                  alt="party"
                   width={25}
                   height={25}></Image>
               </Box>
@@ -129,6 +130,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                   <Box sx={{ position: "relative", zindex: 0 }}>
                     <Image
                       src={`/image/${changeIcon(poke.pokemon)}`}
+                      alt={poke.pokemon}
                       height={40}
                       width={40}></Image>
                   </Box>
@@ -136,6 +138,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                     sx={{ position: "absolute", zindex: 1, left: 25, top: 25 }}>
                     <Image
                       src={getItemIcon(poke.item)}
+                      alt={poke.item}
                       height={20}
                       width={20}></Image>
                   </Box>
@@ -148,6 +151,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                     }}>
                     <Image
                       src={`/image/teraIcon/${typesData[poke.terastal]}.png`}
+                      alt={typesData[poke.terastal]}
                       height={20}
                       width={20}></Image>
                   </Box>

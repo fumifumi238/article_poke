@@ -377,7 +377,12 @@ type DetailsContext = {
              height: 60,
            }}
            onClick={toggleDrawer(true)}>
-           <Image src="/image/ranking.png" width={60} height={60} />
+           <Image
+             src="/image/ranking.png"
+             width={60}
+             height={60}
+             alt={"rank"}
+           />
          </Fab>
        </div>
        <Drawer open={rankOpen} onClose={toggleDrawer(false)} anchor="right">

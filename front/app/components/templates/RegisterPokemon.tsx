@@ -406,6 +406,7 @@ const RegisterPokemon = ({
                   }}>
                   <Image
                     src="/image/ball/pokemonball.png"
+                    alt=""
                     height={23}
                     width={23}></Image>
                 </Box>
@@ -605,6 +606,7 @@ const RegisterPokemon = ({
                   }}>
                   <Image
                     src={`/image/${iconUrls[i]}`}
+                    alt={iconUrls[i]}
                     height={45}
                     width={45}></Image>
                 </Box>
@@ -637,6 +639,7 @@ const RegisterPokemon = ({
                 }}>
                 <Image
                   src={`/image/${iconUrls[currentPoke]}`}
+                  alt={"icon"}
                   height={30}
                   width={30}></Image>
               </Box>

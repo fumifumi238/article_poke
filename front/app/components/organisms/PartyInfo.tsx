@@ -78,6 +78,7 @@ const PartyInfo = ({ party }: Party) => {
               }}>
               <Image
                 src="/image/ball/pokemonball.png"
+                alt=""
                 layout="fill"
                 objectFit="contain"></Image>
             </Box>
@@ -123,6 +124,7 @@ const PartyInfo = ({ party }: Party) => {
               <Image
                 src={`/image/teraIcon/${typesData[party.terastal]}.png`}
                 layout="fill"
+                alt={party.terastal}
                 objectFit="contain"></Image>
             </Box>
             <Box>
@@ -140,6 +142,7 @@ const PartyInfo = ({ party }: Party) => {
             <Image
               src={`/image/${changeIcon(party.pokemon)}`}
               layout="fill"
+              alt={party.pokemon}
               objectFit="contain"></Image>
           </Box>
           <Box sx={{ height: "18%" }}>
@@ -179,6 +182,7 @@ const PartyInfo = ({ party }: Party) => {
               <Image
                 src={`${getItemIcon(party.item)}`}
                 layout="fill"
+                alt={party.item}
                 objectFit="contain"></Image>
             </Box>
             <Box sx={{ width: "80%", borderTop: 1 }}>

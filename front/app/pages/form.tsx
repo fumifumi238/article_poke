@@ -264,6 +264,7 @@ const Form: NextPage = () => {
                 src={`/image/${changeIcon(pokeDetail.pokemon)}`}
                 height={40}
                 width={40}
+                alt={pokeDetail.pokemon}
               />
             ))}
           </Box>

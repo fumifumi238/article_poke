@@ -67,6 +67,7 @@ const Home: NextPage = () => {
             <Image
               src="/image/rankedBattles/series1.jpg"
               layout="fill"
+              alt={"series1"}
               objectFit="contain"
               style={{ textAlign: "center" }}
               onClick={() => redirectToArticle()}
