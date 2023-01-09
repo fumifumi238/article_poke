@@ -46,23 +46,6 @@ function MyApp(props: MyAppProps) {
           color="#000000"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
-
-        <DefaultSeo
-          defaultTitle="Poke Ranker ポケモンSV 上位構築記事まとめ"
-          description="ポケモンSVの構築記事 努力値　ランキングを素早く見る"
-          openGraph={{
-            type: "website",
-            title: "Poke Ranker ポケモン構築記事まとめ",
-            description: "ポケモンの構築記事　努力値　ランキングを素早く見る",
-            site_name: "Poke Ranker",
-            url: "https://poke-ranker.netlify.app/",
-          }}
-          twitter={{
-            handle: "@poke_ranker",
-            site: "@poke_ranker",
-            cardType: "summary_large_image",
-          }}
-        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
