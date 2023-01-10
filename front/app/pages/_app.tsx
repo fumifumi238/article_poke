@@ -7,6 +7,8 @@ import Head from "next/head";
 import Layout from "../components/templates/LayOut";
 import createEmotionCache from "../src/createEmotionCache";
 import theme from "../src/theme";
+import GoogleAnalytics from "../src/components/GoogleAnalytics";
+import usePageView from "../src/hooks/usePageView";
 
 const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {
@@ -15,6 +17,7 @@ interface MyAppProps extends AppProps {
 
 function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  usePageView();
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -70,6 +73,7 @@ function MyApp(props: MyAppProps) {
               cardType: "summary_large_image",
             }}
           />
+          <GoogleAnalytics />
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
