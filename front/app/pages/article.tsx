@@ -334,7 +334,7 @@ export const Article: NextPage = () => {
             margin: 1,
             color: "grey",
           }}>
-          【ポケモン SV {format === "single" ? "シングル" : "ダブル"} シーズン
+          【ポケモンSV {format === "single" ? "シングル" : "ダブル"} シーズン
           {seasons[seasons.length - 1]}】 構築記事まとめ
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", margin: 1 }}>

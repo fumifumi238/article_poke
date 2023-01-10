@@ -9,6 +9,7 @@ import DrawerItems from "../molecules/DrawerItems";
 import DrawerItemsSearch from "../molecules/DrawerItemsSearch";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
+import ErrorIcon from "@mui/icons-material/Error";
 
 type MenuDrawer = {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -48,6 +49,12 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
           icon={<CatchingPokemonIcon />}
           href="/rental"
           placeholder="ABC123"
+          setDrawerOpen={setDrawerOpen}
+        />
+        <DrawerItems
+          value={"利用規約"}
+          icon={<ErrorIcon />}
+          href="/about"
           setDrawerOpen={setDrawerOpen}
         />
       </List>
