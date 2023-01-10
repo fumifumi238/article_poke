@@ -65,24 +65,29 @@ class ArticlesController < ApplicationController
   end
 
   def not_permit_articles
-    @articles = Article.joins(:user).select("articles.id,articles.url,articles.format,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(permit: false);
+    @articles = Article.where(permit: false);
+
 
     arr = []
     @articles.each do |article|
-      @parties = Party.where(article_id: article.id)
-      data = get_party_with_stats(@parties)
-      hash = { id: article.id,
-              format: article.format,
-              url: article.url,
-              rate: article.rate,
-              rank: article.rank,
-              season: article.season,
-              title: article.title,
-              rental: article.rental,
-              tn: article.tn,
-              twitter: article.twitter,
-              party: data}
+      @user = User.find(article.id)
+      @parties = Party.where(article: article)
+
+      b = []
+
+      @parties.each do |party|
+        moves = Move.select(:id,:name,:party_id).where(party: party)
+        effortValues = EffortValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s,:sum)
+        individualValues = IndividualValue.where(party: party).pluck(:h,:a,:b,:c,:d,:s)
+
+        c = {pokemon: party,moves: moves,effortValues: effortValues[0],individualValues: individualValues[0]}
+        b.push(c)
+
+      end
+
+      hash = {article: article,user: @user,party: b}
       arr.push(hash)
+
     end
 
     render json: arr
