@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
 
     arr = []
     @articles.each do |article|
-      @user = User.find(article.id)
+      @user = User.find(article.user_id)
       @parties = Party.where(article: article)
 
       b = []

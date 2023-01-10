@@ -13,7 +13,7 @@ const Permit = () => {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_HOST}/articles/not_permit_articles`
         );
-        const data = await res.json();
+        const data = (await res.json()) as Article[];
         setArticles(data);
       };
 
