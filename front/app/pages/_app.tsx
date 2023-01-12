@@ -53,6 +53,10 @@ function MyApp(props: MyAppProps) {
           color="#000000"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8818787014591723"
+          crossOrigin="anonymous"></script>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

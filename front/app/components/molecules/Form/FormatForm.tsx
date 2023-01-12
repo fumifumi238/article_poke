@@ -20,7 +20,9 @@ const FormatForm = ({ format, setFormat }: Format) => {
         alignItems: "center",
         margin: "4px",
       }}>
-      <Typography>Format:</Typography>
+      <Typography sx={{ color: `${format === "single" ? "red" : "blue"}` }}>
+        Format:
+      </Typography>
 
       <TextField
         select
