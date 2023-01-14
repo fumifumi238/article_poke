@@ -82,11 +82,12 @@ function MyApp(props: MyAppProps) {
         <Layout>
           <DefaultSeo
             defaultTitle="Poke Ranker ポケモンSV 上位構築記事まとめ"
-            description="ポケモン SV 構築記事 努力値　ランキング　まとめ"
+            description="ポケモン SV 上位構築記事 努力値　ランキング　まとめ"
             openGraph={{
               type: "website",
-              title: "Poke Ranker ポケモン構築記事まとめ",
-              description: "ポケモン SV 構築記事 努力値　ランキング　まとめ",
+              title: "Poke Ranker ポケモン上位構築記事まとめ",
+              description:
+                "ポケモン SV 上位構築記事 努力値　ランキング　まとめ",
               site_name: "Poke Ranker",
               url: "https://poke-ranker.netlify.app/",
             }}
@@ -96,6 +97,7 @@ function MyApp(props: MyAppProps) {
               cardType: "summary_large_image",
             }}
           />
+          <GoogleAdsense />
           <GoogleAnalytics />
           <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
             <Component {...pageProps} />
