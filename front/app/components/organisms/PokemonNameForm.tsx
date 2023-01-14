@@ -91,7 +91,7 @@ const PokemonNameForm = React.forwardRef(
       <div
         style={{ width: "100%", height: "100%" }}
         onBlur={() =>
-          setTimeout(() => changeNameForm(ref.current?.value.trim()), 300)
+          setTimeout(() => changeNameForm(ref.current?.value.trim()), 500)
         }>
         <input
           type="text"
