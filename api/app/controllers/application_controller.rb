@@ -45,7 +45,7 @@ class ApplicationController < ActionController::API
  arr = [""]
  query = []
   values.each do |key,value|
-    if value != nil
+    if value != nil && !value.empty?
       query.push("#{key}")
       arr.push("#{value}")
     end
@@ -58,7 +58,7 @@ end
 
 def need_params(values)
   values.each do |value|
-    if value == nil
+    if value == nil || value.empty?
       return false
     end
   end

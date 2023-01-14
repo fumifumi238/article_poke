@@ -36,11 +36,15 @@ class PartiesController < ApplicationController
       return;
     end
 
+
     search = add_query(values)
-    @lists = Party.joins(:article).where(search).references(:article).select(:id,:pokemon,:nature,:item)
-    @individual_values = IndividualValue.where(party: @lists.ids).pluck(:h,:a,:b,:c,:d,:s)
-    @effort_values = EffortValue.where(party: @lists.ids).pluck(:h,:a,:b,:c,:d,:s,:sum)
-    render json:[@lists,@individual_values,@effort_values]
+    @lists = Party.joins(:article,:individual_values,:effort_values).where(search).
+    select("parties.id,parties.pokemon,parties.nature,parties.item,url ,
+      CONCAT(individual_values.h,',',individual_values.a,',',individual_values.b,',',individual_values.c,',',individual_values.d,',',individual_values.s) as individual,
+      CONCAT(effort_values.h,',',effort_values.a,',',effort_values.b,',',effort_values.c,',',effort_values.d,',',effort_values.s,',',effort_values.sum) as effort
+      "
+    ).group_by{|party| party.nature}
+    render json: @lists
   end
 
 private
