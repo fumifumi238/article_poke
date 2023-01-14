@@ -43,7 +43,7 @@ class PartiesController < ApplicationController
       CONCAT(individual_values.h,',',individual_values.a,',',individual_values.b,',',individual_values.c,',',individual_values.d,',',individual_values.s) as individual,
       CONCAT(effort_values.h,',',effort_values.a,',',effort_values.b,',',effort_values.c,',',effort_values.d,',',effort_values.s,',',effort_values.sum) as effort
       "
-    ).group_by{|party| party.nature}
+    ).group_by{|party| party.item}
     render json: @lists
   end
 
