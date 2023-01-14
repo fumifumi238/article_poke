@@ -8,13 +8,14 @@ import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import SearchPokemon from "../components/atoms/SearchPokemon";
 import ControlledAccordions from "../components/elements/Accordion/Accordion";
 import DisplaySetting from "../components/organisms/DisplaySetting";
 import DisplayArticle from "../components/templates/DisplayArticle";
 import seriesData from "../json/series.json";
 import { getData } from "../lib/api/fetchApi";
+import { ArticleContext } from "./_app";
 
 type Pokemon = {
   pokemon: string;
@@ -102,7 +103,6 @@ export const Article: NextPage = () => {
 
   const [changeSetting, setChangeSetting] = useState<boolean>(false);
 
-  const [version, setVersion] = useState<string>("sv");
   const [format, setFormat] = useState<string>("single");
 
   const [details, setDetails] = useState<Details>({});
@@ -114,6 +114,8 @@ export const Article: NextPage = () => {
   const [noData, setNoData] = useState<boolean>(false);
 
   const [success, setSuccess] = useState<boolean>(false);
+
+  const { cashArticle, setCashArticle } = useContext(ArticleContext);
 
   const router = useRouter();
   const query = router.query;
@@ -132,18 +134,33 @@ export const Article: NextPage = () => {
 
   const getArticle = async (
     currentSeasons: string[] = seasons,
-    currentVersion: string = version,
     currentFormat: string = format,
     currentRanks: number[] = ranks
   ) => {
     setLoading(true);
     const params = {
       seasons: currentSeasons,
-      version: currentVersion,
       format: currentFormat,
       ranks: currentRanks,
     };
-    const data = await getData(`/articles/index`, params);
+
+    const cash = currentSeasons + currentFormat + currentRanks;
+
+    let data = [[], []];
+
+    if (cashArticle[cash] === undefined) {
+      data = await getData(`/articles/index`, params);
+      const copyOfCash = { ...cashArticle };
+      copyOfCash[cash] = {
+        article: data[0],
+        articleIds: data[1],
+      };
+      setCashArticle(copyOfCash);
+      console.log("キャッシュを登録しました。");
+    } else {
+      data = [cashArticle[cash].article, cashArticle[cash].articleIds];
+      console.log("すでに登録されているキャッシュです。");
+    }
 
     setArticles(data[0] as unknown as Article[]);
     setArticleIds(data[1] as unknown as number[]);
@@ -178,15 +195,6 @@ export const Article: NextPage = () => {
 
         return query;
       };
-
-      const defaultVesion = "sv";
-      const versionOptions = ["sv"];
-      let currentVersion = processQuery(
-        query.version,
-        defaultVesion,
-        versionOptions,
-        setVersion
-      );
 
       const defaultFormat = "single";
       const formatOptions = ["double", "single"];
@@ -225,12 +233,7 @@ export const Article: NextPage = () => {
         setSeasons(currentSeasons);
       }
 
-      getArticle(
-        currentSeasons,
-        String(currentVersion),
-        String(currentFormat),
-        currentRanks
-      );
+      getArticle(currentSeasons, String(currentFormat), currentRanks);
       setOffset(20);
       setSuccess(false);
       setChangeSetting(true);
@@ -347,7 +350,6 @@ export const Article: NextPage = () => {
               ranks={ranks}
               seasons={seasons}
               format={format}
-              version={version}
               success={success}
               setSuccess={setSuccess}
             />

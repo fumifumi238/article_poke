@@ -26,7 +26,25 @@ class PartiesController < ApplicationController
     render json: data;
   end
 
+  def search_pokemon_and_item
+    values = {
+      "pokemon = ? ": params[:pokemon],
+      "item = ? ": params[:item]
+    }
+    if  !need_params([params[:pokemon]])
+      render json:[],status: 404
+      return;
+    end
+
+    search = add_query(values)
+    @lists = Party.joins(:article).where(search).references(:article).select(:id,:pokemon,:nature,:item)
+    @individual_values = IndividualValue.where(party: @lists.ids).pluck(:h,:a,:b,:c,:d,:s)
+    @effort_values = EffortValue.where(party: @lists.ids).pluck(:h,:a,:b,:c,:d,:s,:sum)
+    render json:[@lists,@individual_values,@effort_values]
+  end
+
 private
+
 
 
 

@@ -25,7 +25,7 @@ class ApplicationController < ActionController::API
   def get_articles_with_party(articles,parties)
     arr = []
     articles.each do |article|
-      party = parties[article]
+      party = parties[article.id]
       value = {id: article.id,
               url: article.url,
               rate: article.rate,
@@ -40,4 +40,30 @@ class ApplicationController < ActionController::API
     end
     arr
    end
+
+   def add_query(values)
+ arr = [""]
+ query = []
+  values.each do |key,value|
+    if value != nil
+      query.push("#{key}")
+      arr.push("#{value}")
+    end
+  end
+
+  arr[0] = query.join("and ")
+
+  arr
+end
+
+def need_params(values)
+  values.each do |value|
+    if value == nil
+      return false
+    end
+  end
+
+  return true
+end
+
 end

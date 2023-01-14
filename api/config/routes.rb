@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   get 'parties/pokemon_per_article'
   get 'parties/get_party_by_article_id'
+  get 'parties/search_pokemon_and_item'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,14 +1,32 @@
 class ArticlesController < ApplicationController
   def index
+    seasons = ""
+    if params[:seasons] != nil
+      puts "not nil"
+      (params[:seasons]).each do |season|
+       seasons += season + ","
+      end
+    end
+    values = {
+      "season IN(?) ": seasons,
+      "format = ? ": params[:format],
+      "permit = ? ": 1,
+      "articles.rank >= ? ": params[:ranks][0],
+      "articles.rank <= ? ": params[:ranks][1],
+    }
+    #  rank = [params[:rank][0],params[:rank][1]]
+    #  season: params[:seasons],format: params[:format],version: params[:version],rank: params[:ranks][0]..params[:ranks][1],permit: true
+
+    search = add_query(values)
     @all_articles = Article.joins(:user)
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
-    .where(season: params[:seasons],format: params[:format],version: params[:version],rank: params[:ranks][0]..params[:ranks][1],permit: true).order('articles.season DESC,articles.rank ASC')
+    .where(search).order('articles.season DESC,articles.rank ASC')
 
     @articles = @all_articles.limit(20)
 
     @ids = @all_articles.ids
 
-    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article}
+    @parties = Party.select("terastal,pokemon,item,article_id").where(article: @articles.ids).eager_load(:article).order("pokemon ASC").group_by{|party| party.article_id}
 
     article_with_party = get_articles_with_party(@articles,@parties)
 
@@ -20,7 +38,7 @@ class ArticlesController < ApplicationController
     .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
     .where(id: params[:ids]).order('articles.season DESC,articles.rank ASC')
 
-    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article}
+    @parties = Party.select("terastal,pokemon,item,article_id").where(article: @articles.ids).eager_load(:article).order("pokemon ASC").group_by{|party| party.article_id}
 
     render json: get_articles_with_party(@articles,@parties)
 
@@ -102,7 +120,7 @@ class ArticlesController < ApplicationController
       return;
     end
 
-    @party = Party.where(article: @article).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article}
+    @party = Party.where(article: @article).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article_id}
 
     hash = {
               id: @article.id,
@@ -114,7 +132,7 @@ class ArticlesController < ApplicationController
               rental: @article.rental,
               tn: @article.tn,
               twitter: @article.twitter,
-              party: @party[@article]
+              party: @party[@article.id]
     }
 
      render json: [hash];

@@ -8,16 +8,39 @@ import Layout from "../components/templates/LayOut";
 import createEmotionCache from "../src/createEmotionCache";
 import theme from "../src/theme";
 import GoogleAnalytics from "../src/components/GoogleAnalytics";
+import GoogleAdsense from "../src/components/GoogleAdsense";
 import usePageView from "../src/hooks/usePageView";
+import { createContext, useEffect, useState } from "react";
+import Article from "./article";
 
 const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
+type CashArticle = {
+  [ur: string]: {
+    article: Article[];
+    articleIds: number[];
+  };
+};
+
+type CashArticleContext = {
+  cashArticle: CashArticle;
+  setCashArticle: React.Dispatch<React.SetStateAction<CashArticle>>;
+};
+
+export const ArticleContext = createContext({} as CashArticleContext);
+
 function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const [cashArticle, setCashArticle] = useState<CashArticle>({});
+
   usePageView();
+
+  useEffect(() => {
+    console.log("App 更新");
+  }, []);
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -53,10 +76,7 @@ function MyApp(props: MyAppProps) {
           color="#000000"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8818787014591723"
-          crossOrigin="anonymous"></script>
+        <GoogleAdsense />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -78,7 +98,9 @@ function MyApp(props: MyAppProps) {
             }}
           />
           <GoogleAnalytics />
-          <Component {...pageProps} />
+          <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
+            <Component {...pageProps} />
+          </ArticleContext.Provider>
         </Layout>
       </ThemeProvider>
     </CacheProvider>

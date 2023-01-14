@@ -69,19 +69,42 @@ const About = () => {
         <p> アイテムやポケモンの画像</p>
         <h4>
           PokeWiki{" "}
-          <a href="https://www.pokewiki.de">(https://www.pokewiki.de)</a> <br />
+          <a
+            href="https://www.pokewiki.de"
+            target="_blank"
+            rel="noopener noreferrer">
+            (https://www.pokewiki.de)
+          </a>{" "}
+          <br />
           Serebii net
-          <a href="https://www.serebii.net">(https://www.serebii.net)</a>
+          <a
+            href="https://www.serebii.net"
+            target="_blank"
+            rel="noopener noreferrer">
+            (https://www.serebii.net)
+          </a>
         </h4>
         <p>ポケモンのデータ、及びポケモン詳細のリンク</p>
         <h4>
           ポケモン徹底攻略
-          <a href="https://yakkun.com"> (https://yakkun.com)</a>
+          <a
+            href="https://yakkun.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            (https://yakkun.com)
+          </a>
         </h4>
         <p>ダブルバトルの構築記事のリンク</p>
         <h4>
           リバティノート
-          <a href="https://liberty-note.com"> (https://liberty-note.com)</a>
+          <a
+            href="https://liberty-note.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            (https://liberty-note.com)
+          </a>
         </h4>
       </div>
       {deviseWidth < 600 ? (

@@ -1,12 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import React, { RefObject } from "react";
+import { MutableRefObject, useContext, useEffect, useState } from "react";
 import itemsData from "../../json/items.json";
 import { hiraToKana } from "../../utils/hiraToKana";
 import { ItemRefContext } from "../templates/RegisterPokemon";
 
-const ItemForm = () => {
+
+type Props = {};
+
+type ItemRef = RefObject<HTMLInputElement>;
+
+const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
   const [filterItemList, setFilterItemList] = useState<string[]>([]);
   const [visibleItemList, setVisibleItemList] = useState<boolean>(false);
-  const { itemRef } = useContext(ItemRefContext);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
 
   useEffect(() => {
@@ -18,7 +23,7 @@ const ItemForm = () => {
   }, [filterItemList]);
 
   const changeItemForm = (value: string) => {
-    itemRef.current.value =
+    ref.current.value =
       Object.keys(itemsData).find((item) => item === value) !== undefined
         ? value
         : "";
@@ -32,8 +37,8 @@ const ItemForm = () => {
     }
 
     if (e.key === "Enter") {
-      itemRef.current.value = filterItemList[selectIndex];
-      changeItemForm(itemRef.current.value);
+      ref.current.value = filterItemList[selectIndex];
+      changeItemForm(ref.current.value);
     }
 
     if (e.key === "ArrowDown") {
@@ -77,11 +82,11 @@ const ItemForm = () => {
       <div
         style={{ marginRight: 0, position: "absolute" }}
         onBlur={() =>
-          setTimeout(() => changeItemForm(itemRef.current?.value.trim()), 300)
+          setTimeout(() => changeItemForm(ref.current?.value.trim()), 300)
         }>
         <input
           type="text"
-          ref={itemRef}
+          ref={ref}
           placeholder="アイテム名"
           id="item-name-form"
           autoComplete="off"
@@ -134,6 +139,6 @@ const ItemForm = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ItemForm;

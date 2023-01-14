@@ -417,7 +417,10 @@ const RegisterPokemon = ({
                       width: "100%",
                     }}>
                     <PokemonRefContext.Provider value={{ pokemonRef }}>
-                      <PokemonNameForm addOptionAbility={addOptionAbility} />
+                      <PokemonNameForm
+                        addOptionAbility={addOptionAbility}
+                        ref={pokemonRef}
+                      />
                     </PokemonRefContext.Provider>
                   </Box>
                 </Box>
@@ -520,7 +523,7 @@ const RegisterPokemon = ({
                   backgroundColor: "#e0e8e8",
                 }}>
                 <ItemRefContext.Provider value={{ itemRef }}>
-                  <ItemForm />
+                  <ItemForm ref={itemRef} />
                 </ItemRefContext.Provider>
               </Box>
             </Box>

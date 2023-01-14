@@ -24,6 +24,6 @@ pokemons = ["サーフゴー","ドドゲザン","ニンフィア","ドラパル�
       move = Move.create!(pokemon: party.pokemon,name: moves[j],party: party)
     end
     effort_value = EffortValue.create!(h:0,a:0,b:0,c:0,d:0,s:0,sum:0,party: party)
-    individual_value = IndividualValue.create!(h:31,a:31,b:31,c:31,d:31,s:31,party: party)
+    individual_value = IndividualValue.create!(h:rand(0..31),a:rand(0..31),b:rand(0..31),c:rand(0..31),d:rand(0..31),s:rand(0..31),party: party)
   end
 end

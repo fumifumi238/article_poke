@@ -7372,14 +7372,14 @@
   },
   "シャリタツ(のびた)": {
     "no": "952s",
-    "en": "Tatsugiri",
+    "en": "Tatsugiri-Stretchy",
     "abilities": ["しれいとう", "よびみず"],
     "types": ["ドラゴン", "みず"],
     "baseStats": [68, 50, 60, 120, 95, 82, 475]
   },
   "シャリタツ(たれた)": {
     "no": "952d",
-    "en": "Tatsugiri",
+    "en": "Tatsugiri-Droopy",
     "abilities": ["しれいとう", "よびみず"],
     "types": ["ドラゴン", "みず"],
     "baseStats": [68, 50, 60, 120, 95, 82, 475]

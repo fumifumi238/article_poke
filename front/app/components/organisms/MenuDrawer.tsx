@@ -10,6 +10,7 @@ import DrawerItemsSearch from "../molecules/DrawerItemsSearch";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import ErrorIcon from "@mui/icons-material/Error";
+import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 
 type MenuDrawer = {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -35,6 +36,12 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
           value={"構築記事投稿"}
           icon={<CreateIcon />}
           href="/form"
+          setDrawerOpen={setDrawerOpen}
+        />
+        <DrawerItems
+          value={"型検索(-開発中-)"}
+          icon={<TroubleshootIcon />}
+          href="#"
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItemsSearch

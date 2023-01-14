@@ -20,7 +20,6 @@ type DisplaySetting = {
   ranks: number[];
   seasons: string[];
   format: string;
-  version: string;
   success: boolean;
   setSuccess: Dispatch<SetStateAction<boolean>>;
 };
@@ -30,7 +29,6 @@ const DisplaySetting = ({
   ranks,
   seasons,
   format,
-  version,
   success,
   setSuccess,
 }: DisplaySetting) => {
@@ -40,7 +38,6 @@ const DisplaySetting = ({
   const [seasonsSetting, setSeasonsSetting] = useState<string[]>(seasons);
   const [ranksSetting, setRanksSetting] = useState<(number | string)[]>(ranks);
   const [formatSetting, setFormatSetting] = useState<string>(format);
-  const [versionSetting, setVersionSetting] = useState<string>(version);
 
   const [disabledButton, setDisabledButton] = useState<boolean>(true);
 
@@ -82,7 +79,6 @@ const DisplaySetting = ({
     if (
       format === formatSetting &&
       ranks === ranksSetting &&
-      version === versionSetting &&
       isEqualSeason() &&
       ranksSetting[0] === ranks[0] &&
       ranksSetting[1] === ranks[1]
@@ -106,7 +102,7 @@ const DisplaySetting = ({
     }
 
     setDisabledButton(false);
-  }, [seasonsSetting, ranksSetting, formatSetting, versionSetting]);
+  }, [seasonsSetting, ranksSetting, formatSetting]);
 
   const onClickSetting = () => {
     setSuccess(true);
@@ -117,9 +113,11 @@ const DisplaySetting = ({
     };
 
     addBaseUrl("format", formatSetting);
-    addBaseUrl("ranks", ranksSetting[0]);
-    addBaseUrl("ranks", ranksSetting[1]);
-    addBaseUrl("version", versionSetting);
+
+    if (ranksSetting[0] !== 1 && ranksSetting[2] !== 99999) {
+      addBaseUrl("ranks", ranksSetting[0]);
+      addBaseUrl("ranks", ranksSetting[1]);
+    }
 
     addBaseUrl("series", seriesSetting);
     seasonsSetting.forEach((value) => {
