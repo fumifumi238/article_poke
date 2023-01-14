@@ -32,7 +32,7 @@ class PartiesController < ApplicationController
       "item = ? ": params[:item]
     }
     if  !need_params([params[:pokemon]])
-      render json:[],status: 404
+      render json:[]
       return;
     end
 

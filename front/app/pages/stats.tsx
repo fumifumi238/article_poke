@@ -55,6 +55,9 @@ const Stats = () => {
   };
 
   const searchPokemon = async () => {
+    if (poke_data[pokemonRef.current?.value] === undefined) {
+      setNodata(true);
+    }
     const params = {
       pokemon: pokemonRef.current?.value,
       item: itemRef.current?.value,
@@ -75,11 +78,11 @@ const Stats = () => {
         if (hash[currentData.individual] === undefined) {
           hash[currentData.individual] = i;
           currentData.individual = currentData.individual
-            ?.split(",")
+            .split(",")
             .map((d: string) => Number(d));
 
           currentData.effort = currentData.effort
-            ?.split(",")
+            .split(",")
             .map((d: string) => Number(d));
 
           DistinctLists.push(currentData);
@@ -138,8 +141,8 @@ const Stats = () => {
                       {result.pokemon}@{result.item}
                     </p>
                     <p>性格: {result.nature}</p>
-                    <p>個体値: {result.individual.join("-")}</p>
-                    <p>努力値: {result.effort.join("-")}</p>
+                    <p>個体値: {result.individual}</p>
+                    <p>努力値: {result.effort}</p>
                     <a href={result.url}>記事</a>
                   </div>
                 ))}
