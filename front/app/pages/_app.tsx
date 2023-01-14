@@ -97,7 +97,6 @@ function MyApp(props: MyAppProps) {
             }}
           />
           <GoogleAnalytics />
-          <GoogleAdsense />
           <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
             <Component {...pageProps} />
           </ArticleContext.Provider>
