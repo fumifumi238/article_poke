@@ -35,6 +35,7 @@ const PokemonNameForm = React.forwardRef(
     }, [filterPokemonList]);
 
     const changeNameForm = (value: string) => {
+      console.log(ref.current.value, value);
       addOptionAbility(value);
       setFilterPokemonList([]);
     };

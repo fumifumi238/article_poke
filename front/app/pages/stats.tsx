@@ -85,17 +85,19 @@ const Stats = () => {
       setNodata(false);
     }
     const lists: Result = {};
-    for (let item of Object.keys(data)) {
+    for (let items of Object.keys(data)) {
+      console.log(items);
       const DistinctLists = [];
       const hash = {};
-      for (let i = 0; i < item.length; i++) {
-        const currentData: Data = data[item][i];
+      for (let item of items) {
+        console.log(data[item]);
+        const currentData: Data = data[item];
         if (
           currentData.individual !== undefined &&
           currentData.effort !== undefined &&
           hash[String(currentData.individual)] === undefined
         ) {
-          hash[String(currentData.individual)] = i;
+          hash[String(currentData.individual)] = item;
           currentData.individual = String(currentData.individual)
             .split(",")
             .map((d: string) => Number(d));
