@@ -95,9 +95,9 @@ const Stats = () => {
         if (
           currentData.individual !== undefined &&
           currentData.effort !== undefined &&
-          hash[String(currentData.individual)] === undefined
+          hash[String(currentData.effort)] === undefined
         ) {
-          hash[String(currentData.individual)] = item;
+          hash[String(currentData.effort)] = item;
           currentData.individual = String(currentData.individual)
             .split(",")
             .map((d: string) => Number(d));
