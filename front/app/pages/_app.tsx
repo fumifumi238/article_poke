@@ -76,7 +76,6 @@ function MyApp(props: MyAppProps) {
           color="#000000"
         />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
-        <GoogleAdsense />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -98,6 +97,7 @@ function MyApp(props: MyAppProps) {
             }}
           />
           <GoogleAnalytics />
+          <GoogleAdsense />
           <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
             <Component {...pageProps} />
           </ArticleContext.Provider>
