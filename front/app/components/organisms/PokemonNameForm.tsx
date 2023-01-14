@@ -35,7 +35,7 @@ const PokemonNameForm = React.forwardRef(
     }, [filterPokemonList]);
 
     const changeNameForm = (value: string) => {
-      console.log(ref.current.value, value);
+      ref.current.value = value;
       addOptionAbility(value);
       setFilterPokemonList([]);
     };
@@ -92,7 +92,7 @@ const PokemonNameForm = React.forwardRef(
       <div
         style={{ width: "100%", height: "100%" }}
         onBlur={() =>
-          setTimeout(() => changeNameForm(ref.current?.value.trim()), 500)
+          setTimeout(() => changeNameForm(ref.current?.value.trim()), 300)
         }>
         <input
           type="text"
