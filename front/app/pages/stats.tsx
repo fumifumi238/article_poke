@@ -62,7 +62,20 @@ const Stats = () => {
       pokemon: pokemonRef.current?.value,
       item: itemRef.current?.value,
     };
-    const data = await getData("/parties/search_pokemon_and_item", params);
+
+    type Data = {
+      id: number;
+      pokemon: string;
+      item: string;
+      nature: string;
+      url: string;
+      individual: string | number[];
+      effort: string | number[];
+    };
+    const data = (await getData(
+      "/parties/search_pokemon_and_item",
+      params
+    )) as unknown as Data;
 
     if (Object.keys(data).length === 0) {
       setNodata(true);
@@ -74,14 +87,14 @@ const Stats = () => {
       const DistinctLists = [];
       const hash = {};
       for (let i = 0; i < key.length; i++) {
-        const currentData = { ...data[key][i] };
-        if (hash[currentData.individual] === undefined) {
-          hash[currentData.individual] = i;
-          currentData.individual = currentData.individual
+        const currentData: Data = data[key][i];
+        if (hash[String(currentData.individual)] === undefined) {
+          hash[String(currentData.individual)] = i;
+          currentData.individual = String(currentData.individual)
             .split(",")
             .map((d: string) => Number(d));
 
-          currentData.effort = currentData.effort
+          currentData.effort = String(currentData.effort)
             .split(",")
             .map((d: string) => Number(d));
 
@@ -102,8 +115,9 @@ const Stats = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                padding: "10px",
               }}>
-              <div style={{ position: "relative", width: 120 }}>
+              <div style={{ position: "relative", width: 200, height: 40 }}>
                 <PokemonNameForm
                   addOptionAbility={addOptionAbility}
                   ref={pokemonRef}
@@ -115,14 +129,19 @@ const Stats = () => {
               <div
                 style={{
                   position: "relative",
-                  width: 120,
-                  paddingBottom: "18px",
+                  width: 200,
+                  height: 40,
+                  top: 3,
                 }}>
                 <ItemForm ref={itemRef} />
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <button onClick={() => searchPokemon()}>型検索</button>
+              <button
+                onClick={() => searchPokemon()}
+                style={{ width: "50vw", maxWidth: 400, height: 40 }}>
+                型検索
+              </button>
             </div>
             <p>種族値:{baseStats.join(",")}</p>
             <p>{ability}</p>
@@ -141,8 +160,29 @@ const Stats = () => {
                       {result.pokemon}@{result.item}
                     </p>
                     <p>性格: {result.nature}</p>
-                    <p>個体値: {result.individual}</p>
-                    <p>努力値: {result.effort}</p>
+                    <div>
+                      <div style={{ display: "flex" }}>
+                        <p>個体値:</p>
+                        <p>{result.individual[0]}-</p>
+                        <p>{result.individual[1]}-</p>
+                        <p>{result.individual[2]}-</p>
+                        <p>{result.individual[3]}-</p>
+                        <p>{result.individual[4]}-</p>
+                        <p>{result.individual[5]}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ display: "flex" }}>
+                        <p>努力値: </p>
+                        <p>{result.effort[0]}-</p>
+                        <p>{result.effort[1]}-</p>
+                        <p>{result.effort[2]}-</p>
+                        <p>{result.effort[3]}-</p>
+                        <p>{result.effort[4]}-</p>
+                        <p>{result.effort[5]}</p>
+                      </div>
+                    </div>
+
                     <a href={result.url}>記事</a>
                   </div>
                 ))}

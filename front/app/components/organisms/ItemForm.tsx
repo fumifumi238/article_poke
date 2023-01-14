@@ -78,9 +78,14 @@ const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
     setFilterItemList(list);
   };
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", height: "100%", width: "100%" }}>
       <div
-        style={{ marginRight: 0, position: "absolute" }}
+        style={{
+          marginRight: 0,
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+        }}
         onBlur={() =>
           setTimeout(() => changeItemForm(ref.current?.value.trim()), 300)
         }>
@@ -102,7 +107,7 @@ const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
             position: "relative",
             top: -3,
             left: -4,
-            height: 21,
+            height: "100%",
             width: "100%",
           }}
         />

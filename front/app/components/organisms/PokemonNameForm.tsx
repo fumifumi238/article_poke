@@ -1,6 +1,5 @@
 import { RefObject, useContext, useEffect, useState } from "react";
 import pokeData from "../../json/poke_data.json";
-import { PokemonRefContext } from "../templates/RegisterPokemon";
 import { hiraToKana } from "../../utils/hiraToKana";
 import React from "react";
 
@@ -90,11 +89,7 @@ const PokemonNameForm = React.forwardRef(
     };
     return (
       <div
-        style={{
-          height: 18,
-          position: "relative",
-          top: -3,
-        }}
+        style={{ width: "100%", height: "100%" }}
         onBlur={() =>
           setTimeout(() => changeNameForm(ref.current?.value.trim()), 300)
         }>
@@ -114,7 +109,7 @@ const PokemonNameForm = React.forwardRef(
             padding: 0,
             fontSize: "13px",
             position: "relative",
-            height: 18,
+            height: "100%",
             width: "100%",
           }}
         />

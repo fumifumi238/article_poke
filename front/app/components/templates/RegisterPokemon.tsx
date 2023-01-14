@@ -28,10 +28,6 @@ import MoveForm from "../organisms/MoveForm";
 import PokemonNameForm from "../organisms/PokemonNameForm";
 import TerastalForm from "../organisms/TerastalForm";
 
-type PokemonRefContext = {
-  pokemonRef: MutableRefObject<HTMLInputElement>;
-};
-
 type TerastalRefContext = {
   terastalRef: MutableRefObject<HTMLInputElement>;
 };
@@ -44,7 +40,6 @@ type MoveRefsContext = {
   moveRefs: MutableRefObject<RefObject<HTMLInputElement>[]>;
 };
 
-export const PokemonRefContext = createContext({} as PokemonRefContext);
 export const TerastalRefContext = createContext({} as TerastalRefContext);
 export const ItemRefContext = createContext({} as ItemRefContext);
 export const MoveRefsContext = createContext({} as MoveRefsContext);
@@ -416,12 +411,17 @@ const RegisterPokemon = ({
                       position: "absolute",
                       width: "100%",
                     }}>
-                    <PokemonRefContext.Provider value={{ pokemonRef }}>
+                    <Box
+                      sx={{
+                        height: "100%",
+                        position: "relative",
+                        top: "-2px",
+                      }}>
                       <PokemonNameForm
                         addOptionAbility={addOptionAbility}
                         ref={pokemonRef}
                       />
-                    </PokemonRefContext.Provider>
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -505,7 +505,6 @@ const RegisterPokemon = ({
               <Box
                 sx={{
                   height: 21,
-                  borderBottom: 1,
                   bgcolor: "#8898a8",
                   width: "100%",
                 }}>
@@ -522,9 +521,7 @@ const RegisterPokemon = ({
                   height: 21,
                   backgroundColor: "#e0e8e8",
                 }}>
-                <ItemRefContext.Provider value={{ itemRef }}>
-                  <ItemForm ref={itemRef} />
-                </ItemRefContext.Provider>
+                <ItemForm ref={itemRef} />
               </Box>
             </Box>
           </Box>
