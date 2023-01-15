@@ -38,9 +38,6 @@ function MyApp(props: MyAppProps) {
 
   usePageView();
 
-  useEffect(() => {
-    console.log("App 更新");
-  }, []);
   return (
     <CacheProvider value={emotionCache}>
       <Head>

@@ -9,7 +9,6 @@ import { isEqualArray } from "../../utils/isEqualArray";
 type SearchPokemon = {
   articleIds: number[];
   alreadySearch: alreadySearch;
-  setAlreadySearch: Dispatch<SetStateAction<alreadySearch>>;
   setArticle: Dispatch<SetStateAction<Article[]>>;
   setCurrentId: Dispatch<SetStateAction<number>>;
   setOffset: Dispatch<SetStateAction<number>>;

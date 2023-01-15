@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
 
   def search_pokemon
     @articles = Article.joins(:user).select("articles.id as id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(id: params[:ids]).order('articles.season DESC,articles.rank ASC').limit(20)
-    @parties = Party.where(article: @articles.ids).select(:terastal,:pokemon,:item,:article_id).order("pokemon ASC").group_by{|party| party.article}
+    @parties = Party.select("terastal,pokemon,item,article_id").where(article: @articles.ids).eager_load(:article).order("pokemon ASC").group_by{|party| party.article_id}
 
     render json: get_articles_with_party(@articles,@parties);
   end

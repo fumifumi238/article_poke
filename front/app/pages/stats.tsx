@@ -77,7 +77,6 @@ const Stats = () => {
       params
     )) as unknown as Data;
 
-    console.log(data);
 
     if (Object.keys(data).length === 0) {
       setNodata(true);
@@ -86,10 +85,9 @@ const Stats = () => {
     }
     const lists: Result = {};
     for (let item of Object.keys(data)) {
-      console.log(item);
       const DistinctLists = [];
       const hash = {};
-      console.log(data[item].length);
+
       for (let i = 0; i < data[item].length; i++) {
         const currentData: Data = data[item][i];
         if (

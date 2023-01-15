@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 const About = () => {
   const [deviseWidth, setDeviseWidth] = useState<number>(0);
   useEffect(() => {
-    console.log(window.innerWidth);
-    console.log(window.innerWidth < 500);
     setDeviseWidth(window.innerWidth);
   }, []);
   return (

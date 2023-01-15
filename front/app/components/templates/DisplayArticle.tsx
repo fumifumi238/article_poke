@@ -125,7 +125,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
               </MuiLink>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              {article.party.map((poke, index) => (
+              {article.party?.map((poke, index) => (
                 <Box key={index} sx={{ position: "relative", width: 50 }}>
                   <Box sx={{ position: "relative", zindex: 0 }}>
                     <Image

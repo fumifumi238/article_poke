@@ -156,10 +156,8 @@ export const Article: NextPage = () => {
         articleIds: data[1],
       };
       setCashArticle(copyOfCash);
-      console.log("キャッシュを登録しました。");
     } else {
       data = [cashArticle[cash].article, cashArticle[cash].articleIds];
-      console.log("すでに登録されているキャッシュです。");
     }
 
     setArticles(data[0] as unknown as Article[]);
@@ -304,19 +302,19 @@ export const Article: NextPage = () => {
     const data = await getData("/articles/search_pokemon", {
       ids: ids,
     });
-
     setOffset(20);
 
     setCurrentId(index);
 
     setArticles(data as unknown as Article[]);
 
-    const copyOfAlreadySearch = { ...alreadySearch };
+    const copyOfAlreadySearch = alreadySearch;
     copyOfAlreadySearch[searchPokemonList.length] = {
       articles: data as unknown as Article[],
       searchIds: ids,
       searchPokemonList: searchPokemonList,
     };
+
     setAlreadySearch(copyOfAlreadySearch);
 
     setLoading(false);
@@ -365,7 +363,6 @@ export const Article: NextPage = () => {
             searchPokemonByIds={searchPokemonByIds}
             articleIds={articleIds}
             alreadySearch={alreadySearch}
-            setAlreadySearch={setAlreadySearch}
             setArticle={setArticles}
             setCurrentId={setCurrentId}
             setOffset={setOffset}

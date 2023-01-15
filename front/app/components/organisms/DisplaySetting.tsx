@@ -114,7 +114,7 @@ const DisplaySetting = ({
 
     addBaseUrl("format", formatSetting);
 
-    if (ranksSetting[0] !== 1 && ranksSetting[2] !== 99999) {
+    if (!(ranksSetting[0] === 1 && ranksSetting[2] === 99999)) {
       addBaseUrl("ranks", ranksSetting[0]);
       addBaseUrl("ranks", ranksSetting[1]);
     }
