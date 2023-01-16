@@ -4,7 +4,8 @@ export const calcStats = (
   baseStats: number,
   effortValue: number,
   individualValue: number,
-  buttonType: string = "normal"
+  buttonType: string = "normal",
+  level: number = 50
 ) => {
   let correction = () => {
     switch (buttonType) {
@@ -18,7 +19,7 @@ export const calcStats = (
   };
   const stats = Math.floor(
     (Math.floor(
-      ((baseStats * 2 + individualValue + effortValue / 4) * 50) / 100
+      ((baseStats * 2 + individualValue + effortValue / 4) * level) / 100
     ) +
       5) *
       correction()
@@ -30,7 +31,8 @@ export const calcStats = (
 export const calcHPStats = (
   baseStats: number,
   effortValue: number,
-  individualValue: number
+  individualValue: number,
+  level: number = 50
 ) => {
   if (baseStats === 1) {
     return 1;
@@ -38,9 +40,11 @@ export const calcHPStats = (
   const stats =
     Math.floor(
       ((baseStats * 2 + Number(individualValue) + Number(effortValue) / 4) *
-        50) /
+        level) /
         100
-    ) + 60;
+    ) +
+    level +
+    10;
 
   return stats;
 };

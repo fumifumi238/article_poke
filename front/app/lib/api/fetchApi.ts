@@ -22,7 +22,8 @@ export const postData = async <T>(url: string, data?: T) => {
   const response = await fetch(defaultUrl + url, params);
   if (!response.ok) {
     const err = await response.json();
-    throw new Error(err);
+    console.log(err);
+    // throw new Error(err);
   }
   return await response.json();
 };

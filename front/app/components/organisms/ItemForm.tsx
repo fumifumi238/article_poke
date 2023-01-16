@@ -1,15 +1,22 @@
+import { style } from "@mui/system";
 import React, { RefObject } from "react";
 import { MutableRefObject, useContext, useEffect, useState } from "react";
 import itemsData from "../../json/items.json";
 import { hiraToKana } from "../../utils/hiraToKana";
 import { ItemRefContext } from "../templates/RegisterPokemon";
 
-
-type Props = {};
+type Props = {
+  style: {
+    input: {
+      [key: string]: string | number;
+    };
+  };
+};
 
 type ItemRef = RefObject<HTMLInputElement>;
 
 const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
+  const { style } = props;
   const [filterItemList, setFilterItemList] = useState<string[]>([]);
   const [visibleItemList, setVisibleItemList] = useState<boolean>(false);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
@@ -99,16 +106,10 @@ const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
           onKeyDown={(e) => keyDown(e)}
           onChange={(e) => addItemLists(e.target.value.trim())}
           style={{
-            border: "none",
-            backgroundColor: "#e0e8e8",
-            marginLeft: 5,
-            paddingRight: 0,
-            fontSize: "13px",
             position: "relative",
-            top: -3,
-            left: -4,
             height: "100%",
             width: "100%",
+            ...style.input,
           }}
         />
         <ul

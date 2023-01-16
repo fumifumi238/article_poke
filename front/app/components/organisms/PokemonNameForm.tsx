@@ -5,13 +5,14 @@ import React from "react";
 
 type PokemonNameForm = {
   addOptionAbility: (value: string) => void;
+  style: { input: { [key: string]: string } };
 };
 
 type PokemonRef = RefObject<HTMLInputElement>;
 
 const PokemonNameForm = React.forwardRef(
   (props: PokemonNameForm, ref: PokemonRef) => {
-    const { addOptionAbility } = props;
+    const { addOptionAbility, style } = props;
     const [filterPokemonList, setFilterPokemonList] = useState<string[]>([]);
     const [visiblePokemonList, setVisiblePokemonList] =
       useState<boolean>(false);
@@ -104,14 +105,12 @@ const PokemonNameForm = React.forwardRef(
           onKeyDown={(e) => keyDown(e)}
           onChange={(e) => addpokemonLists(e.target.value.trim())}
           style={{
-            background: "#8898a8",
-            border: "none",
-            color: "white",
+
             padding: 0,
-            fontSize: "13px",
             position: "relative",
             height: "100%",
             width: "100%",
+            ...style.input,
           }}
         />
         <ul
@@ -133,6 +132,7 @@ const PokemonNameForm = React.forwardRef(
                     listStyle: "none",
                     fontSize: 16,
                     textAlign: "left",
+                    height: "100%",
                     padding: 6,
                     background: `${
                       index === selectIndex ? "lightgrey" : "white"

@@ -39,9 +39,9 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItems
-          value={"型検索(-開発中-)"}
+          value={"型検索"}
           icon={<TroubleshootIcon />}
-          href="#"
+          href="/stats"
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItemsSearch

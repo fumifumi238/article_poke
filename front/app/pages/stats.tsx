@@ -5,6 +5,17 @@ import PokemonNameForm from "../components/organisms/PokemonNameForm";
 import poke_data from "../json/poke_data.json";
 import items from "../json/items.json";
 import { getData } from "../lib/api/fetchApi";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArticleIcon from "@mui/icons-material/Article";
+
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MuiLink from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const Stats = () => {
   const router = useRouter();
@@ -20,6 +31,21 @@ const Stats = () => {
       individual: number[];
       effort: number[];
     }[];
+  };
+  const pokemonNameStyle = {
+    input: {
+      color: "black",
+      paddingLeft: "5px",
+      fontSize: "16px",
+    },
+  };
+
+  const itemStyle = {
+    input: {
+      color: "black",
+      paddingLeft: "5px",
+      fontSize: "16px",
+    },
   };
 
   const itemRef = useRef<HTMLInputElement>(null);
@@ -50,6 +76,8 @@ const Stats = () => {
       return;
     }
 
+    setResults({});
+
     setAbility(poke_data[pokemon].abilities[0]);
     setBaseStats(poke_data[pokemon].baseStats);
   };
@@ -77,6 +105,7 @@ const Stats = () => {
       params
     )) as unknown as Data;
 
+    console.log(data);
 
     if (Object.keys(data).length === 0) {
       setNodata(true);
@@ -88,13 +117,12 @@ const Stats = () => {
       const DistinctLists = [];
       const hash = {};
 
+      console.log(item);
+
       for (let i = 0; i < data[item].length; i++) {
         const currentData: Data = data[item][i];
-        if (
-          currentData.individual !== undefined &&
-          currentData.effort !== undefined &&
-          hash[String(currentData.effort)] === undefined
-        ) {
+        // console.log(currentData);
+        if (hash[String(currentData.effort)] === undefined) {
           hash[String(currentData.effort)] = item;
           currentData.individual = String(currentData.individual)
             .split(",")
@@ -109,94 +137,126 @@ const Stats = () => {
         lists[item] = DistinctLists;
       }
     }
+    console.log(lists);
     setResults(lists);
   };
   return (
     <>
-      <div>
-        <div>
-          <div style={{ padding: "4px" }}>
-            <div
+      <Box sx={{ paddingTop: 2 }}>
+        <Box>
+          <Box
+            sx={{
+              padding: 4,
+              width: "90%",
+              height: "fit-content",
+              border: 1,
+              maxWidth: 400,
+              margin: "0 auto",
+            }}>
+            <Box
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "10px",
               }}>
-              <div style={{ position: "relative", width: 200, height: 40 }}>
+              <Box style={{ position: "relative", width: 200, height: 40 }}>
                 <PokemonNameForm
                   addOptionAbility={addOptionAbility}
+                  style={pokemonNameStyle}
                   ref={pokemonRef}
                 />
-              </div>
-              <div>
-                <p>@</p>
-              </div>
-              <div
+              </Box>
+              <Box>
+                <Typography sx={{ padding: 1 }}>@</Typography>
+              </Box>
+              <Box
                 style={{
                   position: "relative",
                   width: 200,
                   height: 40,
-                  top: 3,
                 }}>
-                <ItemForm ref={itemRef} />
-              </div>
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <button
+                <ItemForm ref={itemRef} style={itemStyle} />
+              </Box>
+            </Box>
+            <Typography sx={{ textAlign: "center", padding: 1 }}>
+              ※ポケモン名は必須です。
+            </Typography>
+            <Box style={{ display: "flex", justifyContent: "center" }}>
+              <Button
                 onClick={() => searchPokemon()}
+                variant="outlined"
                 style={{ width: "50vw", maxWidth: 400, height: 40 }}>
                 型検索
-              </button>
-            </div>
-            <p>種族値:{baseStats.join(",")}</p>
-            <p>{ability}</p>
-          </div>
-        </div>
+              </Button>
+            </Box>
+          </Box>
+        </Box>
 
-        {nodata && <p>not found</p>}
-        <div>
-          {Object.keys(results).map((nature) => (
-            <div key={nature}>
-              <p>{nature}</p>
-              <div>
-                {results[nature].map((result) => (
-                  <div key={result.id}>
-                    <p>
-                      {result.pokemon}@{result.item}
-                    </p>
-                    <p>性格: {result.nature}</p>
-                    <div>
-                      <div style={{ display: "flex" }}>
-                        <p>個体値:</p>
-                        <p>{result.individual[0]}-</p>
-                        <p>{result.individual[1]}-</p>
-                        <p>{result.individual[2]}-</p>
-                        <p>{result.individual[3]}-</p>
-                        <p>{result.individual[4]}-</p>
-                        <p>{result.individual[5]}</p>
-                      </div>
-                    </div>
-                    <div>
-                      <div style={{ display: "flex" }}>
-                        <p>努力値: </p>
-                        <p>{result.effort[0]}-</p>
-                        <p>{result.effort[1]}-</p>
-                        <p>{result.effort[2]}-</p>
-                        <p>{result.effort[3]}-</p>
-                        <p>{result.effort[4]}-</p>
-                        <p>{result.effort[5]}</p>
-                      </div>
-                    </div>
+        {nodata && (
+          <Typography sx={{ textAlign: "center" }}>not found</Typography>
+        )}
+        <Box
+          sx={{
+            width: "100vw",
+            margin: "0 auto",
+            maxWidth: 400,
+            paddingTop: 2,
+          }}>
+          {Object.keys(results).map((key) => (
+            <Accordion key={key}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={key}
+                id={key}>
+                <Typography>
+                  {key} ({results[key].length} 件)
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                {results[key].map((result) => (
+                  <Box
+                    key={result.id}
+                    sx={{
+                      display: "flex",
+                      borderTop: 1,
+                      alignItems: "center",
+                    }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "90%",
+                      }}>
+                      <Box style={{ display: "flex" }}>
+                        <Typography sx={{ marginRight: 1 }}>努力値:</Typography>
+                        <Typography sx={{ marginRight: 1 }}>
+                          {result.effort
+                            .filter((_, index) => index !== 6)
+                            .join("-")}
+                        </Typography>
+                      </Box>
+                      <Box>
+                        <Typography> {result.nature}</Typography>
+                      </Box>
+                    </Box>
 
-                    <a href={result.url}>記事</a>
-                  </div>
+                    <MuiLink
+                      href={result.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="body2">
+                      <IconButton>
+                        <ArticleIcon />
+                      </IconButton>
+                    </MuiLink>
+                  </Box>
                 ))}
-              </div>
-            </div>
+              </AccordionDetails>
+            </Accordion>
           ))}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 };

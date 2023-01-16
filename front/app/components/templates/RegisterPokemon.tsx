@@ -103,6 +103,27 @@ const RegisterPokemon = ({
     setNatureToNumber(copyOfNatureToNumber);
   };
 
+  const pokemonNameStyle = {
+    input: {
+      fontSize: "13px",
+      color: "white",
+      background: "#8898a8",
+      border: "none",
+    },
+  };
+
+  const itemStyle = {
+    input: {
+      border: "none",
+      backgroundColor: "#e0e8e8",
+      fontSize: "13px",
+      top: -3,
+      left: -4,
+      marginLeft: 5,
+      paddingRight: 0,
+    },
+  };
+
   const saveData = (close: boolean = false) => {
     const copyPokeDetails = [...pokeDetails];
     const moves = moveRefs.current.map((moveRef) => moveRef.current?.value);
@@ -419,6 +440,7 @@ const RegisterPokemon = ({
                       }}>
                       <PokemonNameForm
                         addOptionAbility={addOptionAbility}
+                        style={pokemonNameStyle}
                         ref={pokemonRef}
                       />
                     </Box>
@@ -521,7 +543,7 @@ const RegisterPokemon = ({
                   height: 21,
                   backgroundColor: "#e0e8e8",
                 }}>
-                <ItemForm ref={itemRef} />
+                <ItemForm ref={itemRef} style={itemStyle}/>
               </Box>
             </Box>
           </Box>

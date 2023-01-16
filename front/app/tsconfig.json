@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "utils/getPokeDexNumber.tsx"
+    "utils/getPokeDexNumber.tsx",
+    "json/nationaldex.js"
   ],
   "exclude": ["node_modules"],
   "files.watcherExclude": {
