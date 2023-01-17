@@ -48,6 +48,15 @@ const Stats = () => {
     },
   };
 
+  type SearchParams = {
+    pokemon: string;
+    item?: string;
+    nature?: string;
+    ability?: string;
+    terastal?: string;
+    format?: "single" | "double";
+  };
+
   const itemRef = useRef<HTMLInputElement>(null);
   const pokemonRef = useRef<HTMLInputElement>(null);
   const [currentPokemon, setCurrentPokemon] = useState<string>();
@@ -55,6 +64,9 @@ const Stats = () => {
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [results, setResults] = useState<Result>({});
   const [nodata, setNodata] = useState<boolean>(false);
+  const [searchParams, setSearchParams] = useState<SearchParams>({
+    pokemon: "",
+  });
 
   useEffect(() => {
     if (router.isReady) {
@@ -91,10 +103,20 @@ const Stats = () => {
       setResults({});
       return;
     }
+
     const params = {
       pokemon: pokemonRef.current?.value,
       item: itemRef.current?.value,
     };
+
+    if (
+      searchParams.pokemon === params.pokemon &&
+      searchParams.item === params.item
+    ) {
+      return;
+    }
+
+    setSearchParams(params);
 
     type Data = {
       id: number;
