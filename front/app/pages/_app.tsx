@@ -94,8 +94,9 @@ function MyApp(props: MyAppProps) {
               cardType: "summary_large_image",
             }}
           />
-          <GoogleAdsense />
+
           <GoogleAnalytics />
+
           <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
             <Component {...pageProps} />
           </ArticleContext.Provider>

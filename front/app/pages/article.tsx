@@ -15,6 +15,7 @@ import DisplaySetting from "../components/organisms/DisplaySetting";
 import DisplayArticle from "../components/templates/DisplayArticle";
 import seriesData from "../json/series.json";
 import { getData } from "../lib/api/fetchApi";
+import GoogleAdsense from "../src/components/GoogleAdsense";
 import { ArticleContext } from "./_app";
 
 type Pokemon = {

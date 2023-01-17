@@ -50,6 +50,7 @@ const Stats = () => {
 
   const itemRef = useRef<HTMLInputElement>(null);
   const pokemonRef = useRef<HTMLInputElement>(null);
+  const [currentPokemon, setCurrentPokemon] = useState<string>();
   const [ability, setAbility] = useState<string>("");
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [results, setResults] = useState<Result>({});
@@ -76,15 +77,19 @@ const Stats = () => {
       return;
     }
 
-    setResults({});
-
-    setAbility(poke_data[pokemon].abilities[0]);
-    setBaseStats(poke_data[pokemon].baseStats);
+    if (currentPokemon !== pokemon) {
+      setCurrentPokemon(pokemon);
+      setResults({});
+      setAbility(poke_data[pokemon].abilities[0]);
+      setBaseStats(poke_data[pokemon].baseStats);
+    }
   };
 
   const searchPokemon = async () => {
     if (poke_data[pokemonRef.current?.value] === undefined) {
       setNodata(true);
+      setResults({});
+      return;
     }
     const params = {
       pokemon: pokemonRef.current?.value,
@@ -104,8 +109,6 @@ const Stats = () => {
       "/parties/search_pokemon_and_item",
       params
     )) as unknown as Data;
-
-    console.log(data);
 
     if (Object.keys(data).length === 0) {
       setNodata(true);
@@ -137,7 +140,7 @@ const Stats = () => {
         lists[item] = DistinctLists;
       }
     }
-    console.log(lists);
+
     setResults(lists);
   };
   return (
