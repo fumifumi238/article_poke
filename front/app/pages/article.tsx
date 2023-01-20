@@ -15,7 +15,6 @@ import DisplaySetting from "../components/organisms/DisplaySetting";
 import DisplayArticle from "../components/templates/DisplayArticle";
 import seriesData from "../json/series.json";
 import { getData } from "../lib/api/fetchApi";
-import GoogleAdsense from "../src/components/GoogleAdsense";
 import { ArticleContext } from "./_app";
 
 type Pokemon = {
@@ -100,7 +99,9 @@ export const Article: NextPage = () => {
   const [series, setSeries] = useState<string>(
     seriesDataKeys[seriesDataKeys.length - 1]
   );
-  const [seasons, setSeasons] = useState<string[]>(seriesData[series]);
+  const [seasons, setSeasons] = useState<string[]>([
+    seriesData[series][seriesData[series].length - 1],
+  ]);
 
   const [changeSetting, setChangeSetting] = useState<boolean>(false);
 

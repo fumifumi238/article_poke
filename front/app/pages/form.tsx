@@ -13,8 +13,6 @@ import NameForm from "../components/molecules/Form/NameForm";
 import RankForm from "../components/molecules/Form/RankForm";
 import RateForm from "../components/molecules/Form/RateForm";
 import RentalForm from "../components/molecules/Form/RentalForm";
-import SeasonForm from "../components/molecules/Form/SeasonForm";
-import SeriesForm from "../components/molecules/Form/SeriesForm";
 import TitleForm from "../components/molecules/Form/TitleForm";
 import TwitterForm from "../components/molecules/Form/TwitterForm";
 import UrlForm from "../components/molecules/Form/UrlForm";
@@ -57,13 +55,9 @@ const Form: NextPage = () => {
 
   const [name, setName] = useState<string>("");
   const [twitter, setTwitter] = useState<string>("");
-  const [series, setSeries] = useState<string>(
-    Object.keys(seriesData)[Object.keys(seriesData).length - 1]
-  );
-
-  const [season, setSeason] = useState<string>(
-    seriesData[series][seriesData[series].length - 1]
-  );
+  const series: string =
+    Object.keys(seriesData)[Object.keys(seriesData).length - 1];
+  const season: string = seriesData[series][seriesData[series].length - 1];
   const [rank, setRank] = useState<number | string>("");
   const [rate, setRate] = useState<number | string>("");
   const [title, setTitle] = useState<string>("");
@@ -179,7 +173,13 @@ const Form: NextPage = () => {
         description="構築記事を投稿したい方はこちら"
       />
       <AlertSuccess modalOpen={modalOpen} message={Message} />
-
+      <Box sx={{ margin: 1 }}>
+        <Typography
+          variant="h1"
+          sx={{ textAlign: "center", fontSize: "16px", color: "grey" }}>
+          Season{season} 構築記事投稿フォーム
+        </Typography>
+      </Box>
       <Box
         sx={{
           minWidth: 240,
@@ -209,6 +209,15 @@ const Form: NextPage = () => {
           <Box
             sx={{
               display: "flex",
+              height: 40,
+              marginY: 1,
+            }}>
+            <RateForm rate={rate} setRate={setRate} />
+            <RankForm rank={rank} setRank={setRank} />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
               margin: 0,
               flexWrap: "wrap",
             }}>
@@ -230,30 +239,6 @@ const Form: NextPage = () => {
             validationForm={validationForm}
             setError={setUrlError}
           />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              height: 40,
-              margin: 1,
-            }}>
-            <SeriesForm
-              series={series}
-              setSeries={setSeries}
-              setSeason={setSeason}
-            />
-            <SeasonForm series={series} season={season} setSeason={setSeason} />
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              height: 40,
-              marginBottom: 1,
-            }}>
-            <RateForm rate={rate} setRate={setRate} />
-            <RankForm rank={rank} setRank={setRank} />
-          </Box>
         </Box>
         <Box sx={{ display: "flex", margin: 1 }}>
           <Box

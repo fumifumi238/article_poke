@@ -42,7 +42,9 @@ const DisplaySetting = ({
   const [disabledButton, setDisabledButton] = useState<boolean>(true);
 
   const [checkList, setCheckList] = useState<boolean[]>(
-    new Array(seriesData[series].length).fill(true)
+    seriesData[series].map((season: string) =>
+      seasonsSetting.indexOf(season) !== -1 ? true : false
+    )
   );
 
   useEffect(() => {
