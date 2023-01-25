@@ -17,7 +17,7 @@ const ShowHPStats = ({
       <Box sx={{ margin: "0 auto", width: "15%", borderRight: 1 }}>
         <Typography
           sx={{
-            fontSize: "2vh",
+            fontSize: "1.8vh",
             whiteSpace: "nowrap",
             color: "#dcdcdc",
             height: "100%",
@@ -28,7 +28,7 @@ const ShowHPStats = ({
       <Box sx={{ margin: "0 auto", width: "85%" }}>
         <Typography
           sx={{
-            fontSize: "2vh",
+            fontSize: "1.8vh",
             whiteSpace: "nowrap",
             color: "#dcdcdc",
           }}>

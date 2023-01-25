@@ -1,7 +1,7 @@
 const Rental = () => {
   return (
     <>
-      <p>rental</p>
+      <h1>シーズン3レンタル構築まとめ</h1>
     </>
   );
 };

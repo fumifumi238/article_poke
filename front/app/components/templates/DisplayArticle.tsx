@@ -100,9 +100,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                   </Icon>
                 </Box>
               </MuiLink>
-              <Box
-                sx={{ paddingTop: 1 }}
-                onClick={() => setModalOpen(article.id)}>
+              <Box onClick={() => setModalOpen(article.id)}>
                 <Box
                   sx={{
                     display: "flex",

@@ -93,7 +93,7 @@ const PartyInfo = ({ party }: Party) => {
               }}>
               <Typography
                 sx={{
-                  fontSize: "2vh",
+                  fontSize: "1.5vh",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   color: "white",

@@ -149,7 +149,7 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
           </ListItem>
         ))}
       </List>
-      <Box sx={{ textAlign: "center" }}>
+      <Box sx={{ textAlign: "center", paddingBottom: 1 }}>
         {pokemonRanks.length !== filterPokemons.length && (
           <Button onClick={loadArticle}>もっと見る</Button>
         )}

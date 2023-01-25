@@ -51,7 +51,6 @@ const Party = ({ id, setModalOpen }: Party) => {
             width: "100%",
             flexWrap: "wrap",
             height: "90vh",
-            maxHeight: 600,
             overflow: "scroll",
           }}>
           {parties.map((party) => (

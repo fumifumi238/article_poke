@@ -40,7 +40,7 @@ const ShowStats = ({
       <Box sx={{ margin: "0 auto", width: "15%", borderRight: 1 }}>
         <Typography
           sx={{
-            fontSize: "2vh",
+            fontSize: "1.8vh",
             whiteSpace: "nowrap",
             color: returnColor(correction[buttonType]),
           }}>
@@ -50,7 +50,7 @@ const ShowStats = ({
       <Box sx={{ margin: "0 auto", width: "85%" }}>
         <Typography
           sx={{
-            fontSize: "2vh",
+            fontSize: "1.8vh",
             whiteSpace: "nowrap",
             color: returnColor(correction[buttonType]),
           }}>
