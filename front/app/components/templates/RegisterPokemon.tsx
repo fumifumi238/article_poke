@@ -27,6 +27,11 @@ import ItemForm from "../organisms/ItemForm";
 import MoveForm from "../organisms/MoveForm";
 import PokemonNameForm from "../organisms/PokemonNameForm";
 import TerastalForm from "../organisms/TerastalForm";
+import natures from "../../json/nature.json";
+import Menu from "@mui/material/Menu";
+import React from "react";
+import Typography from "@mui/material/Typography";
+import { getItemIcon } from "../../utils/getItemIcon";
 
 type TerastalRefContext = {
   terastalRef: MutableRefObject<HTMLInputElement>;
@@ -80,6 +85,10 @@ const RegisterPokemon = ({
   const [natureToNumber, setNatureToNumber] = useState<number[]>([
     0, 0, 0, 0, 0,
   ]);
+  const [nature, setNature] = useState<string>("まじめ");
+  const [itemIcon, setItemIcon] = useState<string>(
+    "/image/ball/pokemonball.png"
+  );
 
   const [ability, setAbility] = useState<string>("");
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
@@ -200,9 +209,21 @@ const RegisterPokemon = ({
     });
     terastalRef.current.value = "";
     itemRef.current.value = "";
+    setItemIcon("/image/ball/pokemonball.png");
     const copyIconUrls = [...iconUrls];
     copyIconUrls[currentPoke] = changeIcon(pokemon);
     setIconUrls(copyIconUrls);
+  };
+
+  useEffect(() => {
+    if (nature !== getNature(natureToNumber)) {
+      setNature(getNature(natureToNumber));
+    }
+  }, [natureToNumber]);
+
+  const onChangeNature = (value: string) => {
+    setNature(value);
+    setNatureToNumber(getNatureToNumber(value));
   };
 
   const clickArrowLeftIcon = () => {
@@ -266,13 +287,15 @@ const RegisterPokemon = ({
                       bgcolor: "white",
                       borderRadius: "10px",
                     }}>
-                    <HPStats
-                      baseStats={baseStats[0]}
-                      effortValues={effortValues}
-                      setEffortValues={setEffortValues}
-                      individualValues={individualValues}
-                      setIndividualValues={setIndividualValues}
-                    />
+                    <Box>
+                      <HPStats
+                        baseStats={baseStats[0]}
+                        effortValues={effortValues}
+                        setEffortValues={setEffortValues}
+                        individualValues={individualValues}
+                        setIndividualValues={setIndividualValues}
+                      />
+                    </Box>
                     <Box
                       sx={{
                         height: 15,
@@ -329,14 +352,65 @@ const RegisterPokemon = ({
                       borderTop: "5px solid #f06058",
                     }}></Box>
                   <Box sx={{ border: 1, height: 52, bgcolor: "white" }}>
-                    <Box sx={{ height: "50%", border: 1 }}>
-                      <Box sx={{ display: "flex" }}>
+                    <Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          borderBottom: 1,
+                          height: "50%",
+                        }}>
                         <Box sx={{ width: "40%", borderRight: 1 }}>
                           <p
                             style={{
                               margin: 0,
                               color: "white",
                               backgroundColor: "#788898",
+                            }}>
+                            せいかく
+                          </p>
+                        </Box>
+                        <Box
+                          sx={{
+                            width: "60%",
+                            display: "flex",
+                            alignItems: "center",
+                          }}>
+                          <TextField
+                            id="demo-simple-select-standard"
+                            value={nature}
+                            select
+                            InputProps={{
+                              style: {
+                                padding: 0,
+                                fontSize: "12px",
+                                height: 24,
+                                width: "100%",
+                                marginLeft: "5px",
+                              },
+                            }}
+                            variant="standard"
+                            onChange={(e) => onChangeNature(e.target.value)}>
+                            {Object.values(natures).map((option) => (
+                              <MenuItem value={option} key={option}>
+                                {option}
+                              </MenuItem>
+                            ))}
+                          </TextField>
+                        </Box>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          height: "50%",
+                          marginTop: "1px",
+                        }}>
+                        <Box sx={{ width: "40%", borderRight: 1 }}>
+                          <p
+                            style={{
+                              margin: 0,
+                              color: "white",
+                              backgroundColor: "#788898",
+                              height: "100%",
                             }}>
                             とくせい
                           </p>
@@ -370,9 +444,6 @@ const RegisterPokemon = ({
                           </TextField>
                         </Box>
                       </Box>
-                      <p style={{ margin: 0, fontSize: 14 }}>
-                        げんざい　ちょうさちゅう
-                      </p>
                     </Box>
                   </Box>
                 </Box>
@@ -542,8 +613,26 @@ const RegisterPokemon = ({
                 sx={{
                   height: 21,
                   backgroundColor: "#e0e8e8",
+                  display: "flex",
                 }}>
-                <ItemForm ref={itemRef} style={itemStyle}/>
+                <Box
+                  sx={{
+                    position: "relative",
+                    width: "20%",
+                    height: "100%",
+                    borderRight: 1,
+                  }}>
+                  <Image
+                    src={itemIcon}
+                    alt=""
+                    layout="fill"
+                    objectFit="contain"></Image>
+                </Box>
+                <ItemForm
+                  ref={itemRef}
+                  style={itemStyle}
+                  setItemIcon={setItemIcon}
+                />
               </Box>
             </Box>
           </Box>

@@ -161,6 +161,7 @@ const Stats = ({
             <TextField
               value={effortValue}
               type="tel"
+              autoComplete="off"
               variant="standard"
               inputMode="numeric"
               onBlur={changeEffortValues}
@@ -205,6 +206,7 @@ const Stats = ({
             type="tel"
             variant="standard"
             inputMode="tel"
+            autoComplete="off"
             onBlur={changeIndividualValues}
             onChange={(e) =>
               textToNumber(e.target.value, 0, setIndividualValue, 0, 31)

@@ -388,11 +388,17 @@ export const Article: NextPage = () => {
             position: "fixed",
             bottom: 16,
             right: 16,
-            width: 60,
-            height: 60,
+            width: 80,
+            height: 80,
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "#999696",
           }}
           onClick={toggleDrawer(true)}>
-          <Image src="/image/ranking.png" width={60} height={60} alt={"rank"} />
+          <Image src="/image/ranking.png" width={65} height={65} alt={"rank"} />
+          <Typography sx={{ color: "white", paddingBottom: "3px" }}>
+            使用率
+          </Typography>
         </Fab>
       </div>
       <Drawer open={rankOpen} onClose={toggleDrawer(false)} anchor="right">

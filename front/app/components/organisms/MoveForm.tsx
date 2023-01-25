@@ -13,7 +13,9 @@ const MoveForm = ({ index }: MoveForm) => {
   const [visibleMoveList, setVisibleMoveList] = useState<boolean>(false);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
   const { moveRefs } = useContext(MoveRefsContext);
-  const moveRef = moveRefs.current[index];
+  const moveRef = moveRefs.current[
+    index
+  ] as React.MutableRefObject<HTMLInputElement>;
 
   useEffect(() => {
     if (filterMoveList.length !== 0 && filterMoveList[0] !== "not found") {
@@ -171,6 +173,6 @@ const MoveForm = ({ index }: MoveForm) => {
       </Box>
     </>
   );
-};
+};;;
 
 export default MoveForm;

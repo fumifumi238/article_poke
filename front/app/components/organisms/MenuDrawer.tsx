@@ -39,23 +39,23 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItems
+          value={"S3 レンタル構築"}
+          icon={<CatchingPokemonIcon />}
+          href="/rental"
+          setDrawerOpen={setDrawerOpen}
+        />
+        <DrawerItems
           value={"型検索"}
           icon={<TroubleshootIcon />}
           href="/stats"
           setDrawerOpen={setDrawerOpen}
         />
+
         <DrawerItemsSearch
           value={"ユーザー検索"}
           icon={<PersonSearchIcon />}
           href="/users"
           placeholder="twitter_id"
-          setDrawerOpen={setDrawerOpen}
-        />
-        <DrawerItemsSearch
-          value={"レンタル検索"}
-          icon={<CatchingPokemonIcon />}
-          href="/rental"
-          placeholder="ABC123"
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItems

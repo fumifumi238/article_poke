@@ -1,11 +1,10 @@
-import { style } from "@mui/system";
 import React, { RefObject } from "react";
 import { MutableRefObject, useContext, useEffect, useState } from "react";
 import itemsData from "../../json/items.json";
+import { getItemIcon } from "../../utils/getItemIcon";
 import { hiraToKana } from "../../utils/hiraToKana";
-import { ItemRefContext } from "../templates/RegisterPokemon";
-
 type Props = {
+  setItemIcon?: React.Dispatch<React.SetStateAction<string>>;
   style: {
     input: {
       [key: string]: string | number;
@@ -16,7 +15,7 @@ type Props = {
 type ItemRef = RefObject<HTMLInputElement>;
 
 const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
-  const { style } = props;
+  const { style, setItemIcon } = props;
   const [filterItemList, setFilterItemList] = useState<string[]>([]);
   const [visibleItemList, setVisibleItemList] = useState<boolean>(false);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
@@ -34,6 +33,10 @@ const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
       Object.keys(itemsData).find((item) => item === value) !== undefined
         ? value
         : "";
+    if (setItemIcon !== undefined) {
+      const iconUrl = getItemIcon(ref.current.value);
+      setItemIcon(iconUrl);
+    }
     setVisibleItemList(false);
     setFilterItemList([]);
   };

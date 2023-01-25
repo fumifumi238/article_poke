@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { calcHPStats } from "../../utils/calcStats";
 import { textToNumber } from "../../utils/textToNumber";
@@ -73,7 +74,7 @@ const HPStats = ({
       </Box>
       <Box
         sx={{
-          width: "60%",
+          width: "50%",
           height: 25,
           borderTopRightRadius: "5px",
           display: "flex",
@@ -165,6 +166,13 @@ const HPStats = ({
           />
         </li>
       </Box>
+      {effortValues[6] < 508 && (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography sx={{ textAlign: "right", color: "grey", fontSize: 14 }}>
+            {510 - effortValues[6]}{" "}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };

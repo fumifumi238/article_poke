@@ -103,11 +103,29 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
               <Box
                 sx={{ paddingTop: 1 }}
                 onClick={() => setModalOpen(article.id)}>
-                <Image
-                  src={`/image/ball/pokemonball.png`}
-                  alt="party"
-                  width={25}
-                  height={25}></Image>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    border: 1,
+                    borderRadius: "5px",
+                    bgcolor: "#f0ffff",
+                  }}>
+                  <Image
+                    src={`/image/ball/pokemonball.png`}
+                    alt="party"
+                    width={25}
+                    height={25}></Image>
+                  <Typography
+                    sx={{
+                      marginX: 1,
+                      color: "#696969",
+                      fontFamily: "fantasy",
+                      fontWeight: "550",
+                    }}>
+                    詳細
+                  </Typography>
+                </Box>
               </Box>
             </Box>
             <Box

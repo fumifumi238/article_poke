@@ -50,7 +50,7 @@ const Party = ({ id, setModalOpen }: Party) => {
             textAlign: "center",
             width: "100%",
             flexWrap: "wrap",
-            height: "80vh",
+            height: "90vh",
             maxHeight: 600,
             overflow: "scroll",
           }}>
