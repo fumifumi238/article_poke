@@ -27,10 +27,12 @@ class PartiesController < ApplicationController
   end
 
   def search_pokemon_and_item
+    puts params
     values = {
       "pokemon = ? ": params[:pokemon],
       "item = ? ": params[:item],
-      "format = ?": params[:format]
+      "format = ?": params[:format],
+      "series = ?": params[:series],
     }
     if  !need_params([params[:pokemon]])
       render json:[]

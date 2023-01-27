@@ -16,6 +16,9 @@ import IconButton from "@mui/material/IconButton";
 import MuiLink from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import seriesData from "../json/series.json";
 
 const Stats = () => {
   const router = useRouter();
@@ -48,13 +51,16 @@ const Stats = () => {
     },
   };
 
+  type Format = "single" | "double";
+
   type SearchParams = {
     pokemon: string;
+    series: string;
+    format: Format;
     item?: string;
     nature?: string;
     ability?: string;
     terastal?: string;
-    format?: "single" | "double";
   };
 
   const itemRef = useRef<HTMLInputElement>(null);
@@ -64,8 +70,16 @@ const Stats = () => {
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [results, setResults] = useState<Result>({});
   const [nodata, setNodata] = useState<boolean>(false);
+
+  const [format, setFormat] = useState<Format>("single");
+  const [series, setSeries] = useState<string>(
+    Object.keys(seriesData)[Object.keys(seriesData).length - 1]
+  );
+
   const [searchParams, setSearchParams] = useState<SearchParams>({
     pokemon: "",
+    series: series,
+    format: "single",
   });
 
   useEffect(() => {
@@ -107,11 +121,15 @@ const Stats = () => {
     const params = {
       pokemon: pokemonRef.current?.value,
       item: itemRef.current?.value,
+      series: series,
+      format: format,
     };
 
     if (
       searchParams.pokemon === params.pokemon &&
-      searchParams.item === params.item
+      searchParams.item === params.item &&
+      searchParams.series === params.series &&
+      searchParams.format === params.format
     ) {
       return;
     }
@@ -178,6 +196,40 @@ const Stats = () => {
               maxWidth: 400,
               margin: "0 auto",
             }}>
+            <Box sx={{ display: "flex" }}>
+              <Box>
+                <TextField
+                  select
+                  label="Format"
+                  autoComplete="off"
+                  value={format}
+                  sx={{ width: 150, margin: 1, marginLeft: 0 }}
+                  onChange={(e) => setFormat(e.target.value as Format)}>
+                  <MenuItem value="single" id="single">
+                    シングル
+                  </MenuItem>
+                  <MenuItem value="double" id="double">
+                    ダブル
+                  </MenuItem>
+                </TextField>
+              </Box>
+
+              <Box>
+                <TextField
+                  select
+                  label="Series"
+                  autoComplete="off"
+                  value={series}
+                  sx={{ width: 150, marginY: 1, marginLeft: 3 }}
+                  onChange={(e) => setSeries(e.target.value)}>
+                  {Object.keys(seriesData).map((num) => (
+                    <MenuItem value={num} key={num}>
+                      シリーズ {num}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+            </Box>
             <Box
               style={{
                 display: "flex",
@@ -203,6 +255,7 @@ const Stats = () => {
                 <ItemForm ref={itemRef} style={itemStyle} />
               </Box>
             </Box>
+
             <Typography sx={{ textAlign: "center", padding: 1 }}>
               ※ポケモン名は必須です。
             </Typography>

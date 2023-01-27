@@ -86,9 +86,7 @@ const RegisterPokemon = ({
     0, 0, 0, 0, 0,
   ]);
   const [nature, setNature] = useState<string>("まじめ");
-  const [itemIcon, setItemIcon] = useState<string>(
-    "/image/ball/pokemonball.png"
-  );
+
 
   const [ability, setAbility] = useState<string>("");
   const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
@@ -100,6 +98,9 @@ const RegisterPokemon = ({
   ]);
   const { pokeDetails, setPokeDetails } = useContext(PokeDetailsContext);
   const [iconUrls, setIconUrls] = useState<string[]>(new Array(6));
+  const [itemIcon, setItemIcon] = useState<string[]>(
+    new Array(6).fill("/image/ball/pokemonball.png")
+  );
   const [optionAbilities, setOptionAbilities] = useState<string[]>(
     pokeDetails[currentPoke].pokemon !== ""
       ? pokeData[pokeDetails[currentPoke].pokemon].abilities
@@ -177,6 +178,13 @@ const RegisterPokemon = ({
       pokemonIconuUrls.push(changeIcon(pokeDetails[i].pokemon));
     }
     setIconUrls(pokemonIconuUrls);
+
+    const copyOfItemIcon: string[] = [];
+
+    for (let i = 0; i <= 5; i++) {
+      copyOfItemIcon.push(getItemIcon(pokeDetails[i].item));
+    }
+    setItemIcon(copyOfItemIcon);
   }, [currentPoke]);
 
   const focusItem = () => {
@@ -209,7 +217,11 @@ const RegisterPokemon = ({
     });
     terastalRef.current.value = "";
     itemRef.current.value = "";
-    setItemIcon("/image/ball/pokemonball.png");
+
+    const copyOfItemIcon = [...itemIcon];
+    copyOfItemIcon[currentPoke] = "/image/ball/pokemonball.png";
+    setItemIcon(copyOfItemIcon);
+
     const copyIconUrls = [...iconUrls];
     copyIconUrls[currentPoke] = changeIcon(pokemon);
     setIconUrls(copyIconUrls);
@@ -623,7 +635,7 @@ const RegisterPokemon = ({
                     borderRight: 1,
                   }}>
                   <Image
-                    src={itemIcon}
+                    src={itemIcon[currentPoke]}
                     alt=""
                     layout="fill"
                     objectFit="contain"></Image>
@@ -632,6 +644,8 @@ const RegisterPokemon = ({
                   ref={itemRef}
                   style={itemStyle}
                   setItemIcon={setItemIcon}
+                  itemIcon={itemIcon}
+                  currentPoke={currentPoke}
                 />
               </Box>
             </Box>

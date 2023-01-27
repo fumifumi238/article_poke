@@ -4,7 +4,9 @@ import itemsData from "../../json/items.json";
 import { getItemIcon } from "../../utils/getItemIcon";
 import { hiraToKana } from "../../utils/hiraToKana";
 type Props = {
-  setItemIcon?: React.Dispatch<React.SetStateAction<string>>;
+  itemIcon?: string[];
+  setItemIcon?: React.Dispatch<React.SetStateAction<string[]>>;
+  currentPoke?: number;
   style: {
     input: {
       [key: string]: string | number;
@@ -15,7 +17,7 @@ type Props = {
 type ItemRef = RefObject<HTMLInputElement>;
 
 const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
-  const { style, setItemIcon } = props;
+  const { style, setItemIcon, currentPoke, itemIcon } = props;
   const [filterItemList, setFilterItemList] = useState<string[]>([]);
   const [visibleItemList, setVisibleItemList] = useState<boolean>(false);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
@@ -33,9 +35,11 @@ const ItemForm = React.forwardRef((props: Props, ref: ItemRef) => {
       Object.keys(itemsData).find((item) => item === value) !== undefined
         ? value
         : "";
-    if (setItemIcon !== undefined) {
+    if (itemIcon !== undefined) {
+      const copyOfItemIcon = [...itemIcon];
       const iconUrl = getItemIcon(ref.current.value);
-      setItemIcon(iconUrl);
+      copyOfItemIcon[currentPoke] = iconUrl;
+      setItemIcon(copyOfItemIcon);
     }
     setVisibleItemList(false);
     setFilterItemList([]);
