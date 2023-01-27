@@ -196,14 +196,14 @@ const Stats = () => {
               maxWidth: 400,
               margin: "0 auto",
             }}>
-            <Box sx={{ display: "flex" }}>
-              <Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box sx={{ width: "45%" }}>
                 <TextField
                   select
                   label="Format"
                   autoComplete="off"
                   value={format}
-                  sx={{ width: 150, margin: 1, marginLeft: 0 }}
+                  sx={{ width: "100%", marginY: 1 }}
                   onChange={(e) => setFormat(e.target.value as Format)}>
                   <MenuItem value="single" id="single">
                     シングル
@@ -214,13 +214,13 @@ const Stats = () => {
                 </TextField>
               </Box>
 
-              <Box>
+              <Box sx={{ width: "45%" }}>
                 <TextField
                   select
                   label="Series"
                   autoComplete="off"
                   value={series}
-                  sx={{ width: 150, marginY: 1, marginLeft: 3 }}
+                  sx={{ width: "100%", marginY: 1 }}
                   onChange={(e) => setSeries(e.target.value)}>
                   {Object.keys(seriesData).map((num) => (
                     <MenuItem value={num} key={num}>
@@ -236,7 +236,7 @@ const Stats = () => {
                 alignItems: "center",
                 justifyContent: "center",
               }}>
-              <Box style={{ position: "relative", width: 200, height: 40 }}>
+              <Box style={{ position: "relative", width: "48%", height: 40 }}>
                 <PokemonNameForm
                   addOptionAbility={addOptionAbility}
                   style={pokemonNameStyle}
@@ -249,7 +249,7 @@ const Stats = () => {
               <Box
                 style={{
                   position: "relative",
-                  width: 200,
+                  width: "48%",
                   height: 40,
                 }}>
                 <ItemForm ref={itemRef} style={itemStyle} />
