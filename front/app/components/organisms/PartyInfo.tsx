@@ -9,6 +9,7 @@ import { getNatureToNumber } from "../../utils/nature";
 import ShowMove from "../atoms/ShowMove";
 import ShowHPStats from "../molecules/ShowHPStats";
 import ShowStats from "../molecules/ShowStats";
+import typeColor from "../../json/typeColor.json";
 
 type Pokemon = {
   pokemon: string;
@@ -128,14 +129,24 @@ const PartyInfo = ({ party }: Party) => {
                 objectFit="contain"></Image>
             </Box>
             <Box>
-              <Typography
+              <Box
                 sx={{
-                  fontSize: "2vh",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
+                  background: `${typeColor[party.terastal]}`,
+                  borderRadius: "5px",
+                  border: "1px solid darkgray",
+                  marginLeft: "2px",
                 }}>
-                {party.terastal}
-              </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "1.5vh",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    color: "white",
+                    paddingX: "2px",
+                  }}>
+                  {party.terastal}
+                </Typography>
+              </Box>
             </Box>
           </Box>
           <Box sx={{ height: "28%", position: "relative", margin: "2px" }}>
@@ -178,6 +189,7 @@ const PartyInfo = ({ party }: Party) => {
                 border: 1,
                 borderBottom: 0,
                 bgcolor: "#888888",
+                height: "80%",
               }}>
               <Image
                 src={`${getItemIcon(party.item)}`}
