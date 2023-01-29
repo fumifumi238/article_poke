@@ -2,6 +2,8 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
+
+import Script from "next/script";
 import GoogleAdsense from "../src/components/GoogleAdsense";
 
 export default class MyDocument extends Document {
@@ -19,12 +21,14 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
 
+          {/* googleAdsense */}
+
           {(this.props as any).emotionStyleTags}
-          <GoogleAdsense />
         </Head>
         <body style={{ textSizeAdjust: "none" }}>
           <Main />
           <NextScript />
+
         </body>
       </Html>
     );

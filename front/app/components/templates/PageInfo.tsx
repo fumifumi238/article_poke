@@ -39,7 +39,9 @@ const PageInfo = ({ value, url, imageSrc, discriptions, icon }: PageInfo) => {
       </Box>
       <Box sx={{ borderTop: "solid grey", margin: 3, paddingTop: 2 }}>
         {discriptions.map((discription) => (
-          <Typography sx={{ fontWeight: 800 }}>{discription}</Typography>
+          <Typography sx={{ fontWeight: 800 }} key={discription}>
+            {discription}
+          </Typography>
         ))}
       </Box>
       <Box sx={{ textAlign: "right" }}>

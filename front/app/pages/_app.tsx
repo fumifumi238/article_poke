@@ -58,13 +58,13 @@ function MyApp(props: MyAppProps) {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/favicons/favicon-32x32.png"
+          href="/favicons/icon-32x32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/favicons/favicon-16x16.png"
+          href="/favicons/icon-16x16.png"
         />
         <link rel="manifest" href="/favicons/manifest.json" />
         <link
@@ -96,6 +96,7 @@ function MyApp(props: MyAppProps) {
           />
 
           <GoogleAnalytics />
+          <GoogleAdsense />
 
           <ArticleContext.Provider value={{ cashArticle, setCashArticle }}>
             <Component {...pageProps} />
