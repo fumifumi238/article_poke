@@ -28,9 +28,7 @@ import MoveForm from "../organisms/MoveForm";
 import PokemonNameForm from "../organisms/PokemonNameForm";
 import TerastalForm from "../organisms/TerastalForm";
 import natures from "../../json/nature.json";
-import Menu from "@mui/material/Menu";
 import React from "react";
-import Typography from "@mui/material/Typography";
 import { getItemIcon } from "../../utils/getItemIcon";
 
 type TerastalRefContext = {
