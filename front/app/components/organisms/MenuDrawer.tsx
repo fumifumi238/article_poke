@@ -38,12 +38,12 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
           href="/form"
           setDrawerOpen={setDrawerOpen}
         />
-        {/* <DrawerItems
+        <DrawerItems
           value={"S3 レンタル構築"}
           icon={<CatchingPokemonIcon />}
           href="/rental"
           setDrawerOpen={setDrawerOpen}
-        /> */}
+        />
         <DrawerItems
           value={"型検索"}
           icon={<TroubleshootIcon />}
