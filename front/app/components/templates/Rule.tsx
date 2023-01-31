@@ -112,6 +112,7 @@ const Rule = ({ series }: Rule) => {
             <Box key={form}>
               {seriesData[series].map((num: string) => (
                 <Button
+                  sx={{ display: "flex", flexDirection: "column" }}
                   key={num}
                   onClick={() => redirectToArticle(form, num)}
                   color="info">

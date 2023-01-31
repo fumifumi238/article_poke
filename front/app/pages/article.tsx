@@ -16,6 +16,9 @@ import DisplayArticle from "../components/templates/DisplayArticle";
 import seriesData from "../json/series.json";
 import { getData } from "../lib/api/fetchApi";
 import { ArticleContext } from "./_app";
+import ErrorIcon from "@mui/icons-material/Error";
+import Modal from "@mui/material/Modal";
+import FormWarning from "../components/templates/FormWarning";
 
 type Pokemon = {
   pokemon: string;
@@ -116,6 +119,8 @@ export const Article: NextPage = () => {
   const [noData, setNoData] = useState<boolean>(false);
 
   const [success, setSuccess] = useState<boolean>(false);
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const { cashArticle, setCashArticle } = useContext(ArticleContext);
 
@@ -324,6 +329,24 @@ export const Article: NextPage = () => {
 
   return (
     <>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%",
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+            height: "80%",
+            overflow: "scroll",
+          }}>
+          <FormWarning />
+        </Box>
+      </Modal>
       <div>
         <NextSeo
           title="Poke Ranker | ポケモンSV シリーズ1 シーズン1 構築記事まとめ"
@@ -337,8 +360,12 @@ export const Article: NextPage = () => {
             margin: 1,
             color: "grey",
           }}>
-          【ポケモンSV {format === "single" ? "シングル" : "ダブル"} シーズン
-          {seasons[seasons.length - 1]}】 構築記事まとめ
+          【ポケモンSV {format === "single" ? "シングル" : "ダブル"}{" "}
+          {seriesData[series].length === seasons.length
+            ? `シリーズ${series}`
+            : `シーズン
+          ${seasons[seasons.length - 1]}`}
+          】 構築記事まとめ
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", margin: 1 }}>
           <Button onClick={() => setOpenSetting(!openSetting)}>表示設定</Button>
@@ -369,6 +396,18 @@ export const Article: NextPage = () => {
             setCurrentId={setCurrentId}
             setOffset={setOffset}
           />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "right",
+            }}>
+            <Button onClick={() => setModalOpen(true)}>
+              <ErrorIcon color="info" />
+              <Typography sx={{ color: "gray", borderBottom: 1 }}>
+                フォルム違いについて
+              </Typography>
+            </Button>
+          </Box>
         </Box>
 
         <Box

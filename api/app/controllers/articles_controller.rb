@@ -1,14 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    seasons = ""
-    if params[:seasons] != nil
-      puts "not nil"
-      (params[:seasons]).each do |season|
-       seasons += season + ","
-      end
-    end
     values = {
-      "season IN(?) ": seasons,
       "format = ? ": params[:format],
       "permit = ? ": 1,
       "articles.rank >= ? ": params[:ranks][0],
@@ -19,7 +11,7 @@ class ArticlesController < ApplicationController
 
     search = add_query(values)
     @all_articles = Article.joins(:user)
-    .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
+    .select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter").where(season: params[:seasons])
     .where(search).order('articles.season DESC,articles.rank ASC')
 
     @articles = @all_articles.limit(20)

@@ -1,11 +1,15 @@
-import type { Pokemons } from "../../types/pokemons";
-import type { PokeTypes } from "../../types/pokeTypes";
-import type { Items } from "../../types/items";
+import pokeData from "../poke_data.json";
+import ItemsData from "../items.json";
+import TypesData from "../types.json";
+
+type Pokemons = keyof typeof pokeData;
+type Items = keyof typeof ItemsData;
+type Types = keyof typeof TypesData;
 
 type Party = {
   pokemon: Pokemons;
   item: Items;
-  terastal: PokeTypes;
+  terastal: Types;
   nature?: string;
   moves?: [string, string, string, string];
   effortValue?: [number, number, number, number, number, number];
