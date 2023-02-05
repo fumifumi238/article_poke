@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(twitter: params[:id])
+    @user = User.where(twitter: params[:id])
      @articles = Article.joins(:user).select("articles.id,articles.url,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
     .where(user_id: @user).order(season: :desc)
 

@@ -349,7 +349,7 @@ export const Article: NextPage = () => {
       </Modal>
       <div>
         <NextSeo
-          title="Poke Ranker | ポケモンSV シリーズ1 シーズン1 構築記事まとめ"
+          title="Poke Ranker | ポケモンSV シリーズ1 シーズン2 構築記事まとめ"
           description="ポケモンの構築記事が読みたい方はこちら。"
         />
         <Typography
