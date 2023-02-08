@@ -15,13 +15,13 @@ const Permit = () => {
         );
         const data = (await res.json()) as Article[];
 
-        const all_articles = await fetch(
-          `${process.env.NEXT_PUBLIC_HOST}/articles/get_all_articles`
-        );
+        // const all_articles = await fetch(
+        //   `${process.env.NEXT_PUBLIC_HOST}/articles/get_all_articles`
+        // );
 
-        const json = await all_articles.json();
+        // const json = await all_articles.json();
 
-        console.log(json);
+        // console.log(json);
         setArticles(data);
       };
 
