@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "articles/search_pokemon"
   get "articles/not_permit_articles"
 
+  get "articles/get_all_articles"
+
   get "articles/rental/:rental", to: 'articles#get_article_by_rental'
 
   post "articles/permit_article/:id",to: "articles#permit_article"

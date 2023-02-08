@@ -51,6 +51,38 @@ class ArticlesController < ApplicationController
     render json: get_articles_with_party(@articles,@parties);
   end
 
+  def get_all_articles
+    @articles = Article.all.joins(:user).select("articles.id,articles.url,articles.format,articles.rate,articles.rank,articles.title,articles.season,articles.rental,users.name as tn,users.twitter")
+
+    arr = []
+
+    @articles.each do |article|
+      @parties = Party.where(article_id: article.id).order("pokemon ASC")
+      data = get_party_with_stats(@parties)
+
+      (data).each_with_index do |d,i|
+        d[:id] = i+1
+      end
+
+      hash = {tn: article.tn,
+              twitter: article.twitter,
+              url: article.url,
+              title: article.title,
+              rate: article.rate,
+              rank: article.rank,
+              season: article.season,
+              rental: article.rental,
+              format: article.format,
+              party: data
+      }
+
+      arr.push(hash)
+    end
+
+
+    render json: arr
+  end
+
 
   # すでに登録されているURL
   def get_exist_url
@@ -99,6 +131,8 @@ class ArticlesController < ApplicationController
       arr.push(hash)
 
     end
+
+    puts arr
 
     render json: arr
 
