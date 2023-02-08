@@ -19,7 +19,9 @@ const Permit = () => {
           `${process.env.NEXT_PUBLIC_HOST}/articles/get_all_articles`
         );
 
-        console.log(all_articles);
+        const json = await all_articles.json();
+
+        console.log(json);
         setArticles(data);
       };
 
