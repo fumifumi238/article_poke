@@ -33,6 +33,7 @@ const UserResult = () => {
         if (twitter !== undefined) {
           setValue(String(twitter));
         }
+
       }
     }, [router, twitter]);
 

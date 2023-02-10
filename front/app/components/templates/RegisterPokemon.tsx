@@ -400,7 +400,7 @@ const RegisterPokemon = ({
                             }}
                             variant="standard"
                             onChange={(e) => onChangeNature(e.target.value)}>
-                            {Object.values(natures).map((option) => (
+                            {Object.keys(natures).map((option) => (
                               <MenuItem value={option} key={option}>
                                 {option}
                               </MenuItem>
