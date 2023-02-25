@@ -205,8 +205,9 @@ const Series = (props: PageProps) => {
         }
       }
       if (seasons !== undefined) {
+        console.log("season");
         getArticles(seasons, min, max);
-
+        setLoading(false);
         return;
       }
 
