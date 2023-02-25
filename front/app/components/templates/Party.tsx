@@ -1,35 +1,18 @@
 import Box from "@mui/material/Box";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { getData } from "../../lib/api/fetchApi";
 import PartyInfo from "../organisms/PartyInfo";
+import type { Party as PartyType } from "../../types/articleTypes";
 
-type Party = {
-  id: number;
+type PartyProps = {
+  party: PartyType[];
   setModalOpen: Dispatch<SetStateAction<number>>;
 };
 
-type Pokemon = {
-  id: number;
-  pokemon: string;
-  item: string;
-  ability: string;
-  nature: string;
-  terastal: string;
-  moves: string[];
-  effortValues: number[];
-  individualValues: number[];
-};
-const Party = ({ id, setModalOpen }: Party) => {
-  const [parties, setParties] = useState<Pokemon[]>([]);
+const Party = ({ party, setModalOpen }: PartyProps) => {
+  const [parties, setParties] = useState<PartyType[]>([]);
   useEffect(() => {
-    const getParty = async () => {
-      const params = { id: id };
-      const data = await getData("/parties/get_party_by_article_id", params);
-      setParties(data);
-    };
-
-    getParty();
-  }, [id]);
+    setParties(party);
+  }, [party]);
   return (
     <>
       <Box
@@ -44,7 +27,7 @@ const Party = ({ id, setModalOpen }: Party) => {
           boxShadow: 24,
         }}>
         <Box
-          onClick={() => setModalOpen(0)}
+          onClick={() => setModalOpen(-1)}
           sx={{
             display: "flex",
             textAlign: "center",
@@ -53,9 +36,9 @@ const Party = ({ id, setModalOpen }: Party) => {
             height: "90vh",
             overflow: "scroll",
           }}>
-          {parties.map((party) => (
-            <Box sx={{ width: "50%" }} key={party.id}>
-              <PartyInfo party={party} />
+          {parties.map((partyInfo) => (
+            <Box sx={{ width: "50%" }} key={partyInfo.id}>
+              <PartyInfo party={partyInfo} />
             </Box>
           ))}
         </Box>

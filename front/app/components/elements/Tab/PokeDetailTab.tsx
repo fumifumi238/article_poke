@@ -10,66 +10,30 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import { useContext, useEffect, useState } from "react";
-import { getData } from "../../../lib/api/fetchApi";
-import type { Details, Types } from "../../../pages/article";
-import { DetailsContext } from "../../../pages/article";
 
-type Pokemon = {
-  pokemon: string;
-  articleIds: number[];
+
+type Props = {
   count: number;
+  item: { [key: string]: number };
+  terastal: { [key: string]: number };
+  move: { [key: string]: number };
+  ability: { [key: string]: number };
+  nature: { [key: string]: number };
 };
 
-type Tabs = {
-  items: Types[];
-  moves: Types[];
-  terastals: Types[];
-  abilities: Types[];
-  natures: Types[];
-};
-
-const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
+const PokeDetailTab = ({
+  count,
+  item,
+  terastal,
+  move,
+  ability,
+  nature,
+}: Props) => {
   const [value, setValue] = useState<string>("moves");
-  const { details, setDetails } = useContext(DetailsContext);
-  const [loading, setLoading] = useState<boolean>(true);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
-  useEffect(() => {
-    const getUtilizationRate = async () => {
-      const params = {
-        pokemon: pokemon,
-        ids: articleIds,
-      };
-      const data = (await getData(
-        "/articles/utilization_rate",
-        params
-      )) as unknown as Tabs;
-
-      const newData: Details = {
-        [pokemon]: {
-          items: data.items,
-          moves: data.moves,
-          terastals: data.terastals,
-          ablities: data.abilities,
-          natures: data.natures,
-        },
-      };
-      setDetails((prev) => ({
-        ...prev,
-        ...newData,
-      }));
-      setTimeout(() => setLoading(false), 300);
-    };
-
-    if (details[pokemon] === undefined) {
-      getUtilizationRate();
-    } else {
-      setTimeout(() => setLoading(false), 300);
-    }
-  }, []);
 
   const getPercentage = (count: number, sum: number) => {
     return (Math.floor((count / sum) * 1000) / 10).toFixed(1) + "%";
@@ -77,17 +41,17 @@ const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
 
   type Props = {
     value: string;
-    types: Types[];
+    types: { [key: string]: number };
   };
   const TabPanelList = ({ value, types }: Props) => {
     return (
       <TabPanel value={value} sx={{ padding: 0 }}>
         <List sx={{ height: 200, overflow: "auto" }}>
-          {types.map((type, index) => (
-            <React.Fragment key={type.name}>
+          {Object.keys(types).map((type, index) => (
+            <React.Fragment key={type}>
               <RankByTypes
-                name={type.name}
-                percentage={getPercentage(type.count, count)}
+                name={type}
+                percentage={getPercentage(types[type], count)}
                 index={index}
               />
             </React.Fragment>
@@ -104,7 +68,7 @@ const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
           sx={{
             borderBottom: 1,
             borderColor: "divider",
-            maxWidth: { xs: 375, sm: 480 },
+            // maxWidth: { xs: 375, sm: 480 },
           }}>
           <Tabs
             onChange={handleChange}
@@ -120,38 +84,12 @@ const PokeDetailTab = ({ pokemon, articleIds, count }: Pokemon) => {
             <Tab label="テラスタル" value="terastals" />
           </Tabs>
         </Box>
-        {!loading ? (
-          <>
-            <TabPanelList value="moves" types={details[pokemon].moves} />
-            <TabPanelList value="items" types={details[pokemon].items} />
-            <TabPanelList value="abilities" types={details[pokemon].ablities} />
-            <TabPanelList value="natures" types={details[pokemon].natures} />
-            <TabPanelList
-              value="terastals"
-              types={details[pokemon].terastals}
-            />
-          </>
-        ) : (
-          <TabPanel value={value} sx={{ padding: 0 }}>
-            <List sx={{ height: 200, overflow: "auto" }}>
-              {[1, 2, 3, 4].map((i) => (
-                <ListItem
-                  sx={{ borderBottom: 1, borderColor: "divider" }}
-                  key={i}>
-                  <Typography variant="h6" sx={{ width: "20%" }}>
-                    {i}.
-                  </Typography>
-                  <Typography
-                    sx={{ width: "70%" }}
-                    onClick={() => setLoading(false)}>
-                    -------------
-                  </Typography>
-                  <Typography sx={{ width: "10%" }}>0.0%</Typography>
-                </ListItem>
-              ))}
-            </List>
-          </TabPanel>
-        )}
+
+        <TabPanelList value="moves" types={move} />
+        <TabPanelList value="items" types={item} />
+        <TabPanelList value="abilities" types={ability} />
+        <TabPanelList value="natures" types={nature} />
+        <TabPanelList value="terastals" types={terastal} />
       </TabContext>
     </Box>
   );

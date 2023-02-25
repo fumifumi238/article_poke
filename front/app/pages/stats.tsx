@@ -1,10 +1,7 @@
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ItemForm from "../components/organisms/ItemForm";
 import PokemonNameForm from "../components/organisms/PokemonNameForm";
 import poke_data from "../json/poke_data.json";
-import items from "../json/items.json";
-import { getData } from "../lib/api/fetchApi";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -19,20 +16,14 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import seriesData from "../json/series.json";
+import { searchPokeItem } from "../utils/searchPokeItem";
 
 const Stats = () => {
-  const router = useRouter();
-  const query = router.query;
-
   type Result = {
-    [key: string]: {
-      id: number;
-      pokemon: string;
-      item: string;
+    [item: string]: {
       nature: string;
       url: string;
-      individual: number[];
-      effort: number[];
+      effortValue: string;
     }[];
   };
   const pokemonNameStyle = {
@@ -66,8 +57,6 @@ const Stats = () => {
   const itemRef = useRef<HTMLInputElement>(null);
   const pokemonRef = useRef<HTMLInputElement>(null);
   const [currentPokemon, setCurrentPokemon] = useState<string>();
-  const [ability, setAbility] = useState<string>("");
-  const [baseStats, setBaseStats] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
   const [results, setResults] = useState<Result>({});
   const [nodata, setNodata] = useState<boolean>(false);
 
@@ -82,21 +71,6 @@ const Stats = () => {
     format: "single",
   });
 
-  useEffect(() => {
-    if (router.isReady) {
-      const { pokemon, item } = query;
-      if (poke_data[String(pokemon)] !== undefined) {
-        pokemonRef.current.value = String(pokemon);
-        setAbility(poke_data[String(pokemon)].abilities[0]);
-        setBaseStats(poke_data[String(pokemon)].baseStats);
-      }
-
-      if (items[String(item)] !== undefined) {
-        itemRef.current.value = String(item);
-      }
-    }
-  }, [router, query]);
-
   const addOptionAbility = (pokemon: string) => {
     if (poke_data[pokemon] === undefined) {
       pokemonRef.current.value = "";
@@ -106,8 +80,6 @@ const Stats = () => {
     if (currentPokemon !== pokemon) {
       setCurrentPokemon(pokemon);
       setResults({});
-      setAbility(poke_data[pokemon].abilities[0]);
-      setBaseStats(poke_data[pokemon].baseStats);
     }
   };
 
@@ -136,52 +108,15 @@ const Stats = () => {
 
     setSearchParams(params);
 
-    type Data = {
-      id: number;
-      pokemon: string;
-      item: string;
-      nature: string;
-      url: string;
-      individual: string | number[];
-      effort: string | number[];
-    };
-    const data = (await getData(
-      "/parties/search_pokemon_and_item",
-      params
-    )) as unknown as Data;
+    const data = await searchPokeItem(params);
 
     if (Object.keys(data).length === 0) {
       setNodata(true);
     } else {
       setNodata(false);
     }
-    const lists: Result = {};
-    for (let item of Object.keys(data)) {
-      const DistinctLists = [];
-      const hash = {};
 
-      console.log(item);
-
-      for (let i = 0; i < data[item].length; i++) {
-        const currentData: Data = data[item][i];
-        // console.log(currentData);
-        if (hash[String(currentData.effort)] === undefined) {
-          hash[String(currentData.effort)] = item;
-          currentData.individual = String(currentData.individual)
-            .split(",")
-            .map((d: string) => Number(d));
-
-          currentData.effort = String(currentData.effort)
-            .split(",")
-            .map((d: string) => Number(d));
-
-          DistinctLists.push(currentData);
-        }
-        lists[item] = DistinctLists;
-      }
-    }
-
-    setResults(lists);
+    setResults(data);
   };
   return (
     <>
@@ -197,7 +132,7 @@ const Stats = () => {
               margin: "0 auto",
             }}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Box sx={{ width: "45%" }}>
+              <Box sx={{ width: "48%" }}>
                 <TextField
                   select
                   label="Format"
@@ -214,7 +149,7 @@ const Stats = () => {
                 </TextField>
               </Box>
 
-              <Box sx={{ width: "45%" }}>
+              <Box sx={{ width: "48%" }}>
                 <TextField
                   select
                   label="Series"
@@ -293,7 +228,7 @@ const Stats = () => {
               <AccordionDetails>
                 {results[key].map((result) => (
                   <Box
-                    key={result.id}
+                    key={result.url}
                     sx={{
                       display: "flex",
                       borderTop: 1,
@@ -309,9 +244,7 @@ const Stats = () => {
                       <Box style={{ display: "flex" }}>
                         <Typography sx={{ marginRight: 1 }}>努力値:</Typography>
                         <Typography sx={{ marginRight: 1 }}>
-                          {result.effort
-                            .filter((_, index) => index !== 6)
-                            .join("-")}
+                          {result.effortValue}
                         </Typography>
                       </Box>
                       <Box>

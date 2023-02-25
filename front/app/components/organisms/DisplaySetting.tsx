@@ -17,7 +17,7 @@ import AlertSuccess from "../atoms/AlertSuccess";
 
 type DisplaySetting = {
   series: string;
-  ranks: number[];
+  rank: number[];
   seasons: string[];
   format: string;
   success: boolean;
@@ -26,7 +26,7 @@ type DisplaySetting = {
 
 const DisplaySetting = ({
   series,
-  ranks,
+  rank,
   seasons,
   format,
   success,
@@ -36,7 +36,7 @@ const DisplaySetting = ({
   const [seriesSetting, setSeriesSetting] = useState<string>(series);
 
   const [seasonsSetting, setSeasonsSetting] = useState<string[]>(seasons);
-  const [ranksSetting, setRanksSetting] = useState<(number | string)[]>(ranks);
+  const [ranksSetting, setRanksSetting] = useState<(number | string)[]>(rank);
   const [formatSetting, setFormatSetting] = useState<string>(format);
 
   const [disabledButton, setDisabledButton] = useState<boolean>(true);
@@ -80,10 +80,10 @@ const DisplaySetting = ({
 
     if (
       format === formatSetting &&
-      ranks === ranksSetting &&
+      rank === ranksSetting &&
       isEqualSeason() &&
-      ranksSetting[0] === ranks[0] &&
-      ranksSetting[1] === ranks[1]
+      ranksSetting[0] === rank[0] &&
+      ranksSetting[1] === rank[1]
     ) {
       setDisabledButton(true);
       return;
@@ -108,25 +108,24 @@ const DisplaySetting = ({
 
   const onClickSetting = () => {
     setSuccess(true);
-    let baseUrl = "/article?";
+    let baseUrl = `/${formatSetting}/series${seriesSetting}/season${seasonsSetting[0]}?`;
 
     const addBaseUrl = (params: string, value: string | number) => {
       baseUrl += `${params}=${value}&`;
     };
 
-    addBaseUrl("format", formatSetting);
-
-    if (!(ranksSetting[0] === 1 && ranksSetting[2] === 99999)) {
+    if (!(ranksSetting[0] === 1 && ranksSetting[1] === 99999)) {
       addBaseUrl("ranks", ranksSetting[0]);
       addBaseUrl("ranks", ranksSetting[1]);
     }
 
-    addBaseUrl("series", seriesSetting);
-    seasonsSetting.forEach((value) => {
-      addBaseUrl("seasons", value);
-    });
+    if (seasonsSetting.length > 1) {
+      seasonsSetting.forEach((value) => {
+        addBaseUrl("seasons", value);
+      });
+    }
 
-    router.push(baseUrl);
+    router.push(baseUrl, undefined, { shallow: true });
   };
 
   const onChangeSeries = (value: string) => {

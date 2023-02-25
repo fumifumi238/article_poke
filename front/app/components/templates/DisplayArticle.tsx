@@ -6,19 +6,21 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import typesData from "../../json/types.json";
-import type { Article } from "../../pages/article";
+import { Article } from "../../types/articleTypes";
 import { changeIcon } from "../../utils/changeIcon";
 import { getItemIcon } from "../../utils/getItemIcon";
 import Party from "./Party";
-
+import { Party as PartyType } from "../../types/articleTypes";
 type DisplayArticle = {
-  articles: Article[];
+  articlesProps: Article[];
 };
 
-const DisplayArticle = ({ articles }: DisplayArticle) => {
-  const [modalOpen, setModalOpen] = useState<number>(0);
+const DisplayArticle = ({ articlesProps }: DisplayArticle) => {
+  const [modalOpen, setModalOpen] = useState<number>(-1);
+  const [articles, setArticles] = useState<Article[]>(articlesProps);
+  const [party, setParty] = useState<PartyType[]>([]);
   const twitterLink = (id: string) => {
     let baseUrl = "https://twitter.com/";
     if (id === "") {
@@ -32,6 +34,10 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
     twitter: string;
     tn: string;
   };
+
+  useEffect(() => {
+    setArticles(articlesProps);
+  }, [articlesProps]);
 
   const UserLink = ({ twitter, tn }: UserLink) => {
     if (twitter === "") {
@@ -47,17 +53,23 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
     );
   };
 
+  const onClickModal = (id: number) => {
+    const clickParty = articles[id].party;
+    setParty(clickParty);
+    setModalOpen(id);
+  };
+
   return (
     <>
-      <Modal open={0 !== modalOpen} onClose={() => setModalOpen(0)}>
+      <Modal open={modalOpen !== -1} onClose={() => setModalOpen(-1)}>
         <Box>
-          <Party id={modalOpen} setModalOpen={setModalOpen} />
+          <Party party={party} setModalOpen={setModalOpen} />
         </Box>
       </Modal>
       <Box sx={{ margin: 1 }}>
-        {articles.map((article) => (
+        {articles.map((article, index) => (
           <Box
-            key={article.id}
+            key={article.url}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -100,7 +112,7 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
                   </Icon>
                 </Box>
               </MuiLink>
-              <Box onClick={() => setModalOpen(article.id)}>
+              <Box onClick={() => onClickModal(index)}>
                 <Box
                   sx={{
                     display: "flex",
@@ -178,10 +190,12 @@ const DisplayArticle = ({ articles }: DisplayArticle) => {
               <Typography sx={{ paddingX: 1, width: "40%" }}>
                 Season:{article.season}
               </Typography>
-              <Typography sx={{ width: "60%" }}>
-                RentalCode:{" "}
-                <span style={{ color: "green" }}>{article.rental}</span>
-              </Typography>
+              <Box sx={{ width: "60%", display: "flex" }}>
+                <Typography>RentalCode:</Typography>
+                <Typography sx={{ color: "green" }}>
+                  {article.rental}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         ))}

@@ -9,34 +9,26 @@ import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { getData } from "../../../lib/api/fetchApi";
-import {
-  ChangeSettingContext,
-  PokemonRanksContext,
-} from "../../../pages/article";
 import { changeIcon } from "../../../utils/changeIcon";
+import { Ranking } from "../../../utils/getPokemonRank";
 import PoketetsuLink from "../Link/PoketetsuLink";
 import PokeDetailTab from "../Tab/PokeDetailTab";
 
-type Search = {
-  articleIds: number[];
-  counts: number;
-};
-
-type Pokemon = {
-  pokemon: string;
-  count: number;
+type Props = {
+  ranking: Ranking;
 };
 
 // TODO: 順位がない時のランキング、検索時には順番通りに
 
-const ControlledAccordions = ({ articleIds, counts }: Search) => {
+const ControlledAccordions = ({ ranking }: Props) => {
   const [expanded, setExpanded] = useState<string | false>(false);
-  // const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const { pokemonRanks, setPokemonRanks } = useContext(PokemonRanksContext);
-  const { changeSetting, setChangeSetting } = useContext(ChangeSettingContext);
-  const [filterPokemons, setFilterPokemons] = useState<Pokemon[]>([]);
+  const pokemonKeys = Object.keys(ranking);
+  const [filterRankings, setFilterRankings] = useState<string[]>(
+    pokemonKeys.slice(0, 10)
+  );
   const [count, setCount] = useState<number>(10);
+
+  const [sumOfPokemons, setSumOfPokemons] = useState<number>(1);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -52,29 +44,20 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
   };
 
   useEffect(() => {
-    if (changeSetting) {
-      const fetchData = async () => {
-        const params = {
-          ids: articleIds,
-        };
-
-        const data = await getData("/articles/rank", params);
-        setFilterPokemons(data.slice(0, 10));
-        setPokemonRanks(data);
-      };
-      fetchData();
-      setChangeSetting(false);
-    } else {
-      setFilterPokemons(pokemonRanks.slice(0, 10));
+    let sum = 0;
+    for (let pokemon of pokemonKeys) {
+      sum += ranking[pokemon].count;
     }
-  }, []);
+
+    setSumOfPokemons(sum / 6);
+  }, [ranking]);
 
   const loadArticle = async () => {
-    setFilterPokemons((prevData) => [
-      ...prevData,
-      ...pokemonRanks.slice(count, count + 10),
-    ]),
-      setCount((prevCount) => prevCount + 10);
+    setFilterRankings((prevRanking) => [
+      ...prevRanking,
+      ...pokemonKeys.slice(count, count + 10),
+    ]);
+    setCount((prevCount) => prevCount + 10);
   };
 
   const getPercentage = (count: number, sum: number) => {
@@ -84,17 +67,17 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
   return (
     <Box sx={{ width: 300, padding: 0 }}>
       <List>
-        {filterPokemons.map((filterPokemon: Pokemon, index) => (
-          <ListItem disablePadding={true} key={filterPokemon.pokemon}>
+        {filterRankings.map((pokemon: string, index) => (
+          <ListItem disablePadding={true} key={pokemon}>
             <Box sx={{ width: "100%" }}>
               <Accordion
-                expanded={expanded === filterPokemon.pokemon}
-                onChange={handleChange(filterPokemon.pokemon)}
+                expanded={expanded === pokemon}
+                onChange={handleChange(pokemon)}
                 TransitionProps={{ unmountOnExit: true }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
-                  aria-controls={filterPokemon.pokemon}
-                  id={filterPokemon.pokemon}
+                  aria-controls={pokemon}
+                  id={pokemon}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
@@ -113,35 +96,38 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
                     <Image
                       height={25}
                       width={25}
-                      alt={filterPokemon.pokemon}
-                      src={`/image/${changeIcon(filterPokemon.pokemon)}`}
+                      alt={pokemon}
+                      src={`/image/${changeIcon(pokemon)}`}
                     />
                   </Box>
                   <Box sx={{ width: "50%" }}>
                     <Typography
                       variant="h6"
                       sx={{ whiteSpace: "nowrap", overflow: "hidden" }}>
-                      {filterPokemon.pokemon}
+                      {pokemon}
                     </Typography>
                     <Typography
                       sx={{
                         position: "absolute",
-                        top: changeTopHeight(filterPokemon.pokemon),
+                        top: changeTopHeight(pokemon),
                         left: 75,
                         color: "grey",
                       }}>
-                      {getPercentage(filterPokemon.count, counts)}(
-                      {filterPokemon.count}/{counts})
+                      {getPercentage(ranking[pokemon].count, sumOfPokemons)}(
+                      {ranking[pokemon].count}/{sumOfPokemons})
                     </Typography>
                   </Box>
-                  <PoketetsuLink pokemon={filterPokemon.pokemon} />
+                  <PoketetsuLink pokemon={pokemon} />
                 </AccordionSummary>
 
                 <AccordionDetails>
                   <PokeDetailTab
-                    pokemon={filterPokemon.pokemon}
-                    articleIds={articleIds}
-                    count={filterPokemon.count}
+                    count={ranking[pokemon].count}
+                    terastal={ranking[pokemon].terastal}
+                    item={ranking[pokemon].item}
+                    ability={ranking[pokemon].ability}
+                    move={ranking[pokemon].move}
+                    nature={ranking[pokemon].nature}
                   />
                 </AccordionDetails>
               </Accordion>
@@ -150,7 +136,7 @@ const ControlledAccordions = ({ articleIds, counts }: Search) => {
         ))}
       </List>
       <Box sx={{ textAlign: "center", paddingBottom: 1 }}>
-        {pokemonRanks.length !== filterPokemons.length && (
+        {pokemonKeys.length !== filterRankings.length && (
           <Button onClick={loadArticle}>もっと見る</Button>
         )}
       </Box>

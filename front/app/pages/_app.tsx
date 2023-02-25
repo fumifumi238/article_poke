@@ -10,8 +10,8 @@ import theme from "../src/theme";
 import GoogleAnalytics from "../src/components/GoogleAnalytics";
 import GoogleAdsense from "../src/components/GoogleAdsense";
 import usePageView from "../src/hooks/usePageView";
-import { createContext, useEffect, useState } from "react";
-import Article from "./article";
+import { createContext, useState } from "react";
+import { Article } from "../types/articleTypes";
 
 const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {

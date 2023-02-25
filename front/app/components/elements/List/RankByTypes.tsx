@@ -12,7 +12,7 @@ const RankByTypes = ({ name, percentage, index }: Props) => {
       <Typography variant="h6" sx={{ width: "20%" }}>
         {index + 1}.
       </Typography>
-      <Typography sx={{ width: "70%" }}>
+      <Typography sx={{ width: "65%" }}>
         {name !== "" ? name : "------"}
       </Typography>
       <Typography sx={{ width: "10%" }}>{percentage}</Typography>
