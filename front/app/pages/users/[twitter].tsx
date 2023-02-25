@@ -11,23 +11,27 @@ import DisplayArticle from "../../components/templates/DisplayArticle";
 import { Article } from "../../types/articleTypes";
 import { searchByTwitter } from "../../utils/searchByTwitter";
 
-type Props = {
-  twitter: string;
-  articles: Article[];
-};
-
-const UserResult = (props: Props) => {
+const UserResult = () => {
   const router = useRouter();
-  const { twitter, articles } = props;
+  const { twitter } = router.query;
   const [value, setValue] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    if (twitter !== undefined) {
-      setValue(String(twitter));
+    if (router.isReady) {
+      if (twitter !== undefined) {
+        setValue(String(twitter));
+        getArticle(String(twitter));
+      }
+      setLoading(false);
     }
-    setLoading(false);
-  }, []);
+  }, [router, twitter]);
+
+  const getArticle = async (twitter: string) => {
+    const data = await searchByTwitter(twitter);
+    setArticles(data);
+  };
 
   const changeSettingIcon = () => {
     if (value.length === 0) {
@@ -83,23 +87,10 @@ const UserResult = (props: Props) => {
           justifyContent: "center",
           paddingBottom: "30px",
         }}>
-        {!loading && <DisplayArticle articlesProps={articles} />}
+        {loading ? <p>wait...</p> : <DisplayArticle articlesProps={articles} />}
       </Box>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const twitter = context.query.twitter;
-  const articles = await searchByTwitter(String(twitter));
-
-  const props: Props = {
-    twitter: String(twitter),
-    articles: articles,
-  };
-  return {
-    props: props,
-  };
 };
 
 export default UserResult;
