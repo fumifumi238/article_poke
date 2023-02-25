@@ -187,7 +187,7 @@ const SearchPokemon = ({
       type="text"
       ref={pokemonRef}
       onChange={addSearchPokemonList}
-      placeholder="サーフゴー　ドラパルト etc...(半角で区切って検索)"
+      placeholder="サーフゴー　ドラパルト ミミッキュ@いのちのたま...(半角で区切って検索)"
       style={{ width: "100%", height: 40 }}
     />
   );
