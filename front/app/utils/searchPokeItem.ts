@@ -64,7 +64,6 @@ export const searchPokeItem = async ({
     );
   });
 
-  console.log(searchResult);
 
   return searchResult;
 };

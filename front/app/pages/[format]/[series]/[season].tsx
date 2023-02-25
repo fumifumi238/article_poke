@@ -149,7 +149,7 @@ const Series = (props: PageProps) => {
     min: number,
     max: number
   ) => {
-    let articles: Article[] = await getSeriesData(
+    let data: Article[] = await getSeriesData(
       String(format),
       "series" + series
     );
@@ -162,21 +162,21 @@ const Series = (props: PageProps) => {
       return seasons.indexOf(String(value)) !== -1;
     };
 
-    articles = articles.filter(
+    data = data.filter(
       (article) =>
         hasSeason(article.season, seasons) &&
         article.rank >= min &&
         article.rank <= max
     );
 
-    const rankings = getPokemonRank(articles);
+    const rankings = getPokemonRank(data);
 
-    articles.sort((a, b) => a.rank - b.rank);
-    articles.sort((a, b) => b.season - a.season);
+    data.sort((a, b) => a.rank - b.rank);
+    data.sort((a, b) => b.season - a.season);
 
-    onChangeArticle(articles);
+    onChangeArticle(data);
     setAlreadySearch({
-      0: { articles: articles, searchPokemonList: [] },
+      0: { articles: data, searchPokemonList: [] },
     });
     setRankings(rankings);
     setRank([min, max]);
@@ -206,7 +206,8 @@ const Series = (props: PageProps) => {
       }
       if (seasons !== undefined) {
         getArticles(seasons, min, max);
-        console.log("seasons");
+
+        return;
       }
 
       if (
@@ -215,7 +216,6 @@ const Series = (props: PageProps) => {
         max !== 99999
       ) {
         getArticles(season, min, max);
-        console.log("season");
       }
 
       setLoading(false);

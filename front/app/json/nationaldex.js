@@ -104,5 +104,3 @@ let nationalDex = {
   1007: "コライドン",
   1008: "ミライドン",
 };
-
-console.log(nationalDex);

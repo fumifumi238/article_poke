@@ -76,7 +76,6 @@ const SearchPokemon = ({
 
     const listLength = searchPokemonList.length;
 
-    console.log(alreadySearch[listLength - 1]?.articles, listLength - 1);
 
     if (alreadySearch[listLength] !== undefined) {
       const isEqual = isEqualArray(
@@ -131,7 +130,7 @@ const SearchPokemon = ({
       search[i + 1] = { articles: filterArticles, searchPokemonList: arr };
     }
 
-    console.log(search[searchPokemonList.length].articles);
+
 
     setAlreadySearch(search);
 
