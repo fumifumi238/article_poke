@@ -1,145 +1,145 @@
-import TextField from "@mui/material/TextField";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import defferentFormsPokemons from "../../json/differentFormPokemons.json";
 import pokeData from "../../json/poke_data.json";
-import { getData } from "../../lib/api/fetchApi";
-import Article, { alreadySearch } from "../../pages/article";
-import { isEqualArray } from "../../utils/isEqualArray";
+import itemData from "../../json/items.json";
+import { alreadySearch } from "../../pages/[format]/[series]/[season]";
+import { Article } from "../../types/articleTypes";
 
 type SearchPokemon = {
-  articleIds: number[];
   alreadySearch: alreadySearch;
-  setArticle: Dispatch<SetStateAction<Article[]>>;
-  setCurrentId: Dispatch<SetStateAction<number>>;
-  setOffset: Dispatch<SetStateAction<number>>;
-  searchPokemonByIds: (
-    index: number,
-    ids: (string | number)[],
-    searchPokemonList: string[]
-  ) => void;
+  setAlreadySearch: Dispatch<SetStateAction<alreadySearch>>;
+  onChangeArticle: (articles: Article[]) => void;
+};
+
+type SearchPokemonList = {
+  pokemon: string;
+  item?: string;
 };
 
 const SearchPokemon = ({
-  articleIds,
   alreadySearch,
-  setArticle,
-  setCurrentId,
-  setOffset,
-  searchPokemonByIds,
+  setAlreadySearch,
+  onChangeArticle,
 }: SearchPokemon) => {
-  type ResultList = {
-    [key: string]: number[];
-  };
-
-  const [resultlist, setResultList] = useState<ResultList>({});
-  const [searchPokemonList, setSearchPokemonList] = useState<string[]>([]);
+  const [searchPokemonList, setSearchPokemonList] = useState<
+    SearchPokemonList[]
+  >([]);
 
   const pokemonRef = useRef<HTMLInputElement>(null);
-  const valuesOrderByRank = (ranks: number[], values: (number | string)[]) => {
-    const arr = [];
 
-    const valuesRank = {};
-    for (let value of values) {
-      valuesRank[value] = 1;
+  const isEqualArray = (a: SearchPokemonList[], b: SearchPokemonList[]) => {
+    if (a.length !== b.length || a.length === 0) {
+      return false;
     }
 
-    for (let rank of ranks) {
-      if (valuesRank[rank] !== undefined) {
-        arr.push(rank);
+    for (let i = 0; i < a.length; i++) {
+      if (a[i].pokemon !== b[i].pokemon) {
+        return false;
+      }
+
+      if (a[i].item !== b[i].item) {
+        return false;
       }
     }
 
-    return arr;
+    return true;
+  };
+
+  const searchByPokemonItem = (
+    articles: Article[],
+    pokemon: string,
+    item: string | undefined
+  ) => {
+    const filterArticles: Article[] = [];
+
+    for (let article of articles) {
+      for (let poke of article.party) {
+        if (poke.pokemon.includes(pokemon) && item === undefined) {
+          filterArticles.push(article);
+          continue;
+        }
+
+        if (poke.pokemon.includes(pokemon) && poke.item === item) {
+          filterArticles.push(article);
+          continue;
+        }
+      }
+    }
+
+    return filterArticles;
   };
 
   useEffect(() => {
-    pokemonRef.current.value = "";
-    const getArticleData = async () => {
-      // どの記事にどのポケモンがいるかを返す。検索用
-      const params = {
-        ids: articleIds,
-      };
-      const pokemonPerArticle = await getData(
-        "/parties/pokemon_per_article",
-        params
-      );
-
-      setResultList(pokemonPerArticle as unknown as ResultList);
-    };
-
-    getArticleData();
-  }, [articleIds]);
-
-  useEffect(() => {
-    setOffset(20);
     if (searchPokemonList.length === 0) {
-      setArticle(alreadySearch[0].articles);
-      setCurrentId(0);
+      onChangeArticle(alreadySearch[0].articles);
       return;
     }
-    let hash: { [key: string]: number } = {};
+
+    const listLength = searchPokemonList.length;
+
+    console.log(alreadySearch[listLength - 1]?.articles, listLength - 1);
+
+    if (alreadySearch[listLength] !== undefined) {
+      const isEqual = isEqualArray(
+        alreadySearch[listLength].searchPokemonList,
+        searchPokemonList
+      );
+      if (isEqual) {
+        onChangeArticle(alreadySearch[listLength].articles);
+        return;
+      }
+    }
+
+    if (listLength >= 2 && alreadySearch[listLength - 1] !== undefined) {
+      const isEqual = isEqualArray(
+        alreadySearch[listLength - 1].searchPokemonList,
+        searchPokemonList.slice(0, listLength - 1)
+      );
+      if (isEqual) {
+        const articles = alreadySearch[listLength - 1].articles;
+        const filterArticles = searchByPokemonItem(
+          articles,
+          searchPokemonList[listLength - 1].pokemon,
+          searchPokemonList[listLength - 1].item
+        );
+
+        const copyOfAlreadySearch = { ...alreadySearch };
+        copyOfAlreadySearch[listLength] = {
+          articles: filterArticles,
+          searchPokemonList: searchPokemonList,
+        };
+
+        setAlreadySearch(copyOfAlreadySearch);
+        onChangeArticle(filterArticles);
+        return;
+      }
+    }
+
+    const search: alreadySearch = { [0]: alreadySearch[0] };
+    const arr: SearchPokemonList[] = [];
 
     for (let i = 0; i < searchPokemonList.length; i++) {
-      let lists = searchPokemon(searchPokemonList[i]);
-
-      for (let list of lists) {
-        if (hash[list] === undefined) {
-          hash[list] = 1;
-        } else {
-          hash[list] += 1;
-        }
-      }
+      const articles = search[i].articles;
+      const filterArticles = searchByPokemonItem(
+        articles,
+        searchPokemonList[i].pokemon,
+        searchPokemonList[i].item
+      );
+      arr.push({
+        pokemon: searchPokemonList[i].pokemon,
+        item: searchPokemonList[i].item,
+      });
+      search[i + 1] = { articles: filterArticles, searchPokemonList: arr };
     }
 
-    let values = Object.keys(hash).filter(
-      (key) => hash[key] === searchPokemonList.length
-    );
+    console.log(search[searchPokemonList.length].articles);
 
-    values = valuesOrderByRank(articleIds, values);
+    setAlreadySearch(search);
 
-    const equalArray =
-      alreadySearch[searchPokemonList.length]?.searchPokemonList !== undefined
-        ? isEqualArray(
-            searchPokemonList,
-            alreadySearch[searchPokemonList.length].searchPokemonList
-          )
-        : false;
-
-    if (!equalArray) {
-      searchPokemonByIds(searchPokemonList.length, values, searchPokemonList);
-    } else {
-      setArticle(alreadySearch[searchPokemonList.length].articles);
-    }
+    onChangeArticle(search[searchPokemonList.length].articles);
   }, [searchPokemonList]);
 
-  const searchPokemon = (pokemon: string) => {
-    const articles: number[] = [];
-
-    if (
-      resultlist[pokemon] === undefined &&
-      defferentFormsPokemons[pokemon] === undefined
-    ) {
-      return [];
-    }
-
-    if (defferentFormsPokemons[pokemon] !== undefined) {
-      for (let poke of defferentFormsPokemons[pokemon]) {
-        const ids: number[] = resultlist[poke];
-        if (ids !== undefined) {
-          articles.push(...ids);
-        }
-      }
-    } else {
-      articles.push(...resultlist[pokemon]);
-    }
-
-    const articleIdsToSet = new Set(articles);
-
-    return Array.from(articleIdsToSet);
-  };
-
   const addSearchPokemonList = () => {
-    const pokemonsList = [];
+    const pokemonsList: SearchPokemonList[] = [];
     const pokemons = pokemonRef.current?.value;
 
     if (pokemons === "") {
@@ -148,8 +148,22 @@ const SearchPokemon = ({
 
     const splitPokemons = pokemons.replace(/\s+/g, " ").split(" ");
     for (let pokemon of splitPokemons) {
-      if (pokeData[pokemon] !== undefined) {
-        pokemonsList.push(pokemon);
+      pokemon = pokemon.replace("＠", "@");
+      if (pokemon.indexOf("@") === -1 && pokeData[pokemon] !== undefined) {
+        pokemonsList.push({ pokemon: pokemon });
+      }
+
+      if (pokemon.indexOf("@") !== -1) {
+        let poke = pokemon.substring(0, pokemon.indexOf("@"));
+        let item = pokemon.substring(pokemon.indexOf("@") + 1, pokemon.length);
+
+        if (pokeData[poke] !== undefined && itemData[item] !== undefined) {
+          pokemonsList.push({ pokemon: poke, item: item });
+        }
+
+        if (pokeData[poke] !== undefined && itemData[item] === undefined) {
+          pokemonsList.push({ pokemon: poke });
+        }
       }
     }
 
@@ -159,7 +173,10 @@ const SearchPokemon = ({
     }
 
     for (let i = 0; i < pokemonsList.length; i++) {
-      if (pokemonsList[i] !== searchPokemonList[i]) {
+      if (
+        pokemonsList[i].pokemon !== searchPokemonList[i].pokemon ||
+        pokemonsList[i].item !== searchPokemonList[i].item
+      ) {
         setSearchPokemonList(pokemonsList);
         return;
       }

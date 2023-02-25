@@ -11,12 +11,14 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import ErrorIcon from "@mui/icons-material/Error";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
+import { getCurrentSeason } from "../../utils/getCurrentSeason";
 
 type MenuDrawer = {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
+  const {currentSeries,currentSeason} = getCurrentSeason();
   return (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
@@ -29,7 +31,7 @@ const MenuDrawer = ({ setDrawerOpen }: MenuDrawer) => {
         <DrawerItems
           value={"構築記事一覧"}
           icon={<ArticleIcon />}
-          href="/article"
+          href={`/single/series${currentSeries}/season${currentSeason}`}
           setDrawerOpen={setDrawerOpen}
         />
         <DrawerItems

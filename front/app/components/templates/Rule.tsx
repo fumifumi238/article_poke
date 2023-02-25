@@ -16,11 +16,12 @@ const Rule = ({ series }: Rule) => {
   const router = useRouter();
   const iconUrl = `/image/rankedBattles/series${series}.jpg`;
 
-  const redirectToArticle = (format: Format = "single", seasons?: string) => {
-    let url = `/article?format=${format}&series=${series}`;
-    if (seasons !== undefined) {
-      url += `&seasons=${seasons}`;
-    }
+  const redirectToArticle = (
+    format: Format = "single",
+    season: string = seriesData[series][seriesData[series].length - 1]
+  ) => {
+    let url = `/${format}/series${series}/season${season}`;
+
     router.push(url);
   };
   return (
@@ -110,15 +111,15 @@ const Rule = ({ series }: Rule) => {
           </Box>
           {["single", "double"].map((form: Format) => (
             <Box key={form}>
-              {seriesData[series].map((num: string) => (
+              {seriesData[series].map((season: string) => (
                 <Button
                   sx={{ display: "flex", flexDirection: "column" }}
-                  key={num}
-                  onClick={() => redirectToArticle(form, num)}
+                  key={season}
+                  onClick={() => redirectToArticle(form, season)}
                   color="info">
-                  <Typography key={num}>
-                    SV シーズン{num} {form === "single" ? "シングル" : "ダブル"}{" "}
-                    構築記事まとめ
+                  <Typography key={season}>
+                    SV シーズン{season}{" "}
+                    {form === "single" ? "シングル" : "ダブル"} 構築記事まとめ
                   </Typography>
                 </Button>
               ))}

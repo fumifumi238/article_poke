@@ -101,7 +101,7 @@ const singleSeries1: Single[] = [
         ability: "じしんかじょう",
         terastal: "くさ",
         moves: ["アクアステップ", "みがわり", "アンコール", "はねやすめ"],
-        effortValues: [244, 4, 76, 0, 116, 68, 508],
+        effortValues: [244, 4, 76, 0, 116, 68],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -112,7 +112,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [212, 204, 4, 0, 4, 84, 508],
+        effortValues: [212, 204, 4, 0, 4, 84],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -128,7 +128,7 @@ const singleSeries1: Single[] = [
           "マッドショット",
           "ステルスロック",
         ],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [0, 0, 0, 0, 0, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -144,7 +144,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "だいもんじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -155,7 +155,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ひこう",
         moves: ["はたきおとす", "でんじは", "アンコール", "ステルスロック"],
-        effortValues: [244, 4, 164, 0, 20, 76, 508],
+        effortValues: [244, 4, 164, 0, 20, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -166,7 +166,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["フレアソング", "たたりめ", "あくび", "なまける"],
-        effortValues: [252, 0, 188, 4, 60, 4, 508],
+        effortValues: [252, 0, 188, 4, 60, 4],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -190,7 +190,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "じしん", "ステルスロック", "まきびし"],
-        effortValues: [252, 4, 252, 0, 0, 0, 508],
+        effortValues: [252, 4, 252, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -201,7 +201,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "でんき",
         moves: ["つららばり", "じしん", "テラバースト", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -212,7 +212,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "ひこう",
         moves: ["ドゲザン", "ハサミギロチン", "ふいうち", "みがわり"],
-        effortValues: [252, 4, 0, 0, 252, 0, 508],
+        effortValues: [252, 4, 0, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -223,7 +223,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ほのお",
         moves: ["じゃれつく", "かげうち", "テラバースト", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -239,7 +239,7 @@ const singleSeries1: Single[] = [
           "チャームボイス",
           "テラバースト",
         ],
-        effortValues: [252, 0, 0, 236, 0, 20, 508],
+        effortValues: [252, 0, 0, 236, 0, 20],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -250,7 +250,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["ボルトチェンジ", "ハイドロポンプ", "テラバースト", "トリック"],
-        effortValues: [252, 0, 0, 252, 4, 0, 508],
+        effortValues: [252, 0, 0, 252, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -279,7 +279,7 @@ const singleSeries1: Single[] = [
           "クイックターン",
           "れいとうパンチ",
         ],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -290,7 +290,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["ドラゴンテール", "じしん", "みがわり", "はねやすめ"],
-        effortValues: [244, 0, 244, 0, 0, 20, 508],
+        effortValues: [244, 0, 244, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -301,7 +301,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "ほのお",
         moves: ["げきりん", "じしん", "テラバースト", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -312,7 +312,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["シャドーボール", "ゴールドラッシュ", "きあいだま", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -323,7 +323,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ノーマル",
         moves: ["はたきおとす", "でんじは", "ステルスロック", "アンコール"],
-        effortValues: [244, 4, 164, 0, 92, 4, 508],
+        effortValues: [244, 4, 164, 0, 92, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -334,7 +334,7 @@ const singleSeries1: Single[] = [
         ability: "あめふらし",
         terastal: "くさ",
         moves: ["ひやみず", "ぼうふう", "とんぼがえり", "はねやすめ"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -358,7 +358,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "じしん", "はねやすめ", "りゅうのまい"],
-        effortValues: [196, 60, 4, 0, 4, 244, 508],
+        effortValues: [196, 60, 4, 0, 4, 244],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -369,7 +369,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "テラバースト", "ステルスロック", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -385,7 +385,7 @@ const singleSeries1: Single[] = [
           "ステルスロック",
           "なげつける",
         ],
-        effortValues: [236, 20, 196, 0, 36, 20, 508],
+        effortValues: [236, 20, 196, 0, 36, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -396,7 +396,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["たたりめ", "ゴールドラッシュ", "でんじは", "じこさいせい"],
-        effortValues: [228, 0, 196, 0, 0, 84, 508],
+        effortValues: [228, 0, 196, 0, 0, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -407,7 +407,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "みがわり", "ちょうはつ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -418,7 +418,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "こおり",
         moves: ["トリックフラワー", "はたきおとす", "ふいうち", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -442,7 +442,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "かくとう",
         moves: ["とんぼがえり", "ボディプレス", "てっぺき", "はねやすめ"],
-        effortValues: [252, 0, 52, 0, 0, 204, 508],
+        effortValues: [252, 0, 52, 0, 0, 204],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -453,7 +453,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "フェアリー",
         moves: ["しおづけ", "まもる", "みがわり", "じこさいせい"],
-        effortValues: [252, 4, 84, 0, 116, 52, 508],
+        effortValues: [252, 4, 84, 0, 116, 52],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -464,7 +464,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["きょけんとつげき", "じしん", "こおりのつぶて", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -475,7 +475,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "あく",
         moves: ["じしん", "どくづき", "のろい", "じこさいせい"],
-        effortValues: [156, 4, 108, 0, 236, 4, 508],
+        effortValues: [156, 4, 108, 0, 236, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -491,7 +491,7 @@ const singleSeries1: Single[] = [
           "かえんほうしゃ",
           "とんぼがえり",
         ],
-        effortValues: [12, 0, 4, 252, 180, 60, 508],
+        effortValues: [12, 0, 4, 252, 180, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -502,7 +502,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "こおり",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "テラバースト"],
-        effortValues: [0, 252, 0, 0, 164, 92, 508],
+        effortValues: [0, 252, 0, 0, 164, 92],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -526,7 +526,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["ドラゴンクロー", "じしん", "しんそく", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -537,7 +537,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "がんせきふうじ", "テラバースト", "ステルスロック"],
-        effortValues: [188, 52, 132, 0, 4, 132, 508],
+        effortValues: [188, 52, 132, 0, 4, 132],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -548,7 +548,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ゴールドラッシュ", "きあいだま", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -559,7 +559,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "ひこう",
         moves: ["ふいうち", "アイアンヘッド", "けたぐり", "つるぎのまい"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -570,7 +570,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "あく",
         moves: ["トリックフラワー", "はたきおとす", "じゃれつく", "けたぐり"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -581,7 +581,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["10まんボルト", "テラバースト", "わるだくみ", "みがわり"],
-        effortValues: [252, 0, 0, 0, 4, 252, 508],
+        effortValues: [252, 0, 0, 0, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -606,7 +606,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "はがね",
         moves: ["りゅうせいぐん", "ほのおのうず", "アンコール", "はねやすめ"],
-        effortValues: [196, 0, 124, 4, 4, 180, 508],
+        effortValues: [196, 0, 124, 4, 4, 180],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -617,7 +617,7 @@ const singleSeries1: Single[] = [
         ability: "すながくれ",
         terastal: "でんき",
         moves: ["げきりん", "じしん", "がんせきふうじ", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -633,7 +633,7 @@ const singleSeries1: Single[] = [
           "とんぼがえり",
           "いのちがけ",
         ],
-        effortValues: [236, 20, 0, 0, 0, 252, 508],
+        effortValues: [236, 20, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -649,7 +649,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [100, 0, 4, 212, 28, 164, 508],
+        effortValues: [100, 0, 4, 212, 28, 164],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -660,7 +660,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "ちょうはつ", "みがわり"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -671,7 +671,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "フェアリー",
         moves: ["ドゲザン", "ふいうち", "アイアンヘッド", "テラバースト"],
-        effortValues: [252, 252, 0, 0, 4, 0, 508],
+        effortValues: [252, 252, 0, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -700,7 +700,7 @@ const singleSeries1: Single[] = [
           "ウェーブタックル",
           "インファイト",
         ],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -711,7 +711,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "じしん", "でんじは", "はねやすめ"],
-        effortValues: [244, 0, 252, 0, 0, 12, 508],
+        effortValues: [244, 0, 252, 0, 0, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -722,7 +722,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "くさ",
         moves: ["じしん", "ほえる", "ステルスロック", "あくび"],
-        effortValues: [252, 0, 148, 0, 108, 0, 508],
+        effortValues: [252, 0, 148, 0, 108, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -738,7 +738,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -749,7 +749,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "みがわり", "ちょうはつ"],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -760,7 +760,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "かくとう",
         moves: ["じゃれつく", "ドレインパンチ", "かげうち", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -784,7 +784,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "かえんほうしゃ", "アンコール", "はねやすめ"],
-        effortValues: [244, 0, 156, 0, 0, 108, 508],
+        effortValues: [244, 0, 156, 0, 0, 108],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -795,7 +795,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "かくとう",
         moves: ["シャドーボール", "ゴールドラッシュ", "きあいだま", "トリック"],
-        effortValues: [68, 0, 4, 172, 12, 252, 508],
+        effortValues: [68, 0, 4, 172, 12, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -806,7 +806,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["つららばり", "きょけんとつげき", "こおりのつぶて", "じしん"],
-        effortValues: [4, 252, 4, 0, 12, 236, 508],
+        effortValues: [4, 252, 4, 0, 12, 236],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -817,7 +817,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "あく",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "じわれ"],
-        effortValues: [0, 236, 0, 0, 252, 20, 508],
+        effortValues: [0, 236, 0, 0, 252, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -828,7 +828,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "どくびし"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -839,7 +839,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "ニトロチャージ", "なまける"],
-        effortValues: [252, 0, 212, 0, 0, 44, 508],
+        effortValues: [252, 0, 212, 0, 0, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -863,7 +863,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "しんそく", "じしん", "ほのおのパンチ"],
-        effortValues: [4, 244, 4, 0, 4, 252, 508],
+        effortValues: [4, 244, 4, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -874,7 +874,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "フェアリー",
         moves: ["シャドーボール", "ヘドロばくだん", "きあいだま", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -885,7 +885,7 @@ const singleSeries1: Single[] = [
         ability: "やるき",
         terastal: "ノーマル",
         moves: ["ふんどのこぶし", "ステルスロック", "なげつける", "いのちがけ"],
-        effortValues: [252, 0, 236, 0, 0, 20, 508],
+        effortValues: [252, 0, 236, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -901,7 +901,7 @@ const singleSeries1: Single[] = [
           "10まんボルト",
           "パワージェム",
         ],
-        effortValues: [132, 0, 4, 212, 12, 148, 508],
+        effortValues: [132, 0, 4, 212, 12, 148],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -912,7 +912,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ほのお",
         moves: ["ドラゴンアロー", "テラバースト", "りゅうのまい", "みがわり"],
-        effortValues: [108, 252, 0, 0, 4, 140, 504],
+        effortValues: [108, 252, 0, 0, 4, 140],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -923,7 +923,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [20, 252, 4, 0, 228, 4, 508],
+        effortValues: [20, 252, 4, 0, 228, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -947,7 +947,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "ギガドレイン", "テラバースト", "ちょうのまい"],
-        effortValues: [100, 0, 188, 36, 4, 180, 508],
+        effortValues: [100, 0, 188, 36, 4, 180],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -958,7 +958,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "ほのおのパンチ", "しんそく"],
-        effortValues: [148, 252, 0, 0, 0, 108, 508],
+        effortValues: [148, 252, 0, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -969,7 +969,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ゴースト",
         moves: ["ゴールドラッシュ", "シャドーボール", "わるだくみ", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -985,7 +985,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "こおりのつぶて",
         ],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -996,7 +996,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [4, 236, 236, 0, 20, 12, 508],
+        effortValues: [4, 236, 236, 0, 20, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1007,7 +1007,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "のろい", "いたみわけ", "みがわり"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1031,7 +1031,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "かえんほうしゃ", "でんじは", "はねやすめ"],
-        effortValues: [196, 0, 196, 0, 0, 116, 508],
+        effortValues: [196, 0, 196, 0, 0, 116],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1042,7 +1042,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "テラバースト", "アイアンヘッド"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1053,7 +1053,7 @@ const singleSeries1: Single[] = [
         ability: "ポイズンヒール",
         terastal: "フェアリー",
         moves: ["キノコのほうし", "じならし", "やどりぎのタネ", "みがわり"],
-        effortValues: [156, 0, 156, 0, 0, 196, 508],
+        effortValues: [156, 0, 156, 0, 0, 196],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1069,7 +1069,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [100, 0, 4, 140, 12, 252, 508],
+        effortValues: [100, 0, 4, 140, 12, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1080,7 +1080,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "ステルスロック"],
-        effortValues: [188, 196, 4, 0, 4, 116, 508],
+        effortValues: [188, 196, 4, 0, 4, 116],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1091,7 +1091,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["フレアソング", "だいちのちから", "みがわり", "なまける"],
-        effortValues: [236, 0, 236, 0, 0, 36, 508],
+        effortValues: [236, 0, 236, 0, 0, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -1115,7 +1115,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "げきりん", "テラバースト", "アイアンヘッド"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1131,7 +1131,7 @@ const singleSeries1: Single[] = [
           "アシッドボム",
           "ちょうはつ",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1147,7 +1147,7 @@ const singleSeries1: Single[] = [
           "いのちがけ",
           "とんぼがえり",
         ],
-        effortValues: [252, 4, 156, 0, 60, 36, 508],
+        effortValues: [252, 4, 156, 0, 60, 36],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1158,7 +1158,7 @@ const singleSeries1: Single[] = [
         ability: "トレース",
         terastal: "フェアリー",
         moves: ["ムーンフォース", "サイコショック", "トリック", "アンコール"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1169,7 +1169,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["あくのはどう", "テラバースト", "わるだくみ", "みがわり"],
-        effortValues: [124, 0, 0, 132, 0, 252, 508],
+        effortValues: [124, 0, 0, 132, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1180,7 +1180,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "ふいうち", "けたぐり", "つるぎのまい"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1205,7 +1205,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "みがわり", "りゅうのまい", "はねやすめ"],
-        effortValues: [228, 4, 164, 0, 4, 108, 508],
+        effortValues: [228, 4, 164, 0, 4, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1216,7 +1216,7 @@ const singleSeries1: Single[] = [
         ability: "がんじょう",
         terastal: "はがね",
         moves: ["じしん", "しおづけ", "ステルスロック", "じこさいせい"],
-        effortValues: [252, 4, 164, 0, 68, 20, 508],
+        effortValues: [252, 4, 164, 0, 68, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1232,7 +1232,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [68, 0, 4, 156, 28, 252, 508],
+        effortValues: [68, 0, 4, 156, 28, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1243,7 +1243,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["つららばり", "きょけんとつげき", "じしん", "こおりのつぶて"],
-        effortValues: [180, 204, 4, 0, 44, 76, 508],
+        effortValues: [180, 204, 4, 0, 44, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1254,7 +1254,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1265,7 +1265,7 @@ const singleSeries1: Single[] = [
         ability: "かわりもの",
         terastal: "フェアリー",
         moves: ["へんしん"],
-        effortValues: [252, 0, 252, 0, 0, 0, 504],
+        effortValues: [252, 0, 252, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 0],
       },
     ],
@@ -1289,7 +1289,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ドラゴンクロー", "じしん", "アンコール", "はねやすめ"],
-        effortValues: [244, 124, 4, 0, 4, 132, 508],
+        effortValues: [244, 124, 4, 0, 4, 132],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1300,7 +1300,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "かわらわり", "ドラゴンクロー"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1311,7 +1311,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "じしん", "まもる", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1327,7 +1327,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "アンコール",
         ],
-        effortValues: [228, 0, 172, 4, 4, 100, 508],
+        effortValues: [228, 0, 172, 4, 4, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1343,7 +1343,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "かえんほうしゃ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1354,7 +1354,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "シャドークロー", "トリック", "のろい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1378,7 +1378,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["りゅうせいぐん", "じしん", "かえんほうしゃ", "しんそく"],
-        effortValues: [0, 252, 0, 236, 0, 20, 508],
+        effortValues: [0, 252, 0, 236, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1389,7 +1389,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "ほのお",
         moves: ["じしん", "あくび", "ステルスロック", "なまける"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1400,7 +1400,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "けたぐり", "ふいうち"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1416,7 +1416,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "10まんボルト",
         ],
-        effortValues: [28, 0, 164, 252, 4, 60, 508],
+        effortValues: [28, 0, 164, 252, 4, 60],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1427,7 +1427,7 @@ const singleSeries1: Single[] = [
         ability: "てつのこぶし",
         terastal: "かくとう",
         moves: ["インファイト", "マッハパンチ", "ねこだまし", "さいきのいのり"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1438,7 +1438,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ゴースト",
         moves: ["シャドークロー", "かげうち", "のろい", "いたみわけ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1462,7 +1462,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "テラバースト", "ちょうのまい", "あさのひざし"],
-        effortValues: [228, 0, 204, 0, 0, 76, 508],
+        effortValues: [228, 0, 204, 0, 0, 76],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1473,7 +1473,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "じしん", "はねやすめ", "りゅうのまい"],
-        effortValues: [196, 60, 4, 0, 4, 244, 508],
+        effortValues: [196, 60, 4, 0, 4, 244],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1484,7 +1484,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "アイアンヘッド", "がんせきふうじ"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1500,7 +1500,7 @@ const singleSeries1: Single[] = [
           "ステルスロック",
           "なげつける",
         ],
-        effortValues: [236, 20, 108, 0, 124, 20, 508],
+        effortValues: [236, 20, 108, 0, 124, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1516,7 +1516,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "わるだくみ",
         ],
-        effortValues: [228, 0, 4, 100, 20, 156, 508],
+        effortValues: [228, 0, 4, 100, 20, 156],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1527,7 +1527,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["フレアソング", "たたりめ", "あくび", "なまける"],
-        effortValues: [252, 0, 156, 4, 60, 36, 508],
+        effortValues: [252, 0, 156, 4, 60, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -1556,7 +1556,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "ギガドレイン",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1567,7 +1567,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "フェアリー",
         moves: ["デカハンマー", "はたきおとす", "アンコール", "ステルスロック"],
-        effortValues: [244, 4, 4, 0, 28, 228, 508],
+        effortValues: [244, 4, 4, 0, 28, 228],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1578,7 +1578,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["ドラゴンアロー", "テラバースト", "おにび", "みがわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1589,7 +1589,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "ノーマル",
         moves: ["イカサマ", "ねがいごと", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1600,7 +1600,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "おにび", "なまける", "みがわり"],
-        effortValues: [252, 0, 0, 0, 220, 36, 508],
+        effortValues: [252, 0, 0, 0, 220, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1616,7 +1616,7 @@ const singleSeries1: Single[] = [
           "ボルトチェンジ",
           "テラバースト",
         ],
-        effortValues: [252, 0, 4, 252, 0, 0, 508],
+        effortValues: [252, 0, 4, 252, 0, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -1640,7 +1640,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "かくとう",
         moves: ["ボディプレス", "とんぼがえり", "はねやすめ", "ちょうはつ"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1656,7 +1656,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1667,7 +1667,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "どく",
         moves: ["どくどく", "トーチカ", "くろいきり", "じこさいせい"],
-        effortValues: [252, 0, 36, 0, 220, 0, 508],
+        effortValues: [252, 0, 36, 0, 220, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1678,7 +1678,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "かくとう",
         moves: ["ドラゴンアロー", "たたりめ", "テラバースト", "おにび"],
-        effortValues: [0, 252, 0, 4, 0, 252, 508],
+        effortValues: [0, 252, 0, 4, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1689,7 +1689,7 @@ const singleSeries1: Single[] = [
         ability: "しぜんかいふく",
         terastal: "でんき",
         moves: ["かえんほうしゃ", "なげつける", "タマゴうみ", "めいそう"],
-        effortValues: [4, 0, 252, 0, 252, 0, 508],
+        effortValues: [4, 0, 252, 0, 252, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1700,7 +1700,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ゆきなだれ", "じわれ", "ねむる", "ねごと"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1724,7 +1724,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "みず",
         moves: ["じしん", "ステルスロック", "あくび", "ほえる"],
-        effortValues: [252, 0, 204, 0, 52, 0, 508],
+        effortValues: [252, 0, 204, 0, 52, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1735,7 +1735,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["つららばり", "じしん", "みがわり", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1746,7 +1746,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["アイアンヘッド", "ドゲザン", "ふいうち", "けたぐり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1757,7 +1757,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["ドラゴンアロー", "テラバースト", "とんぼがえり", "ふいうち"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1768,7 +1768,7 @@ const singleSeries1: Single[] = [
         ability: "フェアリースキン",
         terastal: "ほのお",
         moves: ["ハイパーボイス", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1784,7 +1784,7 @@ const singleSeries1: Single[] = [
           "ボルトチェンジ",
           "あくのはどう",
         ],
-        effortValues: [252, 0, 0, 252, 4, 0, 508],
+        effortValues: [252, 0, 0, 252, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -1808,7 +1808,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "アンコール", "りゅうのまい"],
-        effortValues: [196, 252, 0, 0, 0, 60, 508],
+        effortValues: [196, 252, 0, 0, 0, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1824,7 +1824,7 @@ const singleSeries1: Single[] = [
           "マジカルシャイン",
           "みちづれ",
         ],
-        effortValues: [0, 0, 0, 252, 0, 252, 504],
+        effortValues: [0, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1840,7 +1840,7 @@ const singleSeries1: Single[] = [
           "りゅうせいぐん",
           "かえんほうしゃ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1851,7 +1851,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "でんき",
         moves: ["つららばり", "こおりのつぶて", "テラバースト", "じしん"],
-        effortValues: [212, 252, 4, 0, 4, 36, 508],
+        effortValues: [212, 252, 4, 0, 4, 36],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1862,7 +1862,7 @@ const singleSeries1: Single[] = [
         ability: "じきゅうりょく",
         terastal: "はがね",
         moves: ["じしん", "ボディプレス", "ステルスロック", "ほえる"],
-        effortValues: [252, 4, 204, 0, 44, 4, 508],
+        effortValues: [252, 4, 204, 0, 44, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1873,7 +1873,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "かげうち", "ドレインパンチ", "つるぎのまい"],
-        effortValues: [252, 252, 0, 0, 0, 4, 508],
+        effortValues: [252, 252, 0, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1897,7 +1897,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["じしん", "しんそく", "りゅうのまい", "はねやすめ"],
-        effortValues: [212, 0, 140, 0, 0, 156, 508],
+        effortValues: [212, 0, 140, 0, 0, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1908,7 +1908,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "フェアリー",
         moves: ["じしん", "ステルスロック", "あくび", "ふきとばし"],
-        effortValues: [252, 0, 28, 0, 228, 0, 508],
+        effortValues: [252, 0, 28, 0, 228, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1924,7 +1924,7 @@ const singleSeries1: Single[] = [
           "じならし",
           "アクアジェット",
         ],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1935,7 +1935,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["たたりめ", "きあいだま", "でんじは", "じこさいせい"],
-        effortValues: [228, 0, 196, 12, 4, 68, 508],
+        effortValues: [228, 0, 196, 12, 4, 68],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1946,7 +1946,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "だいもんじ", "とんぼがえり"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -1957,7 +1957,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ノーマル",
         moves: ["はたきおとす", "アンコール", "でんじは", "ステルスロック"],
-        effortValues: [244, 4, 148, 0, 84, 28, 508],
+        effortValues: [244, 4, 148, 0, 84, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -1982,7 +1982,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["げきりん", "テラバースト", "じしん", "しんそく"],
-        effortValues: [68, 252, 4, 0, 4, 180, 508],
+        effortValues: [68, 252, 4, 0, 4, 180],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -1993,7 +1993,7 @@ const singleSeries1: Single[] = [
         ability: "じりょく",
         terastal: "かくとう",
         moves: ["10まんボルト", "ラスターカノン", "ボディプレス", "てっぺき"],
-        effortValues: [236, 0, 12, 76, 4, 180, 508],
+        effortValues: [236, 0, 12, 76, 4, 180],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2004,7 +2004,7 @@ const singleSeries1: Single[] = [
         ability: "クリアボディ",
         terastal: "ノーマル",
         moves: ["りゅうせいぐん", "シャドーボール", "ふいうち", "のろい"],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2015,7 +2015,7 @@ const singleSeries1: Single[] = [
         ability: "ねんちゃく",
         terastal: "フェアリー",
         moves: ["だいちのちから", "なみのり", "れいとうビーム", "じこさいせい"],
-        effortValues: [84, 0, 172, 252, 0, 0, 508],
+        effortValues: [84, 0, 172, 252, 0, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2026,7 +2026,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ウェーブタックル", "じわれ", "あくび", "まもる"],
-        effortValues: [252, 0, 164, 0, 92, 0, 508],
+        effortValues: [252, 0, 164, 0, 92, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2037,7 +2037,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "かげうち", "のろい", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2061,7 +2061,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "アンコール", "りゅうのまい", "はねやすめ"],
-        effortValues: [252, 4, 68, 0, 28, 156, 508],
+        effortValues: [252, 4, 68, 0, 28, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2072,7 +2072,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["げきりん", "じしん", "アイアンヘッド", "ストーンエッジ"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2083,7 +2083,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "みちづれ", "アンコール"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2099,7 +2099,7 @@ const singleSeries1: Single[] = [
           "きあいだま",
           "じこさいせい",
         ],
-        effortValues: [244, 0, 12, 212, 4, 36, 508],
+        effortValues: [244, 0, 12, 212, 4, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2115,7 +2115,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "かえんほうしゃ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2126,7 +2126,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "はがね",
         moves: ["でんじは", "ステルスロック", "アイアンヘッド", "けたぐり"],
-        effortValues: [252, 4, 28, 0, 68, 156, 508],
+        effortValues: [252, 4, 28, 0, 68, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2150,7 +2150,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "くさ",
         moves: ["だいもんじ", "ギガドレイン", "ちょうのまい", "あさのひざし"],
-        effortValues: [116, 0, 244, 116, 4, 28, 508],
+        effortValues: [116, 0, 244, 116, 4, 28],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2161,7 +2161,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "くさ",
         moves: ["じしん", "ステルスロック", "あくび", "なまける"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2172,7 +2172,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "テラバースト", "アイアンヘッド"],
-        effortValues: [28, 220, 4, 0, 4, 252, 508],
+        effortValues: [28, 220, 4, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2183,7 +2183,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["りゅうせいぐん", "ラスターカノン", "わるだくみ", "みがわり"],
-        effortValues: [204, 0, 4, 252, 4, 44, 508],
+        effortValues: [204, 0, 4, 252, 4, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2199,7 +2199,7 @@ const singleSeries1: Single[] = [
           "ボルトチェンジ",
           "てっていこうせん",
         ],
-        effortValues: [236, 0, 4, 196, 4, 68, 508],
+        effortValues: [236, 0, 4, 196, 4, 68],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2210,7 +2210,7 @@ const singleSeries1: Single[] = [
         ability: "ちからもち",
         terastal: "みず",
         moves: ["アクアブレイク", "じゃれつく", "アクアジェット", "はらだいこ"],
-        effortValues: [228, 252, 4, 0, 4, 20, 508],
+        effortValues: [228, 252, 4, 0, 4, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2234,7 +2234,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "ほのおのパンチ", "アイアンヘッド", "しんそく"],
-        effortValues: [36, 252, 0, 0, 0, 220, 508],
+        effortValues: [36, 252, 0, 0, 0, 220],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2245,7 +2245,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "フェアリー",
         moves: ["つららばり", "フリーズドライ", "じしん", "こおりのつぶて"],
-        effortValues: [68, 204, 84, 0, 12, 140, 508],
+        effortValues: [68, 204, 84, 0, 12, 140],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2256,7 +2256,7 @@ const singleSeries1: Single[] = [
         ability: "ちょすい",
         terastal: "ひこう",
         moves: ["じしん", "ステルスロック", "あくび", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2267,7 +2267,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "ゴースト",
         moves: ["ドゲザン", "ハサミギロチン", "みがわり", "まもる"],
-        effortValues: [252, 4, 12, 0, 68, 172, 508],
+        effortValues: [252, 4, 12, 0, 68, 172],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2278,7 +2278,7 @@ const singleSeries1: Single[] = [
         ability: "フェアリースキン",
         terastal: "フェアリー",
         moves: ["ハイパーボイス", "テラバースト", "はかいこうせん", "ねごと"],
-        effortValues: [164, 0, 4, 252, 4, 84, 508],
+        effortValues: [164, 0, 4, 252, 4, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2289,7 +2289,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ほのお",
         moves: ["ゆきなだれ", "ボディプレス", "ねむる", "ねごと"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2313,7 +2313,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["じしん", "しんそく", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 148, 4, 0, 4, 156, 508],
+        effortValues: [196, 148, 4, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2324,7 +2324,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "ストーンエッジ", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2340,7 +2340,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [100, 0, 0, 204, 0, 204, 508],
+        effortValues: [100, 0, 0, 204, 0, 204],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2351,7 +2351,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ひこう",
         moves: ["デカハンマー", "はたきおとす", "ステルスロック", "アンコール"],
-        effortValues: [20, 252, 4, 0, 4, 228, 508],
+        effortValues: [20, 252, 4, 0, 4, 228],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2362,7 +2362,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "フェアリー",
         moves: ["イカサマ", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2373,7 +2373,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "ノーマル",
         moves: ["ハイドロポンプ", "さわぐ", "ボルトチェンジ", "トリック"],
-        effortValues: [252, 0, 0, 252, 4, 0, 508],
+        effortValues: [252, 0, 0, 252, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2397,7 +2397,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["しおづけ", "じわれ", "てっぺき", "じこさいせい"],
-        effortValues: [252, 0, 236, 0, 0, 20, 508],
+        effortValues: [252, 0, 236, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2408,7 +2408,7 @@ const singleSeries1: Single[] = [
         ability: "がんじょう",
         terastal: "かくとう",
         moves: ["つららおとし", "ボディプレス", "てっぺき", "じこさいせい"],
-        effortValues: [252, 4, 252, 0, 0, 0, 508],
+        effortValues: [252, 4, 252, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 0],
       },
       {
@@ -2419,7 +2419,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "どく",
         moves: ["どくびし", "ドわすれ", "ねむる", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2430,7 +2430,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "フェアリー",
         moves: ["どくどく", "どくびし", "くろいきり", "じこさいせい"],
-        effortValues: [252, 0, 220, 0, 36, 0, 508],
+        effortValues: [252, 0, 220, 0, 36, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2441,7 +2441,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "フェアリー",
         moves: ["ヘドロばくだん", "タネマシンガン", "ギガドレイン", "じだんだ"],
-        effortValues: [68, 0, 196, 0, 244, 0, 508],
+        effortValues: [68, 0, 196, 0, 244, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2452,7 +2452,7 @@ const singleSeries1: Single[] = [
         ability: "しぜんかいふく",
         terastal: "あく",
         moves: ["ちきゅうなげ", "ステルスロック", "めいそう", "タマゴうみ"],
-        effortValues: [4, 0, 252, 0, 252, 0, 508],
+        effortValues: [4, 0, 252, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 29],
       },
     ],
@@ -2481,7 +2481,7 @@ const singleSeries1: Single[] = [
           "りゅうのまい",
           "はねやすめ",
         ],
-        effortValues: [244, 148, 4, 0, 4, 108, 508],
+        effortValues: [244, 148, 4, 0, 4, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2492,7 +2492,7 @@ const singleSeries1: Single[] = [
         ability: "テクニシャン",
         terastal: "じめん",
         moves: ["タネマシンガン", "マッハパンチ", "がんせきふうじ", "じならし"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2508,7 +2508,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [228, 0, 4, 20, 4, 252, 508],
+        effortValues: [228, 0, 4, 20, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2519,7 +2519,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "でんき",
         moves: ["デカハンマー", "テラバースト", "はたきおとす", "つるぎのまい"],
-        effortValues: [100, 252, 4, 0, 4, 148, 508],
+        effortValues: [100, 252, 4, 0, 4, 148],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2530,7 +2530,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "どく",
         moves: ["イカサマ", "あくび", "まもる", "ねがいごと"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2541,7 +2541,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["ハイドロポンプ", "ボルトチェンジ", "テラバースト", "トリック"],
-        effortValues: [140, 0, 4, 116, 4, 244, 508],
+        effortValues: [140, 0, 4, 116, 4, 244],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -2565,7 +2565,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ほのおのうず", "でんじは", "アンコール", "はねやすめ"],
-        effortValues: [244, 0, 156, 0, 0, 108, 508],
+        effortValues: [244, 0, 156, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2576,7 +2576,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "ドラゴンテール", "ステルスロック", "まきびし"],
-        effortValues: [228, 4, 172, 0, 20, 84, 508],
+        effortValues: [228, 4, 172, 0, 20, 84],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2592,7 +2592,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2603,7 +2603,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "けたぐり", "つるぎのまい", "ふいうち"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2619,7 +2619,7 @@ const singleSeries1: Single[] = [
           "ドラゴンアロー",
           "ふいうち",
         ],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2630,7 +2630,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["フレアソング", "シャドーボール", "テラバースト", "あくび"],
-        effortValues: [236, 0, 60, 156, 12, 44, 508],
+        effortValues: [236, 0, 60, 156, 12, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -2654,7 +2654,7 @@ const singleSeries1: Single[] = [
         ability: "おみとおし",
         terastal: "ほのお",
         moves: ["かみくだく", "ソウルクラッシュ", "ふいうち", "ドレインパンチ"],
-        effortValues: [164, 156, 28, 0, 148, 12, 508],
+        effortValues: [164, 156, 28, 0, 148, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2670,7 +2670,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [244, 0, 0, 228, 0, 36, 508],
+        effortValues: [244, 0, 0, 228, 0, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2681,7 +2681,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["つららばり", "きょけんとつげき", "じしん", "こおりのつぶて"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2697,7 +2697,7 @@ const singleSeries1: Single[] = [
           "かえんほうしゃ",
           "みがわり",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2708,7 +2708,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["アクアブレイク", "ゆきなだれ", "じわれ", "あくび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2719,7 +2719,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "かくとう",
         moves: ["10まんボルト", "リーフストーム", "テラバースト", "わるだくみ"],
-        effortValues: [236, 0, 0, 252, 0, 20, 508],
+        effortValues: [236, 0, 0, 252, 0, 20],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -2743,7 +2743,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "はがね",
         moves: ["しおづけ", "じしん", "まもる", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2754,7 +2754,7 @@ const singleSeries1: Single[] = [
         ability: "がんじょう",
         terastal: "かくとう",
         moves: ["アイススピナー", "ボディプレス", "てっぺき", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2765,7 +2765,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["じしん", "いわなだれ", "のろい", "じこさいせい"],
-        effortValues: [252, 0, 0, 0, 244, 12, 508],
+        effortValues: [252, 0, 0, 0, 244, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2776,7 +2776,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "ひこう",
         moves: ["トーチカ", "どくびし", "どくどく", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2787,7 +2787,7 @@ const singleSeries1: Single[] = [
         ability: "しぜんかいふく",
         terastal: "あく",
         moves: ["かえんほうしゃ", "ちきゅうなげ", "めいそう", "タマゴうみ"],
-        effortValues: [252, 0, 0, 0, 252, 4, 508],
+        effortValues: [252, 0, 0, 0, 252, 4],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2798,7 +2798,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "ほえる", "なまける"],
-        effortValues: [236, 0, 244, 0, 0, 28, 508],
+        effortValues: [236, 0, 244, 0, 0, 28],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -2823,7 +2823,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "けたぐり", "じしん", "りゅうのまい"],
-        effortValues: [148, 252, 0, 0, 0, 108, 508],
+        effortValues: [148, 252, 0, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2839,7 +2839,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "つるぎのまい",
         ],
-        effortValues: [252, 252, 0, 0, 0, 4, 508],
+        effortValues: [252, 252, 0, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2855,7 +2855,7 @@ const singleSeries1: Single[] = [
           "パワージェム",
           "きあいだま",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2866,7 +2866,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "でんき",
         moves: ["つららばり", "こおりのつぶて", "じしん", "テラバースト"],
-        effortValues: [252, 252, 0, 0, 0, 4, 508],
+        effortValues: [252, 252, 0, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2882,7 +2882,7 @@ const singleSeries1: Single[] = [
           "れいとうビーム",
           "だいちのちから",
         ],
-        effortValues: [212, 0, 44, 252, 0, 0, 508],
+        effortValues: [212, 0, 44, 252, 0, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -2893,7 +2893,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["10まんボルト", "テラバースト", "わるだくみ", "みがわり"],
-        effortValues: [156, 0, 0, 100, 0, 252, 508],
+        effortValues: [156, 0, 0, 100, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -2917,7 +2917,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["しおづけ", "じしん", "まもる", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2928,7 +2928,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "こごえるかぜ", "アンコール", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2939,7 +2939,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "どく",
         moves: ["たくわえる", "ステルスロック", "じこさいせい", "まもる"],
-        effortValues: [252, 0, 172, 0, 84, 0, 508],
+        effortValues: [252, 0, 172, 0, 84, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2950,7 +2950,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "つるぎのまい"],
-        effortValues: [60, 252, 0, 0, 0, 196, 508],
+        effortValues: [60, 252, 0, 0, 0, 196],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2961,7 +2961,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "フェアリー",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "じゃれつく"],
-        effortValues: [0, 236, 60, 0, 0, 212, 508],
+        effortValues: [0, 236, 60, 0, 0, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -2972,7 +2972,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "シャドークロー", "トリック", "のろい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -2996,7 +2996,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "りゅうのまい", "はねやすめ", "アンコール"],
-        effortValues: [252, 44, 52, 0, 4, 156, 508],
+        effortValues: [252, 44, 52, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3007,7 +3007,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["じしん", "げきりん", "アイアンヘッド", "かわらわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3018,7 +3018,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "みちづれ", "アンコール"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3029,7 +3029,7 @@ const singleSeries1: Single[] = [
         ability: "やるき",
         terastal: "はがね",
         moves: ["ふんどのこぶし", "ステルスロック", "なげつける", "ちょうはつ"],
-        effortValues: [252, 0, 100, 0, 156, 0, 508],
+        effortValues: [252, 0, 100, 0, 156, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3045,7 +3045,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "かえんほうしゃ",
         ],
-        effortValues: [140, 0, 0, 196, 0, 172, 508],
+        effortValues: [140, 0, 0, 196, 0, 172],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3056,7 +3056,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ウェーブタックル", "あくび", "まもる", "じわれ"],
-        effortValues: [252, 0, 116, 0, 140, 0, 508],
+        effortValues: [252, 0, 116, 0, 140, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3080,7 +3080,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["じしん", "しんそく", "はねやすめ", "りゅうのまい"],
-        effortValues: [244, 252, 0, 0, 0, 12, 508],
+        effortValues: [244, 252, 0, 0, 0, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3091,7 +3091,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "どく",
         moves: ["あくのはどう", "テラバースト", "わるだくみ", "ちょうはつ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3102,7 +3102,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["アイアンヘッド", "ドゲザン", "ふいうち", "つるぎのまい"],
-        effortValues: [76, 252, 4, 0, 0, 172, 504],
+        effortValues: [76, 252, 4, 0, 0, 172],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3113,7 +3113,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "はがね",
         moves: ["ドラゴンアロー", "だいもんじ", "テラバースト", "みがわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3124,7 +3124,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["ウェーブタックル", "じわれ", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3135,7 +3135,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "シャドークロー", "トリック", "みちづれ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3159,7 +3159,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "くさ",
         moves: ["ほのおのまい", "ギガドレイン", "おにび", "ちょうのまい"],
-        effortValues: [244, 0, 196, 0, 0, 68, 508],
+        effortValues: [244, 0, 196, 0, 0, 68],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3170,7 +3170,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "フェアリー",
         moves: ["たきのぼり", "テラバースト", "ちょうはつ", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3186,7 +3186,7 @@ const singleSeries1: Single[] = [
           "ビルドアップ",
           "ちょうはつ",
         ],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3202,7 +3202,7 @@ const singleSeries1: Single[] = [
           "だいもんじ",
           "ラスターカノン",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3213,7 +3213,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "ほのお",
         moves: ["アイアンヘッド", "ドゲザン", "ふいうち", "ハサミギロチン"],
-        effortValues: [204, 118, 0, 0, 0, 188, 510],
+        effortValues: [204, 118, 0, 0, 0, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3224,7 +3224,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "はがね",
         moves: ["たたりめ", "みがわり", "おにび", "かなしばり"],
-        effortValues: [236, 0, 20, 100, 44, 108, 508],
+        effortValues: [236, 0, 20, 100, 44, 108],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -3248,7 +3248,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "げきりん", "じしん", "ほのおのパンチ"],
-        effortValues: [196, 252, 0, 0, 0, 60, 508],
+        effortValues: [196, 252, 0, 0, 0, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3264,7 +3264,7 @@ const singleSeries1: Single[] = [
           "マジカルシャイン",
           "トリック",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3280,7 +3280,7 @@ const singleSeries1: Single[] = [
           "サイコショック",
           "でんこうせっか",
         ],
-        effortValues: [164, 0, 4, 252, 12, 76, 508],
+        effortValues: [164, 0, 4, 252, 12, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3291,7 +3291,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["ウェーブタックル", "ゆきなだれ", "じしん", "あくび"],
-        effortValues: [4, 236, 4, 0, 252, 12, 508],
+        effortValues: [4, 236, 4, 0, 252, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3302,7 +3302,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "みがわり", "のろい", "いたみわけ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3313,7 +3313,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "シャドーボール", "なまける", "おにび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -3337,7 +3337,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "はねやすめ", "りゅうのまい"],
-        effortValues: [196, 44, 188, 0, 4, 76, 508],
+        effortValues: [196, 44, 188, 0, 4, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3348,7 +3348,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "げきりん", "アイアンヘッド", "ストーンエッジ"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3364,7 +3364,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [52, 0, 0, 252, 0, 204, 508],
+        effortValues: [52, 0, 0, 252, 0, 204],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3375,7 +3375,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "ノーマル",
         moves: ["イカサマ", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 236, 0, 0, 20, 508],
+        effortValues: [252, 0, 236, 0, 0, 20],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3386,7 +3386,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "なまける", "おにび", "みがわり"],
-        effortValues: [252, 0, 4, 4, 196, 52, 508],
+        effortValues: [252, 0, 4, 4, 196, 52],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3402,7 +3402,7 @@ const singleSeries1: Single[] = [
           "ハイドロポンプ",
           "テラバースト",
         ],
-        effortValues: [44, 0, 4, 196, 12, 252, 508],
+        effortValues: [44, 0, 4, 196, 12, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -3426,7 +3426,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "かくとう",
         moves: ["ブレイブバード", "ボディプレス", "とんぼがえり", "はねやすめ"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3437,7 +3437,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "アイアンヘッド", "ステルスロック"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3448,7 +3448,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ゴースト",
         moves: ["しおづけ", "のろい", "まもる", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3464,7 +3464,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "みちづれ",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3480,7 +3480,7 @@ const singleSeries1: Single[] = [
           "がんせきふうじ",
           "いのちがけ",
         ],
-        effortValues: [252, 0, 0, 0, 4, 252, 508],
+        effortValues: [252, 0, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3491,7 +3491,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ドラゴン",
         moves: ["りゅうせいぐん", "シャドーボール", "だいもんじ", "みがわり"],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -3515,7 +3515,7 @@ const singleSeries1: Single[] = [
         ability: "ムラっけ",
         terastal: "みず",
         moves: ["フリーズドライ", "テラバースト", "みがわり", "まもる"],
-        effortValues: [172, 0, 36, 4, 44, 252, 508],
+        effortValues: [172, 0, 36, 4, 44, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3526,7 +3526,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "テラバースト", "がんせきふうじ"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3537,7 +3537,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "てっぺき", "ボディプレス", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3548,7 +3548,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "フェアリー",
         moves: ["たたりめ", "ヘドロばくだん", "きあいだま", "さいみんじゅつ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3559,7 +3559,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["りゅうせいぐん", "シャドーボール", "たたりめ", "だいもんじ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3570,7 +3570,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "くさ",
         moves: ["はたきおとす", "じゃれつく", "どくびし", "なげつける"],
-        effortValues: [60, 52, 236, 0, 4, 156, 508],
+        effortValues: [60, 52, 236, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3594,7 +3594,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "くさ",
         moves: ["じしん", "がんせきふうじ", "ステルスロック", "ほえる"],
-        effortValues: [252, 0, 52, 0, 204, 0, 508],
+        effortValues: [252, 0, 52, 0, 204, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3605,7 +3605,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "じめん",
         moves: ["レイジングブル", "インファイト", "じしん", "おにび"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3616,7 +3616,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ノーマル",
         moves: ["ゴールドラッシュ", "シャドーボール", "わるだくみ", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3627,7 +3627,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["きょけんとつげき", "つららばり", "じしん", "こおりのつぶて"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3638,7 +3638,7 @@ const singleSeries1: Single[] = [
         ability: "すなかき",
         terastal: "かくとう",
         moves: ["おはかまいり", "テラバースト", "かげうち", "みがわり"],
-        effortValues: [12, 252, 20, 0, 4, 220, 508],
+        effortValues: [12, 252, 20, 0, 4, 220],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3649,7 +3649,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["10まんボルト", "ハイドロポンプ", "テラバースト", "わるだくみ"],
-        effortValues: [252, 0, 0, 244, 0, 12, 508],
+        effortValues: [252, 0, 0, 244, 0, 12],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -3678,7 +3678,7 @@ const singleSeries1: Single[] = [
           "はかいこうせん",
           "ちょうのまい",
         ],
-        effortValues: [4, 0, 4, 244, 4, 252, 508],
+        effortValues: [4, 0, 4, 244, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3689,7 +3689,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ほのおのうず", "れいとうビーム", "はねやすめ", "アンコール"],
-        effortValues: [244, 0, 116, 0, 0, 148, 508],
+        effortValues: [244, 0, 116, 0, 0, 148],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3700,7 +3700,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "はがね",
         moves: ["じしん", "あくび", "ステルスロック", "ふきとばし"],
-        effortValues: [252, 0, 92, 0, 164, 0, 508],
+        effortValues: [252, 0, 92, 0, 164, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3716,7 +3716,7 @@ const singleSeries1: Single[] = [
           "パワージェム",
           "トリック",
         ],
-        effortValues: [100, 0, 4, 236, 12, 156, 508],
+        effortValues: [100, 0, 4, 236, 12, 156],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3727,7 +3727,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "フェアリー",
         moves: ["イカサマ", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 236, 0, 0, 20, 508],
+        effortValues: [252, 0, 236, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3738,7 +3738,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "あく",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "とんぼがえり"],
-        effortValues: [4, 252, 4, 0, 36, 212, 508],
+        effortValues: [4, 252, 4, 0, 36, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3762,7 +3762,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "かくとう",
         moves: ["ボディプレス", "とんぼがえり", "てっぺき", "はねやすめ"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3773,7 +3773,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "ストーンエッジ", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3784,7 +3784,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["ゴールドラッシュ", "シャドーボール", "きあいだま", "トリック"],
-        effortValues: [100, 0, 4, 252, 4, 148, 508],
+        effortValues: [100, 0, 4, 252, 4, 148],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3795,7 +3795,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "ちょうはつ", "みがわり"],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3806,7 +3806,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["きょけんとつげき", "つららばり", "じしん", "こおりのつぶて"],
-        effortValues: [84, 252, 4, 0, 4, 164, 508],
+        effortValues: [84, 252, 4, 0, 4, 164],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3817,7 +3817,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "どくびし"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3841,7 +3841,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "テラバースト", "ちょうのまい", "あさのひざし"],
-        effortValues: [244, 0, 212, 4, 4, 44, 508],
+        effortValues: [244, 0, 212, 4, 4, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3852,7 +3852,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "ほのおのうず", "はねやすめ", "アンコール"],
-        effortValues: [212, 0, 196, 0, 0, 100, 508],
+        effortValues: [212, 0, 196, 0, 0, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3863,7 +3863,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["じしん", "げきりん", "アイアンヘッド", "ねごと"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3879,7 +3879,7 @@ const singleSeries1: Single[] = [
           "じならし",
           "ステルスロック",
         ],
-        effortValues: [212, 20, 164, 0, 36, 0, 432],
+        effortValues: [212, 20, 164, 0, 36, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3890,7 +3890,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["たたりめ", "きあいだま", "じこさいせい", "でんじは"],
-        effortValues: [228, 0, 196, 0, 0, 84, 508],
+        effortValues: [228, 0, 196, 0, 0, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3901,7 +3901,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "ふいうち", "アイアンヘッド", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -3925,7 +3925,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "ちょうのまい", "おにび", "あさのひざし"],
-        effortValues: [252, 0, 228, 4, 4, 20, 508],
+        effortValues: [252, 0, 228, 4, 4, 20],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3936,7 +3936,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["こおりのつぶて", "つららばり", "きょけんとつげき", "じしん"],
-        effortValues: [132, 252, 108, 0, 18, 0, 510],
+        effortValues: [132, 252, 108, 0, 18, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3947,7 +3947,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "はがね",
         moves: ["おにび", "たたりめ", "みがわり", "かなしばり"],
-        effortValues: [236, 0, 252, 4, 4, 12, 508],
+        effortValues: [236, 0, 252, 4, 4, 12],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3963,7 +3963,7 @@ const singleSeries1: Single[] = [
           "でんこうせっか",
           "シャドーボール",
         ],
-        effortValues: [164, 0, 4, 252, 4, 84, 508],
+        effortValues: [164, 0, 4, 252, 4, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -3974,7 +3974,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["アクアブレイク", "ゆきなだれ", "じわれ", "ねむる"],
-        effortValues: [252, 4, 228, 0, 4, 20, 508],
+        effortValues: [252, 4, 228, 0, 4, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -3985,7 +3985,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "ふいうち", "けたぐり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4009,7 +4009,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "しんそく", "ほのおのパンチ"],
-        effortValues: [196, 252, 0, 0, 0, 60, 508],
+        effortValues: [196, 252, 0, 0, 0, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4020,7 +4020,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "おにび", "みちづれ"],
-        effortValues: [0, 0, 0, 252, 0, 252, 504],
+        effortValues: [0, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4031,7 +4031,7 @@ const singleSeries1: Single[] = [
         ability: "やるき",
         terastal: "ノーマル",
         moves: ["じならし", "インファイト", "ステルスロック", "のろい"],
-        effortValues: [228, 4, 4, 0, 36, 236, 508],
+        effortValues: [228, 4, 4, 0, 36, 236],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4042,7 +4042,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "つるぎのまい"],
-        effortValues: [0, 252, 0, 0, 0, 252, 504],
+        effortValues: [0, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4053,7 +4053,7 @@ const singleSeries1: Single[] = [
         ability: "ちからもち",
         terastal: "みず",
         moves: ["アクアブレイク", "じゃれつく", "ばかぢから", "アクアジェット"],
-        effortValues: [108, 252, 0, 0, 0, 148, 508],
+        effortValues: [108, 252, 0, 0, 0, 148],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4069,7 +4069,7 @@ const singleSeries1: Single[] = [
           "シャドーボール",
           "オーバーヒート",
         ],
-        effortValues: [92, 0, 4, 252, 156, 4, 508],
+        effortValues: [92, 0, 4, 252, 156, 4],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -4093,7 +4093,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["じしん", "しんそく", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 60, 12, 0, 4, 236, 508],
+        effortValues: [196, 60, 12, 0, 4, 236],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4109,7 +4109,7 @@ const singleSeries1: Single[] = [
           "マッドショット",
           "ステルスロック",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 1, 31, 31, 31, 31],
       },
       {
@@ -4120,7 +4120,7 @@ const singleSeries1: Single[] = [
         ability: "かそく",
         terastal: "フェアリー",
         moves: ["ルミナコリジョン", "マジカルシャイン", "めいそう", "みがわり"],
-        effortValues: [244, 0, 220, 4, 4, 36, 508],
+        effortValues: [244, 0, 220, 4, 4, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4136,7 +4136,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "トリック",
         ],
-        effortValues: [212, 0, 4, 132, 4, 156, 508],
+        effortValues: [212, 0, 4, 132, 4, 156],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4147,7 +4147,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "つるぎのまい"],
-        effortValues: [92, 212, 0, 0, 0, 204, 508],
+        effortValues: [92, 212, 0, 0, 0, 204],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4158,7 +4158,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ほのお",
         moves: ["ドラゴンアロー", "テラバースト", "のろい", "みがわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4182,7 +4182,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "アンコール", "りゅうのまい", "はねやすめ"],
-        effortValues: [252, 4, 52, 0, 12, 188, 508],
+        effortValues: [252, 4, 52, 0, 12, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4193,7 +4193,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["げきりん", "じしん", "アイアンヘッド", "ねごと"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4204,7 +4204,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "わるだくみ", "みがわり"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4220,7 +4220,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "ボルトチェンジ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4231,7 +4231,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ほのお",
         moves: ["がんせきふうじ", "ステルスロック", "アンコール", "でんじは"],
-        effortValues: [244, 4, 180, 0, 4, 76, 508],
+        effortValues: [244, 4, 180, 0, 4, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4242,7 +4242,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["アクアブレイク", "じしん", "ゆきなだれ", "じわれ"],
-        effortValues: [0, 252, 0, 0, 228, 28, 508],
+        effortValues: [0, 252, 0, 0, 228, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4266,7 +4266,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "みず",
         moves: ["ボディプレス", "とんぼがえり", "はねやすめ", "ちょうはつ"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4282,7 +4282,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "ギガドレイン",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4293,7 +4293,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "ほのおのキバ", "ステルスロック"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4309,7 +4309,7 @@ const singleSeries1: Single[] = [
           "マジカルシャイン",
           "トリック",
         ],
-        effortValues: [4, 0, 4, 212, 36, 252, 508],
+        effortValues: [4, 0, 4, 212, 36, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4320,7 +4320,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "ドラゴン",
         moves: ["きょけんとつげき", "つららばり", "じしん", "こおりのつぶて"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4331,7 +4331,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "みず",
         moves: ["ナイトヘッド", "のろい", "みがわり", "いたみわけ"],
-        effortValues: [0, 0, 132, 0, 124, 252, 508],
+        effortValues: [0, 0, 132, 0, 124, 252],
         individualValues: [29, 0, 31, 31, 31, 31],
       },
     ],
@@ -4356,7 +4356,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "アンコール", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 204, 0, 0, 0, 108, 508],
+        effortValues: [196, 204, 0, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4367,7 +4367,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["じしん", "げきりん", "アイアンヘッド", "かわらわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4378,7 +4378,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["シャドーボール", "きあいだま", "わるだくみ", "じこさいせい"],
-        effortValues: [100, 0, 4, 252, 4, 148, 508],
+        effortValues: [100, 0, 4, 252, 4, 148],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4389,7 +4389,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "ひこう",
         moves: ["デカハンマー", "はたきおとす", "アンコール", "ステルスロック"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4400,7 +4400,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "どく",
         moves: ["イカサマ", "ねがいごと", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4416,7 +4416,7 @@ const singleSeries1: Single[] = [
           "シャドーボール",
           "トリック",
         ],
-        effortValues: [156, 0, 48, 252, 0, 48, 504],
+        effortValues: [156, 0, 48, 252, 0, 48],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -4445,7 +4445,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "ちょうのまい",
         ],
-        effortValues: [60, 0, 92, 100, 4, 252, 508],
+        effortValues: [60, 0, 92, 100, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4456,7 +4456,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "じしん", "テラバースト", "ステルスロック"],
-        effortValues: [252, 44, 204, 0, 4, 4, 508],
+        effortValues: [252, 44, 204, 0, 4, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4467,7 +4467,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "アンコール", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4478,7 +4478,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "わるだくみ", "みがわり"],
-        effortValues: [76, 0, 12, 164, 4, 252, 508],
+        effortValues: [76, 0, 12, 164, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4489,7 +4489,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "けたぐり", "ふいうち", "つるぎのまい"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4505,7 +4505,7 @@ const singleSeries1: Single[] = [
           "こおりのつぶて",
           "からをやぶる",
         ],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4529,7 +4529,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "じしん", "アイアンヘッド", "ステルスロック"],
-        effortValues: [196, 0, 196, 0, 0, 116, 508],
+        effortValues: [196, 0, 196, 0, 0, 116],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4545,7 +4545,7 @@ const singleSeries1: Single[] = [
           "かえんほうしゃ",
           "ドラゴンアロー",
         ],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4556,7 +4556,7 @@ const singleSeries1: Single[] = [
         ability: "テクニシャン",
         terastal: "はがね",
         moves: ["バレットパンチ", "インファイト", "どろぼう", "とんぼがえり"],
-        effortValues: [236, 244, 0, 0, 0, 28, 508],
+        effortValues: [236, 244, 0, 0, 0, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4567,7 +4567,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "あく",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "ふいうち"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4578,7 +4578,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["フレアソング", "あくび", "みがわり", "なまける"],
-        effortValues: [252, 0, 212, 0, 0, 44, 508],
+        effortValues: [252, 0, 212, 0, 0, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4594,7 +4594,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "ボルトチェンジ",
         ],
-        effortValues: [252, 0, 0, 236, 0, 20, 508],
+        effortValues: [252, 0, 0, 236, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4618,7 +4618,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [252, 4, 252, 0, 0, 0, 508],
+        effortValues: [252, 4, 252, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4629,7 +4629,7 @@ const singleSeries1: Single[] = [
         ability: "どくげしょう",
         terastal: "ゴースト",
         moves: ["パワージェム", "だいちのちから", "どくどく", "ステルスロック"],
-        effortValues: [132, 0, 4, 44, 76, 252, 508],
+        effortValues: [132, 0, 4, 44, 76, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4640,7 +4640,7 @@ const singleSeries1: Single[] = [
         ability: "かそく",
         terastal: "かくとう",
         moves: ["アシストパワー", "テラバースト", "めいそう", "あさのひざし"],
-        effortValues: [252, 0, 252, 4, 0, 0, 508],
+        effortValues: [252, 0, 252, 4, 0, 0],
         individualValues: [31, 15, 31, 31, 31, 31],
       },
       {
@@ -4651,7 +4651,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "みず",
         moves: ["ジャイロボール", "ボディプレス", "てっぺき", "トリックルーム"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 0],
       },
       {
@@ -4662,7 +4662,7 @@ const singleSeries1: Single[] = [
         ability: "ねんちゃく",
         terastal: "ノーマル",
         moves: ["なみのり", "だいちのちから", "ドわすれ", "じこさいせい"],
-        effortValues: [252, 0, 0, 4, 252, 0, 508],
+        effortValues: [252, 0, 0, 4, 252, 0],
         individualValues: [31, 8, 31, 31, 31, 31],
       },
       {
@@ -4673,7 +4673,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "おにび", "のろい", "トリック"],
-        effortValues: [44, 252, 0, 0, 0, 212, 508],
+        effortValues: [44, 252, 0, 0, 0, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4697,7 +4697,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [244, 12, 92, 0, 52, 108, 508],
+        effortValues: [244, 12, 92, 0, 52, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4708,7 +4708,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "くさ",
         moves: ["じしん", "なまける", "あくび", "ステルスロック"],
-        effortValues: [244, 0, 148, 0, 116, 0, 508],
+        effortValues: [244, 0, 148, 0, 116, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4724,7 +4724,7 @@ const singleSeries1: Single[] = [
           "トリック",
           "じこさいせい",
         ],
-        effortValues: [100, 0, 4, 188, 12, 204, 508],
+        effortValues: [100, 0, 4, 188, 12, 204],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4740,7 +4740,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "がんせきふうじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4751,7 +4751,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "はがね",
         moves: ["りゅうせいぐん", "シャドーボール", "テラバースト", "みがわり"],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4762,7 +4762,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ゴースト",
         moves: ["じゃれつく", "シャドークロー", "おにび", "トリック"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4786,7 +4786,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "こごえるかぜ", "アンコール", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4797,7 +4797,7 @@ const singleSeries1: Single[] = [
         ability: "やるき",
         terastal: "はがね",
         moves: ["なげつける", "ステルスロック", "ちょうはつ", "ふんどのこぶし"],
-        effortValues: [236, 0, 0, 0, 20, 252, 508],
+        effortValues: [236, 0, 0, 0, 20, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4808,7 +4808,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "けたぐり", "ふいうち", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4819,7 +4819,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ほのお",
         moves: ["ドラゴンアロー", "テラバースト", "りゅうのまい", "みがわり"],
-        effortValues: [236, 252, 12, 0, 4, 4, 508],
+        effortValues: [236, 252, 12, 0, 4, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4830,7 +4830,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [0, 252, 0, 0, 236, 20, 508],
+        effortValues: [0, 252, 0, 0, 236, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4841,7 +4841,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "かえんほうしゃ", "テラバースト", "じしん"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -4865,7 +4865,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ほのおのうず", "じしん", "アンコール", "はねやすめ"],
-        effortValues: [244, 4, 92, 0, 68, 100, 508],
+        effortValues: [244, 4, 92, 0, 68, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4876,7 +4876,7 @@ const singleSeries1: Single[] = [
         ability: "すながくれ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "テラバースト", "アイアンヘッド"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4887,7 +4887,7 @@ const singleSeries1: Single[] = [
         ability: "やるき",
         terastal: "ほのお",
         moves: ["ふんどのこぶし", "ローキック", "アンコール", "ステルスロック"],
-        effortValues: [244, 4, 116, 0, 116, 28, 508],
+        effortValues: [244, 4, 116, 0, 116, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4903,7 +4903,7 @@ const singleSeries1: Single[] = [
           "パワージェム",
           "トリック",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4914,7 +4914,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ウェーブタックル", "ゆきなだれ", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4925,7 +4925,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "フェアリー",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "じゃれつく"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -4950,7 +4950,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "アンコール", "はねやすめ"],
-        effortValues: [244, 4, 68, 0, 28, 164, 508],
+        effortValues: [244, 4, 68, 0, 28, 164],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4961,7 +4961,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "げきりん", "アイアンヘッド", "ドラゴンクロー"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -4977,7 +4977,7 @@ const singleSeries1: Single[] = [
           "まもる",
           "バトンタッチ",
         ],
-        effortValues: [20, 0, 220, 124, 4, 140, 508],
+        effortValues: [20, 0, 220, 124, 4, 140],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -4993,7 +4993,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [228, 0, 140, 4, 4, 132, 508],
+        effortValues: [228, 0, 140, 4, 4, 132],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5004,7 +5004,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "はがね",
         moves: ["ドゲザン", "アイアンヘッド", "でんじは", "ステルスロック"],
-        effortValues: [252, 4, 28, 0, 4, 212, 500],
+        effortValues: [252, 4, 28, 0, 4, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5015,7 +5015,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["フレアソング", "シャドーボール", "なまける", "みがわり"],
-        effortValues: [236, 0, 132, 4, 52, 84, 508],
+        effortValues: [236, 0, 132, 4, 52, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -5039,7 +5039,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "フェアリー",
         moves: ["じこさいせい", "まもる", "みがわり", "しおづけ"],
-        effortValues: [252, 0, 252, 0, 6, 0, 510],
+        effortValues: [252, 0, 252, 0, 6, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5050,7 +5050,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["きあいだま", "シャドーボール", "わるだくみ", "じこさいせい"],
-        effortValues: [100, 0, 156, 0, 0, 252, 508],
+        effortValues: [100, 0, 156, 0, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5061,7 +5061,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "どく",
         moves: ["じこさいせい", "のろい", "ドわすれ", "ゆきなだれ"],
-        effortValues: [156, 0, 252, 0, 100, 0, 508],
+        effortValues: [156, 0, 252, 0, 100, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5072,7 +5072,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "フェアリー",
         moves: ["ドラゴンアロー", "テラバースト", "とんぼがえり", "ふいうち"],
-        effortValues: [0, 252, 6, 0, 0, 252, 510],
+        effortValues: [0, 252, 6, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5083,7 +5083,7 @@ const singleSeries1: Single[] = [
         ability: "しぜんかいふく",
         terastal: "あく",
         moves: ["タマゴうみ", "シャドーボール", "めいそう", "なげつける"],
-        effortValues: [6, 0, 252, 0, 252, 0, 510],
+        effortValues: [6, 0, 252, 0, 252, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5094,7 +5094,7 @@ const singleSeries1: Single[] = [
         ability: "どしょく",
         terastal: "かくとう",
         moves: ["ボディプレス", "てっぺき", "ステルスロック", "ねむる"],
-        effortValues: [252, 0, 252, 0, 0, 6, 510],
+        effortValues: [252, 0, 252, 0, 0, 6],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5118,7 +5118,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["りゅうのまい", "テラバースト", "じしん", "はねやすめ"],
-        effortValues: [252, 4, 68, 0, 20, 164, 508],
+        effortValues: [252, 4, 68, 0, 20, 164],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5129,7 +5129,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "ドラゴンテール", "アイアンヘッド", "ステルスロック"],
-        effortValues: [60, 128, 204, 0, 4, 112, 508],
+        effortValues: [60, 128, 204, 0, 4, 112],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5140,7 +5140,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "アンコール", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5151,7 +5151,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["シャドーボール", "ゴールドラッシュ", "きあいだま", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5167,7 +5167,7 @@ const singleSeries1: Single[] = [
           "とんぼがえり",
           "じゃれつく",
         ],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5178,7 +5178,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "あくび", "みがわり"],
-        effortValues: [236, 0, 252, 0, 20, 0, 508],
+        effortValues: [236, 0, 252, 0, 20, 0],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -5202,7 +5202,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "アンコール", "はねやすめ", "りゅうのまい"],
-        effortValues: [252, 4, 68, 0, 28, 156, 508],
+        effortValues: [252, 4, 68, 0, 28, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5213,7 +5213,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "がんせきふうじ", "ステルスロック"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5224,7 +5224,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["しおづけ", "まもる", "みがわり", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5240,7 +5240,7 @@ const singleSeries1: Single[] = [
           "マジカルシャイン",
           "トリック",
         ],
-        effortValues: [244, 0, 12, 212, 4, 36, 508],
+        effortValues: [244, 0, 12, 212, 4, 36],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5251,7 +5251,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5262,7 +5262,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "シャドークロー", "のろい", "トリック"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5286,7 +5286,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "テラバースト", "ちょうのまい", "あさのひざし"],
-        effortValues: [244, 0, 188, 0, 0, 76, 508],
+        effortValues: [244, 0, 188, 0, 0, 76],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5297,7 +5297,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ほのおのうず", "アンコール", "みがわり", "はねやすめ"],
-        effortValues: [244, 0, 52, 4, 20, 188, 508],
+        effortValues: [244, 0, 52, 4, 20, 188],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5308,7 +5308,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "アイアンヘッド", "ドラゴンクロー"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5324,7 +5324,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [228, 0, 252, 0, 0, 28, 508],
+        effortValues: [228, 0, 252, 0, 0, 28],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5340,7 +5340,7 @@ const singleSeries1: Single[] = [
           "アンコール",
           "ステルスロック",
         ],
-        effortValues: [252, 0, 4, 0, 0, 252, 508],
+        effortValues: [252, 0, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5351,7 +5351,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["ウェーブタックル", "じしん", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5375,7 +5375,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "はねやすめ", "アンコール"],
-        effortValues: [244, 4, 68, 0, 28, 164, 508],
+        effortValues: [244, 4, 68, 0, 28, 164],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5386,7 +5386,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "ドラゴンクロー", "アイアンヘッド", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5402,7 +5402,7 @@ const singleSeries1: Single[] = [
           "バトンタッチ",
           "まもる",
         ],
-        effortValues: [20, 0, 220, 124, 4, 140, 508],
+        effortValues: [20, 0, 220, 124, 4, 140],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5418,7 +5418,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [228, 0, 140, 4, 4, 132, 508],
+        effortValues: [228, 0, 140, 4, 4, 132],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5429,7 +5429,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "ひこう",
         moves: ["アイアンヘッド", "ふいうち", "でんじは", "ステルスロック"],
-        effortValues: [252, 4, 28, 0, 4, 212, 500],
+        effortValues: [252, 4, 28, 0, 4, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5440,7 +5440,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["フレアソング", "シャドーボール", "みがわり", "なまける"],
-        effortValues: [236, 0, 132, 4, 52, 84, 508],
+        effortValues: [236, 0, 132, 4, 52, 84],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5465,7 +5465,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "ほのおのパンチ", "しんそく", "りゅうのまい"],
-        effortValues: [164, 252, 4, 0, 4, 84, 508],
+        effortValues: [164, 252, 4, 0, 4, 84],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5476,7 +5476,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["シャドーボール", "きあいだま", "わるだくみ", "トリック"],
-        effortValues: [100, 0, 36, 116, 4, 252, 508],
+        effortValues: [100, 0, 36, 116, 4, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5487,7 +5487,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["つららばり", "こおりのつぶて", "じしん", "つるぎのまい"],
-        effortValues: [132, 252, 0, 0, 0, 124, 508],
+        effortValues: [132, 252, 0, 0, 0, 124],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5498,7 +5498,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "ふいうち", "けたぐり"],
-        effortValues: [0, 204, 132, 0, 0, 172, 508],
+        effortValues: [0, 204, 132, 0, 0, 172],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5509,7 +5509,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ゴースト",
         moves: ["シャドークロー", "のろい", "みがわり", "いたみわけ"],
-        effortValues: [36, 204, 12, 0, 4, 252, 508],
+        effortValues: [36, 204, 12, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5520,7 +5520,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "みがわり", "なまける"],
-        effortValues: [252, 0, 220, 4, 4, 28, 508],
+        effortValues: [252, 0, 220, 4, 4, 28],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -5544,7 +5544,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "テラバースト", "ちょうのまい", "あさのひざし"],
-        effortValues: [244, 0, 164, 0, 0, 100, 508],
+        effortValues: [244, 0, 164, 0, 0, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5555,7 +5555,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "アンコール", "はねやすめ"],
-        effortValues: [244, 52, 188, 0, 4, 20, 508],
+        effortValues: [244, 52, 188, 0, 4, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5571,7 +5571,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [244, 0, 0, 116, 0, 148, 508],
+        effortValues: [244, 0, 0, 116, 0, 148],
         individualValues: [31, 1, 31, 31, 31, 31],
       },
       {
@@ -5582,7 +5582,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "あく",
         moves: ["アイアンヘッド", "ドゲザン", "けたぐり", "ふいうち"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5598,7 +5598,7 @@ const singleSeries1: Single[] = [
           "10まんボルト",
           "だいもんじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5609,7 +5609,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [252, 0, 92, 0, 158, 0, 502],
+        effortValues: [252, 0, 92, 0, 158, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5634,7 +5634,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "かくとう",
         moves: ["とんぼがえり", "ボディプレス", "てっぺき", "はねやすめ"],
-        effortValues: [140, 0, 244, 0, 0, 124, 508],
+        effortValues: [140, 0, 244, 0, 0, 124],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5650,7 +5650,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "テラバースト",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5661,7 +5661,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["しおづけ", "ステルスロック", "まもる", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5672,7 +5672,7 @@ const singleSeries1: Single[] = [
         ability: "ちょすい",
         terastal: "どく",
         moves: ["じしん", "どくどく", "くろいきり", "じこさいせい"],
-        effortValues: [252, 0, 0, 0, 252, 4, 508],
+        effortValues: [252, 0, 0, 0, 252, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5688,7 +5688,7 @@ const singleSeries1: Single[] = [
           "シャドーボール",
           "みがわり",
         ],
-        effortValues: [44, 148, 0, 252, 4, 60, 508],
+        effortValues: [44, 148, 0, 252, 4, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5699,7 +5699,7 @@ const singleSeries1: Single[] = [
         ability: "ちからもち",
         terastal: "みず",
         moves: ["アクアブレイク", "じゃれつく", "ばかぢから", "アクアジェット"],
-        effortValues: [252, 252, 0, 0, 0, 4, 508],
+        effortValues: [252, 252, 0, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5723,7 +5723,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "ほのお",
         moves: ["だいもんじ"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5734,7 +5734,7 @@ const singleSeries1: Single[] = [
         ability: "イリュージョン",
         terastal: "あく",
         moves: ["ハイパーボイス"],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [0, 0, 0, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5745,7 +5745,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "あく",
         moves: ["ふいうち"],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [0, 0, 0, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5756,7 +5756,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "はがね",
         moves: ["ドラゴンアロー"],
-        effortValues: [0, 252, 0, 0, 0, 252, 504],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5767,7 +5767,7 @@ const singleSeries1: Single[] = [
         ability: "ちくでん",
         terastal: "でんき",
         moves: ["れいとうパンチ"],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [0, 0, 0, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5778,7 +5778,7 @@ const singleSeries1: Single[] = [
         ability: "テクニシャン",
         terastal: "はがね",
         moves: ["バレットパンチ"],
-        effortValues: [252, 252, 0, 0, 4, 0, 508],
+        effortValues: [252, 252, 0, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5802,7 +5802,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "ひこう",
         moves: ["ボディプレス", "ちょうはつ", "てっぺき", "はねやすめ"],
-        effortValues: [252, 0, 252, 0, 0, 4, 508],
+        effortValues: [252, 0, 252, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5813,7 +5813,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "まもる", "てっぺき", "じこさいせい"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5829,7 +5829,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "わるだくみ",
         ],
-        effortValues: [252, 0, 0, 252, 0, 4, 508],
+        effortValues: [252, 0, 0, 252, 0, 4],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5840,7 +5840,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "あく",
         moves: ["けたぐり", "どくどく", "ドわすれ", "じこさいせい"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5851,7 +5851,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "フェアリー",
         moves: ["ドゲザン", "ふいうち", "アイアンヘッド", "テラバースト"],
-        effortValues: [236, 252, 0, 0, 0, 20, 508],
+        effortValues: [236, 252, 0, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5862,7 +5862,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ほのお",
         moves: ["ドラゴンアロー", "とんぼがえり", "ふいうち", "テラバースト"],
-        effortValues: [0, 252, 12, 0, 0, 244, 508],
+        effortValues: [0, 252, 12, 0, 0, 244],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5886,7 +5886,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "しんそく", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5902,7 +5902,7 @@ const singleSeries1: Single[] = [
           "めいそう",
           "バトンタッチ",
         ],
-        effortValues: [212, 0, 252, 4, 4, 36, 508],
+        effortValues: [212, 0, 252, 4, 4, 36],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5918,7 +5918,7 @@ const singleSeries1: Single[] = [
           "ちょうはつ",
           "ビルドアップ",
         ],
-        effortValues: [188, 4, 252, 0, 4, 60, 508],
+        effortValues: [188, 4, 252, 0, 4, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5934,7 +5934,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [244, 0, 148, 4, 4, 108, 508],
+        effortValues: [244, 0, 148, 4, 4, 108],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -5945,7 +5945,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "ふいうち", "ちょうはつ"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5956,7 +5956,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["ほうでん", "ハイドロポンプ", "イカサマ", "でんじは"],
-        effortValues: [252, 0, 244, 4, 4, 4, 508],
+        effortValues: [252, 0, 244, 4, 4, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -5980,7 +5980,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["あさのひざし", "ほのおのまい", "おにび", "ちょうのまい"],
-        effortValues: [220, 0, 252, 4, 4, 28, 508],
+        effortValues: [220, 0, 252, 4, 4, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -5991,7 +5991,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["はねやすめ", "テラバースト", "けたぐり", "りゅうのまい"],
-        effortValues: [84, 252, 60, 0, 4, 108, 508],
+        effortValues: [84, 252, 60, 0, 4, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6002,7 +6002,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "はがね",
         moves: ["なまける", "じしん", "ステルスロック", "あくび"],
-        effortValues: [252, 0, 100, 0, 156, 0, 508],
+        effortValues: [252, 0, 100, 0, 156, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6013,7 +6013,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["ゴールドラッシュ", "シャドーボール", "きあいだま", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6029,7 +6029,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "だいもんじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6040,7 +6040,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "フェアリー",
         moves: ["はたきおとす", "やどりぎのタネ", "どくびし", "みがわり"],
-        effortValues: [236, 4, 108, 0, 4, 156, 508],
+        effortValues: [236, 4, 108, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6064,7 +6064,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "ほのおのうず", "アンコール", "はねやすめ"],
-        effortValues: [244, 0, 116, 0, 0, 148, 508],
+        effortValues: [244, 0, 116, 0, 0, 148],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6080,7 +6080,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6096,7 +6096,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "テラバースト",
         ],
-        effortValues: [252, 0, 0, 4, 252, 0, 508],
+        effortValues: [252, 0, 0, 4, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6107,7 +6107,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["じしん", "どくどく", "じこさいせい", "カウンター"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6123,7 +6123,7 @@ const singleSeries1: Single[] = [
           "かえんほうしゃ",
           "テラバースト",
         ],
-        effortValues: [12, 0, 132, 252, 4, 108, 508],
+        effortValues: [12, 0, 132, 252, 4, 108],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6134,7 +6134,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "あく",
         moves: ["はたきおとす", "トリックフラワー", "ふいうち", "けたぐり"],
-        effortValues: [44, 252, 0, 0, 0, 170, 466],
+        effortValues: [44, 252, 0, 0, 0, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6158,7 +6158,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "ギガドレイン", "テラバースト", "ちょうのまい"],
-        effortValues: [100, 0, 188, 36, 4, 180, 508],
+        effortValues: [100, 0, 188, 36, 4, 180],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6169,7 +6169,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "ほのおのパンチ", "しんそく"],
-        effortValues: [148, 252, 0, 0, 0, 108, 508],
+        effortValues: [148, 252, 0, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6180,7 +6180,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ゴースト",
         moves: ["ゴールドラッシュ", "シャドーボール", "わるだくみ", "トリック"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6191,7 +6191,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["きょけんとつげき", "じしん", "こおりのつぶて", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6202,7 +6202,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "じめん",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [20, 236, 236, 0, 4, 12, 508],
+        effortValues: [20, 236, 236, 0, 4, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6213,7 +6213,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "のろい", "みがわり", "いたみわけ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6237,7 +6237,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 148, 4, 0, 4, 156, 508],
+        effortValues: [196, 148, 4, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6253,7 +6253,7 @@ const singleSeries1: Single[] = [
           "マッドショット",
           "ステルスロック",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6269,7 +6269,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [212, 0, 116, 4, 4, 172, 508],
+        effortValues: [212, 0, 116, 4, 4, 172],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6280,7 +6280,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "ゴースト",
         moves: ["あくのはどう", "ほのおのうず", "ねむる", "ちょうはつ"],
-        effortValues: [236, 0, 100, 0, 0, 172, 508],
+        effortValues: [236, 0, 100, 0, 0, 172],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6291,7 +6291,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["ウェーブタックル", "ゆきなだれ", "あくび", "まもる"],
-        effortValues: [252, 0, 132, 0, 124, 0, 508],
+        effortValues: [252, 0, 132, 0, 124, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6302,7 +6302,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "フェアリー",
         moves: ["はたきおとす", "じゃれつく", "けたぐり", "とんぼがえり"],
-        effortValues: [140, 92, 92, 0, 12, 172, 508],
+        effortValues: [140, 92, 92, 0, 12, 172],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6326,7 +6326,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "どくづき", "テラバースト"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6342,7 +6342,7 @@ const singleSeries1: Single[] = [
           "サイコショック",
           "トリック",
         ],
-        effortValues: [20, 0, 4, 212, 60, 212, 508],
+        effortValues: [20, 0, 4, 212, 60, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6353,7 +6353,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "でんき",
         moves: ["つららばり", "じしん", "テラバースト", "こおりのつぶて"],
-        effortValues: [180, 204, 4, 0, 44, 76, 508],
+        effortValues: [180, 204, 4, 0, 44, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6364,7 +6364,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "けたぐり", "どくびし"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6375,7 +6375,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "みがわり", "なまける"],
-        effortValues: [236, 0, 156, 4, 68, 44, 508],
+        effortValues: [236, 0, 156, 4, 68, 44],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6386,7 +6386,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ボルトチェンジ", "ハイドロポンプ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6415,7 +6415,7 @@ const singleSeries1: Single[] = [
           "りゅうのまい",
           "はねやすめ",
         ],
-        effortValues: [196, 4, 196, 0, 4, 108, 508],
+        effortValues: [196, 4, 196, 0, 4, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6426,7 +6426,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "げきりん", "アイアンヘッド", "がんせきふうじ"],
-        effortValues: [68, 100, 92, 0, 4, 244, 508],
+        effortValues: [68, 100, 92, 0, 4, 244],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6442,7 +6442,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6453,7 +6453,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "フェアリー",
         moves: ["イカサマ", "でんじは", "ねがいごと", "まもる"],
-        effortValues: [244, 0, 252, 0, 12, 0, 508],
+        effortValues: [244, 0, 252, 0, 12, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6464,7 +6464,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "あく",
         moves: ["はたきおとす", "トリック", "どくびし", "とんぼがえり"],
-        effortValues: [124, 140, 108, 0, 4, 132, 508],
+        effortValues: [124, 140, 108, 0, 4, 132],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6475,7 +6475,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ボルトチェンジ", "ほうでん", "ハイドロポンプ", "テラバースト"],
-        effortValues: [252, 0, 0, 196, 60, 0, 508],
+        effortValues: [252, 0, 0, 196, 60, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6500,7 +6500,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "あく",
         moves: ["つけあがる", "ビルドアップ", "ちょうはつ", "はねやすめ"],
-        effortValues: [252, 0, 100, 0, 4, 15, 371],
+        effortValues: [252, 0, 100, 0, 0, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6511,7 +6511,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "しんそく", "れいとうパンチ"],
-        effortValues: [244, 252, 0, 0, 0, 12, 508],
+        effortValues: [244, 252, 0, 0, 0, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6522,7 +6522,7 @@ const singleSeries1: Single[] = [
         ability: "かそく",
         terastal: "あく",
         moves: ["ルミナコリジョン", "バトンタッチ", "めいそう", "まもる"],
-        effortValues: [244, 0, 220, 0, 0, 36, 500],
+        effortValues: [244, 0, 220, 4, 4, 36],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6538,7 +6538,7 @@ const singleSeries1: Single[] = [
           "きあいだま",
           "じこさいせい",
         ],
-        effortValues: [228, 0, 204, 0, 4, 68, 504],
+        effortValues: [228, 0, 204, 4, 4, 68],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6554,7 +6554,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "ちょうはつ",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6565,7 +6565,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["フレアソング", "たたりめ", "おにび", "なまける"],
-        effortValues: [244, 0, 172, 0, 84, 0, 500],
+        effortValues: [244, 0, 172, 0, 84, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6589,7 +6589,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["じしん", "テラバースト", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 148, 4, 0, 4, 156, 508],
+        effortValues: [196, 148, 4, 0, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6600,7 +6600,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "かわらわり", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6611,7 +6611,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["ゴールドラッシュ", "シャドーボール", "きあいだま", "トリック"],
-        effortValues: [4, 0, 4, 252, 44, 204, 508],
+        effortValues: [4, 0, 4, 252, 44, 204],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6622,7 +6622,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "じめん",
         moves: ["デカハンマー", "じならし", "ステルスロック", "アンコール"],
-        effortValues: [20, 252, 4, 0, 4, 228, 508],
+        effortValues: [20, 252, 4, 0, 4, 228],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6633,7 +6633,7 @@ const singleSeries1: Single[] = [
         ability: "せいしんりょく",
         terastal: "フェアリー",
         moves: ["イカサマ", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6644,7 +6644,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "ノーマル",
         moves: ["ハイドロポンプ", "さわぐ", "ボルトチェンジ", "トリック"],
-        effortValues: [252, 0, 0, 252, 4, 0, 508],
+        effortValues: [252, 0, 0, 252, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6668,7 +6668,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "かくとう",
         moves: ["とんぼがえり", "ボディプレス", "ちょうはつ", "はねやすめ"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6684,7 +6684,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "ギガドレイン",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6695,7 +6695,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["げきりん", "テラバースト", "じしん", "しんそく"],
-        effortValues: [68, 252, 4, 0, 4, 180, 508],
+        effortValues: [68, 252, 4, 0, 4, 180],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6706,7 +6706,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "じならし", "ステルスロック"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6722,7 +6722,7 @@ const singleSeries1: Single[] = [
           "エレキネット",
           "エレキフィールド",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6733,7 +6733,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ノーマル",
         moves: ["じゃれつく", "かげうち", "のろい", "みちづれ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6757,7 +6757,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "ほのおのパンチ", "りゅうのまい", "はねやすめ"],
-        effortValues: [244, 0, 156, 0, 0, 108, 508],
+        effortValues: [244, 0, 156, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6768,7 +6768,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "あく",
         moves: ["シャドーボール", "きあいだま", "ゴールドラッシュ", "トリック"],
-        effortValues: [68, 0, 4, 172, 12, 252, 508],
+        effortValues: [68, 0, 4, 172, 12, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6779,7 +6779,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "ちょうはつ", "わるだくみ"],
-        effortValues: [76, 0, 0, 180, 0, 252, 508],
+        effortValues: [76, 0, 0, 180, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6790,7 +6790,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "はがね",
         moves: ["じゃれつく", "かげうち", "おにび", "のろい"],
-        effortValues: [212, 252, 4, 0, 36, 4, 508],
+        effortValues: [212, 252, 4, 0, 36, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6801,7 +6801,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "みがわり", "なまける"],
-        effortValues: [252, 0, 236, 0, 0, 20, 508],
+        effortValues: [252, 0, 236, 0, 0, 20],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -6812,7 +6812,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "でんき",
         moves: ["ほうでん", "ハイドロポンプ", "あくのはどう", "テラバースト"],
-        effortValues: [252, 0, 0, 196, 0, 60, 508],
+        effortValues: [252, 0, 0, 196, 0, 60],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
     ],
@@ -6836,7 +6836,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "みず",
         moves: ["ドリルくちばし", "はねやすめ", "ちょうはつ", "とんぼがえり"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6847,7 +6847,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["げきりん", "じしん", "しんそく", "ほのおのパンチ"],
-        effortValues: [244, 252, 0, 0, 0, 12, 508],
+        effortValues: [244, 252, 0, 0, 0, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6863,7 +6863,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "みちづれ",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6879,7 +6879,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "きあいだま",
         ],
-        effortValues: [180, 0, 44, 124, 4, 156, 508],
+        effortValues: [180, 0, 44, 124, 4, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6895,7 +6895,7 @@ const singleSeries1: Single[] = [
           "りゅうせいぐん",
           "ラスターカノン",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6906,7 +6906,7 @@ const singleSeries1: Single[] = [
         ability: "ちからもち",
         terastal: "ほのお",
         moves: ["じゃれつく", "アクアブレイク", "アクアジェット", "かわらわり"],
-        effortValues: [236, 252, 0, 0, 0, 20, 508],
+        effortValues: [236, 252, 0, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -6930,7 +6930,7 @@ const singleSeries1: Single[] = [
         ability: "すなおこし",
         terastal: "じめん",
         moves: ["じしん", "ステルスロック", "あくび", "ほえる"],
-        effortValues: [252, 0, 148, 0, 108, 0, 508],
+        effortValues: [252, 0, 148, 0, 108, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6941,7 +6941,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "ひこう",
         moves: ["たきのぼり", "テラバースト", "ねむる", "りゅうのまい"],
-        effortValues: [4, 252, 12, 0, 12, 228, 508],
+        effortValues: [4, 252, 12, 0, 12, 228],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6952,7 +6952,7 @@ const singleSeries1: Single[] = [
         ability: "まけんき",
         terastal: "フェアリー",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "テラバースト"],
-        effortValues: [252, 252, 0, 0, 4, 0, 508],
+        effortValues: [252, 252, 0, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6963,7 +6963,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["ドラゴンアロー", "テラバースト", "ふいうち", "とんぼがえり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6974,7 +6974,7 @@ const singleSeries1: Single[] = [
         ability: "フェアリースキン",
         terastal: "ほのお",
         moves: ["ハイパーボイス", "あくび", "ねがいごと", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -6985,7 +6985,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["オーバーヒート", "ボルトチェンジ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7010,7 +7010,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "きあいだま", "でんじは", "じこさいせい"],
-        effortValues: [228, 0, 118, 0, 0, 92, 438],
+        effortValues: [228, 0, 188, 0, 0, 92],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7021,7 +7021,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "じめん",
         moves: ["デカハンマー", "じならし", "ねこだまし", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7032,7 +7032,7 @@ const singleSeries1: Single[] = [
         ability: "クリアボディ",
         terastal: "ノーマル",
         moves: ["ドラゴンアロー", "シャドーボール", "ふいうち", "おにび"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7043,7 +7043,7 @@ const singleSeries1: Single[] = [
         ability: "そうしょく",
         terastal: "でんき",
         moves: ["りゅうせいぐん", "10まんボルト", "アシッドボム", "みがわり"],
-        effortValues: [220, 0, 36, 252, 0, 0, 508],
+        effortValues: [220, 0, 36, 252, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7054,7 +7054,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "みず",
         moves: ["はたきおとす", "けたぐり", "テラバースト", "ふいうち"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7065,7 +7065,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "おにび", "なまける"],
-        effortValues: [252, 0, 220, 0, 0, 36, 508],
+        effortValues: [252, 0, 220, 0, 0, 36],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7089,7 +7089,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["じしん", "テラバースト", "けたぐり", "りゅうのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7100,7 +7100,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ゴースト",
         moves: ["しおづけ", "じこさいせい", "まもる", "のろい"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7116,7 +7116,7 @@ const singleSeries1: Single[] = [
           "マジカルシャイン",
           "トリック",
         ],
-        effortValues: [100, 0, 4, 220, 28, 156, 508],
+        effortValues: [100, 0, 4, 220, 28, 156],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -7127,7 +7127,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "どく",
         moves: ["ドわすれ", "まもる", "じこさいせい", "どくどく"],
-        effortValues: [252, 0, 4, 0, 252, 0, 508],
+        effortValues: [252, 0, 4, 0, 252, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7138,7 +7138,7 @@ const singleSeries1: Single[] = [
         ability: "どしょく",
         terastal: "はがね",
         moves: ["どろかけ", "うちおとす", "じならし", "アイアンヘッド"],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [0, 0, 0, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7149,7 +7149,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "ほのお",
         moves: ["げきりん", "すてみタックル", "とんぼがえり", "しっぽきり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7173,7 +7173,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7184,7 +7184,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["しおづけ", "ボディプレス", "てっぺき", "じこさいせい"],
-        effortValues: [252, 4, 100, 0, 134, 20, 510],
+        effortValues: [252, 4, 100, 0, 134, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7200,7 +7200,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [68, 0, 4, 156, 28, 252, 508],
+        effortValues: [68, 0, 4, 156, 28, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -7216,7 +7216,7 @@ const singleSeries1: Single[] = [
           "りゅうせいぐん",
           "だいもんじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7227,7 +7227,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "あく",
         moves: ["トリックフラワー", "ふいうち", "はたきおとす", "ちょうはつ"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7238,7 +7238,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "あく",
         moves: ["じゃれつく", "シャドークロー", "かげうち", "でんじは"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7268,7 +7268,7 @@ const singleSeries1: Single[] = [
           "ちょうのまい",
           "あさのひざし",
         ],
-        effortValues: [100, 0, 188, 36, 4, 180, 508],
+        effortValues: [100, 0, 188, 36, 4, 180],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7279,7 +7279,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "しんそく", "じしん", "けたぐり"],
-        effortValues: [68, 252, 0, 0, 0, 188, 508],
+        effortValues: [68, 252, 0, 0, 0, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7290,7 +7290,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ひこう",
         moves: ["たたりめ", "きあいだま", "でんじは", "じこさいせい"],
-        effortValues: [228, 0, 196, 0, 0, 84, 508],
+        effortValues: [228, 0, 196, 0, 0, 84],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -7306,7 +7306,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "だいもんじ",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7317,7 +7317,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "じめん",
         moves: ["きょけんとつげき", "じしん", "かわらわり", "こおりのつぶて"],
-        effortValues: [180, 204, 4, 0, 44, 76, 508],
+        effortValues: [180, 204, 4, 0, 44, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7328,7 +7328,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "あく",
         moves: ["ウェーブタックル", "じしん", "あくび", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7352,7 +7352,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "ほのお",
         moves: ["げきりん", "じしん", "テラバースト", "つるぎのまい"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7368,7 +7368,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [228, 0, 0, 92, 0, 188, 508],
+        effortValues: [228, 0, 0, 92, 0, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7384,7 +7384,7 @@ const singleSeries1: Single[] = [
           "ラスターカノン",
           "きあいだま",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7395,7 +7395,7 @@ const singleSeries1: Single[] = [
         ability: "さいせいりょく",
         terastal: "フェアリー",
         moves: ["じこさいせい", "トーチカ", "どくどく", "くろいきり"],
-        effortValues: [252, 0, 220, 0, 36, 0, 508],
+        effortValues: [252, 0, 220, 0, 36, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7406,7 +7406,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ゴースト",
         moves: ["シャドークロー", "のろい", "おにび", "トリック"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7417,7 +7417,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["オーバーヒート", "ボルトチェンジ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 172, 4, 4, 76, 508],
+        effortValues: [252, 0, 172, 4, 4, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7441,7 +7441,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "ゴースト",
         moves: ["ほのおのまい", "あさのひざし", "テラバースト", "ちょうのまい"],
-        effortValues: [244, 0, 156, 36, 4, 60, 500],
+        effortValues: [244, 0, 156, 36, 4, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7452,7 +7452,7 @@ const singleSeries1: Single[] = [
         ability: "いたずらごころ",
         terastal: "あく",
         moves: ["イカサマ", "ひかりのかべ", "リフレクター", "ちょうはつ"],
-        effortValues: [244, 0, 204, 0, 60, 0, 508],
+        effortValues: [244, 0, 204, 0, 60, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7463,7 +7463,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "げきりん", "テラバースト", "つるぎのまい"],
-        effortValues: [204, 156, 4, 0, 4, 140, 508],
+        effortValues: [204, 156, 4, 0, 4, 140],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7474,7 +7474,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "ひこう",
         moves: ["たきのぼり", "テラバースト", "ちょうはつ", "りゅうのまい"],
-        effortValues: [244, 36, 52, 0, 4, 18, 354],
+        effortValues: [244, 36, 52, 0, 4, 180],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7490,7 +7490,7 @@ const singleSeries1: Single[] = [
           "ちょうはつ",
           "ビルドアップ",
         ],
-        effortValues: [188, 4, 156, 0, 60, 100, 508],
+        effortValues: [188, 4, 156, 0, 60, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7506,7 +7506,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "わるだくみ",
         ],
-        effortValues: [228, 0, 132, 52, 4, 92, 508],
+        effortValues: [228, 0, 132, 52, 4, 92],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7530,7 +7530,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "けたぐり", "じしん", "りゅうのまい"],
-        effortValues: [148, 252, 0, 0, 0, 108, 508],
+        effortValues: [148, 252, 0, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7546,7 +7546,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "つるぎのまい",
         ],
-        effortValues: [252, 252, 0, 0, 0, 4, 508],
+        effortValues: [252, 252, 0, 0, 0, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7557,7 +7557,7 @@ const singleSeries1: Single[] = [
         ability: "かそく",
         terastal: "かくとう",
         moves: ["ルミナコリジョン", "シャドーボール", "テラバースト", "まもる"],
-        effortValues: [252, 0, 124, 116, 4, 12, 508],
+        effortValues: [252, 0, 124, 116, 4, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7568,7 +7568,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["シャドーボール", "りゅうせいぐん", "ふいうち", "のろい"],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7579,7 +7579,7 @@ const singleSeries1: Single[] = [
         ability: "ねんちゃく",
         terastal: "じめん",
         moves: ["だいちのちから", "れいとうビーム", "ステルスロック", "あくび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7590,7 +7590,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["かげうち", "ドレインパンチ", "じゃれつく", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7614,7 +7614,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "テラバースト", "ねごと"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7630,7 +7630,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [100, 0, 4, 148, 4, 252, 508],
+        effortValues: [100, 0, 4, 148, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7641,7 +7641,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "フェアリー",
         moves: ["ねこだまし", "デカハンマー", "はたきおとす", "じゃれつく"],
-        effortValues: [244, 252, 0, 0, 0, 12, 508],
+        effortValues: [244, 252, 0, 0, 0, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7652,7 +7652,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "くさ",
         moves: ["トリックフラワー", "はたきおとす", "ふいうち", "けたぐり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7663,7 +7663,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["フレアソング", "シャドーボール", "みがわり", "なまける"],
-        effortValues: [236, 0, 236, 0, 36, 0, 508],
+        effortValues: [236, 0, 236, 0, 36, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7674,7 +7674,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "フェアリー",
         moves: ["ボルトチェンジ", "ハイドロポンプ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7703,7 +7703,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "テラバースト",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7714,7 +7714,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["しんそく", "テラバースト", "げきりん", "じしん"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7725,7 +7725,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "げきりん", "アイアンヘッド", "かわらわり"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7736,7 +7736,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "まもる", "みがわり", "じこさいせい"],
-        effortValues: [252, 4, 52, 0, 140, 60, 508],
+        effortValues: [252, 4, 52, 0, 140, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7747,7 +7747,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ノーマル",
         moves: ["りゅうせいぐん", "シャドーボール", "のろい", "ふいうち"],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7758,7 +7758,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["かげうち", "じゃれつく", "のろい", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7782,7 +7782,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "じしん", "なげつける", "ステルスロック"],
-        effortValues: [252, 4, 236, 0, 4, 12, 508],
+        effortValues: [252, 4, 236, 0, 4, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7798,7 +7798,7 @@ const singleSeries1: Single[] = [
           "テラバースト",
           "アクアジェット",
         ],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7814,7 +7814,7 @@ const singleSeries1: Single[] = [
           "ボルトチェンジ",
           "がむしゃら",
         ],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7825,7 +7825,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "じめん",
         moves: ["デカハンマー", "じゃれつく", "テラバースト", "つるぎのまい"],
-        effortValues: [36, 252, 4, 0, 4, 212, 508],
+        effortValues: [36, 252, 4, 0, 4, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7836,7 +7836,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "はがね",
         moves: ["じゃれつく", "かげうち", "のろい", "トリックルーム"],
-        effortValues: [228, 252, 28, 0, 0, 0, 508],
+        effortValues: [228, 252, 28, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7852,7 +7852,7 @@ const singleSeries1: Single[] = [
           "だいちのちから",
           "オーバーヒート",
         ],
-        effortValues: [252, 0, 0, 252, 4, 0, 508],
+        effortValues: [252, 0, 0, 252, 4, 0],
         individualValues: [31, 0, 31, 31, 31, 0],
       },
     ],
@@ -7876,7 +7876,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ノーマル",
         moves: ["しんそく", "じしん", "りゅうのまい", "はねやすめ"],
-        effortValues: [196, 44, 156, 0, 4, 108, 508],
+        effortValues: [196, 44, 156, 0, 4, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7887,7 +7887,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "がんせきふうじ", "ステルスロック"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7903,7 +7903,7 @@ const singleSeries1: Single[] = [
           "じこさいせい",
           "トリック",
         ],
-        effortValues: [116, 0, 4, 188, 12, 188, 508],
+        effortValues: [116, 0, 4, 188, 12, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7914,7 +7914,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "ゴースト",
         moves: ["あくのはどう", "ほのおのうず", "ちょうはつ", "みがわり"],
-        effortValues: [236, 0, 12, 4, 108, 148, 508],
+        effortValues: [236, 0, 12, 4, 108, 148],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7925,7 +7925,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "ゴースト",
         moves: ["じゃれつく", "シャドークロー", "かげうち", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7936,7 +7936,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ボルトチェンジ", "イカサマ", "おにび", "でんじは"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -7960,7 +7960,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "いわ",
         moves: ["ほのおのまい", "テラバースト", "ギガドレイン", "ちょうのまい"],
-        effortValues: [20, 0, 124, 124, 4, 236, 508],
+        effortValues: [20, 0, 124, 124, 4, 236],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7971,7 +7971,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "じめん",
         moves: ["げきりん", "じしん", "インファイト", "ハサミギロチン"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7982,7 +7982,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["ドラゴンテール", "アイアンヘッド", "はねやすめ", "みがわり"],
-        effortValues: [244, 4, 236, 0, 4, 20, 508],
+        effortValues: [244, 4, 236, 0, 4, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -7998,7 +7998,7 @@ const singleSeries1: Single[] = [
           "ボルトチェンジ",
           "テラバースト",
         ],
-        effortValues: [172, 0, 0, 236, 0, 100, 508],
+        effortValues: [172, 0, 0, 236, 0, 100],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8009,7 +8009,7 @@ const singleSeries1: Single[] = [
         ability: "じきゅうりょく",
         terastal: "くさ",
         moves: ["じしん", "ボディプレス", "ステルスロック", "ほえる"],
-        effortValues: [252, 4, 156, 0, 76, 20, 508],
+        effortValues: [252, 4, 156, 0, 76, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8020,7 +8020,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["ウェーブタックル", "じしん", "ゆきなだれ", "あくび"],
-        effortValues: [84, 236, 188, 0, 0, 0, 508],
+        effortValues: [84, 236, 188, 0, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8044,7 +8044,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "フェアリー",
         moves: ["ほのおのまい", "テラバースト", "あさのひざし", "ちょうのまい"],
-        effortValues: [244, 0, 204, 4, 4, 52, 508],
+        effortValues: [244, 0, 204, 4, 4, 52],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8055,7 +8055,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["じしん", "ドラゴンテール", "でんじは", "はねやすめ"],
-        effortValues: [244, 0, 244, 0, 0, 20, 508],
+        effortValues: [244, 0, 244, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8066,7 +8066,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "ちょうはつ", "みがわり"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8077,7 +8077,7 @@ const singleSeries1: Single[] = [
         ability: "そうだいしょう",
         terastal: "ひこう",
         moves: ["ドゲザン", "アイアンヘッド", "ふいうち", "ハサミギロチン"],
-        effortValues: [236, 252, 0, 0, 0, 20, 508],
+        effortValues: [236, 252, 0, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8088,7 +8088,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ゴースト",
         moves: ["ドラゴンアロー", "テラバースト", "とんぼがえり", "ふいうち"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8099,7 +8099,7 @@ const singleSeries1: Single[] = [
         ability: "じきゅうりょく",
         terastal: "みず",
         moves: ["じしん", "ボディプレス", "ステルスロック", "ほえる"],
-        effortValues: [252, 4, 148, 0, 100, 4, 508],
+        effortValues: [252, 4, 148, 0, 100, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8128,7 +8128,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "オーバーヒート",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8139,7 +8139,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "げきりん", "じしん", "しんそく"],
-        effortValues: [68, 252, 0, 0, 0, 188, 508],
+        effortValues: [68, 252, 0, 0, 0, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8150,7 +8150,7 @@ const singleSeries1: Single[] = [
         ability: "かそく",
         terastal: "かくとう",
         moves: ["ルミナコリジョン", "テラバースト", "シャドーボール", "まもる"],
-        effortValues: [108, 0, 124, 228, 36, 12, 508],
+        effortValues: [108, 0, 124, 228, 36, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8161,7 +8161,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "りゅうせいぐん", "のろい", "ふいうち"],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8172,7 +8172,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "くさ",
         moves: ["ウェーブタックル", "じわれ", "あくび", "まもる"],
-        effortValues: [252, 0, 164, 0, 92, 0, 508],
+        effortValues: [252, 0, 164, 0, 92, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8183,7 +8183,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "ドレインパンチ", "つるぎのまい", "かげうち"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8207,7 +8207,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "じしん", "まもる", "じこさいせい"],
-        effortValues: [252, 4, 28, 0, 220, 4, 508],
+        effortValues: [252, 4, 28, 0, 220, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8218,7 +8218,7 @@ const singleSeries1: Single[] = [
         ability: "いかく",
         terastal: "かくとう",
         moves: ["フレアドライブ", "インファイト", "げきりん", "おにび"],
-        effortValues: [164, 252, 4, 0, 4, 84, 508],
+        effortValues: [164, 252, 4, 0, 4, 84],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8229,7 +8229,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "はがね",
         moves: ["つららおとし", "きょけんとつげき", "じしん", "こおりのつぶて"],
-        effortValues: [116, 252, 4, 0, 4, 132, 508],
+        effortValues: [116, 252, 4, 0, 4, 132],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8240,7 +8240,7 @@ const singleSeries1: Single[] = [
         ability: "すりぬけ",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "シャドーボール", "ふいうち", "のろい"],
-        effortValues: [0, 4, 0, 252, 0, 252, 508],
+        effortValues: [0, 4, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8256,7 +8256,7 @@ const singleSeries1: Single[] = [
           "やどりぎのタネ",
           "みがわり",
         ],
-        effortValues: [172, 156, 4, 0, 20, 156, 508],
+        effortValues: [172, 156, 4, 0, 20, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8267,7 +8267,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ハイドロポンプ", "ほうでん", "ボルトチェンジ", "テラバースト"],
-        effortValues: [252, 0, 0, 196, 60, 0, 508],
+        effortValues: [252, 0, 0, 196, 60, 0],
         individualValues: [31, 31, 31, 31, 31, 27],
       },
     ],
@@ -8291,7 +8291,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "かくとう",
         moves: ["ボディプレス", "てっぺき", "はねやすめ", "ちょうはつ"],
-        effortValues: [252, 0, 76, 0, 0, 180, 508],
+        effortValues: [252, 0, 76, 0, 0, 180],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -8302,7 +8302,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "フェアリー",
         moves: ["しおづけ", "ステルスロック", "じこさいせい", "まもる"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8318,7 +8318,7 @@ const singleSeries1: Single[] = [
           "わるだくみ",
           "じこさいせい",
         ],
-        effortValues: [228, 0, 204, 0, 0, 76, 508],
+        effortValues: [228, 0, 204, 0, 0, 76],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8329,7 +8329,7 @@ const singleSeries1: Single[] = [
         ability: "ちょすい",
         terastal: "フェアリー",
         moves: ["じしん", "どくどく", "ステルスロック", "じこさいせい"],
-        effortValues: [236, 4, 252, 0, 4, 12, 508],
+        effortValues: [236, 4, 252, 0, 4, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8340,7 +8340,7 @@ const singleSeries1: Single[] = [
         ability: "しぜんかいふく",
         terastal: "あく",
         moves: ["れいとうビーム", "かえんほうしゃ", "めいそう", "タマゴうみ"],
-        effortValues: [244, 0, 252, 12, 0, 0, 508],
+        effortValues: [244, 0, 252, 12, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8351,7 +8351,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "ノーマル",
         moves: ["フレアソング", "おにび", "アンコール", "なまける"],
-        effortValues: [236, 0, 212, 4, 4, 52, 508],
+        effortValues: [236, 0, 212, 4, 4, 52],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8380,7 +8380,7 @@ const singleSeries1: Single[] = [
           "むしのさざめき",
           "ほのおのまい",
         ],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8391,7 +8391,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "げきりん", "しんそく", "じしん"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8402,7 +8402,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "きあいだま", "じこさいせい", "わるだくみ"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8413,7 +8413,7 @@ const singleSeries1: Single[] = [
         ability: "ちょすい",
         terastal: "じめん",
         moves: ["じしん", "じこさいせい", "けたぐり", "どくびし"],
-        effortValues: [156, 0, 252, 0, 100, 0, 508],
+        effortValues: [156, 0, 252, 0, 100, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8429,7 +8429,7 @@ const singleSeries1: Single[] = [
           "さいきのいのり",
           "でんこうそうげき",
         ],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8440,7 +8440,7 @@ const singleSeries1: Single[] = [
         ability: "どしょく",
         terastal: "はがね",
         moves: ["てっぺき", "ボディプレス", "ステルスロック", "しっぽきり"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8464,7 +8464,7 @@ const singleSeries1: Single[] = [
         ability: "プレッシャー",
         terastal: "かくとう",
         moves: ["とんぼがえり", "ボディプレス", "てっぺき", "はねやすめ"],
-        effortValues: [0, 0, 0, 0, 0, 0, 0],
+        effortValues: [252, 0, 132, 0, 0, 124],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8475,7 +8475,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "フェアリー",
         moves: ["しおづけ", "まもる", "てっぺき", "じこさいせい"],
-        effortValues: [252, 0, 156, 0, 100, 0, 508],
+        effortValues: [252, 0, 156, 0, 100, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8491,7 +8491,7 @@ const singleSeries1: Single[] = [
           "だいもんじ",
           "テラバースト",
         ],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8507,7 +8507,7 @@ const singleSeries1: Single[] = [
           "マッハパンチ",
           "さいきのいのり",
         ],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8523,7 +8523,7 @@ const singleSeries1: Single[] = [
           "シャドーボール",
           "タマゴうみ",
         ],
-        effortValues: [4, 0, 252, 236, 12, 4, 508],
+        effortValues: [4, 0, 252, 236, 12, 4],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8539,7 +8539,7 @@ const singleSeries1: Single[] = [
           "みがわり",
           "やどりぎのタネ",
         ],
-        effortValues: [68, 204, 0, 0, 0, 0, 272],
+        effortValues: [68, 204, 4, 0, 76, 156],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8563,7 +8563,7 @@ const singleSeries1: Single[] = [
         ability: "ミラーアーマー",
         terastal: "あく",
         moves: ["ビルドアップ", "ちょうはつ", "はねやすめ", "つけあがる"],
-        effortValues: [252, 4, 36, 0, 4, 212, 508],
+        effortValues: [252, 4, 36, 0, 4, 212],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8574,7 +8574,7 @@ const singleSeries1: Single[] = [
         ability: "おどりこ",
         terastal: "フェアリー",
         moves: ["めざめるダンス", "ちょうのまい", "ちょうはつ", "バトンタッチ"],
-        effortValues: [244, 0, 228, 4, 12, 20, 508],
+        effortValues: [244, 0, 228, 4, 12, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8585,7 +8585,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "フェアリー",
         moves: ["シャドーボール", "ヘドロばくだん", "こごえるかぜ", "でんじは"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8601,7 +8601,7 @@ const singleSeries1: Single[] = [
           "ビルドアップ",
           "ちょうはつ",
         ],
-        effortValues: [188, 100, 140, 0, 52, 28, 508],
+        effortValues: [188, 100, 140, 0, 52, 28],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8612,7 +8612,7 @@ const singleSeries1: Single[] = [
         ability: "じきゅうりょく",
         terastal: "はがね",
         moves: ["じしん", "ボディプレス", "がんせきふうじ", "ステルスロック"],
-        effortValues: [252, 0, 124, 0, 134, 0, 510],
+        effortValues: [252, 0, 124, 0, 134, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8623,7 +8623,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "くさ",
         moves: ["なげつける", "はたきおとす", "ちょうはつ", "どくびし"],
-        effortValues: [188, 76, 84, 0, 64, 92, 504],
+        effortValues: [188, 76, 84, 0, 64, 92],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8647,7 +8647,7 @@ const singleSeries1: Single[] = [
         ability: "ほのおのからだ",
         terastal: "じめん",
         moves: ["ちょうのまい", "あさのひざし", "テラバースト", "ほのおのまい"],
-        effortValues: [252, 0, 196, 0, 0, 60, 508],
+        effortValues: [252, 0, 196, 0, 0, 60],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8658,7 +8658,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "はがね",
         moves: ["りゅうのまい", "はねやすめ", "じしん", "げきりん"],
-        effortValues: [196, 0, 196, 0, 0, 108, 500],
+        effortValues: [196, 0, 196, 0, 0, 108],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8669,7 +8669,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "ひこう",
         moves: ["とおせんぼう", "じこさいせい", "のろい", "しおづけ"],
-        effortValues: [204, 0, 252, 0, 52, 0, 508],
+        effortValues: [204, 0, 252, 0, 52, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8680,7 +8680,7 @@ const singleSeries1: Single[] = [
         ability: "おうごんのからだ",
         terastal: "はがね",
         moves: ["トリック", "きあいだま", "シャドーボール", "ゴールドラッシュ"],
-        effortValues: [4, 0, 0, 252, 0, 252, 508],
+        effortValues: [4, 0, 0, 252, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8691,7 +8691,7 @@ const singleSeries1: Single[] = [
         ability: "ねつこうかん",
         terastal: "ドラゴン",
         moves: ["こおりのつぶて", "じしん", "つららばり", "きょけんとつげき"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8702,7 +8702,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "みず",
         moves: ["あくび", "なまける", "たたりめ", "フレアソング"],
-        effortValues: [236, 0, 252, 4, 4, 12, 508],
+        effortValues: [236, 0, 252, 4, 4, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8726,7 +8726,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "ひこう",
         moves: ["テラバースト", "じしん", "げきりん", "しんそく"],
-        effortValues: [68, 252, 0, 0, 0, 188, 508],
+        effortValues: [68, 252, 0, 0, 0, 188],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8737,7 +8737,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["じしん", "げきりん", "がんせきふうじ", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8748,7 +8748,7 @@ const singleSeries1: Single[] = [
         ability: "テクニシャン",
         terastal: "あく",
         moves: ["バレットパンチ", "かわらわり", "どろぼう", "とんぼがえり"],
-        effortValues: [236, 252, 0, 0, 0, 20, 508],
+        effortValues: [236, 252, 0, 0, 0, 20],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8759,7 +8759,7 @@ const singleSeries1: Single[] = [
         ability: "しんりょく",
         terastal: "あく",
         moves: ["トリックフラワー", "はたきおとす", "ちょうはつ", "ふいうち"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8770,7 +8770,7 @@ const singleSeries1: Single[] = [
         ability: "てんねん",
         terastal: "フェアリー",
         moves: ["フレアソング", "テラバースト", "みがわり", "なまける"],
-        effortValues: [252, 0, 212, 0, 0, 44, 508],
+        effortValues: [252, 0, 212, 0, 0, 44],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8781,7 +8781,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ハイドロポンプ", "ボルトチェンジ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 252, 4, 0, 0, 508],
+        effortValues: [252, 0, 252, 4, 0, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8805,7 +8805,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "フェアリー",
         moves: ["りゅうせいぐん", "ほのおのうず", "はねやすめ", "アンコール"],
-        effortValues: [196, 0, 196, 0, 0, 116, 508],
+        effortValues: [196, 0, 196, 0, 0, 116],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8816,7 +8816,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "フェアリー",
         moves: ["げきりん", "じしん", "がんせきふうじ", "テラバースト"],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8827,7 +8827,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["あくのはどう", "ラスターカノン", "ちょうはつ", "みがわり"],
-        effortValues: [0, 0, 0, 252, 4, 252, 508],
+        effortValues: [0, 0, 0, 252, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8838,7 +8838,7 @@ const singleSeries1: Single[] = [
         ability: "かたやぶり",
         terastal: "はがね",
         moves: ["デカハンマー", "はたきおとす", "ステルスロック", "アンコール"],
-        effortValues: [100, 204, 0, 0, 0, 204, 508],
+        effortValues: [100, 204, 0, 0, 0, 204],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8849,7 +8849,7 @@ const singleSeries1: Single[] = [
         ability: "へんげんじざい",
         terastal: "あく",
         moves: ["トリックフラワー", "はたきおとす", "じゃれつく", "けたぐり"],
-        effortValues: [4, 244, 4, 0, 36, 220, 508],
+        effortValues: [4, 244, 4, 0, 36, 220],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8860,7 +8860,7 @@ const singleSeries1: Single[] = [
         ability: "ふゆう",
         terastal: "はがね",
         moves: ["ハイドロポンプ", "ボルトチェンジ", "イカサマ", "おにび"],
-        effortValues: [252, 0, 252, 0, 4, 0, 508],
+        effortValues: [252, 0, 252, 0, 4, 0],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],
@@ -8884,7 +8884,7 @@ const singleSeries1: Single[] = [
         ability: "マルチスケイル",
         terastal: "はがね",
         moves: ["ほのおのうず", "アンコール", "りゅうせいぐん", "はねやすめ"],
-        effortValues: [244, 0, 76, 4, 4, 180, 508],
+        effortValues: [244, 0, 76, 4, 4, 180],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -8895,7 +8895,7 @@ const singleSeries1: Single[] = [
         ability: "さめはだ",
         terastal: "はがね",
         moves: ["じしん", "かわらわり", "げきりん", "アイアンヘッド"],
-        effortValues: [0, 252, 0, 0, 4, 252, 508],
+        effortValues: [0, 252, 0, 0, 4, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8906,7 +8906,7 @@ const singleSeries1: Single[] = [
         ability: "きよめのしお",
         terastal: "みず",
         moves: ["しおづけ", "まもる", "じこさいせい", "てっぺき"],
-        effortValues: [252, 4, 4, 0, 236, 12, 508],
+        effortValues: [252, 4, 4, 0, 236, 12],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8917,7 +8917,7 @@ const singleSeries1: Single[] = [
         ability: "のろわれボディ",
         terastal: "ノーマル",
         moves: ["シャドーボール", "ヘドロばくだん", "アンコール", "みちづれ"],
-        effortValues: [0, 0, 4, 252, 0, 252, 508],
+        effortValues: [0, 0, 4, 252, 0, 252],
         individualValues: [31, 0, 31, 31, 31, 31],
       },
       {
@@ -8933,7 +8933,7 @@ const singleSeries1: Single[] = [
           "じゃれつく",
           "トリックフラワー",
         ],
-        effortValues: [0, 252, 4, 0, 0, 252, 508],
+        effortValues: [0, 252, 4, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
       {
@@ -8944,7 +8944,7 @@ const singleSeries1: Single[] = [
         ability: "ばけのかわ",
         terastal: "フェアリー",
         moves: ["じゃれつく", "かげうち", "ドレインパンチ", "つるぎのまい"],
-        effortValues: [4, 252, 0, 0, 0, 252, 508],
+        effortValues: [4, 252, 0, 0, 0, 252],
         individualValues: [31, 31, 31, 31, 31, 31],
       },
     ],

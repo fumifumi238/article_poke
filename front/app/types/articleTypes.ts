@@ -4,7 +4,7 @@ import ability from "../json/ability.json";
 import nature from "../json/nature.json";
 import typesData from "../json/types.json";
 
-type Party = {
+export type Party = {
   id: number;
   pokemon: keyof typeof pokeData;
   item: keyof typeof itemsData | "";
@@ -12,7 +12,7 @@ type Party = {
   nature: keyof typeof nature;
   terastal: keyof typeof typesData;
   moves: [string, ...string[]];
-  effortValues: [number, number, number, number, number, number, number];
+  effortValues: [number, number, number, number, number, number];
   individualValues: [number, number, number, number, number, number];
 };
 

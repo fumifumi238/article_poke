@@ -2,12 +2,15 @@ import ArticleIcon from "@mui/icons-material/Article";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
+import { getCurrentSeason } from "../../utils/getCurrentSeason";
 
 const ArticleIconButton = () => {
   const router = useRouter();
 
+  const { currentSeries, currentSeason } = getCurrentSeason();
+
   const redirectToArticle = () => {
-    router.push("/article");
+    router.push(`/single/series${currentSeries}/season${currentSeason}`);
   };
 
   return (

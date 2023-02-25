@@ -81,7 +81,7 @@ export const getPokemonRank = (articles: Article[]) => {
       value: values[k],
     }));
 
-    //値段順
+    // カウント順
     rankToArray.sort((a, b) => b.value - a.value);
 
     //配列⇒オブジェクト　で元に戻す
@@ -95,7 +95,7 @@ export const getPokemonRank = (articles: Article[]) => {
     return rankToHash;
   };
 
-  const hash = {};
+  const hash: Ranking = {};
   for (let key of Object.keys(rankToHash)) {
     let pokemon = rankToHash[key];
     pokemon = {

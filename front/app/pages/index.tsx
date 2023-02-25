@@ -1,18 +1,14 @@
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NextPage } from "next";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Rule from "../components/templates/Rule";
 import PageInfo from "../components/templates/PageInfo";
 import ArticleIcon from "@mui/icons-material/Article";
 import CreateIcon from "@mui/icons-material/Create";
 
-import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
-import ErrorIcon from "@mui/icons-material/Error";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
+import { getCurrentSeason } from "../utils/getCurrentSeason";
 
 type Format = "single" | "double";
 
@@ -35,6 +31,8 @@ const Home: NextPage = () => {
     "・入力欄にポケモン名を区切って入れると、そのポケモンが入っている構築が出ます。",
     "・トレーナー名をクリックすると、その人のシーズンごとの成績が見れます。",
   ];
+
+  const { currentSeason, currentSeries } = getCurrentSeason();
 
   return (
     <>
@@ -66,7 +64,7 @@ const Home: NextPage = () => {
             <PageInfo
               icon={<ArticleIcon sx={{ height: 40, width: 40 }} />}
               value="構築記事一覧"
-              url="/article"
+              url={`/single/series${currentSeries}/season${currentSeason}`}
               imageSrc="/image/pageInfo/article.jpg"
               discriptions={articleDiscriptions}
             />
@@ -90,6 +88,5 @@ const Home: NextPage = () => {
     </>
   );
 };
-
 
 export default Home;

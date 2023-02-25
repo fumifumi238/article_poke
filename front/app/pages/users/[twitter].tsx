@@ -4,40 +4,35 @@ import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import DisplayArticle from "../../components/templates/DisplayArticle";
-import { getData } from "../../lib/api/fetchApi";
-import type Article from "../article";
+import { Article } from "../../types/articleTypes";
+import { searchByTwitter } from "../../utils/searchByTwitter";
 
-const UserResult = () => {
+type Props = {
+  twitter: string;
+  articles: Article[];
+};
+
+const UserResult = (props: Props) => {
   const router = useRouter();
-  const { twitter } = router.query;
-
-  const [articles, setArticles] = useState<Article[]>([]);
+  const { twitter, articles } = props;
   const [value, setValue] = useState<string>("");
-    const [noData, setNoData] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-      if (router.isReady) {
-        const getArticle = async () => {
-          const data = await getData(`/users/${twitter}`);
-          if (data.length === 0) {
-            setNoData(true);
-          } else {
-            setNoData(false);
-          }
-          setArticles(data as unknown as Article[]);
-        };
-        getArticle();
-        if (twitter !== undefined) {
-          setValue(String(twitter));
-        }
-
-      }
-    }, [router, twitter]);
+  useEffect(() => {
+    if (twitter !== undefined) {
+      setValue(String(twitter));
+    }
+    setLoading(false);
+  }, []);
 
   const changeSettingIcon = () => {
+    if (value.length === 0) {
+      return;
+    }
     router.push(`/users/${value}`);
   };
   return (
@@ -75,9 +70,12 @@ const UserResult = () => {
             <SearchIcon />
           </IconButton>
         </Paper>
-        <Typography sx={{ fontWeight: "bold" }}>
-          <span style={{ color: "green" }}>@{twitter}</span> さんの成績
-        </Typography>
+        <Box sx={{ display: "flex" }}>
+          <Typography sx={{ fontWeight: "bold", color: "green" }}>
+            @{twitter}
+          </Typography>
+          <Typography sx={{ fontWeight: "bold" }}>さんの成績</Typography>
+        </Box>
       </Box>
       <Box
         sx={{
@@ -85,14 +83,23 @@ const UserResult = () => {
           justifyContent: "center",
           paddingBottom: "30px",
         }}>
-        {noData ? (
-          <Typography>not found</Typography>
-        ) : (
-          <DisplayArticle articles={articles} />
-        )}
+        {!loading && <DisplayArticle articlesProps={articles} />}
       </Box>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const twitter = context.query.twitter;
+  const articles = await searchByTwitter(String(twitter));
+
+  const props: Props = {
+    twitter: String(twitter),
+    articles: articles,
+  };
+  return {
+    props: props,
+  };
 };
 
 export default UserResult;
