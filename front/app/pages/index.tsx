@@ -34,6 +34,7 @@ const Home: NextPage = () => {
 
   const { currentSeason, currentSeries } = getCurrentSeason();
 
+
   return (
     <>
       <Box>
