@@ -21,6 +21,7 @@ import RegisterPokemon from "../components/templates/RegisterPokemon";
 import pokeData from "../json/poke_data.json";
 import seriesData from "../json/series.json";
 import { postData } from "../lib/api/fetchApi";
+import { Article, Party } from "../types/articleTypes";
 import { PokeDetails } from "../types/PokeDetails";
 import { changeIcon } from "../utils/changeIcon";
 import { checkPokemons } from "../utils/validation";
@@ -105,8 +106,24 @@ const Form: NextPage = () => {
   };
 
   const handleSubmit = async () => {
+    const party = [];
+    for (let i = 0; i < pokeDetails.length; i++) {
+      const hash = {
+        id: i + 1,
+        pokemon: pokeDetails[i].pokemon,
+        item: pokeDetails[i].item,
+        ability: pokeDetails[i].ability,
+        nature: pokeDetails[i].nature,
+        terastal: pokeDetails[i].terastal,
+        moves: pokeDetails[i].moves.filter((move) => move !== ""),
+        effortValues: pokeDetails[i].effortValues.slice(0, 6),
+        individualValues: pokeDetails[i].individualValues,
+      };
+      party.push(hash);
+    }
+
     const params = {
-      name: name,
+      tn: name,
       twitter: twitter,
       title: title,
       url: url,
@@ -114,20 +131,28 @@ const Form: NextPage = () => {
       rank: rank !== "" ? rank : 99999,
       rental: rental,
       season: season,
-      series: series,
       format: format,
-      parties: pokeDetails,
+      party: party,
     };
 
-    const res = await postData("/articles/create", params);
-    const data = await res;
+    console.log(params);
+
+    const data = await fetch("/api/sendmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    });
+
+    const json = await data.json();
     if (data.status !== 200) {
-      console.log(data.message);
+      console.log(json.message);
     } else {
       console.log("成功しました。");
       setModalOpen(true),
         setTimeout(() => {
-          router.push("/article");
+          router.push(`/${format}/series${series}/season${season}`);
         }, 500);
     }
   };

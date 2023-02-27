@@ -11,6 +11,7 @@ import Icon from "@mui/material/Icon";
 import MuiLink from "@mui/material/Link";
 
 import Typography from "@mui/material/Typography";
+import ArticleIcon from "@mui/icons-material/Article";
 
 const Rental = () => {
   const twitterLink = (id: string) => {
@@ -80,6 +81,21 @@ const Rental = () => {
                   <span style={{ color: "green" }}>{rental.rentalCode}</span>
                 </Typography>
               </Box>
+              {rental.article && (
+                <MuiLink
+                  href={rental.article}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <Box sx={{ paddingTop: 1 }}>
+                    <Icon
+                      sx={{
+                        marginX: 1,
+                      }}>
+                      <ArticleIcon />
+                    </Icon>
+                  </Box>
+                </MuiLink>
+              )}
             </Box>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               {rental.party.map((poke, index) => (

@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { getExistUrls } from "../../../utils/getExistUrls";
 
 type Url = {
   url: string;
@@ -16,11 +17,8 @@ const UrlForm = ({ url, setUrl, validationForm, setError }: Url) => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST}/articles/get_exist_url`
-      );
-      const data = await res.json();
-      setExistUrlList(data);
+      const urls = await getExistUrls();
+      setExistUrlList(urls);
     };
     getData();
   }, []);
