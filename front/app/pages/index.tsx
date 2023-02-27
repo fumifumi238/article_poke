@@ -10,6 +10,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import { getCurrentSeason } from "../utils/getCurrentSeason";
 
+
 type Format = "single" | "double";
 
 const Home: NextPage = () => {
@@ -35,10 +36,12 @@ const Home: NextPage = () => {
   const { currentSeason, currentSeries } = getCurrentSeason();
 
 
+
   return (
     <>
       <Box>
         {/* <Rule series="2" /> */}
+        {/* <button onClick={sendmail}>送信</button> */}
         <Rule series="1" />
         <Box
           sx={{

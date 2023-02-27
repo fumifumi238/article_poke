@@ -25,6 +25,7 @@ import { Article, Party } from "../types/articleTypes";
 import { PokeDetails } from "../types/PokeDetails";
 import { changeIcon } from "../utils/changeIcon";
 import { checkPokemons } from "../utils/validation";
+import emailjs from "@emailjs/browser";
 
 // TODO: 保存時のエラーとエラーメッセージ
 
@@ -122,7 +123,7 @@ const Form: NextPage = () => {
       party.push(hash);
     }
 
-    const params = {
+    const body = {
       tn: name,
       twitter: twitter,
       title: title,
@@ -135,19 +136,68 @@ const Form: NextPage = () => {
       party: party,
     };
 
-    console.log(params);
+    const addText = () => {
+      let text = "";
+      text += "{";
+      text += `
+    tn: "${body.tn}",
+    twitter: "${body.twitter}",
+    url: "${body.url}",
+    title: "${body.title}",
+    rate: ${body.rate},
+    rank: ${body.rank},
+    season: ${body.season},
+    rental: "${body.rental}",
+    format: "${body.format}",
+    `;
 
-    const data = await fetch("/api/sendmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params),
-    });
+      text += "party: [\n";
 
-    const json = await data.json();
+      for (let i = 0; i < body.party.length; i++) {
+        let moves = "";
+        for (let j = 0; j < body.party[i].moves.length; j++) {
+          if (j >= 3) {
+            moves += `"${body.party[i].moves[j]}"`;
+          } else {
+            moves += `"${body.party[i].moves[j]}",`;
+          }
+        }
+        text += `{
+        id: ${i + 1},
+        pokemon: "${body.party[i].pokemon}",
+        item: "${body.party[i].item}",
+        ability: "${body.party[i].ability}",
+        nature: "${body.party[i].nature}",
+        terastal: "${body.party[i].terastal}",
+        moves: [${moves}],
+        effortValues: [${body.party[i].effortValues}],
+        individualValues: [${body.party[i].individualValues}],
+      },\n`;
+      }
+
+      text += "]\n},";
+      return text;
+    };
+
+    const mailText = addText();
+
+    const templateVariables = {
+      email: "tarou@example.com",
+      name: "poke-ranker",
+      message: mailText,
+    };
+
+    console.log(mailText);
+
+    const data = await emailjs.send(
+      process.env.NEXT_PUBLIC_SERVISE_ID,
+      process.env.NEXT_PUBLIC_TEMPLETE_ID,
+      templateVariables,
+      process.env.NEXT_PUBLIC_USER_ID
+    );
+
     if (data.status !== 200) {
-      console.log(json.message);
+      console.log(data.text);
     } else {
       console.log("成功しました。");
       setModalOpen(true),
