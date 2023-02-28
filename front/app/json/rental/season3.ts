@@ -154,7 +154,7 @@ export const rentalSeason3: Rental[] = [
       { pokemon: "ハバタクカミ", item: "ブーストエナジー", terastal: "ほのお" },
       { pokemon: "ヘイラッシャ", item: "たべのこし", terastal: "はがね" },
       { pokemon: "マスカーニャ", item: "きあいのタスキ", terastal: "くさ" },
-      { pokemon: "コノヨザル", item: "きあいのタスキ", terastal: "じめん" },
+      { pokemon: "カイリュー", item: "ゴツゴツメット", terastal: "はがね" },
       { pokemon: "サーフゴー", item: "こだわりスカーフ", terastal: "はがね" },
     ],
   },

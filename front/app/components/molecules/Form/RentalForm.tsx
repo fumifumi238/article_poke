@@ -14,7 +14,7 @@ const RentalForm = ({ rental, setRental }: Rental) => {
       setRental("");
       return;
     }
-    setRental(rental);
+    setRental(rental.toUpperCase());
   };
 
   const onChangeRental = (value: string) => {
@@ -22,7 +22,7 @@ const RentalForm = ({ rental, setRental }: Rental) => {
       return;
     }
 
-    setRental(value.toUpperCase());
+    setRental(value);
   };
 
   return (
