@@ -16,6 +16,9 @@ import ArticleIcon from "@mui/icons-material/Article";
 const Rental = () => {
   const twitterLink = (id: string) => {
     let baseUrl = "https://twitter.com/";
+    if (id.includes(baseUrl)) {
+      return id;
+    }
     if (id === "") {
       return "https://twitter.com/home";
     }
@@ -91,13 +94,17 @@ const Rental = () => {
                       sx={{
                         marginX: 1,
                       }}>
-                      <ArticleIcon />
+                      <ArticleIcon sx={{ color: "grey" }} />
                     </Icon>
                   </Box>
                 </MuiLink>
               )}
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}>
               {rental.party.map((poke, index) => (
                 <Box key={index} sx={{ position: "relative", width: 50 }}>
                   <Box sx={{ position: "relative", zindex: 0 }}>

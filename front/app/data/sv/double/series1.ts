@@ -9,7 +9,7 @@ const templete = {
   rank: 0,
   season: 0,
   rental: "",
-  format: "single",
+  format: "double",
   party: [
     {
       id: 1,

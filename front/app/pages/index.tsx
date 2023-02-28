@@ -9,7 +9,14 @@ import CreateIcon from "@mui/icons-material/Create";
 
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import { getCurrentSeason } from "../utils/getCurrentSeason";
-
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Button,
+} from "@mui/material";
+import { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 type Format = "single" | "double";
 
@@ -35,14 +42,66 @@ const Home: NextPage = () => {
 
   const { currentSeason, currentSeries } = getCurrentSeason();
 
+  const [expanded, setExpanded] = useState<string | false>(false);
 
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   return (
     <>
       <Box>
-        {/* <Rule series="2" /> */}
-        {/* <button onClick={sendmail}>送信</button> */}
-        <Rule series="1" />
+        <Rule series="2" />
+        <Box
+          sx={{
+            border: 1,
+            width: "100%",
+            maxWidth: 600,
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "center",
+            borderRadius: "5px",
+            marginY: 2,
+            flexDirection: "column",
+          }}>
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", color: "gray", margin: 1 }}>
+            構築記事一覧
+          </Typography>
+          <Accordion
+            sx={{
+              border: 1,
+              width: "100%",
+              borderRadius: "5px",
+              margin: "0 auto",
+            }}
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header">
+              <Typography
+                sx={{
+                  width: "33%",
+                  flexShrink: 0,
+                  marginLeft: 1,
+                  fontFamily: "Arial",
+                }}>
+                Series1
+              </Typography>
+              <Typography sx={{ color: "text.secondary", fontFamily: "Arial" }}>
+                Season1 ~ Season2
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Rule series="1" />
+            </AccordionDetails>
+          </Accordion>
+        </Box>
+
         <Box
           sx={{
             border: 1,

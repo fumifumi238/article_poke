@@ -69,6 +69,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   let articles: Article[] = await getSeriesData(format, series);
 
   const defaultSeason = season.replace("season", "");
+  const defaultSeries = series.replace("series", "");
 
   articles = articles.filter(
     (article) => String(article.season) === defaultSeason
@@ -144,6 +145,8 @@ const Series = (props: PageProps) => {
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  const [reload, setReload] = useState<boolean>(false);
+
   const getArticles = async (
     seasons: string | string[],
     min: number,
@@ -205,20 +208,18 @@ const Series = (props: PageProps) => {
         }
       }
       if (seasons !== undefined) {
-        console.log("season");
         getArticles(seasons, min, max);
+        setReload(true);
         setLoading(false);
         return;
       }
 
-      if (
-        (props.season !== season && seasons === undefined) ||
-        min !== 1 ||
-        max !== 99999
-      ) {
+      if (min !== 1 || max !== 99999 || reload) {
+        console.log("reload");
         getArticles(season, min, max);
       }
 
+      setReload(true);
       setLoading(false);
     }
   }, [router, router.query]);

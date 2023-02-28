@@ -108,10 +108,16 @@ const DisplaySetting = ({
 
   const onClickSetting = () => {
     setSuccess(true);
-    let baseUrl = `/${formatSetting}/series${seriesSetting}/season${seasonsSetting[0]}?`;
+    let baseUrl = `/${formatSetting}/series${seriesSetting}/season${seasonsSetting[0]}`;
+    let callCount = 0;
 
     const addBaseUrl = (params: string, value: string | number) => {
+      if (callCount === 0) {
+        baseUrl += "?";
+      }
+
       baseUrl += `${params}=${value}&`;
+      callCount++;
     };
 
     if (!(ranksSetting[0] === 1 && ranksSetting[1] === 99999)) {

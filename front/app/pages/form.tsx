@@ -77,6 +77,8 @@ const Form: NextPage = () => {
 
   const [openConfirm, setOpenConfirm] = useState<boolean>(false);
 
+  const [waitSendMail, setWaitSendMail] = useState<boolean>(false);
+
   useEffect(() => {
     if (!openRegister) {
       validationForm();
@@ -107,6 +109,7 @@ const Form: NextPage = () => {
   };
 
   const handleSubmit = async () => {
+    setWaitSendMail(true);
     const party = [];
     for (let i = 0; i < pokeDetails.length; i++) {
       const hash = {
@@ -196,6 +199,8 @@ const Form: NextPage = () => {
       process.env.NEXT_PUBLIC_USER_ID
     );
 
+    setWaitSendMail(false);
+
     if (data.status !== 200) {
       console.log(data.text);
     } else {
@@ -203,7 +208,7 @@ const Form: NextPage = () => {
       setModalOpen(true),
         setTimeout(() => {
           router.push(`/${format}/series${series}/season${season}`);
-        }, 500);
+        }, 200);
     }
   };
 
@@ -393,10 +398,16 @@ const Form: NextPage = () => {
               この内容でよろしいですか？
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <Button sx={{ margin: 1 }} onClick={submitArticle}>
+              <Button
+                sx={{ margin: 1 }}
+                onClick={submitArticle}
+                disabled={waitSendMail}>
                 はい
               </Button>
-              <Button sx={{ margin: 1 }} onClick={() => setOpenConfirm(false)}>
+              <Button
+                sx={{ margin: 1 }}
+                onClick={() => setOpenConfirm(false)}
+                disabled={waitSendMail}>
                 いいえ
               </Button>
             </Box>

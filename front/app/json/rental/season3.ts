@@ -98,7 +98,7 @@ export const rentalSeason3: Rental[] = [
     tn: "ソーネチカ",
     twitter: "Sonechka_poke/status/1627961367805456384",
     article: "https://sonechika.hatenablog.com/entry/2023/02/21/181645",
-    rentalCode: "K8H972",
+    rentalCode: "QPL085",
     party: [
       { pokemon: "ヤミラミ", item: "ひかりのねんど", terastal: "フェアリー" },
       { pokemon: "サーフゴー", item: "ゴツゴツメット", terastal: "ひこう" },
