@@ -3,6 +3,7 @@ import pokeData from "../json/poke_data.json";
 import ability from "../json/ability.json";
 import nature from "../json/nature.json";
 import typesData from "../json/types.json";
+import movesData from "../json/moves.json";
 
 export type Party = {
   id: number;
@@ -11,7 +12,7 @@ export type Party = {
   ability: keyof typeof ability;
   nature: keyof typeof nature;
   terastal: keyof typeof typesData;
-  moves: [string, ...string[]];
+  moves: [keyof typeof movesData, ...(keyof typeof movesData)[]];
   effortValues: [number, number, number, number, number, number];
   individualValues: [number, number, number, number, number, number];
 };

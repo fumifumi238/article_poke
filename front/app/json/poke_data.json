@@ -9746,6 +9746,15 @@
     "baseStats": [111, 127, 99, 79, 99, 55, 570],
     "officialArtNo": "1204"
   },
+  "ウネルミナモ": {
+    "no": "980",
+    "nationalNo": "1009",
+    "en": "Walking Wake",
+    "abilities": ["こだいかっせい"],
+    "types": ["みず", "ドラゴン"],
+    "baseStats": [99, 83, 91, 125, 83, 109, 590],
+    "officialArtNo": "1227"
+  },
   "スナノケガワ": {
     "no": "981",
     "nationalNo": "989",
@@ -9799,6 +9808,15 @@
     "types": ["じめん", "はがね"],
     "baseStats": [90, 112, 120, 72, 70, 106, 570],
     "officialArtNo": "1208"
+  },
+  "テツノイサハ": {
+    "no": "987",
+    "nationalNo": "1010",
+    "en": "Iron Leaves",
+    "abilities": ["クォークチャージ"],
+    "types": ["くさ", "エスパー"],
+    "baseStats": [90, 130, 88, 70, 108, 104, 590],
+    "officialArtNo": "1228"
   },
   "テツノドクガ": {
     "no": "988",
