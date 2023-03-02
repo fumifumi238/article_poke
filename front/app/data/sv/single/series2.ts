@@ -86,10 +86,10 @@ const series2Single: Single[] = [
     twitter: "sakku_poke",
     url: "https://sakku-poke.hatenablog.com/entry/2023/03/02/010448",
     title: "【S3最終32位】カバーニャ",
-    rate: 32,
-    rank: 2208,
+    rate: 2208,
+    rank: 32,
     season: 3,
-    rental: "",
+    rental: "34TNXN",
     format: "single",
     party: [
       {
