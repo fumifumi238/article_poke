@@ -171,7 +171,7 @@ const series2Double: Double[] = [
     url: "http://yuyanpoke.blog.fc2.com/blog-entry-19.html",
     title: "【SVシーズン3 ダブル】最終7位",
     rate: 2105,
-    rank: 4,
+    rank: 7,
     season: 3,
     rental: "YTKK07",
     format: "double",
